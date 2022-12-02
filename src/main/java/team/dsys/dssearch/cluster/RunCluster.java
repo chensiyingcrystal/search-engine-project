@@ -32,7 +32,6 @@ public class RunCluster {
         //bootstrap a server or join to current cluster using current config
         if (config.getClusterConfig().getJoinTo() == null) {
             cluster = ClusterService.bootstrap(config);
-            System.out.println("debug siying" + cluster.getRaftNodeReport());
         } else {
             cluster = ClusterService.join(config, true);
         }

@@ -61,7 +61,7 @@ public class ClusterServiceImpl implements ClusterService {
             this.injector = LifecycleInjector.builder().withModules(module).build().createInjector();
             this.lifecycleManager = injector.getInstance(LifecycleManager.class);
 
-            //lifecycleManager.start();
+            lifecycleManager.start();
             status.set(Status.RUNNING);
 
             Supplier<RaftNode> raftNodeSupplier = injector.getInstance(Key.get(new TypeLiteral<Supplier<RaftNode>>() {
