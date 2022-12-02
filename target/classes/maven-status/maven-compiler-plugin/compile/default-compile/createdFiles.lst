@@ -1,0 +1,13 @@
+cluster/proto/RaftMessageRequest$2.class
+cluster/proto/LogEntryProto$2.class
+team/dsys/dssearch/cluster/config/NodeEndpointConfig$1.class
+team/dsys/dssearch/cluster/rpc/utils/Serialization$1.class
+team/dsys/dssearch/cluster/config/ClusterServiceConfig$1.class
+team/dsys/dssearch/cluster/rpc/RaftRpcServiceImpl$1.class
+cluster/proto/Val$2.class
+team/dsys/dssearch/cluster/config/ClusterConfig$1.class
+cluster/proto/ShardResponse$2.class
+team/dsys/dssearch/cluster/raft/impl/log/LogEntryOrBuilder$1.class
+team/dsys/dssearch/cluster/rpc/RaftMessageHandler$1.class
+team/dsys/dssearch/cluster/config/GrpcConfig$1.class
+team/dsys/dssearch/cluster/raft/LocalStateMachine$1.class
