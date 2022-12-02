@@ -61,7 +61,7 @@ public class ClusterServiceImpl implements ClusterService {
             this.injector = LifecycleInjector.builder().withModules(module).build().createInjector();
             this.lifecycleManager = injector.getInstance(LifecycleManager.class);
 
-            lifecycleManager.start();
+            //lifecycleManager.start();
             status.set(Status.RUNNING);
 
             Supplier<RaftNode> raftNodeSupplier = injector.getInstance(Key.get(new TypeLiteral<Supplier<RaftNode>>() {
@@ -150,9 +150,6 @@ public class ClusterServiceImpl implements ClusterService {
         LATENT, RUNNING, SHUTTING_DOWN, SHUT_DOWN
     }
 
-    /**
-     * Build a new server inside a cluster: current node info, initial members info
-     */
     public static class ClusterBootstrapper implements Supplier<ClusterServiceImpl> {
         final ClusterServiceConfig config;
 
@@ -186,9 +183,6 @@ public class ClusterServiceImpl implements ClusterService {
 
     }
 
-    /**
-     * For a new server join to the current cluster
-     */
     public static class ClusterJoiner implements Supplier<ClusterServiceImpl> {
 
         final ClusterServiceConfig config;
@@ -197,7 +191,6 @@ public class ClusterServiceImpl implements ClusterService {
         final RaftEndpointProto localEndpoint;
         final boolean votingMember;
 
-        //in microraft, some of the members do not have voting rights
         public ClusterJoiner(ClusterServiceConfig config, boolean votingMember) {
             this.config = config;
             this.localEndpoint = toProtoRaftEndpoint(config.getNodeEndpointConfig());
@@ -246,9 +239,6 @@ public class ClusterServiceImpl implements ClusterService {
             return new ClusterServiceImpl(config, RaftNodeEndpoint.wrap(localEndpoint), initialMembers, endpointAddresses);
         }
 
-        /**
-         * fetch raft node report from given address
-         */
         private GetRaftNodeReportResponse getReport(String joinAddress) {
             ManagedChannel reportChannel = createChannel(joinAddress);
             GetRaftNodeReportResponse reportResponse;

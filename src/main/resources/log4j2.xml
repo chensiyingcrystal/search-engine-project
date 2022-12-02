@@ -8,8 +8,8 @@
         <Root level="DEBUG">
             <AppenderRef ref="CONSOLE"/>
         </Root>
-        <Logger name="team.dsys.dssearch.cluster" level="OFF"/>
-        <Logger name="io.microraft" level="OFF"/>
+        <Logger name="team.dsys.dssearch.cluster" level="DEBUG"/>
+        <Logger name="io.microraft" level="DEBUG"/>
         <Logger name="com.netflix.governator" level="OFF"/>
     </Loggers>
 </Configuration>
