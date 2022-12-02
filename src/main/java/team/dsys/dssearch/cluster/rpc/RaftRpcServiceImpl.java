@@ -40,7 +40,7 @@ public class RaftRpcServiceImpl implements RaftRpcService {
 
     private final RaftEndpoint localEndpoint;
     private final Map<RaftEndpoint, String> addresses;
-    private final Map<RaftEndpoint, RaftRpcContext> stubs = new ConcurrentHashMap<>();
+    private final Map<RaftEndpoint, RaftRpcStub> stubs = new ConcurrentHashMap<>();
     private final Set<RaftEndpoint> initializingEndpoints = Collections.newSetFromMap(new ConcurrentHashMap<>());
     private final ProcessTerminationLogger processTerminationLogger;
     private final ScheduledExecutorService executor = newSingleThreadScheduledExecutor();
@@ -59,7 +59,7 @@ public class RaftRpcServiceImpl implements RaftRpcService {
 
     @PreDestroy
     public void shutdown() {
-        stubs.values().forEach(RaftRpcContext::shutdownSilently);
+        stubs.values().forEach(RaftRpcStub::shutdownSilently);
         stubs.clear();
         executor.shutdownNow();
 
@@ -85,9 +85,12 @@ public class RaftRpcServiceImpl implements RaftRpcService {
         return new HashMap<>(addresses);
     }
 
+    /**
+     * Send raftmessage from current node to target node
+     */
     @Override
     public void send(@Nonnull RaftEndpoint target, @Nonnull RaftMessage message) {
-        RaftRpcContext stub = getOrCreateStub(requireNonNull(target));
+        RaftRpcStub stub = getOrCreateStub(requireNonNull(target));
         if (stub != null) {
             executor.submit(() -> {
                 stub.send(message);
@@ -95,20 +98,25 @@ public class RaftRpcServiceImpl implements RaftRpcService {
         }
     }
 
+    /**
+     * Check the availability of target node
+     * @param endpoint
+     * @return
+     */
     @Override
     public boolean isReachable(@Nonnull RaftEndpoint endpoint) {
         return stubs.containsKey(endpoint);
     }
 
-    private RaftRpcContext getOrCreateStub(RaftEndpoint target) {
+    private RaftRpcStub getOrCreateStub(RaftEndpoint target) {
         if (localEndpoint.equals(target)) {
             LOGGER.error("{} cannot send Raft message to itself...", localEndpoint.getId());
             return null;
         }
 
-        RaftRpcContext context = stubs.get(target);
-        if (context != null) {
-            return context;
+        RaftRpcStub stub = stubs.get(target);
+        if (stub != null) {
+            return stub;
         } else if (!addresses.containsKey(target)) {
             LOGGER.error("{} unknown target: {}", localEndpoint.getId(), target);
             return null;
@@ -117,7 +125,7 @@ public class RaftRpcServiceImpl implements RaftRpcService {
         return connect(target);
     }
 
-    private RaftRpcContext connect(RaftEndpoint target) {
+    private RaftRpcStub connect(RaftEndpoint target) {
         if (!initializingEndpoints.add(target)) {
             return null;
         }
@@ -130,23 +138,23 @@ public class RaftRpcServiceImpl implements RaftRpcService {
 
             RaftCommunicationServiceGrpc.RaftCommunicationServiceStub replicationStub = RaftCommunicationServiceGrpc.newStub(channel);
             // .withDeadlineAfter(rpcTimeoutSecs, SECONDS);
-            RaftRpcContext context = new RaftRpcContext(target, channel);
-            context.raftMessageSender = replicationStub.handleRaftMessage(new ResponseStreamObserver(context));
+            RaftRpcStub stub = new RaftRpcStub(target, channel);
+            stub.raftMessageSender = replicationStub.handleRaftMessage(new ResponseStreamObserver(stub));
 
-            stubs.put(target, context);
+            stubs.put(target, stub);
 
-            return context;
+            return stub;
         } finally {
             initializingEndpoints.remove(target);
         }
     }
 
-    private void checkChannel(RaftRpcContext context) {
-        if (stubs.remove(context.targetEndpoint, context)) {
-            context.shutdownSilently();
+    private void checkChannel(RaftRpcStub stub) {
+        if (stubs.remove(stub.targetEndpoint, stub)) {
+            stub.shutdownSilently();
         }
 
-        delayChannelCreation(context.targetEndpoint);
+        delayChannelCreation(stub.targetEndpoint);
     }
 
     private void delayChannelCreation(RaftEndpoint target) {
@@ -164,12 +172,12 @@ public class RaftRpcServiceImpl implements RaftRpcService {
         }
     }
 
-    private class RaftRpcContext {
+    private class RaftRpcStub {
         final RaftEndpoint targetEndpoint;
         final ManagedChannel channel;
         StreamObserver<RaftMessageRequest> raftMessageSender;
 
-        RaftRpcContext(RaftEndpoint targetEndpoint, ManagedChannel channel) {
+        RaftRpcStub(RaftEndpoint targetEndpoint, ManagedChannel channel) {
             this.targetEndpoint = targetEndpoint;
             this.channel = channel;
         }
@@ -196,35 +204,35 @@ public class RaftRpcServiceImpl implements RaftRpcService {
     }
 
     private class ResponseStreamObserver implements StreamObserver<RaftMessageResponse> {
-        final RaftRpcContext context;
+        final RaftRpcStub stub;
 
-        private ResponseStreamObserver(RaftRpcContext context) {
-            this.context = context;
+        private ResponseStreamObserver(RaftRpcStub stub) {
+            this.stub = stub;
         }
 
         @Override
         public void onNext(RaftMessageResponse response) {
             LOGGER.warn("{} received {} from Raft RPC stream to {}", localEndpoint.getId(), response,
-                    context.targetEndpoint.getId());
+                    stub.targetEndpoint.getId());
         }
 
         @Override
         public void onError(Throwable t) {
             if (LOGGER.isDebugEnabled()) {
-                LOGGER.error(localEndpoint.getId() + " streaming Raft RPC to " + context.targetEndpoint.getId()
+                LOGGER.error(localEndpoint.getId() + " streaming Raft RPC to " + stub.targetEndpoint.getId()
                         + " has failed.", t);
             } else {
                 LOGGER.error("{} Raft RPC stream to {} has failed. Exception: {} Message: {}", localEndpoint.getId(),
-                        context.targetEndpoint.getId(), t.getClass().getSimpleName(), t.getMessage());
+                        stub.targetEndpoint.getId(), t.getClass().getSimpleName(), t.getMessage());
             }
 
-            checkChannel(context);
+            checkChannel(stub);
         }
 
         @Override
         public void onCompleted() {
             LOGGER.warn("{} Raft RPC stream to {} has completed.", localEndpoint.getId(),
-                    context.targetEndpoint.getId());
+                    stub.targetEndpoint.getId());
         }
 
     }
