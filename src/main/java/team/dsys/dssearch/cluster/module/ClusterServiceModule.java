@@ -10,8 +10,6 @@ import io.microraft.RaftNode;
 import io.microraft.model.RaftModelFactory;
 import io.microraft.statemachine.StateMachine;
 import team.dsys.dssearch.cluster.config.ClusterServiceConfig;
-import team.dsys.dssearch.cluster.lifecycle.ProcessTerminationLogger;
-import team.dsys.dssearch.cluster.lifecycle.ProcessTerminationLoggerImpl;
 import team.dsys.dssearch.cluster.raft.LocalStateMachine;
 import team.dsys.dssearch.cluster.raft.listener.ClusterEndpointsListener;
 import team.dsys.dssearch.cluster.raft.model.RaftModelFactoryImpl;
@@ -24,7 +22,6 @@ import team.dsys.dssearch.cluster.rpc.impl.ShardRequestHandler;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 
 import static com.google.inject.name.Names.named;
@@ -44,23 +41,17 @@ public class ClusterServiceModule extends AbstractModule {
     private final RaftEndpoint nodeEndpoint;
     private final List<RaftEndpoint> initialEndpoints;
     private final Map<RaftEndpoint, String> addresses;
-    private final AtomicBoolean processTerminationFlag;
 
     public ClusterServiceModule(ClusterServiceConfig config, RaftEndpoint nodeEndpoint, List<RaftEndpoint> initialEndpoints,
-                          Map<RaftEndpoint, String> addresses, AtomicBoolean processTerminationFlag) {
+                          Map<RaftEndpoint, String> addresses) {
         this.config = config;
         this.nodeEndpoint = nodeEndpoint;
         this.initialEndpoints = initialEndpoints;
         this.addresses = addresses;
-        this.processTerminationFlag = processTerminationFlag;
     }
 
     @Override
     protected void configure() {
-        bind(AtomicBoolean.class).annotatedWith(named(ProcessTerminationLoggerImpl.PROCESS_TERMINATION_FLAG_KEY))
-                .toInstance(processTerminationFlag);
-        bind(ProcessTerminationLogger.class).to(ProcessTerminationLoggerImpl.class);
-
         bind(ClusterServiceConfig.class).annotatedWith(named(CONFIG_KEY)).toInstance(config);
         bind(RaftEndpoint.class).annotatedWith(named(NODE_ENDPOINT_KEY)).toInstance(nodeEndpoint);
         bind(new TypeLiteral<Collection<RaftEndpoint>>() {

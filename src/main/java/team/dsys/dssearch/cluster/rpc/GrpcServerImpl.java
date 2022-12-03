@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import team.dsys.dssearch.cluster.config.ClusterServiceConfig;
 import team.dsys.dssearch.cluster.exception.ClusterServerException;
-import team.dsys.dssearch.cluster.lifecycle.ProcessTerminationLogger;
 import team.dsys.dssearch.cluster.raft.report.RaftNodeReportSupplier;
 import team.dsys.dssearch.cluster.rpc.impl.ClusterHealthManagementHandler;
 import team.dsys.dssearch.cluster.rpc.impl.ShardRequestHandler;
@@ -34,13 +33,12 @@ public class GrpcServerImpl implements GrpcServer {
 
     private final RaftEndpoint nodeEndpoint;
     private final Server server;
-    private final ProcessTerminationLogger processTerminationLogger;
 
     @Inject
     public GrpcServerImpl(@Named(NODE_ENDPOINT_KEY) RaftEndpoint nodeEndpoint,
                          @Named(CONFIG_KEY) ClusterServiceConfig config, ShardRequestHandler shardRequestHandler,
                          RaftMessageHandler raftMessageHandler, ClusterHealthManagementHandler clusterHealthManagementHandler,
-                         RaftNodeReportSupplier raftNodeReportSupplier, ProcessTerminationLogger processTerminationLogger) {
+                         RaftNodeReportSupplier raftNodeReportSupplier) {
         this.nodeEndpoint = nodeEndpoint;
         EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup(1);
@@ -49,12 +47,12 @@ public class GrpcServerImpl implements GrpcServer {
                 .bossEventLoopGroup(boss).workerEventLoopGroup(worker).channelType(channelType)
                 .addService(shardRequestHandler).addService(raftMessageHandler).addService(clusterHealthManagementHandler)
                 .addService((ClusterListenServiceGrpc.ClusterListenServiceImplBase) raftNodeReportSupplier).directExecutor().build();
-        this.processTerminationLogger = processTerminationLogger;
     }
 
     @PostConstruct
     public void start() {
         try {
+            //automatically start grpc server when constructed
             server.start();
             LOGGER.info(nodeEndpoint.getId() + " RpcServer started.");
         } catch (IOException e) {
@@ -64,14 +62,14 @@ public class GrpcServerImpl implements GrpcServer {
 
     @PreDestroy
     public void shutdown() {
-        processTerminationLogger.logInfo(LOGGER, nodeEndpoint.getId() + " shutting down RpcServer...");
+        LOGGER.info(nodeEndpoint.getId() + " shutting down RpcServer...");
 
         try {
             server.shutdownNow();
-            processTerminationLogger.logInfo(LOGGER, nodeEndpoint.getId() + " RpcServer is shut down.");
+            LOGGER.info(nodeEndpoint.getId() + " RpcServer is shut down.");
         } catch (Throwable t) {
             String message = nodeEndpoint.getId() + " failure during termination of RpcServer";
-            processTerminationLogger.logError(LOGGER, message, t);
+            LOGGER.error(message, t);
         }
     }
 
@@ -81,8 +79,7 @@ public class GrpcServerImpl implements GrpcServer {
             server.awaitTermination();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            processTerminationLogger.logWarn(LOGGER,
-                    nodeEndpoint.getId() + " await termination of RpcServer interrupted!");
+            LOGGER.warn(nodeEndpoint.getId() + " await termination of RpcServer interrupted!");
         }
     }
 

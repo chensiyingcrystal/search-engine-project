@@ -106,50 +106,5 @@ public interface LogEntryProtoOrBuilder extends
    */
   cluster.proto.RemoveOpOrBuilder getRemoveOpOrBuilder();
 
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   * @return Whether the replaceOp field is set.
-   */
-  boolean hasReplaceOp();
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   * @return The replaceOp.
-   */
-  cluster.proto.ReplaceOp getReplaceOp();
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   */
-  cluster.proto.ReplaceOpOrBuilder getReplaceOpOrBuilder();
-
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   * @return Whether the sizeOp field is set.
-   */
-  boolean hasSizeOp();
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   * @return The sizeOp.
-   */
-  cluster.proto.SizeOp getSizeOp();
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   */
-  cluster.proto.SizeOpOrBuilder getSizeOpOrBuilder();
-
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   * @return Whether the clearOp field is set.
-   */
-  boolean hasClearOp();
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   * @return The clearOp.
-   */
-  cluster.proto.ClearOp getClearOp();
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   */
-  cluster.proto.ClearOpOrBuilder getClearOpOrBuilder();
-
   public cluster.proto.LogEntryProto.OperationCase getOperationCase();
 }

@@ -46,37 +46,6 @@ public final class ShardRequestHandlerGrpc {
     return getPutMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.SetRequest,
-      cluster.proto.ShardResponse> getSetMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "set",
-      requestType = cluster.proto.SetRequest.class,
-      responseType = cluster.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.SetRequest,
-      cluster.proto.ShardResponse> getSetMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.SetRequest, cluster.proto.ShardResponse> getSetMethod;
-    if ((getSetMethod = ShardRequestHandlerGrpc.getSetMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getSetMethod = ShardRequestHandlerGrpc.getSetMethod) == null) {
-          ShardRequestHandlerGrpc.getSetMethod = getSetMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.SetRequest, cluster.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "set"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.SetRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("set"))
-              .build();
-        }
-      }
-    }
-    return getSetMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<cluster.proto.GetRequest,
       cluster.proto.ShardResponse> getGetMethod;
 
@@ -108,37 +77,6 @@ public final class ShardRequestHandlerGrpc {
     return getGetMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.ContainsRequest,
-      cluster.proto.ShardResponse> getContainsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "contains",
-      requestType = cluster.proto.ContainsRequest.class,
-      responseType = cluster.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.ContainsRequest,
-      cluster.proto.ShardResponse> getContainsMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.ContainsRequest, cluster.proto.ShardResponse> getContainsMethod;
-    if ((getContainsMethod = ShardRequestHandlerGrpc.getContainsMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getContainsMethod = ShardRequestHandlerGrpc.getContainsMethod) == null) {
-          ShardRequestHandlerGrpc.getContainsMethod = getContainsMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.ContainsRequest, cluster.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "contains"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ContainsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("contains"))
-              .build();
-        }
-      }
-    }
-    return getContainsMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<cluster.proto.RemoveRequest,
       cluster.proto.ShardResponse> getRemoveMethod;
 
@@ -168,99 +106,6 @@ public final class ShardRequestHandlerGrpc {
       }
     }
     return getRemoveMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.ReplaceRequest,
-      cluster.proto.ShardResponse> getReplaceMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "replace",
-      requestType = cluster.proto.ReplaceRequest.class,
-      responseType = cluster.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.ReplaceRequest,
-      cluster.proto.ShardResponse> getReplaceMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.ReplaceRequest, cluster.proto.ShardResponse> getReplaceMethod;
-    if ((getReplaceMethod = ShardRequestHandlerGrpc.getReplaceMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getReplaceMethod = ShardRequestHandlerGrpc.getReplaceMethod) == null) {
-          ShardRequestHandlerGrpc.getReplaceMethod = getReplaceMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.ReplaceRequest, cluster.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "replace"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ReplaceRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("replace"))
-              .build();
-        }
-      }
-    }
-    return getReplaceMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.SizeRequest,
-      cluster.proto.ShardResponse> getSizeMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "size",
-      requestType = cluster.proto.SizeRequest.class,
-      responseType = cluster.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.SizeRequest,
-      cluster.proto.ShardResponse> getSizeMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.SizeRequest, cluster.proto.ShardResponse> getSizeMethod;
-    if ((getSizeMethod = ShardRequestHandlerGrpc.getSizeMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getSizeMethod = ShardRequestHandlerGrpc.getSizeMethod) == null) {
-          ShardRequestHandlerGrpc.getSizeMethod = getSizeMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.SizeRequest, cluster.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "size"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.SizeRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("size"))
-              .build();
-        }
-      }
-    }
-    return getSizeMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.ClearRequest,
-      cluster.proto.ShardResponse> getClearMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "clear",
-      requestType = cluster.proto.ClearRequest.class,
-      responseType = cluster.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.ClearRequest,
-      cluster.proto.ShardResponse> getClearMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.ClearRequest, cluster.proto.ShardResponse> getClearMethod;
-    if ((getClearMethod = ShardRequestHandlerGrpc.getClearMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getClearMethod = ShardRequestHandlerGrpc.getClearMethod) == null) {
-          ShardRequestHandlerGrpc.getClearMethod = getClearMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.ClearRequest, cluster.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "clear"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ClearRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("clear"))
-              .build();
-        }
-      }
-    }
-    return getClearMethod;
   }
 
   /**
@@ -320,13 +165,6 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void set(cluster.proto.SetRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void get(cluster.proto.GetRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
@@ -334,37 +172,9 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void contains(cluster.proto.ContainsRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getContainsMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void remove(cluster.proto.RemoveRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void replace(cluster.proto.ReplaceRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplaceMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void size(cluster.proto.SizeRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSizeMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void clear(cluster.proto.ClearRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getClearMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -377,13 +187,6 @@ public final class ShardRequestHandlerGrpc {
                 cluster.proto.ShardResponse>(
                   this, METHODID_PUT)))
           .addMethod(
-            getSetMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.SetRequest,
-                cluster.proto.ShardResponse>(
-                  this, METHODID_SET)))
-          .addMethod(
             getGetMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
@@ -391,40 +194,12 @@ public final class ShardRequestHandlerGrpc {
                 cluster.proto.ShardResponse>(
                   this, METHODID_GET)))
           .addMethod(
-            getContainsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.ContainsRequest,
-                cluster.proto.ShardResponse>(
-                  this, METHODID_CONTAINS)))
-          .addMethod(
             getRemoveMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 cluster.proto.RemoveRequest,
                 cluster.proto.ShardResponse>(
                   this, METHODID_REMOVE)))
-          .addMethod(
-            getReplaceMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.ReplaceRequest,
-                cluster.proto.ShardResponse>(
-                  this, METHODID_REPLACE)))
-          .addMethod(
-            getSizeMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.SizeRequest,
-                cluster.proto.ShardResponse>(
-                  this, METHODID_SIZE)))
-          .addMethod(
-            getClearMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.ClearRequest,
-                cluster.proto.ShardResponse>(
-                  this, METHODID_CLEAR)))
           .build();
     }
   }
@@ -453,14 +228,6 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void set(cluster.proto.SetRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getSetMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void get(cluster.proto.GetRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -469,42 +236,10 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void contains(cluster.proto.ContainsRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getContainsMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void remove(cluster.proto.RemoveRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRemoveMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void replace(cluster.proto.ReplaceRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getReplaceMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void size(cluster.proto.SizeRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getSizeMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void clear(cluster.proto.ClearRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getClearMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -531,13 +266,6 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public cluster.proto.ShardResponse set(cluster.proto.SetRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getSetMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public cluster.proto.ShardResponse get(cluster.proto.GetRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMethod(), getCallOptions(), request);
@@ -545,37 +273,9 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public cluster.proto.ShardResponse contains(cluster.proto.ContainsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getContainsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public cluster.proto.ShardResponse remove(cluster.proto.RemoveRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public cluster.proto.ShardResponse replace(cluster.proto.ReplaceRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getReplaceMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public cluster.proto.ShardResponse size(cluster.proto.SizeRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getSizeMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public cluster.proto.ShardResponse clear(cluster.proto.ClearRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getClearMethod(), getCallOptions(), request);
     }
   }
 
@@ -603,26 +303,10 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> set(
-        cluster.proto.SetRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getSetMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> get(
         cluster.proto.GetRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> contains(
-        cluster.proto.ContainsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getContainsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -632,40 +316,11 @@ public final class ShardRequestHandlerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRemoveMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> replace(
-        cluster.proto.ReplaceRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getReplaceMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> size(
-        cluster.proto.SizeRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getSizeMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> clear(
-        cluster.proto.ClearRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getClearMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_PUT = 0;
-  private static final int METHODID_SET = 1;
-  private static final int METHODID_GET = 2;
-  private static final int METHODID_CONTAINS = 3;
-  private static final int METHODID_REMOVE = 4;
-  private static final int METHODID_REPLACE = 5;
-  private static final int METHODID_SIZE = 6;
-  private static final int METHODID_CLEAR = 7;
+  private static final int METHODID_GET = 1;
+  private static final int METHODID_REMOVE = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -688,32 +343,12 @@ public final class ShardRequestHandlerGrpc {
           serviceImpl.put((cluster.proto.PutRequest) request,
               (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
           break;
-        case METHODID_SET:
-          serviceImpl.set((cluster.proto.SetRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
-          break;
         case METHODID_GET:
           serviceImpl.get((cluster.proto.GetRequest) request,
               (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
           break;
-        case METHODID_CONTAINS:
-          serviceImpl.contains((cluster.proto.ContainsRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
-          break;
         case METHODID_REMOVE:
           serviceImpl.remove((cluster.proto.RemoveRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
-          break;
-        case METHODID_REPLACE:
-          serviceImpl.replace((cluster.proto.ReplaceRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
-          break;
-        case METHODID_SIZE:
-          serviceImpl.size((cluster.proto.SizeRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
-          break;
-        case METHODID_CLEAR:
-          serviceImpl.clear((cluster.proto.ClearRequest) request,
               (io.grpc.stub.StreamObserver<cluster.proto.ShardResponse>) responseObserver);
           break;
         default:
@@ -778,13 +413,8 @@ public final class ShardRequestHandlerGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ShardRequestHandlerFileDescriptorSupplier())
               .addMethod(getPutMethod())
-              .addMethod(getSetMethod())
               .addMethod(getGetMethod())
-              .addMethod(getContainsMethod())
               .addMethod(getRemoveMethod())
-              .addMethod(getReplaceMethod())
-              .addMethod(getSizeMethod())
-              .addMethod(getClearMethod())
               .build();
         }
       }

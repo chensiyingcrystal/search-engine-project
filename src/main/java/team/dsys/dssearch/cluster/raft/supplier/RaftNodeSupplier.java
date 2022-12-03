@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import team.dsys.dssearch.cluster.config.ClusterServiceConfig;
 import team.dsys.dssearch.cluster.exception.ClusterServerException;
-import team.dsys.dssearch.cluster.lifecycle.ProcessTerminationLogger;
 import team.dsys.dssearch.cluster.raft.report.RaftNodeReportSupplier;
 import team.dsys.dssearch.cluster.rpc.RaftRpcService;
 
@@ -32,19 +31,16 @@ public class RaftNodeSupplier implements Supplier<RaftNode> {
     private static final Logger LOGGER = LoggerFactory.getLogger(RaftNodeSupplier.class);
 
     private final RaftNode raftNode;
-    private final ProcessTerminationLogger processTerminationLogger;
 
     @Inject
     public RaftNodeSupplier(@Named(CONFIG_KEY) ClusterServiceConfig config,
                             @Named(NODE_ENDPOINT_KEY) RaftEndpoint localEndpoint,
                             @Named(INITIAL_ENDPOINTS_KEY) Collection<RaftEndpoint> initialGroupMembers, RaftRpcService rpcService,
-                            StateMachine stateMachine, RaftModelFactory modelFactory, RaftNodeReportSupplier raftNodeReportSupplier,
-                            ProcessTerminationLogger processTerminationLogger) {
+                            StateMachine stateMachine, RaftModelFactory modelFactory, RaftNodeReportSupplier raftNodeReportSupplier) {
         this.raftNode = RaftNode.newBuilder().setGroupId(config.getClusterConfig().getId())
                 .setLocalEndpoint(localEndpoint).setInitialGroupMembers(initialGroupMembers)
                 .setConfig(config.getRaftConfig()).setTransport(rpcService).setStateMachine(stateMachine)
                 .setModelFactory(modelFactory).setRaftNodeReportListener(raftNodeReportSupplier).build();
-        this.processTerminationLogger = processTerminationLogger;
     }
 
     @PostConstruct
@@ -59,18 +55,18 @@ public class RaftNodeSupplier implements Supplier<RaftNode> {
 
     @PreDestroy
     public void shutdown() {
-        processTerminationLogger.logInfo(LOGGER, raftNode.getLocalEndpoint().getId() + " terminating Raft node...");
+        LOGGER.info(raftNode.getLocalEndpoint().getId() + " terminating Raft node...");
 
         try {
             raftNode.terminate().get(10, TimeUnit.SECONDS);
-            processTerminationLogger.logInfo(LOGGER, raftNode.getLocalEndpoint().getId() + " RaftNode is terminated.");
+            LOGGER.info(raftNode.getLocalEndpoint().getId() + " RaftNode is terminated.");
         } catch (Throwable t) {
             if (t instanceof InterruptedException) {
                 Thread.currentThread().interrupt();
             }
 
             String message = raftNode.getLocalEndpoint().getId() + " failure during termination of Raft node";
-            processTerminationLogger.logError(LOGGER, message, t);
+            LOGGER.info(message, t);
         }
     }
 

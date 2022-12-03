@@ -57,9 +57,6 @@ private static final long serialVersionUID = 0L;
     PUTOP(5),
     GETOP(6),
     REMOVEOP(7),
-    REPLACEOP(8),
-    SIZEOP(9),
-    CLEAROP(10),
     OPERATION_NOT_SET(0);
     private final int value;
     private OperationCase(int value) {
@@ -82,9 +79,6 @@ private static final long serialVersionUID = 0L;
         case 5: return PUTOP;
         case 6: return GETOP;
         case 7: return REMOVEOP;
-        case 8: return REPLACEOP;
-        case 9: return SIZEOP;
-        case 10: return CLEAROP;
         case 0: return OPERATION_NOT_SET;
         default: return null;
       }
@@ -289,99 +283,6 @@ private static final long serialVersionUID = 0L;
     return cluster.proto.RemoveOp.getDefaultInstance();
   }
 
-  public static final int REPLACEOP_FIELD_NUMBER = 8;
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   * @return Whether the replaceOp field is set.
-   */
-  @java.lang.Override
-  public boolean hasReplaceOp() {
-    return operationCase_ == 8;
-  }
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   * @return The replaceOp.
-   */
-  @java.lang.Override
-  public cluster.proto.ReplaceOp getReplaceOp() {
-    if (operationCase_ == 8) {
-       return (cluster.proto.ReplaceOp) operation_;
-    }
-    return cluster.proto.ReplaceOp.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.ReplaceOp replaceOp = 8;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.ReplaceOpOrBuilder getReplaceOpOrBuilder() {
-    if (operationCase_ == 8) {
-       return (cluster.proto.ReplaceOp) operation_;
-    }
-    return cluster.proto.ReplaceOp.getDefaultInstance();
-  }
-
-  public static final int SIZEOP_FIELD_NUMBER = 9;
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   * @return Whether the sizeOp field is set.
-   */
-  @java.lang.Override
-  public boolean hasSizeOp() {
-    return operationCase_ == 9;
-  }
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   * @return The sizeOp.
-   */
-  @java.lang.Override
-  public cluster.proto.SizeOp getSizeOp() {
-    if (operationCase_ == 9) {
-       return (cluster.proto.SizeOp) operation_;
-    }
-    return cluster.proto.SizeOp.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.SizeOp sizeOp = 9;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.SizeOpOrBuilder getSizeOpOrBuilder() {
-    if (operationCase_ == 9) {
-       return (cluster.proto.SizeOp) operation_;
-    }
-    return cluster.proto.SizeOp.getDefaultInstance();
-  }
-
-  public static final int CLEAROP_FIELD_NUMBER = 10;
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   * @return Whether the clearOp field is set.
-   */
-  @java.lang.Override
-  public boolean hasClearOp() {
-    return operationCase_ == 10;
-  }
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   * @return The clearOp.
-   */
-  @java.lang.Override
-  public cluster.proto.ClearOp getClearOp() {
-    if (operationCase_ == 10) {
-       return (cluster.proto.ClearOp) operation_;
-    }
-    return cluster.proto.ClearOp.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.ClearOp clearOp = 10;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.ClearOpOrBuilder getClearOpOrBuilder() {
-    if (operationCase_ == 10) {
-       return (cluster.proto.ClearOp) operation_;
-    }
-    return cluster.proto.ClearOp.getDefaultInstance();
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -416,15 +317,6 @@ private static final long serialVersionUID = 0L;
     }
     if (operationCase_ == 7) {
       output.writeMessage(7, (cluster.proto.RemoveOp) operation_);
-    }
-    if (operationCase_ == 8) {
-      output.writeMessage(8, (cluster.proto.ReplaceOp) operation_);
-    }
-    if (operationCase_ == 9) {
-      output.writeMessage(9, (cluster.proto.SizeOp) operation_);
-    }
-    if (operationCase_ == 10) {
-      output.writeMessage(10, (cluster.proto.ClearOp) operation_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -462,18 +354,6 @@ private static final long serialVersionUID = 0L;
     if (operationCase_ == 7) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, (cluster.proto.RemoveOp) operation_);
-    }
-    if (operationCase_ == 8) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, (cluster.proto.ReplaceOp) operation_);
-    }
-    if (operationCase_ == 9) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, (cluster.proto.SizeOp) operation_);
-    }
-    if (operationCase_ == 10) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, (cluster.proto.ClearOp) operation_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -516,18 +396,6 @@ private static final long serialVersionUID = 0L;
         if (!getRemoveOp()
             .equals(other.getRemoveOp())) return false;
         break;
-      case 8:
-        if (!getReplaceOp()
-            .equals(other.getReplaceOp())) return false;
-        break;
-      case 9:
-        if (!getSizeOp()
-            .equals(other.getSizeOp())) return false;
-        break;
-      case 10:
-        if (!getClearOp()
-            .equals(other.getClearOp())) return false;
-        break;
       case 0:
       default:
     }
@@ -567,18 +435,6 @@ private static final long serialVersionUID = 0L;
       case 7:
         hash = (37 * hash) + REMOVEOP_FIELD_NUMBER;
         hash = (53 * hash) + getRemoveOp().hashCode();
-        break;
-      case 8:
-        hash = (37 * hash) + REPLACEOP_FIELD_NUMBER;
-        hash = (53 * hash) + getReplaceOp().hashCode();
-        break;
-      case 9:
-        hash = (37 * hash) + SIZEOP_FIELD_NUMBER;
-        hash = (53 * hash) + getSizeOp().hashCode();
-        break;
-      case 10:
-        hash = (37 * hash) + CLEAROP_FIELD_NUMBER;
-        hash = (53 * hash) + getClearOp().hashCode();
         break;
       case 0:
       default:
@@ -734,15 +590,6 @@ private static final long serialVersionUID = 0L;
       if (removeOpBuilder_ != null) {
         removeOpBuilder_.clear();
       }
-      if (replaceOpBuilder_ != null) {
-        replaceOpBuilder_.clear();
-      }
-      if (sizeOpBuilder_ != null) {
-        sizeOpBuilder_.clear();
-      }
-      if (clearOpBuilder_ != null) {
-        clearOpBuilder_.clear();
-      }
       operationCase_ = 0;
       operation_ = null;
       return this;
@@ -806,27 +653,6 @@ private static final long serialVersionUID = 0L;
           result.operation_ = operation_;
         } else {
           result.operation_ = removeOpBuilder_.build();
-        }
-      }
-      if (operationCase_ == 8) {
-        if (replaceOpBuilder_ == null) {
-          result.operation_ = operation_;
-        } else {
-          result.operation_ = replaceOpBuilder_.build();
-        }
-      }
-      if (operationCase_ == 9) {
-        if (sizeOpBuilder_ == null) {
-          result.operation_ = operation_;
-        } else {
-          result.operation_ = sizeOpBuilder_.build();
-        }
-      }
-      if (operationCase_ == 10) {
-        if (clearOpBuilder_ == null) {
-          result.operation_ = operation_;
-        } else {
-          result.operation_ = clearOpBuilder_.build();
         }
       }
       result.operationCase_ = operationCase_;
@@ -905,18 +731,6 @@ private static final long serialVersionUID = 0L;
           mergeRemoveOp(other.getRemoveOp());
           break;
         }
-        case REPLACEOP: {
-          mergeReplaceOp(other.getReplaceOp());
-          break;
-        }
-        case SIZEOP: {
-          mergeSizeOp(other.getSizeOp());
-          break;
-        }
-        case CLEAROP: {
-          mergeClearOp(other.getClearOp());
-          break;
-        }
         case OPERATION_NOT_SET: {
           break;
         }
@@ -992,27 +806,6 @@ private static final long serialVersionUID = 0L;
               operationCase_ = 7;
               break;
             } // case 58
-            case 66: {
-              input.readMessage(
-                  getReplaceOpFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              operationCase_ = 8;
-              break;
-            } // case 66
-            case 74: {
-              input.readMessage(
-                  getSizeOpFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              operationCase_ = 9;
-              break;
-            } // case 74
-            case 82: {
-              input.readMessage(
-                  getClearOpFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              operationCase_ = 10;
-              break;
-            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1850,432 +1643,6 @@ private static final long serialVersionUID = 0L;
       operationCase_ = 7;
       onChanged();;
       return removeOpBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ReplaceOp, cluster.proto.ReplaceOp.Builder, cluster.proto.ReplaceOpOrBuilder> replaceOpBuilder_;
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     * @return Whether the replaceOp field is set.
-     */
-    @java.lang.Override
-    public boolean hasReplaceOp() {
-      return operationCase_ == 8;
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     * @return The replaceOp.
-     */
-    @java.lang.Override
-    public cluster.proto.ReplaceOp getReplaceOp() {
-      if (replaceOpBuilder_ == null) {
-        if (operationCase_ == 8) {
-          return (cluster.proto.ReplaceOp) operation_;
-        }
-        return cluster.proto.ReplaceOp.getDefaultInstance();
-      } else {
-        if (operationCase_ == 8) {
-          return replaceOpBuilder_.getMessage();
-        }
-        return cluster.proto.ReplaceOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    public Builder setReplaceOp(cluster.proto.ReplaceOp value) {
-      if (replaceOpBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        operation_ = value;
-        onChanged();
-      } else {
-        replaceOpBuilder_.setMessage(value);
-      }
-      operationCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    public Builder setReplaceOp(
-        cluster.proto.ReplaceOp.Builder builderForValue) {
-      if (replaceOpBuilder_ == null) {
-        operation_ = builderForValue.build();
-        onChanged();
-      } else {
-        replaceOpBuilder_.setMessage(builderForValue.build());
-      }
-      operationCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    public Builder mergeReplaceOp(cluster.proto.ReplaceOp value) {
-      if (replaceOpBuilder_ == null) {
-        if (operationCase_ == 8 &&
-            operation_ != cluster.proto.ReplaceOp.getDefaultInstance()) {
-          operation_ = cluster.proto.ReplaceOp.newBuilder((cluster.proto.ReplaceOp) operation_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          operation_ = value;
-        }
-        onChanged();
-      } else {
-        if (operationCase_ == 8) {
-          replaceOpBuilder_.mergeFrom(value);
-        } else {
-          replaceOpBuilder_.setMessage(value);
-        }
-      }
-      operationCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    public Builder clearReplaceOp() {
-      if (replaceOpBuilder_ == null) {
-        if (operationCase_ == 8) {
-          operationCase_ = 0;
-          operation_ = null;
-          onChanged();
-        }
-      } else {
-        if (operationCase_ == 8) {
-          operationCase_ = 0;
-          operation_ = null;
-        }
-        replaceOpBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    public cluster.proto.ReplaceOp.Builder getReplaceOpBuilder() {
-      return getReplaceOpFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.ReplaceOpOrBuilder getReplaceOpOrBuilder() {
-      if ((operationCase_ == 8) && (replaceOpBuilder_ != null)) {
-        return replaceOpBuilder_.getMessageOrBuilder();
-      } else {
-        if (operationCase_ == 8) {
-          return (cluster.proto.ReplaceOp) operation_;
-        }
-        return cluster.proto.ReplaceOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ReplaceOp replaceOp = 8;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ReplaceOp, cluster.proto.ReplaceOp.Builder, cluster.proto.ReplaceOpOrBuilder> 
-        getReplaceOpFieldBuilder() {
-      if (replaceOpBuilder_ == null) {
-        if (!(operationCase_ == 8)) {
-          operation_ = cluster.proto.ReplaceOp.getDefaultInstance();
-        }
-        replaceOpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.ReplaceOp, cluster.proto.ReplaceOp.Builder, cluster.proto.ReplaceOpOrBuilder>(
-                (cluster.proto.ReplaceOp) operation_,
-                getParentForChildren(),
-                isClean());
-        operation_ = null;
-      }
-      operationCase_ = 8;
-      onChanged();;
-      return replaceOpBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SizeOp, cluster.proto.SizeOp.Builder, cluster.proto.SizeOpOrBuilder> sizeOpBuilder_;
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     * @return Whether the sizeOp field is set.
-     */
-    @java.lang.Override
-    public boolean hasSizeOp() {
-      return operationCase_ == 9;
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     * @return The sizeOp.
-     */
-    @java.lang.Override
-    public cluster.proto.SizeOp getSizeOp() {
-      if (sizeOpBuilder_ == null) {
-        if (operationCase_ == 9) {
-          return (cluster.proto.SizeOp) operation_;
-        }
-        return cluster.proto.SizeOp.getDefaultInstance();
-      } else {
-        if (operationCase_ == 9) {
-          return sizeOpBuilder_.getMessage();
-        }
-        return cluster.proto.SizeOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    public Builder setSizeOp(cluster.proto.SizeOp value) {
-      if (sizeOpBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        operation_ = value;
-        onChanged();
-      } else {
-        sizeOpBuilder_.setMessage(value);
-      }
-      operationCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    public Builder setSizeOp(
-        cluster.proto.SizeOp.Builder builderForValue) {
-      if (sizeOpBuilder_ == null) {
-        operation_ = builderForValue.build();
-        onChanged();
-      } else {
-        sizeOpBuilder_.setMessage(builderForValue.build());
-      }
-      operationCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    public Builder mergeSizeOp(cluster.proto.SizeOp value) {
-      if (sizeOpBuilder_ == null) {
-        if (operationCase_ == 9 &&
-            operation_ != cluster.proto.SizeOp.getDefaultInstance()) {
-          operation_ = cluster.proto.SizeOp.newBuilder((cluster.proto.SizeOp) operation_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          operation_ = value;
-        }
-        onChanged();
-      } else {
-        if (operationCase_ == 9) {
-          sizeOpBuilder_.mergeFrom(value);
-        } else {
-          sizeOpBuilder_.setMessage(value);
-        }
-      }
-      operationCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    public Builder clearSizeOp() {
-      if (sizeOpBuilder_ == null) {
-        if (operationCase_ == 9) {
-          operationCase_ = 0;
-          operation_ = null;
-          onChanged();
-        }
-      } else {
-        if (operationCase_ == 9) {
-          operationCase_ = 0;
-          operation_ = null;
-        }
-        sizeOpBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    public cluster.proto.SizeOp.Builder getSizeOpBuilder() {
-      return getSizeOpFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.SizeOpOrBuilder getSizeOpOrBuilder() {
-      if ((operationCase_ == 9) && (sizeOpBuilder_ != null)) {
-        return sizeOpBuilder_.getMessageOrBuilder();
-      } else {
-        if (operationCase_ == 9) {
-          return (cluster.proto.SizeOp) operation_;
-        }
-        return cluster.proto.SizeOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SizeOp sizeOp = 9;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SizeOp, cluster.proto.SizeOp.Builder, cluster.proto.SizeOpOrBuilder> 
-        getSizeOpFieldBuilder() {
-      if (sizeOpBuilder_ == null) {
-        if (!(operationCase_ == 9)) {
-          operation_ = cluster.proto.SizeOp.getDefaultInstance();
-        }
-        sizeOpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.SizeOp, cluster.proto.SizeOp.Builder, cluster.proto.SizeOpOrBuilder>(
-                (cluster.proto.SizeOp) operation_,
-                getParentForChildren(),
-                isClean());
-        operation_ = null;
-      }
-      operationCase_ = 9;
-      onChanged();;
-      return sizeOpBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ClearOp, cluster.proto.ClearOp.Builder, cluster.proto.ClearOpOrBuilder> clearOpBuilder_;
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     * @return Whether the clearOp field is set.
-     */
-    @java.lang.Override
-    public boolean hasClearOp() {
-      return operationCase_ == 10;
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     * @return The clearOp.
-     */
-    @java.lang.Override
-    public cluster.proto.ClearOp getClearOp() {
-      if (clearOpBuilder_ == null) {
-        if (operationCase_ == 10) {
-          return (cluster.proto.ClearOp) operation_;
-        }
-        return cluster.proto.ClearOp.getDefaultInstance();
-      } else {
-        if (operationCase_ == 10) {
-          return clearOpBuilder_.getMessage();
-        }
-        return cluster.proto.ClearOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    public Builder setClearOp(cluster.proto.ClearOp value) {
-      if (clearOpBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        operation_ = value;
-        onChanged();
-      } else {
-        clearOpBuilder_.setMessage(value);
-      }
-      operationCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    public Builder setClearOp(
-        cluster.proto.ClearOp.Builder builderForValue) {
-      if (clearOpBuilder_ == null) {
-        operation_ = builderForValue.build();
-        onChanged();
-      } else {
-        clearOpBuilder_.setMessage(builderForValue.build());
-      }
-      operationCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    public Builder mergeClearOp(cluster.proto.ClearOp value) {
-      if (clearOpBuilder_ == null) {
-        if (operationCase_ == 10 &&
-            operation_ != cluster.proto.ClearOp.getDefaultInstance()) {
-          operation_ = cluster.proto.ClearOp.newBuilder((cluster.proto.ClearOp) operation_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          operation_ = value;
-        }
-        onChanged();
-      } else {
-        if (operationCase_ == 10) {
-          clearOpBuilder_.mergeFrom(value);
-        } else {
-          clearOpBuilder_.setMessage(value);
-        }
-      }
-      operationCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    public Builder clearClearOp() {
-      if (clearOpBuilder_ == null) {
-        if (operationCase_ == 10) {
-          operationCase_ = 0;
-          operation_ = null;
-          onChanged();
-        }
-      } else {
-        if (operationCase_ == 10) {
-          operationCase_ = 0;
-          operation_ = null;
-        }
-        clearOpBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    public cluster.proto.ClearOp.Builder getClearOpBuilder() {
-      return getClearOpFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.ClearOpOrBuilder getClearOpOrBuilder() {
-      if ((operationCase_ == 10) && (clearOpBuilder_ != null)) {
-        return clearOpBuilder_.getMessageOrBuilder();
-      } else {
-        if (operationCase_ == 10) {
-          return (cluster.proto.ClearOp) operation_;
-        }
-        return cluster.proto.ClearOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ClearOp clearOp = 10;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ClearOp, cluster.proto.ClearOp.Builder, cluster.proto.ClearOpOrBuilder> 
-        getClearOpFieldBuilder() {
-      if (clearOpBuilder_ == null) {
-        if (!(operationCase_ == 10)) {
-          operation_ = cluster.proto.ClearOp.getDefaultInstance();
-        }
-        clearOpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.ClearOp, cluster.proto.ClearOp.Builder, cluster.proto.ClearOpOrBuilder>(
-                (cluster.proto.ClearOp) operation_,
-                getParentForChildren(),
-                isClean());
-        operation_ = null;
-      }
-      operationCase_ = 10;
-      onChanged();;
-      return clearOpBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

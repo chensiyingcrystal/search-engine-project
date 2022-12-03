@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- *todo:
- * </pre>
- *
  * Protobuf type {@code proto.ShardEntry}
  */
 public final class ShardEntry extends
@@ -20,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ShardEntry() {
+    key_ = "";
   }
 
   @java.lang.Override
@@ -47,6 +44,70 @@ private static final long serialVersionUID = 0L;
             cluster.proto.ShardEntry.class, cluster.proto.ShardEntry.Builder.class);
   }
 
+  public static final int KEY_FIELD_NUMBER = 1;
+  private volatile java.lang.Object key_;
+  /**
+   * <code>string key = 1;</code>
+   * @return The key.
+   */
+  @java.lang.Override
+  public java.lang.String getKey() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      key_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string key = 1;</code>
+   * @return The bytes for key.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getKeyBytes() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      key_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int VAL_FIELD_NUMBER = 2;
+  private cluster.proto.Val val_;
+  /**
+   * <code>.proto.Val val = 2;</code>
+   * @return Whether the val field is set.
+   */
+  @java.lang.Override
+  public boolean hasVal() {
+    return val_ != null;
+  }
+  /**
+   * <code>.proto.Val val = 2;</code>
+   * @return The val.
+   */
+  @java.lang.Override
+  public cluster.proto.Val getVal() {
+    return val_ == null ? cluster.proto.Val.getDefaultInstance() : val_;
+  }
+  /**
+   * <code>.proto.Val val = 2;</code>
+   */
+  @java.lang.Override
+  public cluster.proto.ValOrBuilder getValOrBuilder() {
+    return getVal();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -61,6 +122,12 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+    }
+    if (val_ != null) {
+      output.writeMessage(2, getVal());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -70,6 +137,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
+    }
+    if (val_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getVal());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -85,6 +159,13 @@ private static final long serialVersionUID = 0L;
     }
     cluster.proto.ShardEntry other = (cluster.proto.ShardEntry) obj;
 
+    if (!getKey()
+        .equals(other.getKey())) return false;
+    if (hasVal() != other.hasVal()) return false;
+    if (hasVal()) {
+      if (!getVal()
+          .equals(other.getVal())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -96,6 +177,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + KEY_FIELD_NUMBER;
+    hash = (53 * hash) + getKey().hashCode();
+    if (hasVal()) {
+      hash = (37 * hash) + VAL_FIELD_NUMBER;
+      hash = (53 * hash) + getVal().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -192,10 +279,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *todo:
-   * </pre>
-   *
    * Protobuf type {@code proto.ShardEntry}
    */
   public static final class Builder extends
@@ -228,6 +311,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      key_ = "";
+
+      if (valBuilder_ == null) {
+        val_ = null;
+      } else {
+        val_ = null;
+        valBuilder_ = null;
+      }
       return this;
     }
 
@@ -254,6 +345,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cluster.proto.ShardEntry buildPartial() {
       cluster.proto.ShardEntry result = new cluster.proto.ShardEntry(this);
+      result.key_ = key_;
+      if (valBuilder_ == null) {
+        result.val_ = val_;
+      } else {
+        result.val_ = valBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -302,6 +399,13 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cluster.proto.ShardEntry other) {
       if (other == cluster.proto.ShardEntry.getDefaultInstance()) return this;
+      if (!other.getKey().isEmpty()) {
+        key_ = other.key_;
+        onChanged();
+      }
+      if (other.hasVal()) {
+        mergeVal(other.getVal());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -328,6 +432,18 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              key_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getValFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -342,6 +458,201 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } // finally
       return this;
+    }
+
+    private java.lang.Object key_ = "";
+    /**
+     * <code>string key = 1;</code>
+     * @return The key.
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string key = 1;</code>
+     * @return The bytes for key.
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string key = 1;</code>
+     * @param value The key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKey(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      key_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string key = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearKey() {
+      
+      key_ = getDefaultInstance().getKey();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string key = 1;</code>
+     * @param value The bytes for key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKeyBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      key_ = value;
+      onChanged();
+      return this;
+    }
+
+    private cluster.proto.Val val_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cluster.proto.Val, cluster.proto.Val.Builder, cluster.proto.ValOrBuilder> valBuilder_;
+    /**
+     * <code>.proto.Val val = 2;</code>
+     * @return Whether the val field is set.
+     */
+    public boolean hasVal() {
+      return valBuilder_ != null || val_ != null;
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     * @return The val.
+     */
+    public cluster.proto.Val getVal() {
+      if (valBuilder_ == null) {
+        return val_ == null ? cluster.proto.Val.getDefaultInstance() : val_;
+      } else {
+        return valBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public Builder setVal(cluster.proto.Val value) {
+      if (valBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        val_ = value;
+        onChanged();
+      } else {
+        valBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public Builder setVal(
+        cluster.proto.Val.Builder builderForValue) {
+      if (valBuilder_ == null) {
+        val_ = builderForValue.build();
+        onChanged();
+      } else {
+        valBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public Builder mergeVal(cluster.proto.Val value) {
+      if (valBuilder_ == null) {
+        if (val_ != null) {
+          val_ =
+            cluster.proto.Val.newBuilder(val_).mergeFrom(value).buildPartial();
+        } else {
+          val_ = value;
+        }
+        onChanged();
+      } else {
+        valBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public Builder clearVal() {
+      if (valBuilder_ == null) {
+        val_ = null;
+        onChanged();
+      } else {
+        val_ = null;
+        valBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public cluster.proto.Val.Builder getValBuilder() {
+      
+      onChanged();
+      return getValFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    public cluster.proto.ValOrBuilder getValOrBuilder() {
+      if (valBuilder_ != null) {
+        return valBuilder_.getMessageOrBuilder();
+      } else {
+        return val_ == null ?
+            cluster.proto.Val.getDefaultInstance() : val_;
+      }
+    }
+    /**
+     * <code>.proto.Val val = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cluster.proto.Val, cluster.proto.Val.Builder, cluster.proto.ValOrBuilder> 
+        getValFieldBuilder() {
+      if (valBuilder_ == null) {
+        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cluster.proto.Val, cluster.proto.Val.Builder, cluster.proto.ValOrBuilder>(
+                getVal(),
+                getParentForChildren(),
+                isClean());
+        val_ = null;
+      }
+      return valBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

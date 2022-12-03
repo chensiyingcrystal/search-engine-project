@@ -1,26 +1,16 @@
 package team.dsys.dssearch.cluster;
 
-//import team.dsys.dssearch.shard.*;
 import io.microraft.RaftEndpoint;
+import io.microraft.RaftNode;
 import io.microraft.report.RaftNodeReport;
 import team.dsys.dssearch.cluster.config.ClusterServiceConfig;
 
 import javax.annotation.Nonnull;
 
-import static java.util.Objects.requireNonNull;
-
 public interface ClusterService {
 
     // todo: marker, defined in grpc as a rpc method
     //Integer getNodeByShardId(long shardId);
-
-    static ClusterService bootstrap(ClusterServiceConfig config) {
-        return new ClusterServiceImpl.ClusterBootstrapper(requireNonNull(config)).get();
-    }
-
-    static ClusterService join(ClusterServiceConfig config, boolean votingMember) {
-        return new ClusterServiceImpl.ClusterJoiner(requireNonNull(config), votingMember).get();
-    }
 
     /**
      * Get local ClusterServiceConfig (encompassing local node endpoint, initial endpoint and raft setting info)
@@ -42,6 +32,13 @@ public interface ClusterService {
      */
     @Nonnull
     RaftNodeReport getRaftNodeReport();
+
+    /**
+     * Get raft node inside the server
+     * @return
+     */
+    @Nonnull
+    RaftNode getRaftNode();
 
     void shutdown();
 

@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 
 import static java.nio.file.Files.readAllLines;
+import static java.util.Objects.requireNonNull;
 
 public class RunCluster {
     private static final Logger LOGGER = LoggerFactory.getLogger(RunCluster.class);
@@ -31,10 +32,10 @@ public class RunCluster {
         ClusterServiceConfig config = readConfigFile(configFileName);
         //bootstrap a server or join to current cluster using current config
         if (config.getClusterConfig().getJoinTo() == null) {
-            cluster = ClusterService.bootstrap(config);
-            System.out.println("debug siying" + cluster.getRaftNodeReport());
+            cluster = new ServerBootstrapper(requireNonNull(config)).get();
+
         } else {
-            cluster = ClusterService.join(config, true);
+            cluster = new ServerJoiner(requireNonNull(config), true).get();
         }
 
         cluster.awaitTermination();

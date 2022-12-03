@@ -15,7 +15,6 @@ import team.dsys.dssearch.cluster.raft.report.RaftNodeReportSupplier;
 import team.dsys.dssearch.cluster.rpc.RaftRpcService;
 
 import javax.annotation.Nonnull;
-import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -29,7 +28,6 @@ import static io.microraft.report.RaftNodeReport.RaftNodeReportReason.PERIODIC;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.CONFIG_KEY;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.NODE_ENDPOINT_KEY;
-import static team.dsys.dssearch.cluster.rpc.utils.CustomedExceptions.runSilently;
 
 @Singleton
 public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterListenServiceImplBase
@@ -54,10 +52,6 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         this.raftNodeReportIdlePublishTimestamp = System.currentTimeMillis() - CLUSTER_ENDPOINTS_IDLE_PUBLISH_DURATION_MILLIS;
     }
 
-    @PreDestroy
-    public void shutdown() {
-        observers.values().forEach(observer -> runSilently(observer::onCompleted));
-    }
 
     @Override
     public void listenClusterEndpoints(ClusterEndpointsRequest request,
@@ -66,7 +60,7 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         if (prev != null) {
             LOGGER.warn("{} completing already existing stream observer for {}.", nodeEndpoint.getId(),
                     request.getClientId());
-            runSilently(prev::onCompleted);
+            prev.onCompleted();
         }
 
         LOGGER.debug("{} registering client: {}.", nodeEndpoint.getId(), request.getClientId());
@@ -141,7 +135,7 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
                 }
                 it.remove();
 
-                runSilently(observer::onCompleted);
+                observer.onCompleted();
             }
         }
     }

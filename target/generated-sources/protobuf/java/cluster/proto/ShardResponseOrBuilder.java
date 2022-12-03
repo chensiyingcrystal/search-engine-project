@@ -29,109 +29,34 @@ public interface ShardResponseOrBuilder extends
   cluster.proto.PutResultOrBuilder getPutResultOrBuilder();
 
   /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   * @return Whether the setResult field is set.
-   */
-  boolean hasSetResult();
-  /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   * @return The setResult.
-   */
-  cluster.proto.SetResult getSetResult();
-  /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   */
-  cluster.proto.SetResultOrBuilder getSetResultOrBuilder();
-
-  /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    * @return Whether the getResult field is set.
    */
   boolean hasGetResult();
   /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    * @return The getResult.
    */
   cluster.proto.GetResult getGetResult();
   /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    */
   cluster.proto.GetResultOrBuilder getGetResultOrBuilder();
 
   /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   * @return Whether the containsResult field is set.
-   */
-  boolean hasContainsResult();
-  /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   * @return The containsResult.
-   */
-  cluster.proto.ContainsResult getContainsResult();
-  /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   */
-  cluster.proto.ContainsResultOrBuilder getContainsResultOrBuilder();
-
-  /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    * @return Whether the removeResult field is set.
    */
   boolean hasRemoveResult();
   /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    * @return The removeResult.
    */
   cluster.proto.RemoveResult getRemoveResult();
   /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    */
   cluster.proto.RemoveResultOrBuilder getRemoveResultOrBuilder();
-
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   * @return Whether the replaceResult field is set.
-   */
-  boolean hasReplaceResult();
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   * @return The replaceResult.
-   */
-  cluster.proto.ReplaceResult getReplaceResult();
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   */
-  cluster.proto.ReplaceResultOrBuilder getReplaceResultOrBuilder();
-
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   * @return Whether the sizeResult field is set.
-   */
-  boolean hasSizeResult();
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   * @return The sizeResult.
-   */
-  cluster.proto.SizeResult getSizeResult();
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   */
-  cluster.proto.SizeResultOrBuilder getSizeResultOrBuilder();
-
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   * @return Whether the clearResult field is set.
-   */
-  boolean hasClearResult();
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   * @return The clearResult.
-   */
-  cluster.proto.ClearResult getClearResult();
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   */
-  cluster.proto.ClearResultOrBuilder getClearResultOrBuilder();
 
   public cluster.proto.ShardResponse.ResultCase getResultCase();
 }

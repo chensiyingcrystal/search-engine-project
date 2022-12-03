@@ -30,16 +30,6 @@ public final class ShardRequest {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_PutResult_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_SetRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_SetRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_SetResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_SetResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_GetRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -50,16 +40,6 @@ public final class ShardRequest {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_GetResult_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ContainsRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ContainsRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ContainsResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ContainsResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_RemoveRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -69,36 +49,6 @@ public final class ShardRequest {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_RemoveResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ReplaceRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ReplaceRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ReplaceResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ReplaceResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_SizeRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_SizeRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_SizeResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_SizeResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ClearRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ClearRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ClearResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ClearResult_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_ShardResponse_descriptor;
   static final 
@@ -118,43 +68,20 @@ public final class ShardRequest {
       "\001(\014H\000B\005\n\003val\"G\n\nPutRequest\022\013\n\003key\030\001 \001(\t\022" +
       "\027\n\003val\030\002 \001(\0132\n.proto.Val\022\023\n\013putIfAbsent\030" +
       "\003 \001(\010\"\'\n\tPutResult\022\032\n\006oldVal\030\001 \001(\0132\n.pro" +
-      "to.Val\"2\n\nSetRequest\022\013\n\003key\030\001 \001(\t\022\027\n\003val" +
-      "\030\002 \001(\0132\n.proto.Val\"\"\n\tSetResult\022\025\n\roldVa" +
-      "lExisted\030\001 \001(\010\"1\n\nGetRequest\022\013\n\003key\030\001 \001(" +
-      "\t\022\026\n\016minCommitIndex\030\002 \001(\003\"$\n\tGetResult\022\027" +
-      "\n\003val\030\001 \001(\0132\n.proto.Val\"O\n\017ContainsReque" +
-      "st\022\013\n\003key\030\001 \001(\t\022\027\n\003val\030\002 \001(\0132\n.proto.Val" +
-      "\022\026\n\016minCommitIndex\030\003 \001(\003\"!\n\016ContainsResu" +
-      "lt\022\017\n\007success\030\001 \001(\010\"5\n\rRemoveRequest\022\013\n\003" +
-      "key\030\001 \001(\t\022\027\n\003val\030\002 \001(\0132\n.proto.Val\";\n\014Re" +
-      "moveResult\022\017\n\007success\030\001 \001(\010\022\032\n\006oldVal\030\002 " +
-      "\001(\0132\n.proto.Val\"U\n\016ReplaceRequest\022\013\n\003key" +
-      "\030\001 \001(\t\022\032\n\006oldVal\030\002 \001(\0132\n.proto.Val\022\032\n\006ne" +
-      "wVal\030\003 \001(\0132\n.proto.Val\" \n\rReplaceResult\022" +
-      "\017\n\007success\030\001 \001(\010\"%\n\013SizeRequest\022\026\n\016minCo" +
-      "mmitIndex\030\001 \001(\003\"\032\n\nSizeResult\022\014\n\004size\030\001 " +
-      "\001(\005\"\016\n\014ClearRequest\"\033\n\013ClearResult\022\014\n\004si" +
-      "ze\030\001 \001(\005\"\204\003\n\rShardResponse\022\023\n\013commitInde" +
-      "x\030\001 \001(\003\022%\n\tputResult\030\002 \001(\0132\020.proto.PutRe" +
-      "sultH\000\022%\n\tsetResult\030\003 \001(\0132\020.proto.SetRes" +
-      "ultH\000\022%\n\tgetResult\030\004 \001(\0132\020.proto.GetResu" +
-      "ltH\000\022/\n\016containsResult\030\005 \001(\0132\025.proto.Con" +
-      "tainsResultH\000\022+\n\014removeResult\030\007 \001(\0132\023.pr" +
-      "oto.RemoveResultH\000\022-\n\rreplaceResult\030\010 \001(" +
-      "\0132\024.proto.ReplaceResultH\000\022\'\n\nsizeResult\030" +
-      "\t \001(\0132\021.proto.SizeResultH\000\022)\n\013clearResul" +
-      "t\030\n \001(\0132\022.proto.ClearResultH\000B\010\n\006result2" +
-      "\263\003\n\023ShardRequestHandler\022.\n\003put\022\021.proto.P" +
-      "utRequest\032\024.proto.ShardResponse\022.\n\003set\022\021" +
-      ".proto.SetRequest\032\024.proto.ShardResponse\022" +
-      ".\n\003get\022\021.proto.GetRequest\032\024.proto.ShardR" +
-      "esponse\0228\n\010contains\022\026.proto.ContainsRequ" +
-      "est\032\024.proto.ShardResponse\0224\n\006remove\022\024.pr" +
-      "oto.RemoveRequest\032\024.proto.ShardResponse\022" +
-      "6\n\007replace\022\025.proto.ReplaceRequest\032\024.prot" +
-      "o.ShardResponse\0220\n\004size\022\022.proto.SizeRequ" +
-      "est\032\024.proto.ShardResponse\0222\n\005clear\022\023.pro" +
-      "to.ClearRequest\032\024.proto.ShardResponseB\021\n" +
+      "to.Val\"1\n\nGetRequest\022\013\n\003key\030\001 \001(\t\022\026\n\016min" +
+      "CommitIndex\030\002 \001(\003\"$\n\tGetResult\022\027\n\003val\030\001 " +
+      "\001(\0132\n.proto.Val\"5\n\rRemoveRequest\022\013\n\003key\030" +
+      "\001 \001(\t\022\027\n\003val\030\002 \001(\0132\n.proto.Val\";\n\014Remove" +
+      "Result\022\017\n\007success\030\001 \001(\010\022\032\n\006oldVal\030\002 \001(\0132" +
+      "\n.proto.Val\"\251\001\n\rShardResponse\022\023\n\013commitI" +
+      "ndex\030\001 \001(\003\022%\n\tputResult\030\002 \001(\0132\020.proto.Pu" +
+      "tResultH\000\022%\n\tgetResult\030\003 \001(\0132\020.proto.Get" +
+      "ResultH\000\022+\n\014removeResult\030\005 \001(\0132\023.proto.R" +
+      "emoveResultH\000B\010\n\006result2\253\001\n\023ShardRequest" +
+      "Handler\022.\n\003put\022\021.proto.PutRequest\032\024.prot" +
+      "o.ShardResponse\022.\n\003get\022\021.proto.GetReques" +
+      "t\032\024.proto.ShardResponse\0224\n\006remove\022\024.prot" +
+      "o.RemoveRequest\032\024.proto.ShardResponseB\021\n" +
       "\rcluster.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
@@ -179,96 +106,36 @@ public final class ShardRequest {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_PutResult_descriptor,
         new java.lang.String[] { "OldVal", });
-    internal_static_proto_SetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_proto_SetRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_SetRequest_descriptor,
-        new java.lang.String[] { "Key", "Val", });
-    internal_static_proto_SetResult_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_proto_SetResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_SetResult_descriptor,
-        new java.lang.String[] { "OldValExisted", });
     internal_static_proto_GetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_proto_GetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_GetRequest_descriptor,
         new java.lang.String[] { "Key", "MinCommitIndex", });
     internal_static_proto_GetResult_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_proto_GetResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_GetResult_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_proto_ContainsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_proto_ContainsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ContainsRequest_descriptor,
-        new java.lang.String[] { "Key", "Val", "MinCommitIndex", });
-    internal_static_proto_ContainsResult_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_proto_ContainsResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ContainsResult_descriptor,
-        new java.lang.String[] { "Success", });
     internal_static_proto_RemoveRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_proto_RemoveRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_RemoveRequest_descriptor,
         new java.lang.String[] { "Key", "Val", });
     internal_static_proto_RemoveResult_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_proto_RemoveResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_RemoveResult_descriptor,
         new java.lang.String[] { "Success", "OldVal", });
-    internal_static_proto_ReplaceRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_proto_ReplaceRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ReplaceRequest_descriptor,
-        new java.lang.String[] { "Key", "OldVal", "NewVal", });
-    internal_static_proto_ReplaceResult_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_proto_ReplaceResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ReplaceResult_descriptor,
-        new java.lang.String[] { "Success", });
-    internal_static_proto_SizeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_proto_SizeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_SizeRequest_descriptor,
-        new java.lang.String[] { "MinCommitIndex", });
-    internal_static_proto_SizeResult_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_proto_SizeResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_SizeResult_descriptor,
-        new java.lang.String[] { "Size", });
-    internal_static_proto_ClearRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_proto_ClearRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ClearRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_proto_ClearResult_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_proto_ClearResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ClearResult_descriptor,
-        new java.lang.String[] { "Size", });
     internal_static_proto_ShardResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_proto_ShardResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_ShardResponse_descriptor,
-        new java.lang.String[] { "CommitIndex", "PutResult", "SetResult", "GetResult", "ContainsResult", "RemoveResult", "ReplaceResult", "SizeResult", "ClearResult", "Result", });
+        new java.lang.String[] { "CommitIndex", "PutResult", "GetResult", "RemoveResult", "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

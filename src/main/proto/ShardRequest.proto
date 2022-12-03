@@ -24,15 +24,6 @@ message PutResult {
   Val oldVal = 1;
 }
 
-message SetRequest {
-  string key = 1;
-  Val val = 2;
-}
-
-message SetResult {
-  bool oldValExisted = 1;
-}
-
 message GetRequest {
   string key = 1;
   int64 minCommitIndex = 2;
@@ -41,17 +32,6 @@ message GetRequest {
 message GetResult {
   Val val = 1;
 }
-
-message ContainsRequest {
-  string key = 1;
-  Val val = 2;
-  int64 minCommitIndex = 3;
-}
-
-message ContainsResult {
-  bool success = 1;
-}
-
 
 message RemoveRequest {
   string key = 1;
@@ -63,52 +43,17 @@ message RemoveResult {
   Val oldVal = 2;
 }
 
-message ReplaceRequest {
-  string key = 1;
-  Val oldVal = 2;
-  Val newVal = 3;
-}
-
-message ReplaceResult {
-  bool success = 1;
-}
-
-message SizeRequest {
-  int64 minCommitIndex = 1;
-}
-
-message SizeResult {
-  int32 size = 1;
-}
-
-message ClearRequest {
-}
-
-message ClearResult {
-  int32 size = 1;
-}
-
 message ShardResponse {
   int64 commitIndex = 1;
   oneof result {
     PutResult putResult = 2;
-    SetResult setResult = 3;
-    GetResult getResult = 4;
-    ContainsResult containsResult = 5;
-    RemoveResult removeResult = 7;
-    ReplaceResult replaceResult = 8;
-    SizeResult sizeResult = 9;
-    ClearResult clearResult = 10;
+    GetResult getResult = 3;
+    RemoveResult removeResult = 5;
   };
 }
 
 service ShardRequestHandler {
   rpc put (PutRequest) returns (ShardResponse);
-  rpc set (SetRequest) returns (ShardResponse);
   rpc get (GetRequest) returns (ShardResponse);
-  rpc contains (ContainsRequest) returns (ShardResponse);
   rpc remove (RemoveRequest) returns (ShardResponse);
-  rpc replace (ReplaceRequest) returns (ShardResponse);
-  rpc size (SizeRequest) returns (ShardResponse);
-  rpc clear (ClearRequest) returns (ShardResponse);
 }

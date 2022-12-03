@@ -66,31 +66,6 @@ message RemoveOpResult {
   Val oldVal = 2;
 }
 
-message ReplaceOp {
-  string key = 1;
-  Val oldVal = 2;
-  Val newVal = 3;
-}
-
-message ReplaceOpResult {
-  bool success = 1;
-}
-
-message SizeOp {
-  int64 minCommitIndex = 1;
-}
-
-message SizeOpResult {
-  int32 size = 1;
-}
-
-message ClearOp {
-}
-
-message ClearOpResult {
-  int32 size = 1;
-}
-
 // https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/LogEntry.java
 message LogEntryProto {
   int32 term = 1;
@@ -102,14 +77,12 @@ message LogEntryProto {
     PutOp putOp = 5;
     GetOp getOp = 6;
     RemoveOp removeOp = 7;
-    ReplaceOp replaceOp = 8;
-    SizeOp sizeOp = 9;
-    ClearOp clearOp = 10;
   }
 }
 
 message ShardEntry {
-  //todo:
+  string key = 1;
+  Val val = 2;
 }
 
 message ClusterSnapshotChunkData {

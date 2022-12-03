@@ -19,7 +19,6 @@ import java.util.function.Supplier;
 
 import static io.microraft.MembershipChangeMode.REMOVE_MEMBER;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.RAFT_NODE_SUPPLIER_KEY;
-import static team.dsys.dssearch.cluster.rpc.utils.CustomedExceptions.wrap;
 import static team.dsys.dssearch.cluster.rpc.utils.Serialization.toProto;
 
 @Singleton
@@ -57,7 +56,7 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
             } else {
                 LOGGER.error(raftNode.getLocalEndpoint().getId() + " remove endpoint request for " + endpoint.getId()
                         + " and group members commit index: " + commitIndex + " failed!", throwable);
-                responseObserver.onError(wrap(throwable));
+                responseObserver.onError(throwable);
             }
             responseObserver.onCompleted();
         });
@@ -75,7 +74,7 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
 
                 responseObserver.onNext(builder.build());
             } else {
-                responseObserver.onError(wrap(throwable));
+                responseObserver.onError(throwable);
             }
             responseObserver.onCompleted();
         });
@@ -90,7 +89,7 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
             raftRpcService.addAddress(endpoint, request.getAddress());
             responseObserver.onNext(AddRaftEndpointAddressResponse.getDefaultInstance());
         } catch (Throwable t) {
-            responseObserver.onError(wrap(t));
+            responseObserver.onError(t);
         } finally {
             responseObserver.onCompleted();
         }
@@ -129,7 +128,7 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
                                 raftNode.getLocalEndpoint().getId() + " could not add " + endpoint + " "
                                         + "with group members commit index: " + request.getGroupMembersCommitIndex(),
                                 throwable);
-                        responseObserver.onError(wrap(throwable));
+                        responseObserver.onError(throwable);
                     }
                     responseObserver.onCompleted();
                 });

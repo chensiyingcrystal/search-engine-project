@@ -49,13 +49,8 @@ private static final long serialVersionUID = 0L;
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     PUTRESULT(2),
-    SETRESULT(3),
-    GETRESULT(4),
-    CONTAINSRESULT(5),
-    REMOVERESULT(7),
-    REPLACERESULT(8),
-    SIZERESULT(9),
-    CLEARRESULT(10),
+    GETRESULT(3),
+    REMOVERESULT(5),
     RESULT_NOT_SET(0);
     private final int value;
     private ResultCase(int value) {
@@ -74,13 +69,8 @@ private static final long serialVersionUID = 0L;
     public static ResultCase forNumber(int value) {
       switch (value) {
         case 2: return PUTRESULT;
-        case 3: return SETRESULT;
-        case 4: return GETRESULT;
-        case 5: return CONTAINSRESULT;
-        case 7: return REMOVERESULT;
-        case 8: return REPLACERESULT;
-        case 9: return SIZERESULT;
-        case 10: return CLEARRESULT;
+        case 3: return GETRESULT;
+        case 5: return REMOVERESULT;
         case 0: return RESULT_NOT_SET;
         default: return null;
       }
@@ -138,221 +128,66 @@ private static final long serialVersionUID = 0L;
     return cluster.proto.PutResult.getDefaultInstance();
   }
 
-  public static final int SETRESULT_FIELD_NUMBER = 3;
+  public static final int GETRESULT_FIELD_NUMBER = 3;
   /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   * @return Whether the setResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasSetResult() {
-    return resultCase_ == 3;
-  }
-  /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   * @return The setResult.
-   */
-  @java.lang.Override
-  public cluster.proto.SetResult getSetResult() {
-    if (resultCase_ == 3) {
-       return (cluster.proto.SetResult) result_;
-    }
-    return cluster.proto.SetResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.SetResult setResult = 3;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.SetResultOrBuilder getSetResultOrBuilder() {
-    if (resultCase_ == 3) {
-       return (cluster.proto.SetResult) result_;
-    }
-    return cluster.proto.SetResult.getDefaultInstance();
-  }
-
-  public static final int GETRESULT_FIELD_NUMBER = 4;
-  /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    * @return Whether the getResult field is set.
    */
   @java.lang.Override
   public boolean hasGetResult() {
-    return resultCase_ == 4;
+    return resultCase_ == 3;
   }
   /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    * @return The getResult.
    */
   @java.lang.Override
   public cluster.proto.GetResult getGetResult() {
-    if (resultCase_ == 4) {
+    if (resultCase_ == 3) {
        return (cluster.proto.GetResult) result_;
     }
     return cluster.proto.GetResult.getDefaultInstance();
   }
   /**
-   * <code>.proto.GetResult getResult = 4;</code>
+   * <code>.proto.GetResult getResult = 3;</code>
    */
   @java.lang.Override
   public cluster.proto.GetResultOrBuilder getGetResultOrBuilder() {
-    if (resultCase_ == 4) {
+    if (resultCase_ == 3) {
        return (cluster.proto.GetResult) result_;
     }
     return cluster.proto.GetResult.getDefaultInstance();
   }
 
-  public static final int CONTAINSRESULT_FIELD_NUMBER = 5;
+  public static final int REMOVERESULT_FIELD_NUMBER = 5;
   /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   * @return Whether the containsResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasContainsResult() {
-    return resultCase_ == 5;
-  }
-  /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   * @return The containsResult.
-   */
-  @java.lang.Override
-  public cluster.proto.ContainsResult getContainsResult() {
-    if (resultCase_ == 5) {
-       return (cluster.proto.ContainsResult) result_;
-    }
-    return cluster.proto.ContainsResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.ContainsResult containsResult = 5;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.ContainsResultOrBuilder getContainsResultOrBuilder() {
-    if (resultCase_ == 5) {
-       return (cluster.proto.ContainsResult) result_;
-    }
-    return cluster.proto.ContainsResult.getDefaultInstance();
-  }
-
-  public static final int REMOVERESULT_FIELD_NUMBER = 7;
-  /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    * @return Whether the removeResult field is set.
    */
   @java.lang.Override
   public boolean hasRemoveResult() {
-    return resultCase_ == 7;
+    return resultCase_ == 5;
   }
   /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    * @return The removeResult.
    */
   @java.lang.Override
   public cluster.proto.RemoveResult getRemoveResult() {
-    if (resultCase_ == 7) {
+    if (resultCase_ == 5) {
        return (cluster.proto.RemoveResult) result_;
     }
     return cluster.proto.RemoveResult.getDefaultInstance();
   }
   /**
-   * <code>.proto.RemoveResult removeResult = 7;</code>
+   * <code>.proto.RemoveResult removeResult = 5;</code>
    */
   @java.lang.Override
   public cluster.proto.RemoveResultOrBuilder getRemoveResultOrBuilder() {
-    if (resultCase_ == 7) {
+    if (resultCase_ == 5) {
        return (cluster.proto.RemoveResult) result_;
     }
     return cluster.proto.RemoveResult.getDefaultInstance();
-  }
-
-  public static final int REPLACERESULT_FIELD_NUMBER = 8;
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   * @return Whether the replaceResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasReplaceResult() {
-    return resultCase_ == 8;
-  }
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   * @return The replaceResult.
-   */
-  @java.lang.Override
-  public cluster.proto.ReplaceResult getReplaceResult() {
-    if (resultCase_ == 8) {
-       return (cluster.proto.ReplaceResult) result_;
-    }
-    return cluster.proto.ReplaceResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.ReplaceResult replaceResult = 8;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.ReplaceResultOrBuilder getReplaceResultOrBuilder() {
-    if (resultCase_ == 8) {
-       return (cluster.proto.ReplaceResult) result_;
-    }
-    return cluster.proto.ReplaceResult.getDefaultInstance();
-  }
-
-  public static final int SIZERESULT_FIELD_NUMBER = 9;
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   * @return Whether the sizeResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasSizeResult() {
-    return resultCase_ == 9;
-  }
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   * @return The sizeResult.
-   */
-  @java.lang.Override
-  public cluster.proto.SizeResult getSizeResult() {
-    if (resultCase_ == 9) {
-       return (cluster.proto.SizeResult) result_;
-    }
-    return cluster.proto.SizeResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.SizeResult sizeResult = 9;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.SizeResultOrBuilder getSizeResultOrBuilder() {
-    if (resultCase_ == 9) {
-       return (cluster.proto.SizeResult) result_;
-    }
-    return cluster.proto.SizeResult.getDefaultInstance();
-  }
-
-  public static final int CLEARRESULT_FIELD_NUMBER = 10;
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   * @return Whether the clearResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasClearResult() {
-    return resultCase_ == 10;
-  }
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   * @return The clearResult.
-   */
-  @java.lang.Override
-  public cluster.proto.ClearResult getClearResult() {
-    if (resultCase_ == 10) {
-       return (cluster.proto.ClearResult) result_;
-    }
-    return cluster.proto.ClearResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.ClearResult clearResult = 10;</code>
-   */
-  @java.lang.Override
-  public cluster.proto.ClearResultOrBuilder getClearResultOrBuilder() {
-    if (resultCase_ == 10) {
-       return (cluster.proto.ClearResult) result_;
-    }
-    return cluster.proto.ClearResult.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -376,25 +211,10 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(2, (cluster.proto.PutResult) result_);
     }
     if (resultCase_ == 3) {
-      output.writeMessage(3, (cluster.proto.SetResult) result_);
-    }
-    if (resultCase_ == 4) {
-      output.writeMessage(4, (cluster.proto.GetResult) result_);
+      output.writeMessage(3, (cluster.proto.GetResult) result_);
     }
     if (resultCase_ == 5) {
-      output.writeMessage(5, (cluster.proto.ContainsResult) result_);
-    }
-    if (resultCase_ == 7) {
-      output.writeMessage(7, (cluster.proto.RemoveResult) result_);
-    }
-    if (resultCase_ == 8) {
-      output.writeMessage(8, (cluster.proto.ReplaceResult) result_);
-    }
-    if (resultCase_ == 9) {
-      output.writeMessage(9, (cluster.proto.SizeResult) result_);
-    }
-    if (resultCase_ == 10) {
-      output.writeMessage(10, (cluster.proto.ClearResult) result_);
+      output.writeMessage(5, (cluster.proto.RemoveResult) result_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -415,31 +235,11 @@ private static final long serialVersionUID = 0L;
     }
     if (resultCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (cluster.proto.SetResult) result_);
-    }
-    if (resultCase_ == 4) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (cluster.proto.GetResult) result_);
+        .computeMessageSize(3, (cluster.proto.GetResult) result_);
     }
     if (resultCase_ == 5) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (cluster.proto.ContainsResult) result_);
-    }
-    if (resultCase_ == 7) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, (cluster.proto.RemoveResult) result_);
-    }
-    if (resultCase_ == 8) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, (cluster.proto.ReplaceResult) result_);
-    }
-    if (resultCase_ == 9) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, (cluster.proto.SizeResult) result_);
-    }
-    if (resultCase_ == 10) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, (cluster.proto.ClearResult) result_);
+        .computeMessageSize(5, (cluster.proto.RemoveResult) result_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -465,32 +265,12 @@ private static final long serialVersionUID = 0L;
             .equals(other.getPutResult())) return false;
         break;
       case 3:
-        if (!getSetResult()
-            .equals(other.getSetResult())) return false;
-        break;
-      case 4:
         if (!getGetResult()
             .equals(other.getGetResult())) return false;
         break;
       case 5:
-        if (!getContainsResult()
-            .equals(other.getContainsResult())) return false;
-        break;
-      case 7:
         if (!getRemoveResult()
             .equals(other.getRemoveResult())) return false;
-        break;
-      case 8:
-        if (!getReplaceResult()
-            .equals(other.getReplaceResult())) return false;
-        break;
-      case 9:
-        if (!getSizeResult()
-            .equals(other.getSizeResult())) return false;
-        break;
-      case 10:
-        if (!getClearResult()
-            .equals(other.getClearResult())) return false;
         break;
       case 0:
       default:
@@ -515,32 +295,12 @@ private static final long serialVersionUID = 0L;
         hash = (53 * hash) + getPutResult().hashCode();
         break;
       case 3:
-        hash = (37 * hash) + SETRESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getSetResult().hashCode();
-        break;
-      case 4:
         hash = (37 * hash) + GETRESULT_FIELD_NUMBER;
         hash = (53 * hash) + getGetResult().hashCode();
         break;
       case 5:
-        hash = (37 * hash) + CONTAINSRESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getContainsResult().hashCode();
-        break;
-      case 7:
         hash = (37 * hash) + REMOVERESULT_FIELD_NUMBER;
         hash = (53 * hash) + getRemoveResult().hashCode();
-        break;
-      case 8:
-        hash = (37 * hash) + REPLACERESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getReplaceResult().hashCode();
-        break;
-      case 9:
-        hash = (37 * hash) + SIZERESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getSizeResult().hashCode();
-        break;
-      case 10:
-        hash = (37 * hash) + CLEARRESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getClearResult().hashCode();
         break;
       case 0:
       default:
@@ -678,26 +438,11 @@ private static final long serialVersionUID = 0L;
       if (putResultBuilder_ != null) {
         putResultBuilder_.clear();
       }
-      if (setResultBuilder_ != null) {
-        setResultBuilder_.clear();
-      }
       if (getResultBuilder_ != null) {
         getResultBuilder_.clear();
       }
-      if (containsResultBuilder_ != null) {
-        containsResultBuilder_.clear();
-      }
       if (removeResultBuilder_ != null) {
         removeResultBuilder_.clear();
-      }
-      if (replaceResultBuilder_ != null) {
-        replaceResultBuilder_.clear();
-      }
-      if (sizeResultBuilder_ != null) {
-        sizeResultBuilder_.clear();
-      }
-      if (clearResultBuilder_ != null) {
-        clearResultBuilder_.clear();
       }
       resultCase_ = 0;
       result_ = null;
@@ -736,13 +481,6 @@ private static final long serialVersionUID = 0L;
         }
       }
       if (resultCase_ == 3) {
-        if (setResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = setResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 4) {
         if (getResultBuilder_ == null) {
           result.result_ = result_;
         } else {
@@ -750,38 +488,10 @@ private static final long serialVersionUID = 0L;
         }
       }
       if (resultCase_ == 5) {
-        if (containsResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = containsResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 7) {
         if (removeResultBuilder_ == null) {
           result.result_ = result_;
         } else {
           result.result_ = removeResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 8) {
-        if (replaceResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = replaceResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 9) {
-        if (sizeResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = sizeResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 10) {
-        if (clearResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = clearResultBuilder_.build();
         }
       }
       result.resultCase_ = resultCase_;
@@ -841,32 +551,12 @@ private static final long serialVersionUID = 0L;
           mergePutResult(other.getPutResult());
           break;
         }
-        case SETRESULT: {
-          mergeSetResult(other.getSetResult());
-          break;
-        }
         case GETRESULT: {
           mergeGetResult(other.getGetResult());
           break;
         }
-        case CONTAINSRESULT: {
-          mergeContainsResult(other.getContainsResult());
-          break;
-        }
         case REMOVERESULT: {
           mergeRemoveResult(other.getRemoveResult());
-          break;
-        }
-        case REPLACERESULT: {
-          mergeReplaceResult(other.getReplaceResult());
-          break;
-        }
-        case SIZERESULT: {
-          mergeSizeResult(other.getSizeResult());
-          break;
-        }
-        case CLEARRESULT: {
-          mergeClearResult(other.getClearResult());
           break;
         }
         case RESULT_NOT_SET: {
@@ -913,53 +603,18 @@ private static final long serialVersionUID = 0L;
             } // case 18
             case 26: {
               input.readMessage(
-                  getSetResultFieldBuilder().getBuilder(),
+                  getGetResultFieldBuilder().getBuilder(),
                   extensionRegistry);
               resultCase_ = 3;
               break;
             } // case 26
-            case 34: {
-              input.readMessage(
-                  getGetResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 4;
-              break;
-            } // case 34
             case 42: {
               input.readMessage(
-                  getContainsResultFieldBuilder().getBuilder(),
+                  getRemoveResultFieldBuilder().getBuilder(),
                   extensionRegistry);
               resultCase_ = 5;
               break;
             } // case 42
-            case 58: {
-              input.readMessage(
-                  getRemoveResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 7;
-              break;
-            } // case 58
-            case 66: {
-              input.readMessage(
-                  getReplaceResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 8;
-              break;
-            } // case 66
-            case 74: {
-              input.readMessage(
-                  getSizeResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 9;
-              break;
-            } // case 74
-            case 82: {
-              input.readMessage(
-                  getClearResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 10;
-              break;
-            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1165,177 +820,35 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SetResult, cluster.proto.SetResult.Builder, cluster.proto.SetResultOrBuilder> setResultBuilder_;
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     * @return Whether the setResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasSetResult() {
-      return resultCase_ == 3;
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     * @return The setResult.
-     */
-    @java.lang.Override
-    public cluster.proto.SetResult getSetResult() {
-      if (setResultBuilder_ == null) {
-        if (resultCase_ == 3) {
-          return (cluster.proto.SetResult) result_;
-        }
-        return cluster.proto.SetResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 3) {
-          return setResultBuilder_.getMessage();
-        }
-        return cluster.proto.SetResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    public Builder setSetResult(cluster.proto.SetResult value) {
-      if (setResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        setResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    public Builder setSetResult(
-        cluster.proto.SetResult.Builder builderForValue) {
-      if (setResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        setResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    public Builder mergeSetResult(cluster.proto.SetResult value) {
-      if (setResultBuilder_ == null) {
-        if (resultCase_ == 3 &&
-            result_ != cluster.proto.SetResult.getDefaultInstance()) {
-          result_ = cluster.proto.SetResult.newBuilder((cluster.proto.SetResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 3) {
-          setResultBuilder_.mergeFrom(value);
-        } else {
-          setResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    public Builder clearSetResult() {
-      if (setResultBuilder_ == null) {
-        if (resultCase_ == 3) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 3) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        setResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    public cluster.proto.SetResult.Builder getSetResultBuilder() {
-      return getSetResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.SetResultOrBuilder getSetResultOrBuilder() {
-      if ((resultCase_ == 3) && (setResultBuilder_ != null)) {
-        return setResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 3) {
-          return (cluster.proto.SetResult) result_;
-        }
-        return cluster.proto.SetResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SetResult setResult = 3;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SetResult, cluster.proto.SetResult.Builder, cluster.proto.SetResultOrBuilder> 
-        getSetResultFieldBuilder() {
-      if (setResultBuilder_ == null) {
-        if (!(resultCase_ == 3)) {
-          result_ = cluster.proto.SetResult.getDefaultInstance();
-        }
-        setResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.SetResult, cluster.proto.SetResult.Builder, cluster.proto.SetResultOrBuilder>(
-                (cluster.proto.SetResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 3;
-      onChanged();;
-      return setResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
         cluster.proto.GetResult, cluster.proto.GetResult.Builder, cluster.proto.GetResultOrBuilder> getResultBuilder_;
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      * @return Whether the getResult field is set.
      */
     @java.lang.Override
     public boolean hasGetResult() {
-      return resultCase_ == 4;
+      return resultCase_ == 3;
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      * @return The getResult.
      */
     @java.lang.Override
     public cluster.proto.GetResult getGetResult() {
       if (getResultBuilder_ == null) {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           return (cluster.proto.GetResult) result_;
         }
         return cluster.proto.GetResult.getDefaultInstance();
       } else {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           return getResultBuilder_.getMessage();
         }
         return cluster.proto.GetResult.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     public Builder setGetResult(cluster.proto.GetResult value) {
       if (getResultBuilder_ == null) {
@@ -1347,11 +860,11 @@ private static final long serialVersionUID = 0L;
       } else {
         getResultBuilder_.setMessage(value);
       }
-      resultCase_ = 4;
+      resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     public Builder setGetResult(
         cluster.proto.GetResult.Builder builderForValue) {
@@ -1361,15 +874,15 @@ private static final long serialVersionUID = 0L;
       } else {
         getResultBuilder_.setMessage(builderForValue.build());
       }
-      resultCase_ = 4;
+      resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     public Builder mergeGetResult(cluster.proto.GetResult value) {
       if (getResultBuilder_ == null) {
-        if (resultCase_ == 4 &&
+        if (resultCase_ == 3 &&
             result_ != cluster.proto.GetResult.getDefaultInstance()) {
           result_ = cluster.proto.GetResult.newBuilder((cluster.proto.GetResult) result_)
               .mergeFrom(value).buildPartial();
@@ -1378,27 +891,27 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           getResultBuilder_.mergeFrom(value);
         } else {
           getResultBuilder_.setMessage(value);
         }
       }
-      resultCase_ = 4;
+      resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     public Builder clearGetResult() {
       if (getResultBuilder_ == null) {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           resultCase_ = 0;
           result_ = null;
           onChanged();
         }
       } else {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           resultCase_ = 0;
           result_ = null;
         }
@@ -1407,33 +920,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     public cluster.proto.GetResult.Builder getGetResultBuilder() {
       return getGetResultFieldBuilder().getBuilder();
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     @java.lang.Override
     public cluster.proto.GetResultOrBuilder getGetResultOrBuilder() {
-      if ((resultCase_ == 4) && (getResultBuilder_ != null)) {
+      if ((resultCase_ == 3) && (getResultBuilder_ != null)) {
         return getResultBuilder_.getMessageOrBuilder();
       } else {
-        if (resultCase_ == 4) {
+        if (resultCase_ == 3) {
           return (cluster.proto.GetResult) result_;
         }
         return cluster.proto.GetResult.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.GetResult getResult = 4;</code>
+     * <code>.proto.GetResult getResult = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cluster.proto.GetResult, cluster.proto.GetResult.Builder, cluster.proto.GetResultOrBuilder> 
         getGetResultFieldBuilder() {
       if (getResultBuilder_ == null) {
-        if (!(resultCase_ == 4)) {
+        if (!(resultCase_ == 3)) {
           result_ = cluster.proto.GetResult.getDefaultInstance();
         }
         getResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1443,183 +956,41 @@ private static final long serialVersionUID = 0L;
                 isClean());
         result_ = null;
       }
-      resultCase_ = 4;
+      resultCase_ = 3;
       onChanged();;
       return getResultBuilder_;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ContainsResult, cluster.proto.ContainsResult.Builder, cluster.proto.ContainsResultOrBuilder> containsResultBuilder_;
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     * @return Whether the containsResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasContainsResult() {
-      return resultCase_ == 5;
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     * @return The containsResult.
-     */
-    @java.lang.Override
-    public cluster.proto.ContainsResult getContainsResult() {
-      if (containsResultBuilder_ == null) {
-        if (resultCase_ == 5) {
-          return (cluster.proto.ContainsResult) result_;
-        }
-        return cluster.proto.ContainsResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 5) {
-          return containsResultBuilder_.getMessage();
-        }
-        return cluster.proto.ContainsResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    public Builder setContainsResult(cluster.proto.ContainsResult value) {
-      if (containsResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        containsResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    public Builder setContainsResult(
-        cluster.proto.ContainsResult.Builder builderForValue) {
-      if (containsResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        containsResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    public Builder mergeContainsResult(cluster.proto.ContainsResult value) {
-      if (containsResultBuilder_ == null) {
-        if (resultCase_ == 5 &&
-            result_ != cluster.proto.ContainsResult.getDefaultInstance()) {
-          result_ = cluster.proto.ContainsResult.newBuilder((cluster.proto.ContainsResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 5) {
-          containsResultBuilder_.mergeFrom(value);
-        } else {
-          containsResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    public Builder clearContainsResult() {
-      if (containsResultBuilder_ == null) {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        containsResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    public cluster.proto.ContainsResult.Builder getContainsResultBuilder() {
-      return getContainsResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.ContainsResultOrBuilder getContainsResultOrBuilder() {
-      if ((resultCase_ == 5) && (containsResultBuilder_ != null)) {
-        return containsResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 5) {
-          return (cluster.proto.ContainsResult) result_;
-        }
-        return cluster.proto.ContainsResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ContainsResult containsResult = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ContainsResult, cluster.proto.ContainsResult.Builder, cluster.proto.ContainsResultOrBuilder> 
-        getContainsResultFieldBuilder() {
-      if (containsResultBuilder_ == null) {
-        if (!(resultCase_ == 5)) {
-          result_ = cluster.proto.ContainsResult.getDefaultInstance();
-        }
-        containsResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.ContainsResult, cluster.proto.ContainsResult.Builder, cluster.proto.ContainsResultOrBuilder>(
-                (cluster.proto.ContainsResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 5;
-      onChanged();;
-      return containsResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
         cluster.proto.RemoveResult, cluster.proto.RemoveResult.Builder, cluster.proto.RemoveResultOrBuilder> removeResultBuilder_;
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      * @return Whether the removeResult field is set.
      */
     @java.lang.Override
     public boolean hasRemoveResult() {
-      return resultCase_ == 7;
+      return resultCase_ == 5;
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      * @return The removeResult.
      */
     @java.lang.Override
     public cluster.proto.RemoveResult getRemoveResult() {
       if (removeResultBuilder_ == null) {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           return (cluster.proto.RemoveResult) result_;
         }
         return cluster.proto.RemoveResult.getDefaultInstance();
       } else {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           return removeResultBuilder_.getMessage();
         }
         return cluster.proto.RemoveResult.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     public Builder setRemoveResult(cluster.proto.RemoveResult value) {
       if (removeResultBuilder_ == null) {
@@ -1631,11 +1002,11 @@ private static final long serialVersionUID = 0L;
       } else {
         removeResultBuilder_.setMessage(value);
       }
-      resultCase_ = 7;
+      resultCase_ = 5;
       return this;
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     public Builder setRemoveResult(
         cluster.proto.RemoveResult.Builder builderForValue) {
@@ -1645,15 +1016,15 @@ private static final long serialVersionUID = 0L;
       } else {
         removeResultBuilder_.setMessage(builderForValue.build());
       }
-      resultCase_ = 7;
+      resultCase_ = 5;
       return this;
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     public Builder mergeRemoveResult(cluster.proto.RemoveResult value) {
       if (removeResultBuilder_ == null) {
-        if (resultCase_ == 7 &&
+        if (resultCase_ == 5 &&
             result_ != cluster.proto.RemoveResult.getDefaultInstance()) {
           result_ = cluster.proto.RemoveResult.newBuilder((cluster.proto.RemoveResult) result_)
               .mergeFrom(value).buildPartial();
@@ -1662,27 +1033,27 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       } else {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           removeResultBuilder_.mergeFrom(value);
         } else {
           removeResultBuilder_.setMessage(value);
         }
       }
-      resultCase_ = 7;
+      resultCase_ = 5;
       return this;
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     public Builder clearRemoveResult() {
       if (removeResultBuilder_ == null) {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           resultCase_ = 0;
           result_ = null;
           onChanged();
         }
       } else {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           resultCase_ = 0;
           result_ = null;
         }
@@ -1691,33 +1062,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     public cluster.proto.RemoveResult.Builder getRemoveResultBuilder() {
       return getRemoveResultFieldBuilder().getBuilder();
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     @java.lang.Override
     public cluster.proto.RemoveResultOrBuilder getRemoveResultOrBuilder() {
-      if ((resultCase_ == 7) && (removeResultBuilder_ != null)) {
+      if ((resultCase_ == 5) && (removeResultBuilder_ != null)) {
         return removeResultBuilder_.getMessageOrBuilder();
       } else {
-        if (resultCase_ == 7) {
+        if (resultCase_ == 5) {
           return (cluster.proto.RemoveResult) result_;
         }
         return cluster.proto.RemoveResult.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.RemoveResult removeResult = 7;</code>
+     * <code>.proto.RemoveResult removeResult = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cluster.proto.RemoveResult, cluster.proto.RemoveResult.Builder, cluster.proto.RemoveResultOrBuilder> 
         getRemoveResultFieldBuilder() {
       if (removeResultBuilder_ == null) {
-        if (!(resultCase_ == 7)) {
+        if (!(resultCase_ == 5)) {
           result_ = cluster.proto.RemoveResult.getDefaultInstance();
         }
         removeResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1727,435 +1098,9 @@ private static final long serialVersionUID = 0L;
                 isClean());
         result_ = null;
       }
-      resultCase_ = 7;
+      resultCase_ = 5;
       onChanged();;
       return removeResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ReplaceResult, cluster.proto.ReplaceResult.Builder, cluster.proto.ReplaceResultOrBuilder> replaceResultBuilder_;
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     * @return Whether the replaceResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasReplaceResult() {
-      return resultCase_ == 8;
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     * @return The replaceResult.
-     */
-    @java.lang.Override
-    public cluster.proto.ReplaceResult getReplaceResult() {
-      if (replaceResultBuilder_ == null) {
-        if (resultCase_ == 8) {
-          return (cluster.proto.ReplaceResult) result_;
-        }
-        return cluster.proto.ReplaceResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 8) {
-          return replaceResultBuilder_.getMessage();
-        }
-        return cluster.proto.ReplaceResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    public Builder setReplaceResult(cluster.proto.ReplaceResult value) {
-      if (replaceResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        replaceResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    public Builder setReplaceResult(
-        cluster.proto.ReplaceResult.Builder builderForValue) {
-      if (replaceResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        replaceResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    public Builder mergeReplaceResult(cluster.proto.ReplaceResult value) {
-      if (replaceResultBuilder_ == null) {
-        if (resultCase_ == 8 &&
-            result_ != cluster.proto.ReplaceResult.getDefaultInstance()) {
-          result_ = cluster.proto.ReplaceResult.newBuilder((cluster.proto.ReplaceResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 8) {
-          replaceResultBuilder_.mergeFrom(value);
-        } else {
-          replaceResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 8;
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    public Builder clearReplaceResult() {
-      if (replaceResultBuilder_ == null) {
-        if (resultCase_ == 8) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 8) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        replaceResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    public cluster.proto.ReplaceResult.Builder getReplaceResultBuilder() {
-      return getReplaceResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.ReplaceResultOrBuilder getReplaceResultOrBuilder() {
-      if ((resultCase_ == 8) && (replaceResultBuilder_ != null)) {
-        return replaceResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 8) {
-          return (cluster.proto.ReplaceResult) result_;
-        }
-        return cluster.proto.ReplaceResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ReplaceResult replaceResult = 8;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ReplaceResult, cluster.proto.ReplaceResult.Builder, cluster.proto.ReplaceResultOrBuilder> 
-        getReplaceResultFieldBuilder() {
-      if (replaceResultBuilder_ == null) {
-        if (!(resultCase_ == 8)) {
-          result_ = cluster.proto.ReplaceResult.getDefaultInstance();
-        }
-        replaceResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.ReplaceResult, cluster.proto.ReplaceResult.Builder, cluster.proto.ReplaceResultOrBuilder>(
-                (cluster.proto.ReplaceResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 8;
-      onChanged();;
-      return replaceResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SizeResult, cluster.proto.SizeResult.Builder, cluster.proto.SizeResultOrBuilder> sizeResultBuilder_;
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     * @return Whether the sizeResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasSizeResult() {
-      return resultCase_ == 9;
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     * @return The sizeResult.
-     */
-    @java.lang.Override
-    public cluster.proto.SizeResult getSizeResult() {
-      if (sizeResultBuilder_ == null) {
-        if (resultCase_ == 9) {
-          return (cluster.proto.SizeResult) result_;
-        }
-        return cluster.proto.SizeResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 9) {
-          return sizeResultBuilder_.getMessage();
-        }
-        return cluster.proto.SizeResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    public Builder setSizeResult(cluster.proto.SizeResult value) {
-      if (sizeResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        sizeResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    public Builder setSizeResult(
-        cluster.proto.SizeResult.Builder builderForValue) {
-      if (sizeResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        sizeResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    public Builder mergeSizeResult(cluster.proto.SizeResult value) {
-      if (sizeResultBuilder_ == null) {
-        if (resultCase_ == 9 &&
-            result_ != cluster.proto.SizeResult.getDefaultInstance()) {
-          result_ = cluster.proto.SizeResult.newBuilder((cluster.proto.SizeResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 9) {
-          sizeResultBuilder_.mergeFrom(value);
-        } else {
-          sizeResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 9;
-      return this;
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    public Builder clearSizeResult() {
-      if (sizeResultBuilder_ == null) {
-        if (resultCase_ == 9) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 9) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        sizeResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    public cluster.proto.SizeResult.Builder getSizeResultBuilder() {
-      return getSizeResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.SizeResultOrBuilder getSizeResultOrBuilder() {
-      if ((resultCase_ == 9) && (sizeResultBuilder_ != null)) {
-        return sizeResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 9) {
-          return (cluster.proto.SizeResult) result_;
-        }
-        return cluster.proto.SizeResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.SizeResult sizeResult = 9;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.SizeResult, cluster.proto.SizeResult.Builder, cluster.proto.SizeResultOrBuilder> 
-        getSizeResultFieldBuilder() {
-      if (sizeResultBuilder_ == null) {
-        if (!(resultCase_ == 9)) {
-          result_ = cluster.proto.SizeResult.getDefaultInstance();
-        }
-        sizeResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.SizeResult, cluster.proto.SizeResult.Builder, cluster.proto.SizeResultOrBuilder>(
-                (cluster.proto.SizeResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 9;
-      onChanged();;
-      return sizeResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ClearResult, cluster.proto.ClearResult.Builder, cluster.proto.ClearResultOrBuilder> clearResultBuilder_;
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     * @return Whether the clearResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasClearResult() {
-      return resultCase_ == 10;
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     * @return The clearResult.
-     */
-    @java.lang.Override
-    public cluster.proto.ClearResult getClearResult() {
-      if (clearResultBuilder_ == null) {
-        if (resultCase_ == 10) {
-          return (cluster.proto.ClearResult) result_;
-        }
-        return cluster.proto.ClearResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 10) {
-          return clearResultBuilder_.getMessage();
-        }
-        return cluster.proto.ClearResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    public Builder setClearResult(cluster.proto.ClearResult value) {
-      if (clearResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        clearResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    public Builder setClearResult(
-        cluster.proto.ClearResult.Builder builderForValue) {
-      if (clearResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        clearResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    public Builder mergeClearResult(cluster.proto.ClearResult value) {
-      if (clearResultBuilder_ == null) {
-        if (resultCase_ == 10 &&
-            result_ != cluster.proto.ClearResult.getDefaultInstance()) {
-          result_ = cluster.proto.ClearResult.newBuilder((cluster.proto.ClearResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 10) {
-          clearResultBuilder_.mergeFrom(value);
-        } else {
-          clearResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 10;
-      return this;
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    public Builder clearClearResult() {
-      if (clearResultBuilder_ == null) {
-        if (resultCase_ == 10) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 10) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        clearResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    public cluster.proto.ClearResult.Builder getClearResultBuilder() {
-      return getClearResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    @java.lang.Override
-    public cluster.proto.ClearResultOrBuilder getClearResultOrBuilder() {
-      if ((resultCase_ == 10) && (clearResultBuilder_ != null)) {
-        return clearResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 10) {
-          return (cluster.proto.ClearResult) result_;
-        }
-        return cluster.proto.ClearResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.ClearResult clearResult = 10;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.proto.ClearResult, cluster.proto.ClearResult.Builder, cluster.proto.ClearResultOrBuilder> 
-        getClearResultFieldBuilder() {
-      if (clearResultBuilder_ == null) {
-        if (!(resultCase_ == 10)) {
-          result_ = cluster.proto.ClearResult.getDefaultInstance();
-        }
-        clearResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.proto.ClearResult, cluster.proto.ClearResult.Builder, cluster.proto.ClearResultOrBuilder>(
-                (cluster.proto.ClearResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 10;
-      onChanged();;
-      return clearResultBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

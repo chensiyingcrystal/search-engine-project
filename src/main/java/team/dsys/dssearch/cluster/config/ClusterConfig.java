@@ -8,12 +8,10 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 
 public class ClusterConfig {
 
@@ -122,17 +120,6 @@ public class ClusterConfig {
             if (config.joinTo == null && config.initialEndpoints.size() < 2) {
                 throw new IllegalArgumentException(
                         "Could not bootstrap new cluster with " + config.initialEndpoints.size() + " endpoint!");
-            }
-
-            Set<String> nodeIds = config.initialEndpoints.stream().map(NodeEndpointConfig::getId).collect(toSet());
-            if (nodeIds.size() != config.initialEndpoints.size()) {
-                throw new ClusterServerException("Duplicate endpoint ids!");
-            }
-
-            Set<String> addresses = config.initialEndpoints.stream().map(NodeEndpointConfig::getAddress)
-                    .collect(toSet());
-            if (addresses.size() != config.initialEndpoints.size()) {
-                throw new ClusterServerException("Duplicate addresses in initial endpoints!");
             }
 
             ClusterConfig builtConfig = this.config;
