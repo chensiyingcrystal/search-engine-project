@@ -43,6 +43,7 @@ public class GrpcServerImpl implements GrpcServer {
         EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup(1);
         Class<? extends ServerChannel> channelType = NioServerSocketChannel.class;
+        LOGGER.info("SiyingChen " + config.getNodeEndpointConfig().getSocketAddress());
         this.server = NettyServerBuilder.forAddress(config.getNodeEndpointConfig().getSocketAddress())
                 .bossEventLoopGroup(boss).workerEventLoopGroup(worker).channelType(channelType)
                 .addService(shardRequestHandler).addService(raftMessageHandler).addService(clusterHealthManagementHandler)
@@ -54,7 +55,7 @@ public class GrpcServerImpl implements GrpcServer {
         try {
             //automatically start grpc server when constructed
             server.start();
-            LOGGER.info(nodeEndpoint.getId() + " RpcServer started.");
+            LOGGER.info(nodeEndpoint.getId() + "SiyingChen RpcServer started.");
         } catch (IOException e) {
             throw new ClusterServerException(nodeEndpoint.getId() + " RpcServer start failed!", e);
         }

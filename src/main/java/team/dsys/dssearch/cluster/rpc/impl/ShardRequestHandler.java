@@ -30,6 +30,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
 
     @Override
     public void put(PutRequest request, StreamObserver<ShardResponse> responseObserver) {
+        LOGGER.info("SiyingChen Request" + request);
         PutOp op = PutOp.newBuilder().setKey(request.getKey()).setVal(request.getVal())
                 .setPutIfAbsent(request.getPutIfAbsent()).build();
         raftNode.<PutOpResult> replicate(op).whenComplete((Ordered<PutOpResult> result, Throwable throwable) -> {
@@ -37,6 +38,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
                                 .setPutResult(PutResult.newBuilder().setOldVal(result.getResult().getOldVal()).build()).build());
                     } else {
+                        LOGGER.error("SiyingChen error" + throwable);
                         responseObserver.onError(throwable);
                     }
                     responseObserver.onCompleted();

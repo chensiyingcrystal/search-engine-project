@@ -27,7 +27,7 @@ import java.util.function.Supplier;
 import static com.google.inject.name.Names.named;
 
 /**
- * Setting module info for building injector
+ * Setting module info for the injector
  */
 public class ClusterServiceModule extends AbstractModule {
 

@@ -13,6 +13,9 @@ import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
 
+/**
+ * Define the config for nodes in the cluster
+ */
 public class ClusterConfig {
 
     private String id;

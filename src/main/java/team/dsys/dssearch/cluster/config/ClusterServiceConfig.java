@@ -9,6 +9,9 @@ import javax.annotation.Nonnull;
 import static io.microraft.RaftConfig.DEFAULT_RAFT_CONFIG;
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Define the config for local endpoint(node)
+ */
 public final class ClusterServiceConfig {
 
     private Config config;

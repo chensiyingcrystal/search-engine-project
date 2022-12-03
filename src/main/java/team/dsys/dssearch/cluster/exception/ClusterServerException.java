@@ -1,5 +1,8 @@
 package team.dsys.dssearch.cluster.exception;
 
+/**
+ * Cluster server exception(can add more types)
+ */
 public class ClusterServerException extends RuntimeException {
 
     public ClusterServerException() {
