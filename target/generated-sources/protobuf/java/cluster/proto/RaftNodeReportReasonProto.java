@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftNodeReport.java
- * </pre>
- *
  * Protobuf enum {@code proto.RaftNodeReportReasonProto}
  */
 public enum RaftNodeReportReasonProto

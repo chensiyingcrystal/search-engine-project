@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/VoteResponse.java
- * </pre>
- *
  * Protobuf type {@code proto.VoteResponseProto}
  */
 public final class VoteResponseProto extends
@@ -328,10 +324,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/VoteResponse.java
-   * </pre>
-   *
    * Protobuf type {@code proto.VoteResponseProto}
    */
   public static final class Builder extends

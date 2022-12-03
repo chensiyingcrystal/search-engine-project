@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/LogEntry.java
- * </pre>
- *
  * Protobuf type {@code proto.LogEntryProto}
  */
 public final class LogEntryProto extends
@@ -535,10 +531,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/LogEntry.java
-   * </pre>
-   *
    * Protobuf type {@code proto.LogEntryProto}
    */
   public static final class Builder extends

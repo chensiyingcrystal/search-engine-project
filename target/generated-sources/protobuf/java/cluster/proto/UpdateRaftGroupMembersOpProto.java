@@ -47,11 +47,6 @@ private static final long serialVersionUID = 0L;
   }
 
   /**
-   * <pre>
-   *Microraft defined
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/MembershipChangeMode.java
-   * </pre>
-   *
    * Protobuf enum {@code proto.UpdateRaftGroupMembersOpProto.MembershipChangeModeProto}
    */
   public enum MembershipChangeModeProto
@@ -171,10 +166,6 @@ private static final long serialVersionUID = 0L;
   public static final int MEMBER_FIELD_NUMBER = 1;
   private java.util.List<cluster.proto.RaftEndpointProto> member_;
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   @java.lang.Override
@@ -182,10 +173,6 @@ private static final long serialVersionUID = 0L;
     return member_;
   }
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   @java.lang.Override
@@ -194,10 +181,6 @@ private static final long serialVersionUID = 0L;
     return member_;
   }
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   @java.lang.Override
@@ -205,10 +188,6 @@ private static final long serialVersionUID = 0L;
     return member_.size();
   }
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   @java.lang.Override
@@ -216,10 +195,6 @@ private static final long serialVersionUID = 0L;
     return member_.get(index);
   }
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   @java.lang.Override
@@ -815,10 +790,6 @@ private static final long serialVersionUID = 0L;
         cluster.proto.RaftEndpointProto, cluster.proto.RaftEndpointProto.Builder, cluster.proto.RaftEndpointProtoOrBuilder> memberBuilder_;
 
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public java.util.List<cluster.proto.RaftEndpointProto> getMemberList() {
@@ -829,10 +800,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public int getMemberCount() {
@@ -843,10 +810,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public cluster.proto.RaftEndpointProto getMember(int index) {
@@ -857,10 +820,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder setMember(
@@ -878,10 +837,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder setMember(
@@ -896,10 +851,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder addMember(cluster.proto.RaftEndpointProto value) {
@@ -916,10 +867,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder addMember(
@@ -937,10 +884,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder addMember(
@@ -955,10 +898,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder addMember(
@@ -973,10 +912,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder addAllMember(
@@ -992,10 +927,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder clearMember() {
@@ -1009,10 +940,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public Builder removeMember(int index) {
@@ -1026,10 +953,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public cluster.proto.RaftEndpointProto.Builder getMemberBuilder(
@@ -1037,10 +960,6 @@ private static final long serialVersionUID = 0L;
       return getMemberFieldBuilder().getBuilder(index);
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public cluster.proto.RaftEndpointProtoOrBuilder getMemberOrBuilder(
@@ -1051,10 +970,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public java.util.List<? extends cluster.proto.RaftEndpointProtoOrBuilder> 
@@ -1066,10 +981,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public cluster.proto.RaftEndpointProto.Builder addMemberBuilder() {
@@ -1077,10 +988,6 @@ private static final long serialVersionUID = 0L;
           cluster.proto.RaftEndpointProto.getDefaultInstance());
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public cluster.proto.RaftEndpointProto.Builder addMemberBuilder(
@@ -1089,10 +996,6 @@ private static final long serialVersionUID = 0L;
           index, cluster.proto.RaftEndpointProto.getDefaultInstance());
     }
     /**
-     * <pre>
-     *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-     * </pre>
-     *
      * <code>repeated .proto.RaftEndpointProto member = 1;</code>
      */
     public java.util.List<cluster.proto.RaftEndpointProto.Builder> 

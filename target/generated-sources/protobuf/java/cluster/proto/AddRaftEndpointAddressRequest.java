@@ -86,7 +86,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object address_;
   /**
    * <pre>
-   * Address of the RaftEndpoint which will be used by AfloatDB instances to
+   * Address of the RaftEndpoint which will be used by instances to
    * communicate for that RaftEndpoint.
    * </pre>
    *
@@ -108,7 +108,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Address of the RaftEndpoint which will be used by AfloatDB instances to
+   * Address of the RaftEndpoint which will be used by instances to
    * communicate for that RaftEndpoint.
    * </pre>
    *
@@ -640,7 +640,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object address_ = "";
     /**
      * <pre>
-     * Address of the RaftEndpoint which will be used by AfloatDB instances to
+     * Address of the RaftEndpoint which will be used by instances to
      * communicate for that RaftEndpoint.
      * </pre>
      *
@@ -661,7 +661,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Address of the RaftEndpoint which will be used by AfloatDB instances to
+     * Address of the RaftEndpoint which will be used by instances to
      * communicate for that RaftEndpoint.
      * </pre>
      *
@@ -683,7 +683,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Address of the RaftEndpoint which will be used by AfloatDB instances to
+     * Address of the RaftEndpoint which will be used by instances to
      * communicate for that RaftEndpoint.
      * </pre>
      *
@@ -703,7 +703,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Address of the RaftEndpoint which will be used by AfloatDB instances to
+     * Address of the RaftEndpoint which will be used by instances to
      * communicate for that RaftEndpoint.
      * </pre>
      *
@@ -718,7 +718,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Address of the RaftEndpoint which will be used by AfloatDB instances to
+     * Address of the RaftEndpoint which will be used by instances to
      * communicate for that RaftEndpoint.
      * </pre>
      *

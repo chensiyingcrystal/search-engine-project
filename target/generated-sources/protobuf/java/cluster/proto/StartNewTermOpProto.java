@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/statemachine/StateMachine.java#L120
- * </pre>
- *
  * Protobuf type {@code proto.StartNewTermOpProto}
  */
 public final class StartNewTermOpProto extends
@@ -192,10 +188,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/statemachine/StateMachine.java#L120
-   * </pre>
-   *
    * Protobuf type {@code proto.StartNewTermOpProto}
    */
   public static final class Builder extends

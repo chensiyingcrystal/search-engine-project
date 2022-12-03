@@ -1,7 +1,6 @@
 package team.dsys.dssearch.cluster.raft.impl.log;
 
-import cluster.proto.LogEntryProto;
-import cluster.proto.StartNewTermOpProto;
+import cluster.proto.*;
 import io.microraft.model.log.LogEntry;
 import team.dsys.dssearch.cluster.raft.impl.group.UpdateRaftGroupMembersOpOrBuilder;
 
@@ -44,7 +43,13 @@ public class LogEntryOrBuilder implements LogEntry, LogEntry.LogEntryBuilder {
             builder.setUpdateRaftGroupMembersOp(((UpdateRaftGroupMembersOpOrBuilder) operation).getOp());
         } else if (operation instanceof StartNewTermOpProto) {
             builder.setStartNewTermOp((StartNewTermOpProto) operation);
-        //todo: other list of operation(update status, shard...)
+            //todo: other list of operation(update status, shard...)
+        } else if (operation instanceof PutOp) {
+                builder.setPutOp((PutOp) operation);
+        } else if (operation instanceof GetOp) {
+                builder.setGetOp((GetOp) operation);
+        } else if (operation instanceof RemoveOp) {
+                builder.setRemoveOp((RemoveOp) operation);
         } else {
             throw new IllegalArgumentException("Invalid operation: " + operation);
         }
@@ -88,6 +93,12 @@ public class LogEntryOrBuilder implements LogEntry, LogEntry.LogEntryBuilder {
             case STARTNEWTERMOP:
                 return entry.getStartNewTermOp();
             //todo: other list of operation(update status, shard...)
+            case PUTOP:
+                return entry.getPutOp();
+            case GETOP:
+                return entry.getGetOp();
+            case REMOVEOP:
+                return entry.getRemoveOp();
             default:
                 throw new IllegalArgumentException("Illegal operation in " + entry);
         }

@@ -36,7 +36,7 @@ public interface AddRaftEndpointAddressRequestOrBuilder extends
 
   /**
    * <pre>
-   * Address of the RaftEndpoint which will be used by AfloatDB instances to
+   * Address of the RaftEndpoint which will be used by instances to
    * communicate for that RaftEndpoint.
    * </pre>
    *
@@ -46,7 +46,7 @@ public interface AddRaftEndpointAddressRequestOrBuilder extends
   java.lang.String getAddress();
   /**
    * <pre>
-   * Address of the RaftEndpoint which will be used by AfloatDB instances to
+   * Address of the RaftEndpoint which will be used by instances to
    * communicate for that RaftEndpoint.
    * </pre>
    *

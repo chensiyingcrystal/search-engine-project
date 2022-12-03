@@ -10,6 +10,7 @@ option java_multiple_files = true;
 
 // This file contains the Protobufs definitions for MicroRaft's model and
 // network abstractions.
+// The proto type are according to the definition from microraft documentation and microraft internal interaction
 
 message RaftEndpointProto {
   // Unique id of a Raft endpoint
@@ -17,13 +18,11 @@ message RaftEndpointProto {
 }
 
 message UpdateRaftGroupMembersOpProto {
-  //original data type: Collection<RaftEndpoint>, in our design, raftendpoint represented by a string
   repeated RaftEndpointProto member = 1;
   repeated RaftEndpointProto votingMember = 2;
   RaftEndpointProto endpoint = 3;
 
-  //Microraft defined
-  // https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/MembershipChangeMode.java
+
   enum MembershipChangeModeProto {
     ADD_LEARNER = 0;
     ADD_OR_PROMOTE_TO_FOLLOWER = 1;
@@ -33,7 +32,6 @@ message UpdateRaftGroupMembersOpProto {
   MembershipChangeModeProto mode = 4;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/statemachine/StateMachine.java#L120
 message StartNewTermOpProto {
 }
 
@@ -66,7 +64,6 @@ message RemoveOpResult {
   Val oldVal = 2;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/LogEntry.java
 message LogEntryProto {
   int32 term = 1;
   int64 index = 2;
@@ -85,19 +82,18 @@ message ShardEntry {
   Val val = 2;
 }
 
+//Below are referenced from Microraft internal definition
 message ClusterSnapshotChunkData {
   repeated ShardEntry entry = 1;
 }
 
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/RaftGroupMembersView.java
 message RaftGroupMembersViewProto {
   int64 logIndex = 1;
   repeated RaftEndpointProto member = 2;
   repeated RaftEndpointProto votingMember = 3;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/SnapshotChunk.java
 message ClusterSnapshotChunk {
   int32 term = 1;
   int64 index = 2;
@@ -107,7 +103,6 @@ message ClusterSnapshotChunk {
   RaftGroupMembersViewProto groupMembersView = 6;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/SnapshotEntry.java
 message SnapshotEntryProto {
   int32 term = 1;
   int64 index = 2;
@@ -115,7 +110,6 @@ message SnapshotEntryProto {
   RaftGroupMembersViewProto groupMembersView = 4;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/VoteRequest.java
 message VoteRequestProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -125,7 +119,6 @@ message VoteRequestProto {
   bool sticky = 6;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/VoteResponse.java
 message VoteResponseProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -133,7 +126,6 @@ message VoteResponseProto {
   bool granted = 4;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/AppendEntriesRequest.java
 message AppendEntriesRequestProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -146,7 +138,6 @@ message AppendEntriesRequestProto {
   int64 flowControlSequenceNumber = 9;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/AppendEntriesSuccessResponse.java
 message AppendEntriesSuccessResponseProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -156,7 +147,6 @@ message AppendEntriesSuccessResponseProto {
   int64 flowControlSequenceNumber = 6;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/AppendEntriesFailureResponse.java
 message AppendEntriesFailureResponseProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -166,7 +156,6 @@ message AppendEntriesFailureResponseProto {
   int64 flowControlSequenceNumber = 6;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/InstallSnapshotRequest.java
 message InstallSnapshotRequestProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -182,7 +171,6 @@ message InstallSnapshotRequestProto {
   int64 flowControlSequenceNumber = 13;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/InstallSnapshotResponse.java
 message InstallSnapshotResponseProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -193,7 +181,6 @@ message InstallSnapshotResponseProto {
   int64 flowControlSequenceNumber = 7;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/PreVoteRequest.java
 message PreVoteRequestProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -202,7 +189,6 @@ message PreVoteRequestProto {
   int64 lastLogIndex = 5;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/PreVoteResponse.java
 message PreVoteResponseProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -210,7 +196,6 @@ message PreVoteResponseProto {
   bool granted = 4;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/TriggerLeaderElectionRequest.java
 message TriggerLeaderElectionRequestProto {
   string groupId = 1;
   RaftEndpointProto sender = 2;
@@ -219,7 +204,6 @@ message TriggerLeaderElectionRequestProto {
   int64 lastLogIndex = 5;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/RaftMessage.java
 message RaftMessageRequest {
   oneof message {
     VoteRequestProto voteRequest = 1;

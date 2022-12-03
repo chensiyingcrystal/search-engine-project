@@ -8,23 +8,21 @@ option java_package = "cluster.proto";
 
 option java_multiple_files = true;
 
-// This file contains the Protobufs definitions for the management operations
-// on clusters, such as adding/removing servers, querying RaftNode reports.
+// This file contains the Protobufs definitions for the management operations on clusters,
+// such as adding/removing servers, querying RaftNode reports.
+// The proto type are referenced from the definition from microraft documentation and microraft report definition
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftGroupMembers.java
 message RaftGroupMembersProto {
   int64 logIndex = 1;
   repeated RaftEndpointProto member = 2;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftTerm.java
 message RaftTermProto {
   int32 term = 1;
   RaftEndpointProto leaderEndpoint = 2;
   RaftEndpointProto votedEndpoint = 3;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/RaftRole.java
 enum RaftRoleProto {
   LEADER = 0;
   CANDIDATE = 1;
@@ -32,7 +30,6 @@ enum RaftRoleProto {
   LEARNER = 3;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftNodeReport.java
 enum RaftNodeReportReasonProto {
   STATUS_CHANGE = 0;
   ROLE_CHANGE = 1;
@@ -43,7 +40,6 @@ enum RaftNodeReportReasonProto {
   API_CALL = 6;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/RaftNodeStatus.java
 enum RaftNodeStatusProto {
   INITIAL = 0;
   ACTIVE = 1;
@@ -51,7 +47,6 @@ enum RaftNodeStatusProto {
   TERMINATED = 3;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftLogStats.java
 message RaftLogStatsProto {
   int64 commitIndex = 1;
   int64 lastLogOrSnapshotTerm = 2;
@@ -63,7 +58,6 @@ message RaftLogStatsProto {
   map<string, int64> followerMatchIndex = 8;
 }
 
-// https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftNodeReport.java
 message RaftNodeReportProto {
   RaftNodeReportReasonProto reason = 1;
   string groupId = 2;
@@ -77,17 +71,16 @@ message RaftNodeReportProto {
   RaftLogStatsProto log = 10;
 }
 
-// The request/response messages below are for managing AfloatDB clusters by
+// The request/response messages below are for managing clusters by
 // querying states and changing group memberships.
 
 message GetRaftNodeReportRequest {
 }
 
 message GetRaftNodeReportResponse {
-  // RaftNodeReport fetched from the RaftNode object running in the contacted
-  // AfloatDB instance.
+  // RaftNodeReport fetched from the RaftNode object running in the contacted instance.
   RaftNodeReportProto report = 1;
-  // RaftEndpoint -> address pairs known by a contacted AfloatDB instance.
+  // RaftEndpoint -> address pairs known by a contacted instance.
   map<string, string> endpointAddress = 2;
 }
 
@@ -95,7 +88,7 @@ message AddRaftEndpointAddressRequest {
   // RaftEndpoint for which the address is going to be specified.
   RaftEndpointProto endpoint = 1;
 
-  // Address of the RaftEndpoint which will be used by AfloatDB instances to
+  // Address of the RaftEndpoint which will be used by instances to
   // communicate for that RaftEndpoint.
   string address = 2;
 }
@@ -113,15 +106,6 @@ message AddRaftEndpointResponse {
   int64 groupMembersCommitIndex = 1;
 }
 
-message RemoveRaftEndpointRequest {
-  RaftEndpointProto endpoint = 1;
-  int64 groupMembersCommitIndex = 2;
-}
-
-message RemoveRaftEndpointResponse {
-  int64 groupMembersCommitIndex = 1;
-}
-
 
 service ManagementRequestHandler {
   // Fetches the RaftNodeReport object from the RaftNode object running
@@ -135,21 +119,13 @@ service ManagementRequestHandler {
   rpc addRaftEndpointAddress (AddRaftEndpointAddressRequest) returns (AddRaftEndpointAddressResponse) {
   }
 
-  // Adds a new server to the cluster. The new
-  // server is represented by the RaftEndpoint present in the request.
-  // Once this API call succeeds, the given server is added to the
-  // cluster, i.e., it will be contacted by the other servers.
-  // If an exception or an unexpected failure occurs, the caller should get
-  // the RaftNodeReport via #getRaftNodeReport() API above and check if the
-  // given server has been added to the cluster or not, and retry if needed.
+  // Adds a new server to the cluster.
+  // When this api is called, microraft will trigger corresponding membershipchange request
+  //note that this request is only sent to the leader
+  //before calling this, every current node must have raftendpoint address of the adding node
+  //This can be implemented at the method above
   rpc addRaftEndpoint (AddRaftEndpointRequest) returns (AddRaftEndpointResponse) {
   }
 
-  // Removes the given server from the cluster. Once this call
-  // succeeds, the server is removed from the cluster.
-  // If an exception or an unexpected failure occurs, the caller should get the
-  // RaftNodeReport via #getRaftNodeReport() API above and check if the given
-  // server has been removed from the cluster or not, and retry if needed.
-  rpc removeRaftEndpoint (RemoveRaftEndpointRequest) returns (RemoveRaftEndpointResponse) {
-  }
+
 }

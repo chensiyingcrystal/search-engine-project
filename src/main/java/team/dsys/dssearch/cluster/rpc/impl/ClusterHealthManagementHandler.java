@@ -21,6 +21,9 @@ import static io.microraft.MembershipChangeMode.REMOVE_MEMBER;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.RAFT_NODE_SUPPLIER_KEY;
 import static team.dsys.dssearch.cluster.rpc.utils.Serialization.toProto;
 
+/**
+ * Implement @ManagementRequestHandlerGrpc defined in @ClusterHealthManagement.proto
+ */
 @Singleton
 public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc.ManagementRequestHandlerImplBase {
 
@@ -36,30 +39,9 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
         this.raftRpcService = raftRpcService;
     }
 
-    @Override
-    public void removeRaftEndpoint(RemoveRaftEndpointRequest request,
-                                   StreamObserver<RemoveRaftEndpointResponse> responseObserver) {
-        RaftNodeEndpoint endpoint = RaftNodeEndpoint.wrap(request.getEndpoint());
 
-        long commitIndex = request.getGroupMembersCommitIndex();
-        LOGGER.info("{} received remove endpoint request for {} and group members commit index: {}",
-                raftNode.getLocalEndpoint().getId(), endpoint.getId(), commitIndex);
-
-        raftNode.changeMembership(endpoint, REMOVE_MEMBER, commitIndex).whenComplete((result, throwable) -> {
-            if (throwable == null) {
-                long newCommitIndex = result.getCommitIndex();
-                LOGGER.info("{} removed {} from the Raft group. New group members commit index: {}",
-                        raftNode.getLocalEndpoint().getId(), endpoint.getId(), newCommitIndex);
-                RemoveRaftEndpointResponse response = RemoveRaftEndpointResponse.newBuilder()
-                        .setGroupMembersCommitIndex(newCommitIndex).build();
-                responseObserver.onNext(response);
-            } else {
-                LOGGER.error(raftNode.getLocalEndpoint().getId() + " remove endpoint request for " + endpoint.getId()
-                        + " and group members commit index: " + commitIndex + " failed!", throwable);
-                responseObserver.onError(throwable);
-            }
-            responseObserver.onCompleted();
-        });
+    public void removeRaftEndpoint() {
+        //to-do, membership change: for removing a node from cluster
     }
 
     @Override
@@ -80,6 +62,11 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
         });
     }
 
+    /**
+     * Add a raftendpoint to target node's address
+     * @param request see in @ClusterHealthManagement.proto
+     * @param responseObserver
+     */
     @Override
     public void addRaftEndpointAddress(AddRaftEndpointAddressRequest request,
                                        StreamObserver<AddRaftEndpointAddressResponse> responseObserver) {
@@ -108,12 +95,13 @@ public class ClusterHealthManagementHandler extends ManagementRequestHandlerGrpc
             return;
         }
 
+        //in microraft setting, adding learner role
         MembershipChangeMode mode = request.getVotingMember() ? MembershipChangeMode.ADD_OR_PROMOTE_TO_FOLLOWER
                 : MembershipChangeMode.ADD_LEARNER;
 
         LOGGER.info("{} is adding {} with mode: {} and address: {}.", raftNode.getLocalEndpoint().getId(),
                 endpoint.getId(), mode, address);
-
+        //trigger membership change in microraft
         raftNode.changeMembership(endpoint, mode, request.getGroupMembersCommitIndex())
                 .whenComplete((result, throwable) -> {
                     if (throwable == null) {

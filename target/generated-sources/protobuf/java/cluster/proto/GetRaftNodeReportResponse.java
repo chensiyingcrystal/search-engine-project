@@ -59,8 +59,7 @@ private static final long serialVersionUID = 0L;
   private cluster.proto.RaftNodeReportProto report_;
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -72,8 +71,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -85,8 +83,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -124,7 +121,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -146,7 +143,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -158,7 +155,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -175,7 +172,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -587,8 +584,7 @@ private static final long serialVersionUID = 0L;
         cluster.proto.RaftNodeReportProto, cluster.proto.RaftNodeReportProto.Builder, cluster.proto.RaftNodeReportProtoOrBuilder> reportBuilder_;
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -599,8 +595,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -615,8 +610,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -636,8 +630,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -655,8 +648,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -678,8 +670,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -697,8 +688,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -710,8 +700,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -726,8 +715,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftNodeReport fetched from the RaftNode object running in the contacted
-     * AfloatDB instance.
+     * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
      * </pre>
      *
      * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -774,7 +762,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -796,7 +784,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -808,7 +796,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -825,7 +813,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -850,7 +838,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -873,7 +861,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -892,7 +880,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+     * RaftEndpoint -&gt; address pairs known by a contacted instance.
      * </pre>
      *
      * <code>map&lt;string, string&gt; endpointAddress = 2;</code>

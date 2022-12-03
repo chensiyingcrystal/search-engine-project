@@ -61,6 +61,7 @@ public class RaftRpcServiceImpl implements RaftRpcService {
         LOGGER.info(localEndpoint.getId() + " RaftMessageRpc service is shutting down...");
     }
 
+    //add other enpoint's address to current node's contact info
     @Override
     public void addAddress(@Nonnull RaftEndpoint endpoint, @Nonnull String address) {
         requireNonNull(endpoint);

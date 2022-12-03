@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/PreVoteRequest.java
- * </pre>
- *
  * Protobuf type {@code proto.PreVoteRequestProto}
  */
 public final class PreVoteRequestProto extends
@@ -350,10 +346,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/PreVoteRequest.java
-   * </pre>
-   *
    * Protobuf type {@code proto.PreVoteRequestProto}
    */
   public static final class Builder extends

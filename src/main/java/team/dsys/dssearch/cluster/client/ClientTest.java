@@ -1,49 +1,71 @@
 package team.dsys.dssearch.cluster.client;
 
 import cluster.proto.*;
-import com.google.common.util.concurrent.ListenableFuture;
+import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.stub.StreamObserver;
-import team.dsys.dssearch.cluster.rpc.RaftRpcServiceImpl;
+import io.grpc.StatusRuntimeException;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.Executors.newSingleThreadScheduledExecutor;
-
+/**
+ * A class for client test(sending put, get, remove request to server)
+ * @ShardRequestHandlerGrpc is the grpc file auto generated for proto file @ShardRequest.proto
+ *
+ */
 public class ClientTest {
-    public static void main(String[] args) throws Exception {
-        ClientTest client = new ClientTest();
-        client.remoteCall("apple", 15);
+    private final ShardRequestHandlerGrpc.ShardRequestHandlerBlockingStub blockingStub;
 
+    private ShardResponse response;
+
+    public ClientTest(Channel channel) {
+        blockingStub =  ShardRequestHandlerGrpc.newBlockingStub(channel);
 
     }
 
-    public void remoteCall(String key, int val) throws ExecutionException, InterruptedException {
-        PutRequest request = PutRequest.newBuilder().setKey(key).setVal(Val.newBuilder().setNum(val).build()).build();
-        String address = "localhost:6702";
-        ManagedChannel channel = ManagedChannelBuilder.forTarget(address).disableRetry().directExecutor().usePlaintext().build();
-        System.out.println("test:" + channel.getState(true));
-        ShardRequestHandlerGrpc.ShardRequestHandlerBlockingStub stub = ShardRequestHandlerGrpc.newBlockingStub(channel);
-        ScheduledExecutorService executor = newSingleThreadScheduledExecutor();
-        ShardResponse shardResponseListenableFuture = stub.put(request);
-//        shardResponseListenableFuture.addListener(
-//                new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            ShardResponse response = shardResponseListenableFuture.get();
-//                            System.out.println("Got response" + response);
-//                        } catch (InterruptedException e) {
-//                            System.out.println(e);
-//                        } catch (ExecutionException e) {
-//                            System.out.println(e);
-//                        }
-//                    }
-//                }, executor
-//        );
-        System.out.println("heello" + shardResponseListenableFuture);
+    public void sendPut() {
+
+        try {
+            response = blockingStub.put(PutRequest.newBuilder().setKey("apple").setVal(Val.newBuilder().setNum(12).build()).build());
+
+        } catch (StatusRuntimeException e) {
+            System.out.println("Error"+e);
+            return;
+        }
+        System.out.println("Response" + response);
+    }
+
+    public void sendGet() {
+
+        try {
+            response = blockingStub.get(GetRequest.newBuilder().setKey("apple").build());
+
+        } catch (StatusRuntimeException e) {
+            System.out.println("Error"+e);
+            return;
+        }
+        System.out.println("Response" + response);
+    }
+
+    public static void main(String[] args) throws Exception {
+        String target = "localhost:6701";
+        ManagedChannel channel = ManagedChannelBuilder.forTarget(target)
+                // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
+                // needing certificates.
+                .usePlaintext()
+                .build();
+
+        try {
+            ClientTest client = new ClientTest(channel);
+
+            client.sendPut();
+            client.sendGet();
+        } finally {
+            // ManagedChannels use resources like threads and TCP connections. To prevent leaking these
+            // resources the channel should be shut down when it will no longer be used. If it may be used
+            // again leave it running.
+            channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+        }
     }
 
 

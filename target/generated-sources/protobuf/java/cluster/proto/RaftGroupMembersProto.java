@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftGroupMembers.java
- * </pre>
- *
  * Protobuf type {@code proto.RaftGroupMembersProto}
  */
 public final class RaftGroupMembersProto extends
@@ -269,10 +265,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/report/RaftGroupMembers.java
-   * </pre>
-   *
    * Protobuf type {@code proto.RaftGroupMembersProto}
    */
   public static final class Builder extends

@@ -41,6 +41,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
                         LOGGER.error("SiyingChen error" + throwable);
                         responseObserver.onError(throwable);
                     }
+                    LOGGER.info("SiyingChen info complete");
                     responseObserver.onCompleted();
                 });
     }
@@ -49,8 +50,8 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
     @Override
     public void get(GetRequest request, StreamObserver<ShardResponse> responseObserver) {
         GetOp op = GetOp.newBuilder().setKey(request.getKey()).build();
-        raftNode.<GetResult> query(op, request.getMinCommitIndex() == -1 ? LINEARIZABLE : EVENTUAL_CONSISTENCY, Math.max(0, request.getMinCommitIndex()))
-                .whenComplete((Ordered<GetResult> result, Throwable throwable) -> {
+        raftNode.<GetOpResult> query(op, request.getMinCommitIndex() == -1 ? LINEARIZABLE : EVENTUAL_CONSISTENCY, Math.max(0, request.getMinCommitIndex()))
+                .whenComplete((Ordered<GetOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
                                 .setGetResult(
@@ -69,7 +70,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
         if (request.hasVal()) {
             builder.setVal(request.getVal());
         }
-        raftNode.<RemoveResult> replicate(builder.build()).whenComplete((Ordered<RemoveResult> result, Throwable throwable) -> {
+        raftNode.<RemoveOpResult> replicate(builder.build()).whenComplete((Ordered<RemoveOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         RemoveResult.Builder builder2 = RemoveResult
                                 .newBuilder().setSuccess(result.getResult().getSuccess());

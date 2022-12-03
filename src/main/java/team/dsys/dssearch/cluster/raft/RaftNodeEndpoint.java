@@ -19,6 +19,7 @@ public class RaftNodeEndpoint implements RaftEndpoint {
         this.endpoint = endpoint;
     }
 
+    //wrap and unwrap are interconversion between raftendpointproto and raftnodeenpoint
     public static RaftNodeEndpoint wrap(@Nonnull RaftEndpointProto endpoint) {
         return cache.computeIfAbsent(endpoint.getId(), id -> new RaftNodeEndpoint(endpoint));
     }

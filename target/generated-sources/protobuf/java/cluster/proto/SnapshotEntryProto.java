@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/SnapshotEntry.java
- * </pre>
- *
  * Protobuf type {@code proto.SnapshotEntryProto}
  */
 public final class SnapshotEntryProto extends
@@ -333,10 +329,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/log/SnapshotEntry.java
-   * </pre>
-   *
    * Protobuf type {@code proto.SnapshotEntryProto}
    */
   public static final class Builder extends

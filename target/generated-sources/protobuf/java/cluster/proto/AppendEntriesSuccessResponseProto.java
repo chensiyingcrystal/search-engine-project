@@ -4,10 +4,6 @@
 package cluster.proto;
 
 /**
- * <pre>
- * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/AppendEntriesSuccessResponse.java
- * </pre>
- *
  * Protobuf type {@code proto.AppendEntriesSuccessResponseProto}
  */
 public final class AppendEntriesSuccessResponseProto extends
@@ -374,10 +370,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * https://github.com/MicroRaft/MicroRaft/blob/master/microraft/src/main/java/io/microraft/model/message/AppendEntriesSuccessResponse.java
-   * </pre>
-   *
    * Protobuf type {@code proto.AppendEntriesSuccessResponseProto}
    */
   public static final class Builder extends

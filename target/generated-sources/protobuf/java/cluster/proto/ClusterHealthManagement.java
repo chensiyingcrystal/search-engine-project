@@ -74,16 +74,6 @@ public final class ClusterHealthManagement {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_AddRaftEndpointResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_RemoveRaftEndpointRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_RemoveRaftEndpointRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_RemoveRaftEndpointResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_RemoveRaftEndpointResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -133,30 +123,24 @@ public final class ClusterHealthManagement {
       "2\030.proto.RaftEndpointProto\022\024\n\014votingMemb" +
       "er\030\002 \001(\010\022\037\n\027groupMembersCommitIndex\030\003 \001(" +
       "\003\":\n\027AddRaftEndpointResponse\022\037\n\027groupMem" +
-      "bersCommitIndex\030\001 \001(\003\"h\n\031RemoveRaftEndpo" +
-      "intRequest\022*\n\010endpoint\030\001 \001(\0132\030.proto.Raf" +
-      "tEndpointProto\022\037\n\027groupMembersCommitInde" +
-      "x\030\002 \001(\003\"=\n\032RemoveRaftEndpointResponse\022\037\n" +
-      "\027groupMembersCommitIndex\030\001 \001(\003*E\n\rRaftRo" +
-      "leProto\022\n\n\006LEADER\020\000\022\r\n\tCANDIDATE\020\001\022\014\n\010FO" +
-      "LLOWER\020\002\022\013\n\007LEARNER\020\003*\236\001\n\031RaftNodeReport" +
-      "ReasonProto\022\021\n\rSTATUS_CHANGE\020\000\022\017\n\013ROLE_C" +
-      "HANGE\020\001\022\030\n\024GROUP_MEMBERS_CHANGE\020\002\022\021\n\rTAK" +
-      "E_SNAPSHOT\020\003\022\024\n\020INSTALL_SNAPSHOT\020\004\022\014\n\010PE" +
-      "RIODIC\020\005\022\014\n\010API_CALL\020\006*c\n\023RaftNodeStatus" +
-      "Proto\022\013\n\007INITIAL\020\000\022\n\n\006ACTIVE\020\001\022#\n\037UPDATI" +
-      "NG_RAFT_GROUP_MEMBER_LIST\020\002\022\016\n\nTERMINATE" +
-      "D\020\0032\216\003\n\030ManagementRequestHandler\022X\n\021getR" +
-      "aftNodeReport\022\037.proto.GetRaftNodeReportR" +
-      "equest\032 .proto.GetRaftNodeReportResponse" +
-      "\"\000\022g\n\026addRaftEndpointAddress\022$.proto.Add" +
-      "RaftEndpointAddressRequest\032%.proto.AddRa" +
-      "ftEndpointAddressResponse\"\000\022R\n\017addRaftEn" +
-      "dpoint\022\035.proto.AddRaftEndpointRequest\032\036." +
-      "proto.AddRaftEndpointResponse\"\000\022[\n\022remov" +
-      "eRaftEndpoint\022 .proto.RemoveRaftEndpoint" +
-      "Request\032!.proto.RemoveRaftEndpointRespon" +
-      "se\"\000B\021\n\rcluster.protoP\001b\006proto3"
+      "bersCommitIndex\030\001 \001(\003*E\n\rRaftRoleProto\022\n" +
+      "\n\006LEADER\020\000\022\r\n\tCANDIDATE\020\001\022\014\n\010FOLLOWER\020\002\022" +
+      "\013\n\007LEARNER\020\003*\236\001\n\031RaftNodeReportReasonPro" +
+      "to\022\021\n\rSTATUS_CHANGE\020\000\022\017\n\013ROLE_CHANGE\020\001\022\030" +
+      "\n\024GROUP_MEMBERS_CHANGE\020\002\022\021\n\rTAKE_SNAPSHO" +
+      "T\020\003\022\024\n\020INSTALL_SNAPSHOT\020\004\022\014\n\010PERIODIC\020\005\022" +
+      "\014\n\010API_CALL\020\006*c\n\023RaftNodeStatusProto\022\013\n\007" +
+      "INITIAL\020\000\022\n\n\006ACTIVE\020\001\022#\n\037UPDATING_RAFT_G" +
+      "ROUP_MEMBER_LIST\020\002\022\016\n\nTERMINATED\020\0032\261\002\n\030M" +
+      "anagementRequestHandler\022X\n\021getRaftNodeRe" +
+      "port\022\037.proto.GetRaftNodeReportRequest\032 ." +
+      "proto.GetRaftNodeReportResponse\"\000\022g\n\026add" +
+      "RaftEndpointAddress\022$.proto.AddRaftEndpo" +
+      "intAddressRequest\032%.proto.AddRaftEndpoin" +
+      "tAddressResponse\"\000\022R\n\017addRaftEndpoint\022\035." +
+      "proto.AddRaftEndpointRequest\032\036.proto.Add" +
+      "RaftEndpointResponse\"\000B\021\n\rcluster.protoP" +
+      "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -234,18 +218,6 @@ public final class ClusterHealthManagement {
     internal_static_proto_AddRaftEndpointResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_AddRaftEndpointResponse_descriptor,
-        new java.lang.String[] { "GroupMembersCommitIndex", });
-    internal_static_proto_RemoveRaftEndpointRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_proto_RemoveRaftEndpointRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_RemoveRaftEndpointRequest_descriptor,
-        new java.lang.String[] { "Endpoint", "GroupMembersCommitIndex", });
-    internal_static_proto_RemoveRaftEndpointResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_proto_RemoveRaftEndpointResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_RemoveRaftEndpointResponse_descriptor,
         new java.lang.String[] { "GroupMembersCommitIndex", });
     cluster.proto.RaftRpc.getDescriptor();
   }

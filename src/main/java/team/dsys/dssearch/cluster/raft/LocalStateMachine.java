@@ -39,6 +39,12 @@ public class LocalStateMachine implements StateMachine {
         this.raftNodeEndpoint = raftEndpoint;
     }
 
+    /**
+     * Microraft will finally call runOperation on every node when applying entries
+     * @param commitIndex
+     * @param operation
+     * @return
+     */
     @Override
     public Object runOperation(long commitIndex, @Nonnull Object operation) {
         requireNonNull(operation);
@@ -54,9 +60,10 @@ public class LocalStateMachine implements StateMachine {
                 + " at commit index: " + commitIndex);
     }
 
-    private PutResult put(long commitIndex, PutOp op) {
+    //do local put operation
+    private PutOpResult put(long commitIndex, PutOp op) {
         Val oldVal = op.getPutIfAbsent() ? map.putIfAbsent(op.getKey(), op.getVal()) : map.put(op.getKey(), op.getVal());
-        PutResult.Builder builder = PutResult.newBuilder();
+        PutOpResult.Builder builder = PutOpResult.newBuilder();
         if (oldVal != null) {
             builder.setOldVal(oldVal);
         }
@@ -64,8 +71,8 @@ public class LocalStateMachine implements StateMachine {
         return builder.build();
     }
 
-    private GetResult get(long commitIndex, GetOp op) {
-        GetResult.Builder builder = GetResult.newBuilder();
+    private GetOpResult get(long commitIndex, GetOp op) {
+        GetOpResult.Builder builder = GetOpResult.newBuilder();
         Val val = map.get(op.getKey());
         if (val != null) {
             builder.setVal(val);
@@ -74,8 +81,8 @@ public class LocalStateMachine implements StateMachine {
         return builder.build();
     }
 
-    private RemoveResult remove(long commitIndex, RemoveOp op) {
-        RemoveResult.Builder builder = RemoveResult.newBuilder();
+    private RemoveOpResult remove(long commitIndex, RemoveOp op) {
+        RemoveOpResult.Builder builder = RemoveOpResult.newBuilder();
         boolean success = false;
         if (op.hasVal()) {
             success = map.remove(op.getKey(), op.getVal());
@@ -91,6 +98,7 @@ public class LocalStateMachine implements StateMachine {
     }
 
 
+    //create snapshot chunk data
     @Override
     public void takeSnapshot(long commitIndex, Consumer<Object> snapshotChunkConsumer) {
         ClusterSnapshotChunkData.Builder chunkBuilder = ClusterSnapshotChunkData.newBuilder();
@@ -116,6 +124,7 @@ public class LocalStateMachine implements StateMachine {
                 keyCount, commitIndex);
     }
 
+    //install snapshot chunk data
     @Override
     public void installSnapshot(long commitIndex, @Nonnull List<Object> snapshotChunks) {
         map.clear();

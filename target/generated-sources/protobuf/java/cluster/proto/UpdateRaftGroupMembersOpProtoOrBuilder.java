@@ -8,44 +8,24 @@ public interface UpdateRaftGroupMembersOpProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   java.util.List<cluster.proto.RaftEndpointProto> 
       getMemberList();
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   cluster.proto.RaftEndpointProto getMember(int index);
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   int getMemberCount();
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   java.util.List<? extends cluster.proto.RaftEndpointProtoOrBuilder> 
       getMemberOrBuilderList();
   /**
-   * <pre>
-   *original data type: Collection&lt;RaftEndpoint&gt;, in our design, raftendpoint represented by a string
-   * </pre>
-   *
    * <code>repeated .proto.RaftEndpointProto member = 1;</code>
    */
   cluster.proto.RaftEndpointProtoOrBuilder getMemberOrBuilder(

@@ -63,12 +63,14 @@ public class ServerJoiner implements Supplier<ClusterServiceImpl> {
         String localAddress = config.getNodeEndpointConfig().getAddress();
         AddRaftEndpointAddressRequest request = AddRaftEndpointAddressRequest.newBuilder()
                 .setEndpoint(localEndpoint).setAddress(localAddress).build();
-
+        //send add server request to each server in previous cluster
+        //According to Microraft's documentation, before adding raftEndpoint, endpoint's address must be added to
+        //every node's address info
         for (RaftEndpointProto endpoint : reportResponse.getReport().getEffectiveMembers().getMemberList()) {
             String address = reportResponse.getEndpointAddressOrDefault(endpoint.getId(), null);
             broadcastLocalAddress(request, endpoint, address);
         }
-
+        //send addraftendpoint request only to leader to trigger membership change
         addRaftEndpoint(reportResponse);
 
         LOGGER.info("{} joined to the Raft group. server is created with initial endpoints: {} and "
@@ -119,12 +121,14 @@ public class ServerJoiner implements Supplier<ClusterServiceImpl> {
         }
     }
 
+
     private void broadcastLocalAddress(AddRaftEndpointAddressRequest request, RaftEndpointProto target,
                                        String targetAddress) {
         LOGGER.info("{} sending local address: {} to {} at {}", localEndpoint.getId(), request.getAddress(),
                 target.getId(), targetAddress);
         ManagedChannel channel = createChannel(targetAddress);
         try {
+            //connect to @ManagementRequestHandlerGrpc stub to send addRaftEndpointAddress request(proto defined in @ClusterHealthManagement.proto
             ManagementRequestHandlerGrpc.newBlockingStub(channel).addRaftEndpointAddress(request);
         } catch (Throwable t) {
             throw new ClusterServerException("Could not add Raft endpoint address to " + target + " at " + targetAddress,
@@ -148,6 +152,7 @@ public class ServerJoiner implements Supplier<ClusterServiceImpl> {
         AddRaftEndpointRequest request = AddRaftEndpointRequest.newBuilder().setEndpoint(localEndpoint)
                 .setVotingMember(votingMember).setGroupMembersCommitIndex(groupMembersCommitIndex).build();
         try {
+            //send addraftendpoint request only to leader
             ManagementRequestHandlerGrpc.newBlockingStub(leaderChannel).addRaftEndpoint(request);
         } catch (Throwable t) {
             throw new ClusterServerException(localEndpoint.getId() + " failure during add Raft endpoint via the Raft "

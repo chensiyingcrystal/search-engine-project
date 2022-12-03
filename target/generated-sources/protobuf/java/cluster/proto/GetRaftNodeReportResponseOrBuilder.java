@@ -9,8 +9,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
 
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -19,8 +18,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
   boolean hasReport();
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -29,8 +27,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
   cluster.proto.RaftNodeReportProto getReport();
   /**
    * <pre>
-   * RaftNodeReport fetched from the RaftNode object running in the contacted
-   * AfloatDB instance.
+   * RaftNodeReport fetched from the RaftNode object running in the contacted instance.
    * </pre>
    *
    * <code>.proto.RaftNodeReportProto report = 1;</code>
@@ -39,7 +36,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
 
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -47,7 +44,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
   int getEndpointAddressCount();
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -62,7 +59,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
   getEndpointAddress();
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -71,7 +68,7 @@ public interface GetRaftNodeReportResponseOrBuilder extends
   getEndpointAddressMap();
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>
@@ -84,7 +81,7 @@ java.lang.String getEndpointAddressOrDefault(
 java.lang.String defaultValue);
   /**
    * <pre>
-   * RaftEndpoint -&gt; address pairs known by a contacted AfloatDB instance.
+   * RaftEndpoint -&gt; address pairs known by a contacted instance.
    * </pre>
    *
    * <code>map&lt;string, string&gt; endpointAddress = 2;</code>

@@ -108,37 +108,6 @@ public final class ManagementRequestHandlerGrpc {
     return getAddRaftEndpointMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cluster.proto.RemoveRaftEndpointRequest,
-      cluster.proto.RemoveRaftEndpointResponse> getRemoveRaftEndpointMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "removeRaftEndpoint",
-      requestType = cluster.proto.RemoveRaftEndpointRequest.class,
-      responseType = cluster.proto.RemoveRaftEndpointResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.proto.RemoveRaftEndpointRequest,
-      cluster.proto.RemoveRaftEndpointResponse> getRemoveRaftEndpointMethod() {
-    io.grpc.MethodDescriptor<cluster.proto.RemoveRaftEndpointRequest, cluster.proto.RemoveRaftEndpointResponse> getRemoveRaftEndpointMethod;
-    if ((getRemoveRaftEndpointMethod = ManagementRequestHandlerGrpc.getRemoveRaftEndpointMethod) == null) {
-      synchronized (ManagementRequestHandlerGrpc.class) {
-        if ((getRemoveRaftEndpointMethod = ManagementRequestHandlerGrpc.getRemoveRaftEndpointMethod) == null) {
-          ManagementRequestHandlerGrpc.getRemoveRaftEndpointMethod = getRemoveRaftEndpointMethod =
-              io.grpc.MethodDescriptor.<cluster.proto.RemoveRaftEndpointRequest, cluster.proto.RemoveRaftEndpointResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "removeRaftEndpoint"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.RemoveRaftEndpointRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.proto.RemoveRaftEndpointResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ManagementRequestHandlerMethodDescriptorSupplier("removeRaftEndpoint"))
-              .build();
-        }
-      }
-    }
-    return getRemoveRaftEndpointMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -212,32 +181,16 @@ public final class ManagementRequestHandlerGrpc {
 
     /**
      * <pre>
-     * Adds a new server to the cluster. The new
-     * server is represented by the RaftEndpoint present in the request.
-     * Once this API call succeeds, the given server is added to the
-     * cluster, i.e., it will be contacted by the other servers.
-     * If an exception or an unexpected failure occurs, the caller should get
-     * the RaftNodeReport via #getRaftNodeReport() API above and check if the
-     * given server has been added to the cluster or not, and retry if needed.
+     * Adds a new server to the cluster.
+     * When this api is called, microraft will trigger corresponding membershipchange request
+     *note that this request is only sent to the leader
+     *before calling this, every current node must have raftendpoint address of the adding node
+     *This can be implemented at the method above
      * </pre>
      */
     public void addRaftEndpoint(cluster.proto.AddRaftEndpointRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.AddRaftEndpointResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddRaftEndpointMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Removes the given server from the cluster. Once this call
-     * succeeds, the server is removed from the cluster.
-     * If an exception or an unexpected failure occurs, the caller should get the
-     * RaftNodeReport via #getRaftNodeReport() API above and check if the given
-     * server has been removed from the cluster or not, and retry if needed.
-     * </pre>
-     */
-    public void removeRaftEndpoint(cluster.proto.RemoveRaftEndpointRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.RemoveRaftEndpointResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveRaftEndpointMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -263,13 +216,6 @@ public final class ManagementRequestHandlerGrpc {
                 cluster.proto.AddRaftEndpointRequest,
                 cluster.proto.AddRaftEndpointResponse>(
                   this, METHODID_ADD_RAFT_ENDPOINT)))
-          .addMethod(
-            getRemoveRaftEndpointMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.proto.RemoveRaftEndpointRequest,
-                cluster.proto.RemoveRaftEndpointResponse>(
-                  this, METHODID_REMOVE_RAFT_ENDPOINT)))
           .build();
     }
   }
@@ -315,34 +261,17 @@ public final class ManagementRequestHandlerGrpc {
 
     /**
      * <pre>
-     * Adds a new server to the cluster. The new
-     * server is represented by the RaftEndpoint present in the request.
-     * Once this API call succeeds, the given server is added to the
-     * cluster, i.e., it will be contacted by the other servers.
-     * If an exception or an unexpected failure occurs, the caller should get
-     * the RaftNodeReport via #getRaftNodeReport() API above and check if the
-     * given server has been added to the cluster or not, and retry if needed.
+     * Adds a new server to the cluster.
+     * When this api is called, microraft will trigger corresponding membershipchange request
+     *note that this request is only sent to the leader
+     *before calling this, every current node must have raftendpoint address of the adding node
+     *This can be implemented at the method above
      * </pre>
      */
     public void addRaftEndpoint(cluster.proto.AddRaftEndpointRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.AddRaftEndpointResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddRaftEndpointMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Removes the given server from the cluster. Once this call
-     * succeeds, the server is removed from the cluster.
-     * If an exception or an unexpected failure occurs, the caller should get the
-     * RaftNodeReport via #getRaftNodeReport() API above and check if the given
-     * server has been removed from the cluster or not, and retry if needed.
-     * </pre>
-     */
-    public void removeRaftEndpoint(cluster.proto.RemoveRaftEndpointRequest request,
-        io.grpc.stub.StreamObserver<cluster.proto.RemoveRaftEndpointResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRemoveRaftEndpointMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -385,32 +314,16 @@ public final class ManagementRequestHandlerGrpc {
 
     /**
      * <pre>
-     * Adds a new server to the cluster. The new
-     * server is represented by the RaftEndpoint present in the request.
-     * Once this API call succeeds, the given server is added to the
-     * cluster, i.e., it will be contacted by the other servers.
-     * If an exception or an unexpected failure occurs, the caller should get
-     * the RaftNodeReport via #getRaftNodeReport() API above and check if the
-     * given server has been added to the cluster or not, and retry if needed.
+     * Adds a new server to the cluster.
+     * When this api is called, microraft will trigger corresponding membershipchange request
+     *note that this request is only sent to the leader
+     *before calling this, every current node must have raftendpoint address of the adding node
+     *This can be implemented at the method above
      * </pre>
      */
     public cluster.proto.AddRaftEndpointResponse addRaftEndpoint(cluster.proto.AddRaftEndpointRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddRaftEndpointMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Removes the given server from the cluster. Once this call
-     * succeeds, the server is removed from the cluster.
-     * If an exception or an unexpected failure occurs, the caller should get the
-     * RaftNodeReport via #getRaftNodeReport() API above and check if the given
-     * server has been removed from the cluster or not, and retry if needed.
-     * </pre>
-     */
-    public cluster.proto.RemoveRaftEndpointResponse removeRaftEndpoint(cluster.proto.RemoveRaftEndpointRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRemoveRaftEndpointMethod(), getCallOptions(), request);
     }
   }
 
@@ -455,13 +368,11 @@ public final class ManagementRequestHandlerGrpc {
 
     /**
      * <pre>
-     * Adds a new server to the cluster. The new
-     * server is represented by the RaftEndpoint present in the request.
-     * Once this API call succeeds, the given server is added to the
-     * cluster, i.e., it will be contacted by the other servers.
-     * If an exception or an unexpected failure occurs, the caller should get
-     * the RaftNodeReport via #getRaftNodeReport() API above and check if the
-     * given server has been added to the cluster or not, and retry if needed.
+     * Adds a new server to the cluster.
+     * When this api is called, microraft will trigger corresponding membershipchange request
+     *note that this request is only sent to the leader
+     *before calling this, every current node must have raftendpoint address of the adding node
+     *This can be implemented at the method above
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cluster.proto.AddRaftEndpointResponse> addRaftEndpoint(
@@ -469,27 +380,11 @@ public final class ManagementRequestHandlerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddRaftEndpointMethod(), getCallOptions()), request);
     }
-
-    /**
-     * <pre>
-     * Removes the given server from the cluster. Once this call
-     * succeeds, the server is removed from the cluster.
-     * If an exception or an unexpected failure occurs, the caller should get the
-     * RaftNodeReport via #getRaftNodeReport() API above and check if the given
-     * server has been removed from the cluster or not, and retry if needed.
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.proto.RemoveRaftEndpointResponse> removeRaftEndpoint(
-        cluster.proto.RemoveRaftEndpointRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRemoveRaftEndpointMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_GET_RAFT_NODE_REPORT = 0;
   private static final int METHODID_ADD_RAFT_ENDPOINT_ADDRESS = 1;
   private static final int METHODID_ADD_RAFT_ENDPOINT = 2;
-  private static final int METHODID_REMOVE_RAFT_ENDPOINT = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -519,10 +414,6 @@ public final class ManagementRequestHandlerGrpc {
         case METHODID_ADD_RAFT_ENDPOINT:
           serviceImpl.addRaftEndpoint((cluster.proto.AddRaftEndpointRequest) request,
               (io.grpc.stub.StreamObserver<cluster.proto.AddRaftEndpointResponse>) responseObserver);
-          break;
-        case METHODID_REMOVE_RAFT_ENDPOINT:
-          serviceImpl.removeRaftEndpoint((cluster.proto.RemoveRaftEndpointRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.proto.RemoveRaftEndpointResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -588,7 +479,6 @@ public final class ManagementRequestHandlerGrpc {
               .addMethod(getGetRaftNodeReportMethod())
               .addMethod(getAddRaftEndpointAddressMethod())
               .addMethod(getAddRaftEndpointMethod())
-              .addMethod(getRemoveRaftEndpointMethod())
               .build();
         }
       }

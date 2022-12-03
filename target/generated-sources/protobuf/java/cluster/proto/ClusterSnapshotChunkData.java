@@ -4,6 +4,10 @@
 package cluster.proto;
 
 /**
+ * <pre>
+ *Below are referenced from Microraft internal definition
+ * </pre>
+ *
  * Protobuf type {@code proto.ClusterSnapshotChunkData}
  */
 public final class ClusterSnapshotChunkData extends
@@ -242,6 +246,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Below are referenced from Microraft internal definition
+   * </pre>
+   *
    * Protobuf type {@code proto.ClusterSnapshotChunkData}
    */
   public static final class Builder extends

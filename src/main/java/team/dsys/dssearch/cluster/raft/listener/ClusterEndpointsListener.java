@@ -29,6 +29,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.CONFIG_KEY;
 import static team.dsys.dssearch.cluster.module.ClusterServiceModule.NODE_ENDPOINT_KEY;
 
+/**
+ * Implement clusterListenerService and RaftNodeReportSupplier
+ */
 @Singleton
 public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterListenServiceImplBase
         implements RaftNodeReportSupplier {
@@ -52,7 +55,7 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         this.raftNodeReportIdlePublishTimestamp = System.currentTimeMillis() - CLUSTER_ENDPOINTS_IDLE_PUBLISH_DURATION_MILLIS;
     }
 
-
+//for client to connect to the cluster, get cluster nodeEndpoint info
     @Override
     public void listenClusterEndpoints(ClusterEndpointsRequest request,
                                        StreamObserver<ClusterEndpointsResponse> responseObserver) {
