@@ -20,6 +20,7 @@ message PutRequest {
   bool putIfAbsent = 3;
 }
 
+
 message PutResult {
   Val oldVal = 1;
 }
@@ -31,6 +32,7 @@ message GetRequest {
 
 message GetResult {
   Val val = 1;
+
 }
 
 message RemoveRequest {
@@ -51,9 +53,48 @@ message ShardResponse {
     RemoveResult removeResult = 5;
   };
 }
+////connect
+//message ConnectRequest {
+//  string address = 1;
+//  int32 nodeId = 2; //(server节点id)
+//}
+//
+//message ConnectResponse {
+//  //1. 集群信息(更新leader信息）
+//  //2. 数据节点分片信息（数据节点，地址，每个节点的分片信息（分片id 主/从 status））
+//}
+//
+////put
+//message PutShardRequest {
+//  int32 dataNodeId = 1;
+//  string address = 2; //(localhost:6701)
+//  string shardId = 3;//(多个）
+//  bool isPrimary = 4;
+//}
+//
+//message CommonResponse {
+//  int32 status = 1; //响应码（0：success -1：error）
+//  string msg = 2; //响应信息
+//}
+//
+////get
+//message GetShardRequest {
+//  int32 shardId = 1; //(多个)
+//}
+//
+//message GetShardResponse {
+//  //随机pick分片所在的节点，返回节点所在信息
+//  int32 dataNodeId = 1;
+//  string address = 2;
+//}
+
 
 service ShardRequestHandler {
+//  rpc connect (ConnectRequest) returns (ConnectResponse);
+//  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
+//  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
   rpc put (PutRequest) returns (ShardResponse);
   rpc get (GetRequest) returns (ShardResponse);
   rpc remove (RemoveRequest) returns (ShardResponse);
+
 }

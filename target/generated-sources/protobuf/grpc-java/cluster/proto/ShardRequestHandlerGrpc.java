@@ -157,6 +157,11 @@ public final class ShardRequestHandlerGrpc {
   public static abstract class ShardRequestHandlerImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *  rpc connect (ConnectRequest) returns (ConnectResponse);
+     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
+     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
+     * </pre>
      */
     public void put(cluster.proto.PutRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
@@ -219,6 +224,11 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
+     * <pre>
+     *  rpc connect (ConnectRequest) returns (ConnectResponse);
+     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
+     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
+     * </pre>
      */
     public void put(cluster.proto.PutRequest request,
         io.grpc.stub.StreamObserver<cluster.proto.ShardResponse> responseObserver) {
@@ -258,6 +268,11 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
+     * <pre>
+     *  rpc connect (ConnectRequest) returns (ConnectResponse);
+     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
+     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
+     * </pre>
      */
     public cluster.proto.ShardResponse put(cluster.proto.PutRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -294,6 +309,11 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
+     * <pre>
+     *  rpc connect (ConnectRequest) returns (ConnectResponse);
+     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
+     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cluster.proto.ShardResponse> put(
         cluster.proto.PutRequest request) {

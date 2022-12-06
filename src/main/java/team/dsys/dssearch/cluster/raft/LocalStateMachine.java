@@ -29,8 +29,10 @@ public class LocalStateMachine implements StateMachine {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(LocalStateMachine.class);
     //in-memory map to keep shard status and node status
-    // use linkedhashp map to keep the insertion order
+    // use linkedhash map to keep the insertion order
     private final Map<String, Val> map = new LinkedHashMap<>();
+    //store shard information
+    //
 
     private final RaftEndpoint raftNodeEndpoint;
 

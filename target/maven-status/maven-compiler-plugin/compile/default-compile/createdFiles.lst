@@ -4,6 +4,7 @@ team/dsys/dssearch/cluster/ClusterServiceImpl$1.class
 cluster/proto/RaftGroupMembersViewProto.class
 team/dsys/dssearch/cluster/config/ClusterConfig.class
 cluster/proto/ShardRequestHandlerGrpc$1.class
+team/dsys/dssearch/internal/common/ClusterServiceManager.class
 cluster/proto/PutResult.class
 cluster/proto/InstallSnapshotResponseProto$1.class
 cluster/proto/AddRaftEndpointAddressResponseOrBuilder.class
@@ -89,12 +90,14 @@ cluster/proto/RaftCommunicationServiceGrpc$3.class
 cluster/proto/GetRequestOrBuilder.class
 cluster/proto/AddRaftEndpointResponseOrBuilder.class
 cluster/proto/GetOpResult.class
+team/dsys/dssearch/internal/common/impl/ClusterServiceManagerImpl.class
 cluster/proto/RaftCommunicationServiceGrpc.class
 cluster/proto/SnapshotEntryProto$Builder.class
 team/dsys/dssearch/cluster/raft/impl/message/InstallSnapshotRequestOrBuilder.class
 cluster/proto/ShardResponseOrBuilder.class
 cluster/proto/RaftNodeReportProto$Builder.class
 team/dsys/dssearch/cluster/rpc/impl/ClusterHealthManagementHandler.class
+team/dsys/dssearch/internal/common/config/ClusterServerCommonConfig.class
 cluster/proto/ShardRequestHandlerGrpc$MethodHandlers.class
 cluster/proto/VoteRequestProto$1.class
 cluster/proto/RaftTermProto$1.class
@@ -121,6 +124,7 @@ cluster/proto/ShardRequestHandlerGrpc$ShardRequestHandlerBaseDescriptorSupplier.
 cluster/proto/SnapshotEntryProtoOrBuilder.class
 cluster/proto/AddRaftEndpointAddressRequest$1.class
 cluster/proto/ShardRequestHandlerGrpc$3.class
+team/dsys/dssearch/internal/common/message/CommonResponse.class
 cluster/proto/GetRaftNodeReportRequestOrBuilder.class
 cluster/proto/RemoveOpResult$1.class
 team/dsys/dssearch/cluster/config/NodeEndpointConfig.class
@@ -147,6 +151,7 @@ cluster/proto/StartNewTermOpProto$1.class
 cluster/proto/AddRaftEndpointRequestOrBuilder.class
 cluster/proto/GetRaftNodeReportResponseOrBuilder.class
 cluster/proto/VoteRequestProtoOrBuilder.class
+team/dsys/dssearch/internal/common/message/GetShardRequest.class
 cluster/proto/UpdateRaftGroupMembersOpProto.class
 cluster/proto/InstallSnapshotResponseProtoOrBuilder.class
 cluster/proto/RaftMessageRequest$MessageCase.class
@@ -267,6 +272,7 @@ cluster/proto/PreVoteRequestProto$Builder.class
 team/dsys/dssearch/cluster/client/ClientTest.class
 cluster/proto/ShardResponse.class
 cluster/proto/RaftMessageResponse.class
+team/dsys/dssearch/internal/common/message/GetShardResponse.class
 cluster/proto/RaftCommunicationServiceGrpc$RaftCommunicationServiceStub.class
 cluster/proto/RaftEndpointProtoOrBuilder.class
 cluster/proto/GetOp$1.class
@@ -321,6 +327,7 @@ cluster/proto/ClusterSnapshotChunk$1.class
 cluster/proto/PutResultOrBuilder.class
 cluster/proto/ClusterListenServiceGrpc$2.class
 cluster/proto/RemoveOp$Builder.class
+team/dsys/dssearch/internal/common/message/PutShardRequest.class
 cluster/proto/GetOp.class
 cluster/proto/RaftTermProto$Builder.class
 cluster/proto/ClusterEndpointsResponse$Builder.class

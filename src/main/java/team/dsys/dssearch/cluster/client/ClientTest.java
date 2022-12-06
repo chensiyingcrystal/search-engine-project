@@ -13,6 +13,9 @@ import java.util.concurrent.TimeUnit;
  * @ShardRequestHandlerGrpc is the grpc file auto generated for proto file @ShardRequest.proto
  *
  */
+// connect
+    //get
+    //put
 public class ClientTest {
     private final ShardRequestHandlerGrpc.ShardRequestHandlerBlockingStub blockingStub;
 
@@ -48,15 +51,21 @@ public class ClientTest {
     }
 
     public static void main(String[] args) throws Exception {
-        String target = "localhost:6701";
-        ManagedChannel channel = ManagedChannelBuilder.forTarget(target)
+        //1. connect to any node in the cluster and get leader address
+        GetRaftNodeReportResponse reportResponse = getReport("localhost:6701");
+        RaftNodeReportProto report = reportResponse.getReport();
+        RaftEndpointProto leaderEndpoint = report.getTerm().getLeaderEndpoint();
+        String leaderAddress = reportResponse.getEndpointAddressOrDefault(leaderEndpoint.getId(), null);
+
+        //2.connect to leader and send put/get request
+        ManagedChannel leaderChannel = ManagedChannelBuilder.forTarget(leaderAddress)
                 // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
                 // needing certificates.
                 .usePlaintext()
                 .build();
 
         try {
-            ClientTest client = new ClientTest(channel);
+            ClientTest client = new ClientTest(leaderChannel);
 
             client.sendPut();
             client.sendGet();
@@ -64,8 +73,21 @@ public class ClientTest {
             // ManagedChannels use resources like threads and TCP connections. To prevent leaking these
             // resources the channel should be shut down when it will no longer be used. If it may be used
             // again leave it running.
-            channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+            leaderChannel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
         }
+    }
+
+    private static GetRaftNodeReportResponse getReport(String address) {
+        ManagedChannel reportChannel = ManagedChannelBuilder.forTarget(address).usePlaintext().disableRetry().directExecutor().build();;
+        GetRaftNodeReportResponse reportResponse;
+        try {
+            reportResponse = ManagementRequestHandlerGrpc.newBlockingStub(reportChannel)
+                    .getRaftNodeReport(GetRaftNodeReportRequest.getDefaultInstance());
+        } finally {
+            reportChannel.shutdownNow();
+        }
+
+        return reportResponse;
     }
 
 
