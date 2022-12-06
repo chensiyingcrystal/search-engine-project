@@ -1,9 +1,9 @@
 package team.dsys.dssearch.cluster.raft.listener;
 
-import cluster.proto.ClusterEndpointsInfo;
-import cluster.proto.ClusterEndpointsRequest;
-import cluster.proto.ClusterEndpointsResponse;
-import cluster.proto.ClusterListenServiceGrpc;
+import cluster.external.listener.proto.ClusterEndpointsInfo;
+import cluster.external.listener.proto.ClusterEndpointsRequest;
+import cluster.external.listener.proto.ClusterEndpointsResponse;
+import cluster.external.listener.proto.ClusterListenServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import io.microraft.RaftEndpoint;
 import io.microraft.report.RaftGroupMembers;

@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.raft.impl.log;
 
-import cluster.proto.SnapshotEntryProto;
+import cluster.internal.raft.proto.SnapshotEntryProto;
 import io.microraft.model.log.RaftGroupMembersView;
 import io.microraft.model.log.SnapshotChunk;
 import io.microraft.model.log.SnapshotEntry;

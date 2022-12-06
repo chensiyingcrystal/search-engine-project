@@ -1,27 +1,36 @@
 package team.dsys.dssearch.internal.common.impl;
 
-import cluster.proto.*;
+import cluster.external.listener.proto.ClusterEndpointsInfo;
+import cluster.external.listener.proto.ClusterEndpointsRequest;
+import cluster.external.listener.proto.ClusterEndpointsResponse;
+import cluster.external.listener.proto.ClusterListenServiceGrpc;
+import cluster.external.shard.proto.*;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.rpc.Help;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import team.dsys.dssearch.internal.common.ClusterServiceManager;
 import team.dsys.dssearch.internal.common.config.ClusterServerCommonConfig;
-import team.dsys.dssearch.internal.common.message.CommonResponse;
-import team.dsys.dssearch.internal.common.message.GetShardRequest;
-import team.dsys.dssearch.internal.common.message.GetShardResponse;
-import team.dsys.dssearch.internal.common.message.PutShardRequest;
 
-import java.net.InetSocketAddress;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.google.common.base.Throwables.getRootCause;
+import static java.util.concurrent.Executors.newSingleThreadScheduledExecutor;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
@@ -34,6 +43,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     private final AtomicReference<ClusterEndpointsInfo> clusterEndpointsInfoCache = new AtomicReference<>(); //update the value atomically(e.g., thread-safe)
     private volatile LeaderStub leaderStub;
     private static final long CREATE_STUB_TIME_LIMIT = SECONDS.toMillis(60);
+    private final ScheduledExecutorService executor = newSingleThreadScheduledExecutor();
 
 
     public ClusterServiceManagerImpl(Integer dataNodeId, String configFilePath) throws TimeoutException {
@@ -154,15 +164,76 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     }
 
     @Override
-    public CommonResponse putShardInfo(PutShardRequest request) {
-        return null;
+    public ShardResponse putShardInfo(PutRequest request) {
+        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub) -> {
+            return stub.put(request);
+        }).join();
+        return response;
     }
 
     @Override
-    public GetShardResponse getShardInfo(GetShardRequest request) {
+    public ShardResponse getShardInfo(GetRequest request) {
         //randomly pick node where the shard exists
-        return null;
+        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub) -> {
+            return stub.get(request);
+        }).join();
+        return response;
     }
+
+    private CompletableFuture<ShardResponse> callHelper(
+            Function<ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub, ListenableFuture<ShardResponse>> func) {
+        return new Helper(func).implmentCall();
+    }
+
+    private class Helper {
+        final CompletableFuture<ShardResponse> future = new CompletableFuture<>();
+        final Function<ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub, ListenableFuture<ShardResponse>> func;
+
+        Helper(Function<ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub, ListenableFuture<ShardResponse>> func) {
+            this.func = func;
+        }
+
+        private CompletableFuture<ShardResponse> implmentCall() {
+            if (leaderStub == null) {
+                executor.schedule(this::implmentCall, 10, MILLISECONDS);
+                return future;
+            }
+
+            ListenableFuture<ShardResponse> rawFuture = func.apply(leaderStub.stub);
+            rawFuture.addListener(new Runnable() {
+                @Override
+                public void run() {
+                    handleRpcResult(rawFuture);
+                }
+            }, executor);
+
+            return future;
+        }
+
+        void handleRpcResult(ListenableFuture<ShardResponse> rawFuture) {
+            try {
+                future.complete(rawFuture.get());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                future.completeExceptionally(e);
+            } catch (ExecutionException e) {
+                Throwable t = getRootCause(e);
+
+                if (t instanceof StatusRuntimeException && t.getMessage().contains("RAFT_ERROR")) {
+                    StatusRuntimeException ex = (StatusRuntimeException) t;
+                    if (ex.getStatus().getCode() == Status.Code.FAILED_PRECONDITION
+                            || ex.getStatus().getCode() == Status.Code.RESOURCE_EXHAUSTED) {
+                        executor.schedule(this::implmentCall, 10, MILLISECONDS);
+                        return;
+                    }
+                }
+
+                future.completeExceptionally(new RuntimeException(t));
+            }
+        }
+    }
+
+
 
 
 
@@ -170,6 +241,11 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
         String p = "/Users/chensiying/cs61b/search-engine-project/src/main/java/team/dsys/dssearch/internal/common/config/cluster.conf";
         ClusterServiceManagerImpl manager = new ClusterServiceManagerImpl(1, p);
         System.out.println(manager.getClusterReport());
+
+        PutRequest req = PutRequest.newBuilder().setKey("apple").setVal(Val.newBuilder().setNum(1500).build()).setPutIfAbsent(true).build();
+        System.out.println(manager.putShardInfo(req));
+        GetRequest req2 = GetRequest.newBuilder().setKey("apple").build();
+        System.out.println(manager.getShardInfo(req2));
 
     }
 }

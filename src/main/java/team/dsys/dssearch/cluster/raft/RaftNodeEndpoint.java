@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.raft;
 
-import cluster.proto.RaftEndpointProto;
+import cluster.internal.raft.proto.RaftEndpointProto;
 import io.microraft.RaftEndpoint;
 
 import javax.annotation.Nonnull;

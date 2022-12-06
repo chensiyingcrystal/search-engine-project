@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.log;
 
-import cluster.proto.ClusterSnapshotChunk;
-import cluster.proto.ClusterSnapshotChunkData;
+import cluster.internal.raft.proto.ClusterSnapshotChunk;
+import cluster.internal.raft.proto.ClusterSnapshotChunkData;
 import io.microraft.model.log.RaftGroupMembersView;
 import io.microraft.model.log.SnapshotChunk;
 import io.microraft.model.log.SnapshotChunk.SnapshotChunkBuilder;

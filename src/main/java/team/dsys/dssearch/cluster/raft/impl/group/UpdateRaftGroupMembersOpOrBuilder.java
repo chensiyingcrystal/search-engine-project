@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.raft.impl.group;
 
-import cluster.proto.UpdateRaftGroupMembersOpProto;
+import cluster.internal.raft.proto.UpdateRaftGroupMembersOpProto;
 import io.microraft.MembershipChangeMode;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.groupop.UpdateRaftGroupMembersOp;

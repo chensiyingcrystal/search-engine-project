@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.RaftMessageRequest;
-import cluster.proto.VoteRequestProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.VoteRequestProto;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.message.VoteRequest;
 import io.microraft.model.message.VoteRequest.VoteRequestBuilder;

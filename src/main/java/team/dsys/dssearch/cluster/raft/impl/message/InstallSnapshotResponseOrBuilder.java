@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.InstallSnapshotResponseProto;
-import cluster.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.InstallSnapshotResponseProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.message.InstallSnapshotResponse;
 import io.microraft.model.message.InstallSnapshotResponse.InstallSnapshotResponseBuilder;

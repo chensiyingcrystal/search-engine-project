@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package proto;
 
-option java_package = "cluster.proto";
+option java_package = "cluster.external.shard.proto";
 
 option java_multiple_files = true;
 
@@ -15,10 +15,16 @@ message Val {
   }
 }
 
+message ShardInfo {
+  string shardId = 3;
+  bool isPrimary = 4;
+}
+
 message PutRequest {
-  string key = 1;
-  Val val = 2;
-  bool putIfAbsent = 3;
+    int32 dataNodeId = 1;
+    string address = 2;
+    string shardId = 3;//(多个）
+    bool isPrimary = 4;
 }
 
 

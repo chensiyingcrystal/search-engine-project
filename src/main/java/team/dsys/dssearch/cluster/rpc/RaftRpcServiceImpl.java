@@ -1,8 +1,8 @@
 package team.dsys.dssearch.cluster.rpc;
 
-import cluster.proto.RaftCommunicationServiceGrpc;
-import cluster.proto.RaftMessageRequest;
-import cluster.proto.RaftMessageResponse;
+import cluster.internal.raft.proto.RaftCommunicationServiceGrpc;
+import cluster.internal.raft.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.RaftMessageResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;

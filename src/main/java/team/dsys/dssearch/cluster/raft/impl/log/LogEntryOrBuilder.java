@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.raft.impl.log;
 
-import cluster.proto.*;
+import cluster.internal.raft.proto.*;
 import io.microraft.model.log.LogEntry;
 import team.dsys.dssearch.cluster.raft.impl.group.UpdateRaftGroupMembersOpOrBuilder;
 

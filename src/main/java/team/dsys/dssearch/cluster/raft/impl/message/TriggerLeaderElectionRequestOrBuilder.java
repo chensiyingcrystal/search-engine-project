@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.RaftMessageRequest;
-import cluster.proto.TriggerLeaderElectionRequestProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.TriggerLeaderElectionRequestProto;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.message.TriggerLeaderElectionRequest;
 import io.microraft.model.message.TriggerLeaderElectionRequest.TriggerLeaderElectionRequestBuilder;

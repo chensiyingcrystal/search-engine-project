@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.raft.impl.log;
 
-import cluster.proto.RaftGroupMembersViewProto;
+import cluster.internal.raft.proto.RaftGroupMembersViewProto;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.log.RaftGroupMembersView;
 import io.microraft.model.log.RaftGroupMembersView.RaftGroupMembersViewBuilder;

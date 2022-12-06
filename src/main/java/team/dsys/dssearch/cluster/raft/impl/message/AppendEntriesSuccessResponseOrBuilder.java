@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.AppendEntriesSuccessResponseProto;
-import cluster.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.AppendEntriesSuccessResponseProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.message.AppendEntriesSuccessResponse;
 import team.dsys.dssearch.cluster.raft.RaftNodeEndpoint;

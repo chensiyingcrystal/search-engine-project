@@ -1,6 +1,7 @@
 package team.dsys.dssearch.cluster.raft;
 
-import cluster.proto.*;
+import cluster.external.shard.proto.Val;
+import cluster.internal.raft.proto.*;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import io.microraft.RaftEndpoint;

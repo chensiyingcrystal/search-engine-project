@@ -1,6 +1,11 @@
 package team.dsys.dssearch.cluster.client;
 
-import cluster.proto.*;
+import cluster.external.shard.proto.*;
+import cluster.internal.management.proto.GetRaftNodeReportRequest;
+import cluster.internal.management.proto.GetRaftNodeReportResponse;
+import cluster.internal.management.proto.ManagementRequestHandlerGrpc;
+import cluster.internal.management.proto.RaftNodeReportProto;
+import cluster.internal.raft.proto.RaftEndpointProto;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

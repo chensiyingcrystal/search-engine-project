@@ -1,8 +1,8 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.ClusterSnapshotChunk;
-import cluster.proto.InstallSnapshotRequestProto;
-import cluster.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.ClusterSnapshotChunk;
+import cluster.internal.raft.proto.InstallSnapshotRequestProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.log.RaftGroupMembersView;
 import io.microraft.model.log.SnapshotChunk;

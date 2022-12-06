@@ -1,6 +1,7 @@
 package team.dsys.dssearch.cluster;
 
-import cluster.proto.*;
+import cluster.internal.management.proto.*;
+import cluster.internal.raft.proto.RaftEndpointProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.microraft.RaftEndpoint;

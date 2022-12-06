@@ -1,8 +1,9 @@
 package team.dsys.dssearch.cluster.module;
 
-import cluster.proto.ManagementRequestHandlerGrpc;
-import cluster.proto.RaftCommunicationServiceGrpc;
-import cluster.proto.ShardRequestHandlerGrpc;
+
+import cluster.external.shard.proto.ShardRequestHandlerGrpc;
+import cluster.internal.management.proto.ManagementRequestHandlerGrpc;
+import cluster.internal.raft.proto.RaftCommunicationServiceGrpc;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import io.microraft.RaftEndpoint;

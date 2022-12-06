@@ -1,19 +1,15 @@
 package team.dsys.dssearch.internal.common;
 
-import team.dsys.dssearch.internal.common.message.CommonResponse;
-import team.dsys.dssearch.internal.common.message.GetShardRequest;
-import team.dsys.dssearch.internal.common.message.GetShardResponse;
-import team.dsys.dssearch.internal.common.message.PutShardRequest;
-
-import java.net.InetSocketAddress;
-import java.util.Map;
+import cluster.external.shard.proto.GetRequest;
+import cluster.external.shard.proto.PutRequest;
+import cluster.external.shard.proto.ShardResponse;
 
 public interface ClusterServiceManager {
 
     String getClusterReport();
     String getShardReport();
-    CommonResponse putShardInfo(PutShardRequest request);
-    GetShardResponse getShardInfo(GetShardRequest request);
+    ShardResponse putShardInfo(PutRequest request);
+    ShardResponse getShardInfo(GetRequest request);
 
 
 

@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster;
 
-import cluster.proto.RaftEndpointProto;
+import cluster.internal.raft.proto.RaftEndpointProto;
 import io.microraft.RaftEndpoint;
 import team.dsys.dssearch.cluster.config.ClusterServiceConfig;
 import team.dsys.dssearch.cluster.config.NodeEndpointConfig;

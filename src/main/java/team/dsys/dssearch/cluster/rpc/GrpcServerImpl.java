@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.rpc;
 
-import cluster.proto.ClusterListenServiceGrpc;
+import cluster.external.listener.proto.ClusterListenServiceGrpc;
 import io.grpc.Server;
 import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
 import io.grpc.netty.shaded.io.netty.channel.EventLoopGroup;

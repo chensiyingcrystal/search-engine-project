@@ -1,6 +1,8 @@
 package team.dsys.dssearch.cluster.rpc.impl;
 
-import cluster.proto.*;
+
+import cluster.external.shard.proto.*;
+import cluster.internal.raft.proto.*;
 import io.grpc.stub.StreamObserver;
 import io.microraft.Ordered;
 import io.microraft.RaftNode;

@@ -1,8 +1,8 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.AppendEntriesRequestProto;
-import cluster.proto.LogEntryProto;
-import cluster.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.AppendEntriesRequestProto;
+import cluster.internal.raft.proto.LogEntryProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.log.LogEntry;
 import io.microraft.model.message.AppendEntriesRequest;

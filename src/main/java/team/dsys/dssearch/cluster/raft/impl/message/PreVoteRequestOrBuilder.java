@@ -1,7 +1,7 @@
 package team.dsys.dssearch.cluster.raft.impl.message;
 
-import cluster.proto.PreVoteRequestProto;
-import cluster.proto.RaftMessageRequest;
+import cluster.internal.raft.proto.PreVoteRequestProto;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftEndpoint;
 import io.microraft.model.message.PreVoteRequest;
 import io.microraft.model.message.PreVoteRequest.PreVoteRequestBuilder;

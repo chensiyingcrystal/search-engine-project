@@ -1,6 +1,7 @@
 package team.dsys.dssearch.cluster.rpc.utils;
 
-import cluster.proto.*;
+import cluster.internal.management.proto.*;
+import cluster.internal.raft.proto.RaftMessageRequest;
 import io.microraft.RaftNodeStatus;
 import io.microraft.RaftRole;
 import io.microraft.model.message.RaftMessage;

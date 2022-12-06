@@ -1,6 +1,6 @@
 package team.dsys.dssearch.cluster.rpc.impl;
 
-import cluster.proto.*;
+import cluster.internal.management.proto.*;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
