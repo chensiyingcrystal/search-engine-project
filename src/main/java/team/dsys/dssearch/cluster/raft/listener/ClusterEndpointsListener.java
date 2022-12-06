@@ -37,14 +37,14 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         implements RaftNodeReportSupplier {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClusterEndpointsListener.class);
-    private static final long CLUSTER_ENDPOINTS_IDLE_PUBLISH_DURATION_MILLIS = SECONDS.toMillis(30);
+    private static final long CLUSTER_ENDPOINTS_PERIODIC_PUBLISH_DURATION = SECONDS.toMillis(30);
 
     private final Map<String, StreamObserver<ClusterEndpointsResponse>> observers = new ConcurrentHashMap<>();
     private final ClusterServiceConfig config;
     private final RaftEndpoint nodeEndpoint;
     private final RaftRpcService raftRpcService;
-    private volatile RaftNodeReport lastReport;
-    private long raftNodeReportIdlePublishTimestamp;
+    private volatile RaftNodeReport currentReport;
+    private long raftNodeReportPeriodicPublishTimestamp;
 
     @Inject
     public ClusterEndpointsListener(@Named(CONFIG_KEY) ClusterServiceConfig config,
@@ -52,26 +52,25 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         this.config = config;
         this.nodeEndpoint = nodeEndpoint;
         this.raftRpcService = raftRpcService;
-        this.raftNodeReportIdlePublishTimestamp = System.currentTimeMillis() - CLUSTER_ENDPOINTS_IDLE_PUBLISH_DURATION_MILLIS;
+        this.raftNodeReportPeriodicPublishTimestamp = System.currentTimeMillis() - CLUSTER_ENDPOINTS_PERIODIC_PUBLISH_DURATION;
     }
 
 //for client to connect to the cluster, get cluster nodeEndpoint info
     @Override
     public void listenClusterEndpoints(ClusterEndpointsRequest request,
                                        StreamObserver<ClusterEndpointsResponse> responseObserver) {
-        StreamObserver<ClusterEndpointsResponse> prev = observers.put(request.getClientId(), responseObserver);
-        if (prev != null) {
-            LOGGER.warn("{} completing already existing stream observer for {}.", nodeEndpoint.getId(),
-                    request.getClientId());
-            prev.onCompleted();
+        StreamObserver<ClusterEndpointsResponse> oldStreamObserver = observers.put(request.getClientId(), responseObserver);
+        if (oldStreamObserver != null) {
+            LOGGER.error("{} already has a streamObserver for client {}.", nodeEndpoint.getId(), request.getClientId());
+            oldStreamObserver.onCompleted();
         }
 
-        LOGGER.debug("{} registering client: {}.", nodeEndpoint.getId(), request.getClientId());
+        LOGGER.debug("{} now first connecting to client: {} and saving its info...", nodeEndpoint.getId(), request.getClientId());
 
-        if (lastReport != null) {
+        if (currentReport != null) {
             try {
-                responseObserver.onNext(createResponse(lastReport));
-                LOGGER.debug("{} sent {} to {}.", nodeEndpoint.getId(), lastReport, request.getClientId());
+                responseObserver.onNext(createEndpointsResponse(currentReport));
+                LOGGER.info("{} now sending current report to {}.", nodeEndpoint.getId(), currentReport, request.getClientId());
             } catch (Throwable t) {
                 if (LOGGER.isDebugEnabled()) {
                     LOGGER.warn(nodeEndpoint.getId() + " could not send cluster endpoints to " + request.getClientId(),
@@ -86,7 +85,7 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
         }
     }
 
-    private ClusterEndpointsResponse createResponse(RaftNodeReport report) {
+    private ClusterEndpointsResponse createEndpointsResponse(RaftNodeReport report) {
         RaftGroupMembers committedMembers = report.getCommittedMembers();
 
         ClusterEndpointsInfo.Builder endpointsInfoBuilder = ClusterEndpointsInfo.newBuilder();
@@ -106,28 +105,26 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
     }
 
     @Override
-    public void accept(@Nonnull RaftNodeReport report) {
-        long now = System.currentTimeMillis();
-        boolean publishForIdleState = now - raftNodeReportIdlePublishTimestamp >= CLUSTER_ENDPOINTS_IDLE_PUBLISH_DURATION_MILLIS;
-        if (publishForIdleState) {
-            raftNodeReportIdlePublishTimestamp = now;
+    public void accept(@Nonnull RaftNodeReport updatedReport) {
+        long currentTime = System.currentTimeMillis();
+        boolean doPeriodicPublish = currentTime - raftNodeReportPeriodicPublishTimestamp >= CLUSTER_ENDPOINTS_PERIODIC_PUBLISH_DURATION;
+        if (doPeriodicPublish || updatedReport.getReason() != PERIODIC) {
+            if (doPeriodicPublish) raftNodeReportPeriodicPublishTimestamp = currentTime;
+            publish(updatedReport);
         }
 
-        if (publishForIdleState || report.getReason() != PERIODIC) {
-            publish(report);
-        }
     }
 
-    private void publish(RaftNodeReport report) {
-        ClusterEndpointsResponse response = createResponse(report);
-        lastReport = report;
+    private void publish(RaftNodeReport updatedReport) {
+        ClusterEndpointsResponse response = createEndpointsResponse(updatedReport);
+        currentReport = updatedReport;
         Iterator<Entry<String, StreamObserver<ClusterEndpointsResponse>>> it = observers.entrySet().iterator();
         while (it.hasNext()) {
             Entry<String, StreamObserver<ClusterEndpointsResponse>> e = it.next();
             String clientId = e.getKey();
             StreamObserver<ClusterEndpointsResponse> observer = e.getValue();
             try {
-                LOGGER.debug("{} sending {} to client: {}.", nodeEndpoint.getId(), report, clientId);
+                LOGGER.debug("{} sending {} to client: {}.", nodeEndpoint.getId(), updatedReport, clientId);
                 observer.onNext(response);
             } catch (Throwable t) {
                 if (LOGGER.isDebugEnabled()) {
@@ -147,7 +144,7 @@ public class ClusterEndpointsListener extends ClusterListenServiceGrpc.ClusterLi
 
     @Override
     public RaftNodeReport get() {
-        return lastReport;
+        return currentReport;
     }
 
     @Override

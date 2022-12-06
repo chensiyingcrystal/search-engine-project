@@ -15,9 +15,9 @@ import static java.util.stream.Collectors.toList;
 
 public class ClusterServerCommonConfig {
     private String clusterId;
-    private Map<String, InetSocketAddress> clusterServerAddress = new LinkedHashMap<>();
+    private Map<String, String> clusterServerAddress = new LinkedHashMap<>();
 
-    private ClusterServerCommonConfig(String clusterId, Map<String, InetSocketAddress> clusterServerAddress) {
+    private ClusterServerCommonConfig(String clusterId, Map<String, String> clusterServerAddress) {
         this.clusterId = clusterId;
         this.clusterServerAddress = clusterServerAddress;
 
@@ -37,7 +37,7 @@ public class ClusterServerCommonConfig {
         return clusterId;
     }
 
-    public Map<String, InetSocketAddress> getClusterServerAddress() {
+    public Map<String, String> getClusterServerAddress() {
         return clusterServerAddress;
     }
 
@@ -58,7 +58,7 @@ public class ClusterServerCommonConfig {
     private static ClusterServerCommonConfig parseConfig(String configFile) {
         Config config = ConfigFactory.parseString(configFile);
         String id = new String();
-        Map<String, InetSocketAddress> map = new LinkedHashMap<>();
+        Map<String, String> map = new LinkedHashMap<>();
         try {
             if (config.hasPath("cluster")) {
                 Config clusterConfig = config.getConfig("cluster");
@@ -73,9 +73,7 @@ public class ClusterServerCommonConfig {
 
                     for (Config cc : endPointsConfigs) {
                         String clusterServerId = cc.getString("id");
-                        String clusterServerHost = cc.getString("address").split(":")[0];
-                        int clusterServerPort = Integer.parseInt(cc.getString("address").split(":")[1]);
-                        InetSocketAddress address = new InetSocketAddress(clusterServerHost, clusterServerPort);
+                        String address = cc.getString("address");
 
                         map.put(clusterServerId, address);
                     }

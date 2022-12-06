@@ -10,9 +10,11 @@ import java.util.Map;
 
 public interface ClusterServiceManager {
 
-    Map<String, InetSocketAddress> getClusterServerAddress();
+    String getClusterReport();
+    String getShardReport();
     CommonResponse putShardInfo(PutShardRequest request);
     GetShardResponse getShardInfo(GetShardRequest request);
+
 
 
 }

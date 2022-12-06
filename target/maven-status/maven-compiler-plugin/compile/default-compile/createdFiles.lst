@@ -210,6 +210,7 @@ team/dsys/dssearch/cluster/rpc/GrpcServerImpl.class
 cluster/proto/InstallSnapshotRequestProto.class
 team/dsys/dssearch/cluster/rpc/RaftRpcServiceImpl.class
 cluster/proto/RaftCommunicationServiceGrpc$RaftCommunicationServiceMethodDescriptorSupplier.class
+team/dsys/dssearch/internal/common/impl/ClusterServiceManagerImpl$LeaderStub.class
 team/dsys/dssearch/cluster/rpc/RaftMessageHandler.class
 cluster/proto/RaftMessageRequestOrBuilder.class
 team/dsys/dssearch/cluster/module/ClusterServiceModule$1.class
@@ -240,6 +241,7 @@ cluster/proto/GetRaftNodeReportResponse$Builder.class
 team/dsys/dssearch/cluster/raft/impl/message/VoteResponseOrBuilder.class
 team/dsys/dssearch/cluster/rpc/RaftRpcServiceImpl$1.class
 cluster/proto/AppendEntriesRequestProto$1.class
+team/dsys/dssearch/internal/common/impl/ClusterServiceManagerImpl$ClusterEndpointsResponseObserver.class
 cluster/proto/InstallSnapshotResponseProto.class
 cluster/proto/TriggerLeaderElectionRequestProto.class
 cluster/proto/ShardResponse$Builder.class
