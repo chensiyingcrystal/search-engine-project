@@ -8,17 +8,32 @@ public interface PutResultOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.proto.Val oldVal = 1;</code>
-   * @return Whether the oldVal field is set.
+   * <pre>
+   *响应码（0：success -1：error）
+   * </pre>
+   *
+   * <code>int32 status = 1;</code>
+   * @return The status.
    */
-  boolean hasOldVal();
+  int getStatus();
+
   /**
-   * <code>.proto.Val oldVal = 1;</code>
-   * @return The oldVal.
+   * <pre>
+   *响应信息
+   * </pre>
+   *
+   * <code>string msg = 2;</code>
+   * @return The msg.
    */
-  cluster.external.shard.proto.Val getOldVal();
+  java.lang.String getMsg();
   /**
-   * <code>.proto.Val oldVal = 1;</code>
+   * <pre>
+   *响应信息
+   * </pre>
+   *
+   * <code>string msg = 2;</code>
+   * @return The bytes for msg.
    */
-  cluster.external.shard.proto.ValOrBuilder getOldValOrBuilder();
+  com.google.protobuf.ByteString
+      getMsgBytes();
 }

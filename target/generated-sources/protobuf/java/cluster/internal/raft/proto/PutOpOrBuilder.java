@@ -8,35 +8,41 @@ public interface PutOpOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string key = 1;</code>
-   * @return The key.
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * @return Whether the dataNodeInfo field is set.
    */
-  java.lang.String getKey();
+  boolean hasDataNodeInfo();
   /**
-   * <code>string key = 1;</code>
-   * @return The bytes for key.
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * @return The dataNodeInfo.
    */
-  com.google.protobuf.ByteString
-      getKeyBytes();
+  cluster.external.shard.proto.DataNodeInfo getDataNodeInfo();
+  /**
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   */
+  cluster.external.shard.proto.DataNodeInfoOrBuilder getDataNodeInfoOrBuilder();
 
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return Whether the val field is set.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
-  boolean hasVal();
+  java.util.List<cluster.external.shard.proto.ShardInfo> 
+      getShardInfoList();
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return The val.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
-  cluster.external.shard.proto.Val getVal();
+  cluster.external.shard.proto.ShardInfo getShardInfo(int index);
   /**
-   * <code>.proto.Val val = 2;</code>
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
-  cluster.external.shard.proto.ValOrBuilder getValOrBuilder();
-
+  int getShardInfoCount();
   /**
-   * <code>bool putIfAbsent = 3;</code>
-   * @return The putIfAbsent.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
-  boolean getPutIfAbsent();
+  java.util.List<? extends cluster.external.shard.proto.ShardInfoOrBuilder> 
+      getShardInfoOrBuilderList();
+  /**
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+   */
+  cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder(
+      int index);
 }

@@ -43,20 +43,5 @@ public interface ShardResponseOrBuilder extends
    */
   cluster.external.shard.proto.GetResultOrBuilder getGetResultOrBuilder();
 
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   * @return Whether the removeResult field is set.
-   */
-  boolean hasRemoveResult();
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   * @return The removeResult.
-   */
-  cluster.external.shard.proto.RemoveResult getRemoveResult();
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   */
-  cluster.external.shard.proto.RemoveResultOrBuilder getRemoveResultOrBuilder();
-
   public cluster.external.shard.proto.ShardResponse.ResultCase getResultCase();
 }

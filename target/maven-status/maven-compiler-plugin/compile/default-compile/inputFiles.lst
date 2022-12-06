@@ -21,6 +21,7 @@
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/RemoveOpResult.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/RemoveOp.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/GetRequestOrBuilder.java
+/Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/ShardInfo.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/RemoveRequest.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/VoteResponseProtoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/AddRaftEndpointResponse.java
@@ -53,6 +54,7 @@
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/RaftMessageResponseOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/RaftLogStatsProto.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/UpdateRaftGroupMembersOpProto.java
+/Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/DataNodeInfoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/AppendEntriesRequestProtoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/PreVoteResponseProtoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/RaftNodeReportReasonProto.java
@@ -69,6 +71,7 @@
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/GetResultOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/SnapshotEntryProtoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/AddRaftEndpointAddressResponse.java
+/Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/ShardInfoOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/AddRaftEndpointRequest.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/RemoveResult.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/RemoveResultOrBuilder.java
@@ -99,6 +102,7 @@
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/VoteRequestProto.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/GetRequest.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/InstallSnapshotRequestProto.java
+/Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/shard/proto/DataNodeInfo.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/management/proto/RaftGroupMembersProto.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/external/listener/proto/ClusterEndpointsRequestOrBuilder.java
 /Users/chensiying/cs61b/search-engine-project/target/generated-sources/protobuf/java/cluster/internal/raft/proto/StartNewTermOpProto.java

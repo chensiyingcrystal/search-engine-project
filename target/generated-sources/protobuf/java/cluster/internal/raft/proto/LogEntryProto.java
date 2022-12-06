@@ -52,7 +52,6 @@ private static final long serialVersionUID = 0L;
     STARTNEWTERMOP(4),
     PUTOP(5),
     GETOP(6),
-    REMOVEOP(7),
     OPERATION_NOT_SET(0);
     private final int value;
     private OperationCase(int value) {
@@ -74,7 +73,6 @@ private static final long serialVersionUID = 0L;
         case 4: return STARTNEWTERMOP;
         case 5: return PUTOP;
         case 6: return GETOP;
-        case 7: return REMOVEOP;
         case 0: return OPERATION_NOT_SET;
         default: return null;
       }
@@ -176,10 +174,6 @@ private static final long serialVersionUID = 0L;
 
   public static final int PUTOP_FIELD_NUMBER = 5;
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    * @return Whether the putOp field is set.
    */
@@ -188,10 +182,6 @@ private static final long serialVersionUID = 0L;
     return operationCase_ == 5;
   }
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    * @return The putOp.
    */
@@ -203,10 +193,6 @@ private static final long serialVersionUID = 0L;
     return cluster.internal.raft.proto.PutOp.getDefaultInstance();
   }
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    */
   @java.lang.Override
@@ -248,37 +234,6 @@ private static final long serialVersionUID = 0L;
     return cluster.internal.raft.proto.GetOp.getDefaultInstance();
   }
 
-  public static final int REMOVEOP_FIELD_NUMBER = 7;
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   * @return Whether the removeOp field is set.
-   */
-  @java.lang.Override
-  public boolean hasRemoveOp() {
-    return operationCase_ == 7;
-  }
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   * @return The removeOp.
-   */
-  @java.lang.Override
-  public cluster.internal.raft.proto.RemoveOp getRemoveOp() {
-    if (operationCase_ == 7) {
-       return (cluster.internal.raft.proto.RemoveOp) operation_;
-    }
-    return cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   */
-  @java.lang.Override
-  public cluster.internal.raft.proto.RemoveOpOrBuilder getRemoveOpOrBuilder() {
-    if (operationCase_ == 7) {
-       return (cluster.internal.raft.proto.RemoveOp) operation_;
-    }
-    return cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -310,9 +265,6 @@ private static final long serialVersionUID = 0L;
     }
     if (operationCase_ == 6) {
       output.writeMessage(6, (cluster.internal.raft.proto.GetOp) operation_);
-    }
-    if (operationCase_ == 7) {
-      output.writeMessage(7, (cluster.internal.raft.proto.RemoveOp) operation_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -346,10 +298,6 @@ private static final long serialVersionUID = 0L;
     if (operationCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, (cluster.internal.raft.proto.GetOp) operation_);
-    }
-    if (operationCase_ == 7) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, (cluster.internal.raft.proto.RemoveOp) operation_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -388,10 +336,6 @@ private static final long serialVersionUID = 0L;
         if (!getGetOp()
             .equals(other.getGetOp())) return false;
         break;
-      case 7:
-        if (!getRemoveOp()
-            .equals(other.getRemoveOp())) return false;
-        break;
       case 0:
       default:
     }
@@ -427,10 +371,6 @@ private static final long serialVersionUID = 0L;
       case 6:
         hash = (37 * hash) + GETOP_FIELD_NUMBER;
         hash = (53 * hash) + getGetOp().hashCode();
-        break;
-      case 7:
-        hash = (37 * hash) + REMOVEOP_FIELD_NUMBER;
-        hash = (53 * hash) + getRemoveOp().hashCode();
         break;
       case 0:
       default:
@@ -579,9 +519,6 @@ private static final long serialVersionUID = 0L;
       if (getOpBuilder_ != null) {
         getOpBuilder_.clear();
       }
-      if (removeOpBuilder_ != null) {
-        removeOpBuilder_.clear();
-      }
       operationCase_ = 0;
       operation_ = null;
       return this;
@@ -638,13 +575,6 @@ private static final long serialVersionUID = 0L;
           result.operation_ = operation_;
         } else {
           result.operation_ = getOpBuilder_.build();
-        }
-      }
-      if (operationCase_ == 7) {
-        if (removeOpBuilder_ == null) {
-          result.operation_ = operation_;
-        } else {
-          result.operation_ = removeOpBuilder_.build();
         }
       }
       result.operationCase_ = operationCase_;
@@ -719,10 +649,6 @@ private static final long serialVersionUID = 0L;
           mergeGetOp(other.getGetOp());
           break;
         }
-        case REMOVEOP: {
-          mergeRemoveOp(other.getRemoveOp());
-          break;
-        }
         case OPERATION_NOT_SET: {
           break;
         }
@@ -791,13 +717,6 @@ private static final long serialVersionUID = 0L;
               operationCase_ = 6;
               break;
             } // case 50
-            case 58: {
-              input.readMessage(
-                  getRemoveOpFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              operationCase_ = 7;
-              break;
-            } // case 58
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1178,10 +1097,6 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cluster.internal.raft.proto.PutOp, cluster.internal.raft.proto.PutOp.Builder, cluster.internal.raft.proto.PutOpOrBuilder> putOpBuilder_;
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      * @return Whether the putOp field is set.
      */
@@ -1190,10 +1105,6 @@ private static final long serialVersionUID = 0L;
       return operationCase_ == 5;
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      * @return The putOp.
      */
@@ -1212,10 +1123,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     public Builder setPutOp(cluster.internal.raft.proto.PutOp value) {
@@ -1232,10 +1139,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     public Builder setPutOp(
@@ -1250,10 +1153,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     public Builder mergePutOp(cluster.internal.raft.proto.PutOp value) {
@@ -1277,10 +1176,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     public Builder clearPutOp() {
@@ -1300,20 +1195,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     public cluster.internal.raft.proto.PutOp.Builder getPutOpBuilder() {
       return getPutOpFieldBuilder().getBuilder();
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     @java.lang.Override
@@ -1328,10 +1215,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *todo:update shard / node status
-     * </pre>
-     *
      * <code>.proto.PutOp putOp = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1493,148 +1376,6 @@ private static final long serialVersionUID = 0L;
       operationCase_ = 6;
       onChanged();;
       return getOpBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.internal.raft.proto.RemoveOp, cluster.internal.raft.proto.RemoveOp.Builder, cluster.internal.raft.proto.RemoveOpOrBuilder> removeOpBuilder_;
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     * @return Whether the removeOp field is set.
-     */
-    @java.lang.Override
-    public boolean hasRemoveOp() {
-      return operationCase_ == 7;
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     * @return The removeOp.
-     */
-    @java.lang.Override
-    public cluster.internal.raft.proto.RemoveOp getRemoveOp() {
-      if (removeOpBuilder_ == null) {
-        if (operationCase_ == 7) {
-          return (cluster.internal.raft.proto.RemoveOp) operation_;
-        }
-        return cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-      } else {
-        if (operationCase_ == 7) {
-          return removeOpBuilder_.getMessage();
-        }
-        return cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    public Builder setRemoveOp(cluster.internal.raft.proto.RemoveOp value) {
-      if (removeOpBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        operation_ = value;
-        onChanged();
-      } else {
-        removeOpBuilder_.setMessage(value);
-      }
-      operationCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    public Builder setRemoveOp(
-        cluster.internal.raft.proto.RemoveOp.Builder builderForValue) {
-      if (removeOpBuilder_ == null) {
-        operation_ = builderForValue.build();
-        onChanged();
-      } else {
-        removeOpBuilder_.setMessage(builderForValue.build());
-      }
-      operationCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    public Builder mergeRemoveOp(cluster.internal.raft.proto.RemoveOp value) {
-      if (removeOpBuilder_ == null) {
-        if (operationCase_ == 7 &&
-            operation_ != cluster.internal.raft.proto.RemoveOp.getDefaultInstance()) {
-          operation_ = cluster.internal.raft.proto.RemoveOp.newBuilder((cluster.internal.raft.proto.RemoveOp) operation_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          operation_ = value;
-        }
-        onChanged();
-      } else {
-        if (operationCase_ == 7) {
-          removeOpBuilder_.mergeFrom(value);
-        } else {
-          removeOpBuilder_.setMessage(value);
-        }
-      }
-      operationCase_ = 7;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    public Builder clearRemoveOp() {
-      if (removeOpBuilder_ == null) {
-        if (operationCase_ == 7) {
-          operationCase_ = 0;
-          operation_ = null;
-          onChanged();
-        }
-      } else {
-        if (operationCase_ == 7) {
-          operationCase_ = 0;
-          operation_ = null;
-        }
-        removeOpBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    public cluster.internal.raft.proto.RemoveOp.Builder getRemoveOpBuilder() {
-      return getRemoveOpFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    @java.lang.Override
-    public cluster.internal.raft.proto.RemoveOpOrBuilder getRemoveOpOrBuilder() {
-      if ((operationCase_ == 7) && (removeOpBuilder_ != null)) {
-        return removeOpBuilder_.getMessageOrBuilder();
-      } else {
-        if (operationCase_ == 7) {
-          return (cluster.internal.raft.proto.RemoveOp) operation_;
-        }
-        return cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.RemoveOp removeOp = 7;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.internal.raft.proto.RemoveOp, cluster.internal.raft.proto.RemoveOp.Builder, cluster.internal.raft.proto.RemoveOpOrBuilder> 
-        getRemoveOpFieldBuilder() {
-      if (removeOpBuilder_ == null) {
-        if (!(operationCase_ == 7)) {
-          operation_ = cluster.internal.raft.proto.RemoveOp.getDefaultInstance();
-        }
-        removeOpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.internal.raft.proto.RemoveOp, cluster.internal.raft.proto.RemoveOp.Builder, cluster.internal.raft.proto.RemoveOpOrBuilder>(
-                (cluster.internal.raft.proto.RemoveOp) operation_,
-                getParentForChildren(),
-                isClean());
-        operation_ = null;
-      }
-      operationCase_ = 7;
-      onChanged();;
-      return removeOpBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

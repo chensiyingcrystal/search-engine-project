@@ -77,37 +77,6 @@ public final class ShardRequestHandlerGrpc {
     return getGetMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cluster.external.shard.proto.RemoveRequest,
-      cluster.external.shard.proto.ShardResponse> getRemoveMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "remove",
-      requestType = cluster.external.shard.proto.RemoveRequest.class,
-      responseType = cluster.external.shard.proto.ShardResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.external.shard.proto.RemoveRequest,
-      cluster.external.shard.proto.ShardResponse> getRemoveMethod() {
-    io.grpc.MethodDescriptor<cluster.external.shard.proto.RemoveRequest, cluster.external.shard.proto.ShardResponse> getRemoveMethod;
-    if ((getRemoveMethod = ShardRequestHandlerGrpc.getRemoveMethod) == null) {
-      synchronized (ShardRequestHandlerGrpc.class) {
-        if ((getRemoveMethod = ShardRequestHandlerGrpc.getRemoveMethod) == null) {
-          ShardRequestHandlerGrpc.getRemoveMethod = getRemoveMethod =
-              io.grpc.MethodDescriptor.<cluster.external.shard.proto.RemoveRequest, cluster.external.shard.proto.ShardResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "remove"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.external.shard.proto.RemoveRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.external.shard.proto.ShardResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("remove"))
-              .build();
-        }
-      }
-    }
-    return getRemoveMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -157,11 +126,6 @@ public final class ShardRequestHandlerGrpc {
   public static abstract class ShardRequestHandlerImplBase implements io.grpc.BindableService {
 
     /**
-     * <pre>
-     *  rpc connect (ConnectRequest) returns (ConnectResponse);
-     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
-     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
-     * </pre>
      */
     public void put(cluster.external.shard.proto.PutRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
@@ -173,13 +137,6 @@ public final class ShardRequestHandlerGrpc {
     public void get(cluster.external.shard.proto.GetRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void remove(cluster.external.shard.proto.RemoveRequest request,
-        io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -198,13 +155,6 @@ public final class ShardRequestHandlerGrpc {
                 cluster.external.shard.proto.GetRequest,
                 cluster.external.shard.proto.ShardResponse>(
                   this, METHODID_GET)))
-          .addMethod(
-            getRemoveMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                cluster.external.shard.proto.RemoveRequest,
-                cluster.external.shard.proto.ShardResponse>(
-                  this, METHODID_REMOVE)))
           .build();
     }
   }
@@ -224,11 +174,6 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc connect (ConnectRequest) returns (ConnectResponse);
-     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
-     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
-     * </pre>
      */
     public void put(cluster.external.shard.proto.PutRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
@@ -242,14 +187,6 @@ public final class ShardRequestHandlerGrpc {
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void remove(cluster.external.shard.proto.RemoveRequest request,
-        io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRemoveMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -268,11 +205,6 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc connect (ConnectRequest) returns (ConnectResponse);
-     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
-     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
-     * </pre>
      */
     public cluster.external.shard.proto.ShardResponse put(cluster.external.shard.proto.PutRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -284,13 +216,6 @@ public final class ShardRequestHandlerGrpc {
     public cluster.external.shard.proto.ShardResponse get(cluster.external.shard.proto.GetRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public cluster.external.shard.proto.ShardResponse remove(cluster.external.shard.proto.RemoveRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRemoveMethod(), getCallOptions(), request);
     }
   }
 
@@ -309,11 +234,6 @@ public final class ShardRequestHandlerGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc connect (ConnectRequest) returns (ConnectResponse);
-     *  rpc putShardInfo (PutShardRequest) returns (CommonResponse);
-     *  rpc getShardInfo (GetShardRequest) returns (GetShardResponse);
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cluster.external.shard.proto.ShardResponse> put(
         cluster.external.shard.proto.PutRequest request) {
@@ -328,19 +248,10 @@ public final class ShardRequestHandlerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cluster.external.shard.proto.ShardResponse> remove(
-        cluster.external.shard.proto.RemoveRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRemoveMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_PUT = 0;
   private static final int METHODID_GET = 1;
-  private static final int METHODID_REMOVE = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -365,10 +276,6 @@ public final class ShardRequestHandlerGrpc {
           break;
         case METHODID_GET:
           serviceImpl.get((cluster.external.shard.proto.GetRequest) request,
-              (io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse>) responseObserver);
-          break;
-        case METHODID_REMOVE:
-          serviceImpl.remove((cluster.external.shard.proto.RemoveRequest) request,
               (io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse>) responseObserver);
           break;
         default:
@@ -434,7 +341,6 @@ public final class ShardRequestHandlerGrpc {
               .setSchemaDescriptor(new ShardRequestHandlerFileDescriptorSupplier())
               .addMethod(getPutMethod())
               .addMethod(getGetMethod())
-              .addMethod(getRemoveMethod())
               .build();
         }
       }

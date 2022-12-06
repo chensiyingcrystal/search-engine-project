@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PutOp() {
-    key_ = "";
+    shardInfo_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -44,79 +44,70 @@ private static final long serialVersionUID = 0L;
             cluster.internal.raft.proto.PutOp.class, cluster.internal.raft.proto.PutOp.Builder.class);
   }
 
-  public static final int KEY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object key_;
+  public static final int DATANODEINFO_FIELD_NUMBER = 1;
+  private cluster.external.shard.proto.DataNodeInfo dataNodeInfo_;
   /**
-   * <code>string key = 1;</code>
-   * @return The key.
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * @return Whether the dataNodeInfo field is set.
    */
   @java.lang.Override
-  public java.lang.String getKey() {
-    java.lang.Object ref = key_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      key_ = s;
-      return s;
-    }
+  public boolean hasDataNodeInfo() {
+    return dataNodeInfo_ != null;
   }
   /**
-   * <code>string key = 1;</code>
-   * @return The bytes for key.
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * @return The dataNodeInfo.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getKeyBytes() {
-    java.lang.Object ref = key_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      key_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public cluster.external.shard.proto.DataNodeInfo getDataNodeInfo() {
+    return dataNodeInfo_ == null ? cluster.external.shard.proto.DataNodeInfo.getDefaultInstance() : dataNodeInfo_;
+  }
+  /**
+   * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+   */
+  @java.lang.Override
+  public cluster.external.shard.proto.DataNodeInfoOrBuilder getDataNodeInfoOrBuilder() {
+    return getDataNodeInfo();
   }
 
-  public static final int VAL_FIELD_NUMBER = 2;
-  private cluster.external.shard.proto.Val val_;
+  public static final int SHARDINFO_FIELD_NUMBER = 2;
+  private java.util.List<cluster.external.shard.proto.ShardInfo> shardInfo_;
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return Whether the val field is set.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
-  public boolean hasVal() {
-    return val_ != null;
+  public java.util.List<cluster.external.shard.proto.ShardInfo> getShardInfoList() {
+    return shardInfo_;
   }
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return The val.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
-  public cluster.external.shard.proto.Val getVal() {
-    return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
+  public java.util.List<? extends cluster.external.shard.proto.ShardInfoOrBuilder> 
+      getShardInfoOrBuilderList() {
+    return shardInfo_;
   }
   /**
-   * <code>.proto.Val val = 2;</code>
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
-  public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-    return getVal();
+  public int getShardInfoCount() {
+    return shardInfo_.size();
   }
-
-  public static final int PUTIFABSENT_FIELD_NUMBER = 3;
-  private boolean putIfAbsent_;
   /**
-   * <code>bool putIfAbsent = 3;</code>
-   * @return The putIfAbsent.
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
-  public boolean getPutIfAbsent() {
-    return putIfAbsent_;
+  public cluster.external.shard.proto.ShardInfo getShardInfo(int index) {
+    return shardInfo_.get(index);
+  }
+  /**
+   * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+   */
+  @java.lang.Override
+  public cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder(
+      int index) {
+    return shardInfo_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -133,14 +124,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+    if (dataNodeInfo_ != null) {
+      output.writeMessage(1, getDataNodeInfo());
     }
-    if (val_ != null) {
-      output.writeMessage(2, getVal());
-    }
-    if (putIfAbsent_ != false) {
-      output.writeBool(3, putIfAbsent_);
+    for (int i = 0; i < shardInfo_.size(); i++) {
+      output.writeMessage(2, shardInfo_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -151,16 +139,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
-    }
-    if (val_ != null) {
+    if (dataNodeInfo_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getVal());
+        .computeMessageSize(1, getDataNodeInfo());
     }
-    if (putIfAbsent_ != false) {
+    for (int i = 0; i < shardInfo_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(3, putIfAbsent_);
+        .computeMessageSize(2, shardInfo_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -177,15 +162,13 @@ private static final long serialVersionUID = 0L;
     }
     cluster.internal.raft.proto.PutOp other = (cluster.internal.raft.proto.PutOp) obj;
 
-    if (!getKey()
-        .equals(other.getKey())) return false;
-    if (hasVal() != other.hasVal()) return false;
-    if (hasVal()) {
-      if (!getVal()
-          .equals(other.getVal())) return false;
+    if (hasDataNodeInfo() != other.hasDataNodeInfo()) return false;
+    if (hasDataNodeInfo()) {
+      if (!getDataNodeInfo()
+          .equals(other.getDataNodeInfo())) return false;
     }
-    if (getPutIfAbsent()
-        != other.getPutIfAbsent()) return false;
+    if (!getShardInfoList()
+        .equals(other.getShardInfoList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -197,15 +180,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + KEY_FIELD_NUMBER;
-    hash = (53 * hash) + getKey().hashCode();
-    if (hasVal()) {
-      hash = (37 * hash) + VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getVal().hashCode();
+    if (hasDataNodeInfo()) {
+      hash = (37 * hash) + DATANODEINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getDataNodeInfo().hashCode();
     }
-    hash = (37 * hash) + PUTIFABSENT_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getPutIfAbsent());
+    if (getShardInfoCount() > 0) {
+      hash = (37 * hash) + SHARDINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getShardInfoList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -334,16 +316,19 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      key_ = "";
-
-      if (valBuilder_ == null) {
-        val_ = null;
+      if (dataNodeInfoBuilder_ == null) {
+        dataNodeInfo_ = null;
       } else {
-        val_ = null;
-        valBuilder_ = null;
+        dataNodeInfo_ = null;
+        dataNodeInfoBuilder_ = null;
       }
-      putIfAbsent_ = false;
-
+      if (shardInfoBuilder_ == null) {
+        shardInfo_ = java.util.Collections.emptyList();
+      } else {
+        shardInfo_ = null;
+        shardInfoBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -370,13 +355,21 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cluster.internal.raft.proto.PutOp buildPartial() {
       cluster.internal.raft.proto.PutOp result = new cluster.internal.raft.proto.PutOp(this);
-      result.key_ = key_;
-      if (valBuilder_ == null) {
-        result.val_ = val_;
+      int from_bitField0_ = bitField0_;
+      if (dataNodeInfoBuilder_ == null) {
+        result.dataNodeInfo_ = dataNodeInfo_;
       } else {
-        result.val_ = valBuilder_.build();
+        result.dataNodeInfo_ = dataNodeInfoBuilder_.build();
       }
-      result.putIfAbsent_ = putIfAbsent_;
+      if (shardInfoBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          shardInfo_ = java.util.Collections.unmodifiableList(shardInfo_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.shardInfo_ = shardInfo_;
+      } else {
+        result.shardInfo_ = shardInfoBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -425,15 +418,34 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cluster.internal.raft.proto.PutOp other) {
       if (other == cluster.internal.raft.proto.PutOp.getDefaultInstance()) return this;
-      if (!other.getKey().isEmpty()) {
-        key_ = other.key_;
-        onChanged();
+      if (other.hasDataNodeInfo()) {
+        mergeDataNodeInfo(other.getDataNodeInfo());
       }
-      if (other.hasVal()) {
-        mergeVal(other.getVal());
-      }
-      if (other.getPutIfAbsent() != false) {
-        setPutIfAbsent(other.getPutIfAbsent());
+      if (shardInfoBuilder_ == null) {
+        if (!other.shardInfo_.isEmpty()) {
+          if (shardInfo_.isEmpty()) {
+            shardInfo_ = other.shardInfo_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureShardInfoIsMutable();
+            shardInfo_.addAll(other.shardInfo_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.shardInfo_.isEmpty()) {
+          if (shardInfoBuilder_.isEmpty()) {
+            shardInfoBuilder_.dispose();
+            shardInfoBuilder_ = null;
+            shardInfo_ = other.shardInfo_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            shardInfoBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getShardInfoFieldBuilder() : null;
+          } else {
+            shardInfoBuilder_.addAllMessages(other.shardInfo_);
+          }
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -462,22 +474,25 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              key_ = input.readStringRequireUtf8();
+              input.readMessage(
+                  getDataNodeInfoFieldBuilder().getBuilder(),
+                  extensionRegistry);
 
               break;
             } // case 10
             case 18: {
-              input.readMessage(
-                  getValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-
+              cluster.external.shard.proto.ShardInfo m =
+                  input.readMessage(
+                      cluster.external.shard.proto.ShardInfo.parser(),
+                      extensionRegistry);
+              if (shardInfoBuilder_ == null) {
+                ensureShardInfoIsMutable();
+                shardInfo_.add(m);
+              } else {
+                shardInfoBuilder_.addMessage(m);
+              }
               break;
             } // case 18
-            case 24: {
-              putIfAbsent_ = input.readBool();
-
-              break;
-            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -493,231 +508,365 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int bitField0_;
 
-    private java.lang.Object key_ = "";
-    /**
-     * <code>string key = 1;</code>
-     * @return The key.
-     */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        key_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string key = 1;</code>
-     * @return The bytes for key.
-     */
-    public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        key_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string key = 1;</code>
-     * @param value The key to set.
-     * @return This builder for chaining.
-     */
-    public Builder setKey(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      key_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string key = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearKey() {
-      
-      key_ = getDefaultInstance().getKey();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string key = 1;</code>
-     * @param value The bytes for key to set.
-     * @return This builder for chaining.
-     */
-    public Builder setKeyBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      key_ = value;
-      onChanged();
-      return this;
-    }
-
-    private cluster.external.shard.proto.Val val_;
+    private cluster.external.shard.proto.DataNodeInfo dataNodeInfo_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> valBuilder_;
+        cluster.external.shard.proto.DataNodeInfo, cluster.external.shard.proto.DataNodeInfo.Builder, cluster.external.shard.proto.DataNodeInfoOrBuilder> dataNodeInfoBuilder_;
     /**
-     * <code>.proto.Val val = 2;</code>
-     * @return Whether the val field is set.
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+     * @return Whether the dataNodeInfo field is set.
      */
-    public boolean hasVal() {
-      return valBuilder_ != null || val_ != null;
+    public boolean hasDataNodeInfo() {
+      return dataNodeInfoBuilder_ != null || dataNodeInfo_ != null;
     }
     /**
-     * <code>.proto.Val val = 2;</code>
-     * @return The val.
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
+     * @return The dataNodeInfo.
      */
-    public cluster.external.shard.proto.Val getVal() {
-      if (valBuilder_ == null) {
-        return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
+    public cluster.external.shard.proto.DataNodeInfo getDataNodeInfo() {
+      if (dataNodeInfoBuilder_ == null) {
+        return dataNodeInfo_ == null ? cluster.external.shard.proto.DataNodeInfo.getDefaultInstance() : dataNodeInfo_;
       } else {
-        return valBuilder_.getMessage();
+        return dataNodeInfoBuilder_.getMessage();
       }
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public Builder setVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
+    public Builder setDataNodeInfo(cluster.external.shard.proto.DataNodeInfo value) {
+      if (dataNodeInfoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        val_ = value;
+        dataNodeInfo_ = value;
         onChanged();
       } else {
-        valBuilder_.setMessage(value);
+        dataNodeInfoBuilder_.setMessage(value);
       }
 
       return this;
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public Builder setVal(
-        cluster.external.shard.proto.Val.Builder builderForValue) {
-      if (valBuilder_ == null) {
-        val_ = builderForValue.build();
+    public Builder setDataNodeInfo(
+        cluster.external.shard.proto.DataNodeInfo.Builder builderForValue) {
+      if (dataNodeInfoBuilder_ == null) {
+        dataNodeInfo_ = builderForValue.build();
         onChanged();
       } else {
-        valBuilder_.setMessage(builderForValue.build());
+        dataNodeInfoBuilder_.setMessage(builderForValue.build());
       }
 
       return this;
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public Builder mergeVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
-        if (val_ != null) {
-          val_ =
-            cluster.external.shard.proto.Val.newBuilder(val_).mergeFrom(value).buildPartial();
+    public Builder mergeDataNodeInfo(cluster.external.shard.proto.DataNodeInfo value) {
+      if (dataNodeInfoBuilder_ == null) {
+        if (dataNodeInfo_ != null) {
+          dataNodeInfo_ =
+            cluster.external.shard.proto.DataNodeInfo.newBuilder(dataNodeInfo_).mergeFrom(value).buildPartial();
         } else {
-          val_ = value;
+          dataNodeInfo_ = value;
         }
         onChanged();
       } else {
-        valBuilder_.mergeFrom(value);
+        dataNodeInfoBuilder_.mergeFrom(value);
       }
 
       return this;
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public Builder clearVal() {
-      if (valBuilder_ == null) {
-        val_ = null;
+    public Builder clearDataNodeInfo() {
+      if (dataNodeInfoBuilder_ == null) {
+        dataNodeInfo_ = null;
         onChanged();
       } else {
-        val_ = null;
-        valBuilder_ = null;
+        dataNodeInfo_ = null;
+        dataNodeInfoBuilder_ = null;
       }
 
       return this;
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public cluster.external.shard.proto.Val.Builder getValBuilder() {
+    public cluster.external.shard.proto.DataNodeInfo.Builder getDataNodeInfoBuilder() {
       
       onChanged();
-      return getValFieldBuilder().getBuilder();
+      return getDataNodeInfoFieldBuilder().getBuilder();
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
-    public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-      if (valBuilder_ != null) {
-        return valBuilder_.getMessageOrBuilder();
+    public cluster.external.shard.proto.DataNodeInfoOrBuilder getDataNodeInfoOrBuilder() {
+      if (dataNodeInfoBuilder_ != null) {
+        return dataNodeInfoBuilder_.getMessageOrBuilder();
       } else {
-        return val_ == null ?
-            cluster.external.shard.proto.Val.getDefaultInstance() : val_;
+        return dataNodeInfo_ == null ?
+            cluster.external.shard.proto.DataNodeInfo.getDefaultInstance() : dataNodeInfo_;
       }
     }
     /**
-     * <code>.proto.Val val = 2;</code>
+     * <code>.proto.DataNodeInfo dataNodeInfo = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> 
-        getValFieldBuilder() {
-      if (valBuilder_ == null) {
-        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder>(
-                getVal(),
+        cluster.external.shard.proto.DataNodeInfo, cluster.external.shard.proto.DataNodeInfo.Builder, cluster.external.shard.proto.DataNodeInfoOrBuilder> 
+        getDataNodeInfoFieldBuilder() {
+      if (dataNodeInfoBuilder_ == null) {
+        dataNodeInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cluster.external.shard.proto.DataNodeInfo, cluster.external.shard.proto.DataNodeInfo.Builder, cluster.external.shard.proto.DataNodeInfoOrBuilder>(
+                getDataNodeInfo(),
                 getParentForChildren(),
                 isClean());
-        val_ = null;
+        dataNodeInfo_ = null;
       }
-      return valBuilder_;
+      return dataNodeInfoBuilder_;
     }
 
-    private boolean putIfAbsent_ ;
+    private java.util.List<cluster.external.shard.proto.ShardInfo> shardInfo_ =
+      java.util.Collections.emptyList();
+    private void ensureShardInfoIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        shardInfo_ = new java.util.ArrayList<cluster.external.shard.proto.ShardInfo>(shardInfo_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cluster.external.shard.proto.ShardInfo, cluster.external.shard.proto.ShardInfo.Builder, cluster.external.shard.proto.ShardInfoOrBuilder> shardInfoBuilder_;
+
     /**
-     * <code>bool putIfAbsent = 3;</code>
-     * @return The putIfAbsent.
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
-    @java.lang.Override
-    public boolean getPutIfAbsent() {
-      return putIfAbsent_;
+    public java.util.List<cluster.external.shard.proto.ShardInfo> getShardInfoList() {
+      if (shardInfoBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(shardInfo_);
+      } else {
+        return shardInfoBuilder_.getMessageList();
+      }
     }
     /**
-     * <code>bool putIfAbsent = 3;</code>
-     * @param value The putIfAbsent to set.
-     * @return This builder for chaining.
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
-    public Builder setPutIfAbsent(boolean value) {
-      
-      putIfAbsent_ = value;
-      onChanged();
+    public int getShardInfoCount() {
+      if (shardInfoBuilder_ == null) {
+        return shardInfo_.size();
+      } else {
+        return shardInfoBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public cluster.external.shard.proto.ShardInfo getShardInfo(int index) {
+      if (shardInfoBuilder_ == null) {
+        return shardInfo_.get(index);
+      } else {
+        return shardInfoBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder setShardInfo(
+        int index, cluster.external.shard.proto.ShardInfo value) {
+      if (shardInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureShardInfoIsMutable();
+        shardInfo_.set(index, value);
+        onChanged();
+      } else {
+        shardInfoBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>bool putIfAbsent = 3;</code>
-     * @return This builder for chaining.
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
-    public Builder clearPutIfAbsent() {
-      
-      putIfAbsent_ = false;
-      onChanged();
+    public Builder setShardInfo(
+        int index, cluster.external.shard.proto.ShardInfo.Builder builderForValue) {
+      if (shardInfoBuilder_ == null) {
+        ensureShardInfoIsMutable();
+        shardInfo_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        shardInfoBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder addShardInfo(cluster.external.shard.proto.ShardInfo value) {
+      if (shardInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureShardInfoIsMutable();
+        shardInfo_.add(value);
+        onChanged();
+      } else {
+        shardInfoBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder addShardInfo(
+        int index, cluster.external.shard.proto.ShardInfo value) {
+      if (shardInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureShardInfoIsMutable();
+        shardInfo_.add(index, value);
+        onChanged();
+      } else {
+        shardInfoBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder addShardInfo(
+        cluster.external.shard.proto.ShardInfo.Builder builderForValue) {
+      if (shardInfoBuilder_ == null) {
+        ensureShardInfoIsMutable();
+        shardInfo_.add(builderForValue.build());
+        onChanged();
+      } else {
+        shardInfoBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder addShardInfo(
+        int index, cluster.external.shard.proto.ShardInfo.Builder builderForValue) {
+      if (shardInfoBuilder_ == null) {
+        ensureShardInfoIsMutable();
+        shardInfo_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        shardInfoBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder addAllShardInfo(
+        java.lang.Iterable<? extends cluster.external.shard.proto.ShardInfo> values) {
+      if (shardInfoBuilder_ == null) {
+        ensureShardInfoIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, shardInfo_);
+        onChanged();
+      } else {
+        shardInfoBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder clearShardInfo() {
+      if (shardInfoBuilder_ == null) {
+        shardInfo_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        shardInfoBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public Builder removeShardInfo(int index) {
+      if (shardInfoBuilder_ == null) {
+        ensureShardInfoIsMutable();
+        shardInfo_.remove(index);
+        onChanged();
+      } else {
+        shardInfoBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public cluster.external.shard.proto.ShardInfo.Builder getShardInfoBuilder(
+        int index) {
+      return getShardInfoFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder(
+        int index) {
+      if (shardInfoBuilder_ == null) {
+        return shardInfo_.get(index);  } else {
+        return shardInfoBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public java.util.List<? extends cluster.external.shard.proto.ShardInfoOrBuilder> 
+         getShardInfoOrBuilderList() {
+      if (shardInfoBuilder_ != null) {
+        return shardInfoBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(shardInfo_);
+      }
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public cluster.external.shard.proto.ShardInfo.Builder addShardInfoBuilder() {
+      return getShardInfoFieldBuilder().addBuilder(
+          cluster.external.shard.proto.ShardInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public cluster.external.shard.proto.ShardInfo.Builder addShardInfoBuilder(
+        int index) {
+      return getShardInfoFieldBuilder().addBuilder(
+          index, cluster.external.shard.proto.ShardInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
+     */
+    public java.util.List<cluster.external.shard.proto.ShardInfo.Builder> 
+         getShardInfoBuilderList() {
+      return getShardInfoFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cluster.external.shard.proto.ShardInfo, cluster.external.shard.proto.ShardInfo.Builder, cluster.external.shard.proto.ShardInfoOrBuilder> 
+        getShardInfoFieldBuilder() {
+      if (shardInfoBuilder_ == null) {
+        shardInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            cluster.external.shard.proto.ShardInfo, cluster.external.shard.proto.ShardInfo.Builder, cluster.external.shard.proto.ShardInfoOrBuilder>(
+                shardInfo_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        shardInfo_ = null;
+      }
+      return shardInfoBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

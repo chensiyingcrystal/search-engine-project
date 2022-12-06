@@ -48,8 +48,6 @@ public class LogEntryOrBuilder implements LogEntry, LogEntry.LogEntryBuilder {
                 builder.setPutOp((PutOp) operation);
         } else if (operation instanceof GetOp) {
                 builder.setGetOp((GetOp) operation);
-        } else if (operation instanceof RemoveOp) {
-                builder.setRemoveOp((RemoveOp) operation);
         } else {
             throw new IllegalArgumentException("Invalid operation: " + operation);
         }
@@ -97,8 +95,6 @@ public class LogEntryOrBuilder implements LogEntry, LogEntry.LogEntryBuilder {
                 return entry.getPutOp();
             case GETOP:
                 return entry.getGetOp();
-            case REMOVEOP:
-                return entry.getRemoveOp();
             default:
                 throw new IllegalArgumentException("Illegal operation in " + entry);
         }

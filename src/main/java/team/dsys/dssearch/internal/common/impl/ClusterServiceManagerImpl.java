@@ -17,9 +17,7 @@ import org.slf4j.LoggerFactory;
 import team.dsys.dssearch.internal.common.ClusterServiceManager;
 import team.dsys.dssearch.internal.common.config.ClusterServerCommonConfig;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
@@ -242,10 +240,14 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
         ClusterServiceManagerImpl manager = new ClusterServiceManagerImpl(1, p);
         System.out.println(manager.getClusterReport());
 
-        PutRequest req = PutRequest.newBuilder().setKey("apple").setVal(Val.newBuilder().setNum(1500).build()).setPutIfAbsent(true).build();
+
+        List<ShardInfo> shardInfoList = new ArrayList<>();
+        shardInfoList.add(ShardInfo.newBuilder().setShardId("shard1").setIsPrimary(true).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId("shard3").setIsPrimary(false).build());
+        PutRequest req = PutRequest.newBuilder().
+                          setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(100).setAddress("localhost:4001").build()).addAllShardInfo(shardInfoList).build();
         System.out.println(manager.putShardInfo(req));
-        GetRequest req2 = GetRequest.newBuilder().setKey("apple").build();
-        System.out.println(manager.getShardInfo(req2));
+
 
     }
 }

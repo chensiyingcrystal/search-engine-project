@@ -32,18 +32,18 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
 
     @Override
     public void put(PutRequest request, StreamObserver<ShardResponse> responseObserver) {
-        LOGGER.info("SiyingChen Request" + request);
-        PutOp op = PutOp.newBuilder().setKey(request.getKey()).setVal(request.getVal())
-                .setPutIfAbsent(request.getPutIfAbsent()).build();
+        PutOp op = PutOp.newBuilder().setDataNodeInfo(DataNodeInfo.newBuilder()
+                        .setDataNodeId(request.getDataNodeInfo().getDataNodeId()).setAddress(request.getDataNodeInfo().getAddress()).build())
+                        .addAllShardInfo(request.getShardInfoList()).build();
         raftNode.<PutOpResult> replicate(op).whenComplete((Ordered<PutOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
-                                .setPutResult(PutResult.newBuilder().setOldVal(result.getResult().getOldVal()).build()).build());
+                                .setPutResult(PutResult.newBuilder().setStatus(0).setMsg("PutShardRequest success")).build());
                     } else {
-                        LOGGER.error("SiyingChen error" + throwable);
+                        LOGGER.error(throwable.getMessage());
                         responseObserver.onError(throwable);
                     }
-                    LOGGER.info("SiyingChen info complete");
+                    LOGGER.info("complete");
                     responseObserver.onCompleted();
                 });
     }
@@ -66,27 +66,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
                 });
     }
 
-    @Override
-    public void remove(RemoveRequest request, StreamObserver<ShardResponse> responseObserver) {
-        RemoveOp.Builder builder = RemoveOp.newBuilder().setKey(request.getKey());
-        if (request.hasVal()) {
-            builder.setVal(request.getVal());
-        }
-        raftNode.<RemoveOpResult> replicate(builder.build()).whenComplete((Ordered<RemoveOpResult> result, Throwable throwable) -> {
-                    if (throwable == null) {
-                        RemoveResult.Builder builder2 = RemoveResult
-                                .newBuilder().setSuccess(result.getResult().getSuccess());
-                        if (!request.hasVal() && result.getResult().hasOldVal()) {
-                            builder2.setOldVal(result.getResult().getOldVal());
-                        }
-                        responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
-                                .setRemoveResult(builder2.build()).build());
-                    } else {
-                        responseObserver.onError(throwable);
-                    }
-                    responseObserver.onCompleted();
-                });
-    }
+
 
 
 

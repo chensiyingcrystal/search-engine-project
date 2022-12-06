@@ -50,7 +50,6 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     PUTRESULT(2),
     GETRESULT(3),
-    REMOVERESULT(5),
     RESULT_NOT_SET(0);
     private final int value;
     private ResultCase(int value) {
@@ -70,7 +69,6 @@ private static final long serialVersionUID = 0L;
       switch (value) {
         case 2: return PUTRESULT;
         case 3: return GETRESULT;
-        case 5: return REMOVERESULT;
         case 0: return RESULT_NOT_SET;
         default: return null;
       }
@@ -159,37 +157,6 @@ private static final long serialVersionUID = 0L;
     return cluster.external.shard.proto.GetResult.getDefaultInstance();
   }
 
-  public static final int REMOVERESULT_FIELD_NUMBER = 5;
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   * @return Whether the removeResult field is set.
-   */
-  @java.lang.Override
-  public boolean hasRemoveResult() {
-    return resultCase_ == 5;
-  }
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   * @return The removeResult.
-   */
-  @java.lang.Override
-  public cluster.external.shard.proto.RemoveResult getRemoveResult() {
-    if (resultCase_ == 5) {
-       return (cluster.external.shard.proto.RemoveResult) result_;
-    }
-    return cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-  }
-  /**
-   * <code>.proto.RemoveResult removeResult = 5;</code>
-   */
-  @java.lang.Override
-  public cluster.external.shard.proto.RemoveResultOrBuilder getRemoveResultOrBuilder() {
-    if (resultCase_ == 5) {
-       return (cluster.external.shard.proto.RemoveResult) result_;
-    }
-    return cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -213,9 +180,6 @@ private static final long serialVersionUID = 0L;
     if (resultCase_ == 3) {
       output.writeMessage(3, (cluster.external.shard.proto.GetResult) result_);
     }
-    if (resultCase_ == 5) {
-      output.writeMessage(5, (cluster.external.shard.proto.RemoveResult) result_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -236,10 +200,6 @@ private static final long serialVersionUID = 0L;
     if (resultCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, (cluster.external.shard.proto.GetResult) result_);
-    }
-    if (resultCase_ == 5) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (cluster.external.shard.proto.RemoveResult) result_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -268,10 +228,6 @@ private static final long serialVersionUID = 0L;
         if (!getGetResult()
             .equals(other.getGetResult())) return false;
         break;
-      case 5:
-        if (!getRemoveResult()
-            .equals(other.getRemoveResult())) return false;
-        break;
       case 0:
       default:
     }
@@ -297,10 +253,6 @@ private static final long serialVersionUID = 0L;
       case 3:
         hash = (37 * hash) + GETRESULT_FIELD_NUMBER;
         hash = (53 * hash) + getGetResult().hashCode();
-        break;
-      case 5:
-        hash = (37 * hash) + REMOVERESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getRemoveResult().hashCode();
         break;
       case 0:
       default:
@@ -441,9 +393,6 @@ private static final long serialVersionUID = 0L;
       if (getResultBuilder_ != null) {
         getResultBuilder_.clear();
       }
-      if (removeResultBuilder_ != null) {
-        removeResultBuilder_.clear();
-      }
       resultCase_ = 0;
       result_ = null;
       return this;
@@ -485,13 +434,6 @@ private static final long serialVersionUID = 0L;
           result.result_ = result_;
         } else {
           result.result_ = getResultBuilder_.build();
-        }
-      }
-      if (resultCase_ == 5) {
-        if (removeResultBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = removeResultBuilder_.build();
         }
       }
       result.resultCase_ = resultCase_;
@@ -555,10 +497,6 @@ private static final long serialVersionUID = 0L;
           mergeGetResult(other.getGetResult());
           break;
         }
-        case REMOVERESULT: {
-          mergeRemoveResult(other.getRemoveResult());
-          break;
-        }
         case RESULT_NOT_SET: {
           break;
         }
@@ -608,13 +546,6 @@ private static final long serialVersionUID = 0L;
               resultCase_ = 3;
               break;
             } // case 26
-            case 42: {
-              input.readMessage(
-                  getRemoveResultFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              resultCase_ = 5;
-              break;
-            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -959,148 +890,6 @@ private static final long serialVersionUID = 0L;
       resultCase_ = 3;
       onChanged();;
       return getResultBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.RemoveResult, cluster.external.shard.proto.RemoveResult.Builder, cluster.external.shard.proto.RemoveResultOrBuilder> removeResultBuilder_;
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     * @return Whether the removeResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasRemoveResult() {
-      return resultCase_ == 5;
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     * @return The removeResult.
-     */
-    @java.lang.Override
-    public cluster.external.shard.proto.RemoveResult getRemoveResult() {
-      if (removeResultBuilder_ == null) {
-        if (resultCase_ == 5) {
-          return (cluster.external.shard.proto.RemoveResult) result_;
-        }
-        return cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-      } else {
-        if (resultCase_ == 5) {
-          return removeResultBuilder_.getMessage();
-        }
-        return cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    public Builder setRemoveResult(cluster.external.shard.proto.RemoveResult value) {
-      if (removeResultBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        result_ = value;
-        onChanged();
-      } else {
-        removeResultBuilder_.setMessage(value);
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    public Builder setRemoveResult(
-        cluster.external.shard.proto.RemoveResult.Builder builderForValue) {
-      if (removeResultBuilder_ == null) {
-        result_ = builderForValue.build();
-        onChanged();
-      } else {
-        removeResultBuilder_.setMessage(builderForValue.build());
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    public Builder mergeRemoveResult(cluster.external.shard.proto.RemoveResult value) {
-      if (removeResultBuilder_ == null) {
-        if (resultCase_ == 5 &&
-            result_ != cluster.external.shard.proto.RemoveResult.getDefaultInstance()) {
-          result_ = cluster.external.shard.proto.RemoveResult.newBuilder((cluster.external.shard.proto.RemoveResult) result_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          result_ = value;
-        }
-        onChanged();
-      } else {
-        if (resultCase_ == 5) {
-          removeResultBuilder_.mergeFrom(value);
-        } else {
-          removeResultBuilder_.setMessage(value);
-        }
-      }
-      resultCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    public Builder clearRemoveResult() {
-      if (removeResultBuilder_ == null) {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
-      } else {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        removeResultBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    public cluster.external.shard.proto.RemoveResult.Builder getRemoveResultBuilder() {
-      return getRemoveResultFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    @java.lang.Override
-    public cluster.external.shard.proto.RemoveResultOrBuilder getRemoveResultOrBuilder() {
-      if ((resultCase_ == 5) && (removeResultBuilder_ != null)) {
-        return removeResultBuilder_.getMessageOrBuilder();
-      } else {
-        if (resultCase_ == 5) {
-          return (cluster.external.shard.proto.RemoveResult) result_;
-        }
-        return cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.proto.RemoveResult removeResult = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.RemoveResult, cluster.external.shard.proto.RemoveResult.Builder, cluster.external.shard.proto.RemoveResultOrBuilder> 
-        getRemoveResultFieldBuilder() {
-      if (removeResultBuilder_ == null) {
-        if (!(resultCase_ == 5)) {
-          result_ = cluster.external.shard.proto.RemoveResult.getDefaultInstance();
-        }
-        removeResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.RemoveResult, cluster.external.shard.proto.RemoveResult.Builder, cluster.external.shard.proto.RemoveResultOrBuilder>(
-                (cluster.external.shard.proto.RemoveResult) result_,
-                getParentForChildren(),
-                isClean());
-        result_ = null;
-      }
-      resultCase_ = 5;
-      onChanged();;
-      return removeResultBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

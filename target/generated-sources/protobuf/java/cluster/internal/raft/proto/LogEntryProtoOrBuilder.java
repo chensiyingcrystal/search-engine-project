@@ -50,28 +50,16 @@ public interface LogEntryProtoOrBuilder extends
   cluster.internal.raft.proto.StartNewTermOpProtoOrBuilder getStartNewTermOpOrBuilder();
 
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    * @return Whether the putOp field is set.
    */
   boolean hasPutOp();
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    * @return The putOp.
    */
   cluster.internal.raft.proto.PutOp getPutOp();
   /**
-   * <pre>
-   *todo:update shard / node status
-   * </pre>
-   *
    * <code>.proto.PutOp putOp = 5;</code>
    */
   cluster.internal.raft.proto.PutOpOrBuilder getPutOpOrBuilder();
@@ -90,21 +78,6 @@ public interface LogEntryProtoOrBuilder extends
    * <code>.proto.GetOp getOp = 6;</code>
    */
   cluster.internal.raft.proto.GetOpOrBuilder getGetOpOrBuilder();
-
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   * @return Whether the removeOp field is set.
-   */
-  boolean hasRemoveOp();
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   * @return The removeOp.
-   */
-  cluster.internal.raft.proto.RemoveOp getRemoveOp();
-  /**
-   * <code>.proto.RemoveOp removeOp = 7;</code>
-   */
-  cluster.internal.raft.proto.RemoveOpOrBuilder getRemoveOpOrBuilder();
 
   public cluster.internal.raft.proto.LogEntryProto.OperationCase getOperationCase();
 }

@@ -36,13 +36,13 @@ message StartNewTermOpProto {
 }
 
 message PutOp {
-  string key = 1;
-  Val val = 2;
-  bool putIfAbsent = 3;
+  DataNodeInfo dataNodeInfo = 1;
+  repeated ShardInfo shardInfo = 2;
 }
 
 message PutOpResult {
-  Val oldVal = 1;
+  int32 status = 1; //响应码（0：success -1：error）
+  string msg = 2; //响应信息
 }
 
 message GetOp {
@@ -54,26 +54,14 @@ message GetOpResult {
   Val val = 1;
 }
 
-message RemoveOp {
-  string key = 1;
-  Val val = 2;
-}
-
-message RemoveOpResult {
-  bool success = 1;
-  Val oldVal = 2;
-}
-
 message LogEntryProto {
   int32 term = 1;
   int64 index = 2;
   oneof operation {
     UpdateRaftGroupMembersOpProto updateRaftGroupMembersOp = 3;
     StartNewTermOpProto startNewTermOp = 4;
-    //todo:update shard / node status
     PutOp putOp = 5;
     GetOp getOp = 6;
-    RemoveOp removeOp = 7;
   }
 }
 

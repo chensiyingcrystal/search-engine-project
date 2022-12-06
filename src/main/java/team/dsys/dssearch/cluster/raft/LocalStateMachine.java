@@ -1,5 +1,7 @@
 package team.dsys.dssearch.cluster.raft;
 
+import cluster.external.shard.proto.DataNodeInfo;
+import cluster.external.shard.proto.ShardInfo;
 import cluster.external.shard.proto.Val;
 import cluster.internal.raft.proto.*;
 import com.google.inject.Inject;
@@ -31,9 +33,8 @@ public class LocalStateMachine implements StateMachine {
     private static final Logger LOGGER = LoggerFactory.getLogger(LocalStateMachine.class);
     //in-memory map to keep shard status and node status
     // use linkedhash map to keep the insertion order
+//    private final Map<ShardInfo, DataNodeInfo> map = new LinkedHashMap<>();
     private final Map<String, Val> map = new LinkedHashMap<>();
-    //store shard information
-    //
 
     private final RaftEndpoint raftNodeEndpoint;
 
@@ -55,8 +56,6 @@ public class LocalStateMachine implements StateMachine {
             return put(commitIndex, (PutOp) operation);
         } else if (operation instanceof GetOp) {
             return get(commitIndex, (GetOp) operation);
-        } else if (operation instanceof RemoveOp) {
-            return remove(commitIndex, (RemoveOp) operation);
         }
 
         throw new IllegalArgumentException("Invalid operation: " + operation + " of clazz: " + operation.getClass()
@@ -65,10 +64,10 @@ public class LocalStateMachine implements StateMachine {
 
     //do local put operation
     private PutOpResult put(long commitIndex, PutOp op) {
-        Val oldVal = op.getPutIfAbsent() ? map.putIfAbsent(op.getKey(), op.getVal()) : map.put(op.getKey(), op.getVal());
+        Val oldVal = Val.newBuilder().setStr("PUT successfully").build();
         PutOpResult.Builder builder = PutOpResult.newBuilder();
         if (oldVal != null) {
-            builder.setOldVal(oldVal);
+            builder.setStatus(0).setMsg("Build successfully");
         }
 
         return builder.build();
@@ -76,28 +75,12 @@ public class LocalStateMachine implements StateMachine {
 
     private GetOpResult get(long commitIndex, GetOp op) {
         GetOpResult.Builder builder = GetOpResult.newBuilder();
-        Val val = map.get(op.getKey());
+        Val val = Val.newBuilder().setStr("GET successfully").build();
         if (val != null) {
             builder.setVal(val);
         }
 
         return builder.build();
-    }
-
-    private RemoveOpResult remove(long commitIndex, RemoveOp op) {
-        RemoveOpResult.Builder builder = RemoveOpResult.newBuilder();
-        boolean success = false;
-        if (op.hasVal()) {
-            success = map.remove(op.getKey(), op.getVal());
-        } else {
-            Val val = map.remove(op.getKey());
-            if (val != null) {
-                builder.setOldVal(val);
-                success = true;
-            }
-        }
-
-        return builder.setSuccess(success).build();
     }
 
 

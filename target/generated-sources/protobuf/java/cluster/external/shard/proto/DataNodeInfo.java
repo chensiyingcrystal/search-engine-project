@@ -4,26 +4,26 @@
 package cluster.external.shard.proto;
 
 /**
- * Protobuf type {@code proto.RemoveRequest}
+ * Protobuf type {@code proto.DataNodeInfo}
  */
-public final class RemoveRequest extends
+public final class DataNodeInfo extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:proto.RemoveRequest)
-    RemoveRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:proto.DataNodeInfo)
+    DataNodeInfoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use RemoveRequest.newBuilder() to construct.
-  private RemoveRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DataNodeInfo.newBuilder() to construct.
+  private DataNodeInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private RemoveRequest() {
-    key_ = "";
+  private DataNodeInfo() {
+    address_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new RemoveRequest();
+    return new DataNodeInfo();
   }
 
   @java.lang.Override
@@ -33,79 +33,64 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_RemoveRequest_descriptor;
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_DataNodeInfo_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_RemoveRequest_fieldAccessorTable
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_DataNodeInfo_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cluster.external.shard.proto.RemoveRequest.class, cluster.external.shard.proto.RemoveRequest.Builder.class);
+            cluster.external.shard.proto.DataNodeInfo.class, cluster.external.shard.proto.DataNodeInfo.Builder.class);
   }
 
-  public static final int KEY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object key_;
+  public static final int DATANODEID_FIELD_NUMBER = 1;
+  private int dataNodeId_;
   /**
-   * <code>string key = 1;</code>
-   * @return The key.
+   * <code>int32 dataNodeId = 1;</code>
+   * @return The dataNodeId.
    */
   @java.lang.Override
-  public java.lang.String getKey() {
-    java.lang.Object ref = key_;
+  public int getDataNodeId() {
+    return dataNodeId_;
+  }
+
+  public static final int ADDRESS_FIELD_NUMBER = 2;
+  private volatile java.lang.Object address_;
+  /**
+   * <code>string address = 2;</code>
+   * @return The address.
+   */
+  @java.lang.Override
+  public java.lang.String getAddress() {
+    java.lang.Object ref = address_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      key_ = s;
+      address_ = s;
       return s;
     }
   }
   /**
-   * <code>string key = 1;</code>
-   * @return The bytes for key.
+   * <code>string address = 2;</code>
+   * @return The bytes for address.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getKeyBytes() {
-    java.lang.Object ref = key_;
+      getAddressBytes() {
+    java.lang.Object ref = address_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      key_ = b;
+      address_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
-  }
-
-  public static final int VAL_FIELD_NUMBER = 2;
-  private cluster.external.shard.proto.Val val_;
-  /**
-   * <code>.proto.Val val = 2;</code>
-   * @return Whether the val field is set.
-   */
-  @java.lang.Override
-  public boolean hasVal() {
-    return val_ != null;
-  }
-  /**
-   * <code>.proto.Val val = 2;</code>
-   * @return The val.
-   */
-  @java.lang.Override
-  public cluster.external.shard.proto.Val getVal() {
-    return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
-  }
-  /**
-   * <code>.proto.Val val = 2;</code>
-   */
-  @java.lang.Override
-  public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-    return getVal();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -122,11 +107,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+    if (dataNodeId_ != 0) {
+      output.writeInt32(1, dataNodeId_);
     }
-    if (val_ != null) {
-      output.writeMessage(2, getVal());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -137,12 +122,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
-    }
-    if (val_ != null) {
+    if (dataNodeId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getVal());
+        .computeInt32Size(1, dataNodeId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(address_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -154,18 +139,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cluster.external.shard.proto.RemoveRequest)) {
+    if (!(obj instanceof cluster.external.shard.proto.DataNodeInfo)) {
       return super.equals(obj);
     }
-    cluster.external.shard.proto.RemoveRequest other = (cluster.external.shard.proto.RemoveRequest) obj;
+    cluster.external.shard.proto.DataNodeInfo other = (cluster.external.shard.proto.DataNodeInfo) obj;
 
-    if (!getKey()
-        .equals(other.getKey())) return false;
-    if (hasVal() != other.hasVal()) return false;
-    if (hasVal()) {
-      if (!getVal()
-          .equals(other.getVal())) return false;
-    }
+    if (getDataNodeId()
+        != other.getDataNodeId()) return false;
+    if (!getAddress()
+        .equals(other.getAddress())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -177,80 +159,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + KEY_FIELD_NUMBER;
-    hash = (53 * hash) + getKey().hashCode();
-    if (hasVal()) {
-      hash = (37 * hash) + VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getVal().hashCode();
-    }
+    hash = (37 * hash) + DATANODEID_FIELD_NUMBER;
+    hash = (53 * hash) + getDataNodeId();
+    hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getAddress().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(byte[] data)
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseDelimitedFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.DataNodeInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseDelimitedFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.RemoveRequest parseFrom(
+  public static cluster.external.shard.proto.DataNodeInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -263,7 +243,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cluster.external.shard.proto.RemoveRequest prototype) {
+  public static Builder newBuilder(cluster.external.shard.proto.DataNodeInfo prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -279,26 +259,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code proto.RemoveRequest}
+   * Protobuf type {@code proto.DataNodeInfo}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:proto.RemoveRequest)
-      cluster.external.shard.proto.RemoveRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:proto.DataNodeInfo)
+      cluster.external.shard.proto.DataNodeInfoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_RemoveRequest_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_DataNodeInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_RemoveRequest_fieldAccessorTable
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_DataNodeInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cluster.external.shard.proto.RemoveRequest.class, cluster.external.shard.proto.RemoveRequest.Builder.class);
+              cluster.external.shard.proto.DataNodeInfo.class, cluster.external.shard.proto.DataNodeInfo.Builder.class);
     }
 
-    // Construct using cluster.external.shard.proto.RemoveRequest.newBuilder()
+    // Construct using cluster.external.shard.proto.DataNodeInfo.newBuilder()
     private Builder() {
 
     }
@@ -311,31 +291,27 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      key_ = "";
+      dataNodeId_ = 0;
 
-      if (valBuilder_ == null) {
-        val_ = null;
-      } else {
-        val_ = null;
-        valBuilder_ = null;
-      }
+      address_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_RemoveRequest_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_DataNodeInfo_descriptor;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.RemoveRequest getDefaultInstanceForType() {
-      return cluster.external.shard.proto.RemoveRequest.getDefaultInstance();
+    public cluster.external.shard.proto.DataNodeInfo getDefaultInstanceForType() {
+      return cluster.external.shard.proto.DataNodeInfo.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.RemoveRequest build() {
-      cluster.external.shard.proto.RemoveRequest result = buildPartial();
+    public cluster.external.shard.proto.DataNodeInfo build() {
+      cluster.external.shard.proto.DataNodeInfo result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -343,14 +319,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.RemoveRequest buildPartial() {
-      cluster.external.shard.proto.RemoveRequest result = new cluster.external.shard.proto.RemoveRequest(this);
-      result.key_ = key_;
-      if (valBuilder_ == null) {
-        result.val_ = val_;
-      } else {
-        result.val_ = valBuilder_.build();
-      }
+    public cluster.external.shard.proto.DataNodeInfo buildPartial() {
+      cluster.external.shard.proto.DataNodeInfo result = new cluster.external.shard.proto.DataNodeInfo(this);
+      result.dataNodeId_ = dataNodeId_;
+      result.address_ = address_;
       onBuilt();
       return result;
     }
@@ -389,22 +361,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cluster.external.shard.proto.RemoveRequest) {
-        return mergeFrom((cluster.external.shard.proto.RemoveRequest)other);
+      if (other instanceof cluster.external.shard.proto.DataNodeInfo) {
+        return mergeFrom((cluster.external.shard.proto.DataNodeInfo)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cluster.external.shard.proto.RemoveRequest other) {
-      if (other == cluster.external.shard.proto.RemoveRequest.getDefaultInstance()) return this;
-      if (!other.getKey().isEmpty()) {
-        key_ = other.key_;
-        onChanged();
+    public Builder mergeFrom(cluster.external.shard.proto.DataNodeInfo other) {
+      if (other == cluster.external.shard.proto.DataNodeInfo.getDefaultInstance()) return this;
+      if (other.getDataNodeId() != 0) {
+        setDataNodeId(other.getDataNodeId());
       }
-      if (other.hasVal()) {
-        mergeVal(other.getVal());
+      if (!other.getAddress().isEmpty()) {
+        address_ = other.address_;
+        onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -432,15 +404,13 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              key_ = input.readStringRequireUtf8();
+            case 8: {
+              dataNodeId_ = input.readInt32();
 
               break;
-            } // case 10
+            } // case 8
             case 18: {
-              input.readMessage(
-                  getValFieldBuilder().getBuilder(),
-                  extensionRegistry);
+              address_ = input.readStringRequireUtf8();
 
               break;
             } // case 18
@@ -460,199 +430,111 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object key_ = "";
+    private int dataNodeId_ ;
     /**
-     * <code>string key = 1;</code>
-     * @return The key.
+     * <code>int32 dataNodeId = 1;</code>
+     * @return The dataNodeId.
      */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
+    @java.lang.Override
+    public int getDataNodeId() {
+      return dataNodeId_;
+    }
+    /**
+     * <code>int32 dataNodeId = 1;</code>
+     * @param value The dataNodeId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDataNodeId(int value) {
+      
+      dataNodeId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 dataNodeId = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDataNodeId() {
+      
+      dataNodeId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object address_ = "";
+    /**
+     * <code>string address = 2;</code>
+     * @return The address.
+     */
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        key_ = s;
+        address_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string key = 1;</code>
-     * @return The bytes for key.
+     * <code>string address = 2;</code>
+     * @return The bytes for address.
      */
     public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
+        getAddressBytes() {
+      java.lang.Object ref = address_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        key_ = b;
+        address_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string key = 1;</code>
-     * @param value The key to set.
+     * <code>string address = 2;</code>
+     * @param value The address to set.
      * @return This builder for chaining.
      */
-    public Builder setKey(
+    public Builder setAddress(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      key_ = value;
+      address_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string key = 1;</code>
+     * <code>string address = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearKey() {
+    public Builder clearAddress() {
       
-      key_ = getDefaultInstance().getKey();
+      address_ = getDefaultInstance().getAddress();
       onChanged();
       return this;
     }
     /**
-     * <code>string key = 1;</code>
-     * @param value The bytes for key to set.
+     * <code>string address = 2;</code>
+     * @param value The bytes for address to set.
      * @return This builder for chaining.
      */
-    public Builder setKeyBytes(
+    public Builder setAddressBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      key_ = value;
+      address_ = value;
       onChanged();
       return this;
-    }
-
-    private cluster.external.shard.proto.Val val_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> valBuilder_;
-    /**
-     * <code>.proto.Val val = 2;</code>
-     * @return Whether the val field is set.
-     */
-    public boolean hasVal() {
-      return valBuilder_ != null || val_ != null;
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     * @return The val.
-     */
-    public cluster.external.shard.proto.Val getVal() {
-      if (valBuilder_ == null) {
-        return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
-      } else {
-        return valBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public Builder setVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        val_ = value;
-        onChanged();
-      } else {
-        valBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public Builder setVal(
-        cluster.external.shard.proto.Val.Builder builderForValue) {
-      if (valBuilder_ == null) {
-        val_ = builderForValue.build();
-        onChanged();
-      } else {
-        valBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public Builder mergeVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
-        if (val_ != null) {
-          val_ =
-            cluster.external.shard.proto.Val.newBuilder(val_).mergeFrom(value).buildPartial();
-        } else {
-          val_ = value;
-        }
-        onChanged();
-      } else {
-        valBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public Builder clearVal() {
-      if (valBuilder_ == null) {
-        val_ = null;
-        onChanged();
-      } else {
-        val_ = null;
-        valBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public cluster.external.shard.proto.Val.Builder getValBuilder() {
-      
-      onChanged();
-      return getValFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-      if (valBuilder_ != null) {
-        return valBuilder_.getMessageOrBuilder();
-      } else {
-        return val_ == null ?
-            cluster.external.shard.proto.Val.getDefaultInstance() : val_;
-      }
-    }
-    /**
-     * <code>.proto.Val val = 2;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> 
-        getValFieldBuilder() {
-      if (valBuilder_ == null) {
-        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder>(
-                getVal(),
-                getParentForChildren(),
-                isClean());
-        val_ = null;
-      }
-      return valBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -667,23 +549,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:proto.RemoveRequest)
+    // @@protoc_insertion_point(builder_scope:proto.DataNodeInfo)
   }
 
-  // @@protoc_insertion_point(class_scope:proto.RemoveRequest)
-  private static final cluster.external.shard.proto.RemoveRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:proto.DataNodeInfo)
+  private static final cluster.external.shard.proto.DataNodeInfo DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cluster.external.shard.proto.RemoveRequest();
+    DEFAULT_INSTANCE = new cluster.external.shard.proto.DataNodeInfo();
   }
 
-  public static cluster.external.shard.proto.RemoveRequest getDefaultInstance() {
+  public static cluster.external.shard.proto.DataNodeInfo getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RemoveRequest>
-      PARSER = new com.google.protobuf.AbstractParser<RemoveRequest>() {
+  private static final com.google.protobuf.Parser<DataNodeInfo>
+      PARSER = new com.google.protobuf.AbstractParser<DataNodeInfo>() {
     @java.lang.Override
-    public RemoveRequest parsePartialFrom(
+    public DataNodeInfo parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -702,17 +584,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<RemoveRequest> parser() {
+  public static com.google.protobuf.Parser<DataNodeInfo> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RemoveRequest> getParserForType() {
+  public com.google.protobuf.Parser<DataNodeInfo> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cluster.external.shard.proto.RemoveRequest getDefaultInstanceForType() {
+  public cluster.external.shard.proto.DataNodeInfo getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
