@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ShardInfo() {
-    shardId_ = "";
   }
 
   @java.lang.Override
@@ -45,41 +44,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int SHARDID_FIELD_NUMBER = 3;
-  private volatile java.lang.Object shardId_;
+  private int shardId_;
   /**
-   * <code>string shardId = 3;</code>
+   * <code>int32 shardId = 3;</code>
    * @return The shardId.
    */
   @java.lang.Override
-  public java.lang.String getShardId() {
-    java.lang.Object ref = shardId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      shardId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string shardId = 3;</code>
-   * @return The bytes for shardId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getShardIdBytes() {
-    java.lang.Object ref = shardId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      shardId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getShardId() {
+    return shardId_;
   }
 
   public static final int ISPRIMARY_FIELD_NUMBER = 4;
@@ -107,8 +79,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(shardId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, shardId_);
+    if (shardId_ != 0) {
+      output.writeInt32(3, shardId_);
     }
     if (isPrimary_ != false) {
       output.writeBool(4, isPrimary_);
@@ -122,8 +94,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(shardId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, shardId_);
+    if (shardId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, shardId_);
     }
     if (isPrimary_ != false) {
       size += com.google.protobuf.CodedOutputStream
@@ -144,8 +117,8 @@ private static final long serialVersionUID = 0L;
     }
     cluster.external.shard.proto.ShardInfo other = (cluster.external.shard.proto.ShardInfo) obj;
 
-    if (!getShardId()
-        .equals(other.getShardId())) return false;
+    if (getShardId()
+        != other.getShardId()) return false;
     if (getIsPrimary()
         != other.getIsPrimary()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -160,7 +133,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + SHARDID_FIELD_NUMBER;
-    hash = (53 * hash) + getShardId().hashCode();
+    hash = (53 * hash) + getShardId();
     hash = (37 * hash) + ISPRIMARY_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsPrimary());
@@ -292,7 +265,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      shardId_ = "";
+      shardId_ = 0;
 
       isPrimary_ = false;
 
@@ -372,9 +345,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cluster.external.shard.proto.ShardInfo other) {
       if (other == cluster.external.shard.proto.ShardInfo.getDefaultInstance()) return this;
-      if (!other.getShardId().isEmpty()) {
-        shardId_ = other.shardId_;
-        onChanged();
+      if (other.getShardId() != 0) {
+        setShardId(other.getShardId());
       }
       if (other.getIsPrimary() != false) {
         setIsPrimary(other.getIsPrimary());
@@ -405,11 +377,11 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 26: {
-              shardId_ = input.readStringRequireUtf8();
+            case 24: {
+              shardId_ = input.readInt32();
 
               break;
-            } // case 26
+            } // case 24
             case 32: {
               isPrimary_ = input.readBool();
 
@@ -431,78 +403,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object shardId_ = "";
+    private int shardId_ ;
     /**
-     * <code>string shardId = 3;</code>
+     * <code>int32 shardId = 3;</code>
      * @return The shardId.
      */
-    public java.lang.String getShardId() {
-      java.lang.Object ref = shardId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        shardId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getShardId() {
+      return shardId_;
     }
     /**
-     * <code>string shardId = 3;</code>
-     * @return The bytes for shardId.
-     */
-    public com.google.protobuf.ByteString
-        getShardIdBytes() {
-      java.lang.Object ref = shardId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        shardId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string shardId = 3;</code>
+     * <code>int32 shardId = 3;</code>
      * @param value The shardId to set.
      * @return This builder for chaining.
      */
-    public Builder setShardId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setShardId(int value) {
+      
       shardId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string shardId = 3;</code>
+     * <code>int32 shardId = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearShardId() {
       
-      shardId_ = getDefaultInstance().getShardId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string shardId = 3;</code>
-     * @param value The bytes for shardId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setShardIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      shardId_ = value;
+      shardId_ = 0;
       onChanged();
       return this;
     }

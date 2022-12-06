@@ -162,103 +162,104 @@ public final class RaftRpc {
       "o\"W\n\005PutOp\022)\n\014dataNodeInfo\030\001 \001(\0132\023.proto" +
       ".DataNodeInfo\022#\n\tshardInfo\030\002 \003(\0132\020.proto" +
       ".ShardInfo\"*\n\013PutOpResult\022\016\n\006status\030\001 \001(" +
-      "\005\022\013\n\003msg\030\002 \001(\t\",\n\005GetOp\022\013\n\003key\030\001 \001(\t\022\026\n\016" +
-      "minCommitIndex\030\002 \001(\003\"&\n\013GetOpResult\022\027\n\003v" +
-      "al\030\001 \001(\0132\n.proto.Val\"\367\001\n\rLogEntryProto\022\014" +
-      "\n\004term\030\001 \001(\005\022\r\n\005index\030\002 \001(\003\022H\n\030updateRaf" +
-      "tGroupMembersOp\030\003 \001(\0132$.proto.UpdateRaft" +
-      "GroupMembersOpProtoH\000\0224\n\016startNewTermOp\030" +
-      "\004 \001(\0132\032.proto.StartNewTermOpProtoH\000\022\035\n\005p" +
-      "utOp\030\005 \001(\0132\014.proto.PutOpH\000\022\035\n\005getOp\030\006 \001(" +
-      "\0132\014.proto.GetOpH\000B\013\n\toperation\"2\n\nShardE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\027\n\003val\030\002 \001(\0132\n.proto.V" +
-      "al\"<\n\030ClusterSnapshotChunkData\022 \n\005entry\030" +
-      "\001 \003(\0132\021.proto.ShardEntry\"\207\001\n\031RaftGroupMe" +
-      "mbersViewProto\022\020\n\010logIndex\030\001 \001(\003\022(\n\006memb" +
-      "er\030\002 \003(\0132\030.proto.RaftEndpointProto\022.\n\014vo" +
-      "tingMember\030\003 \003(\0132\030.proto.RaftEndpointPro" +
-      "to\"\333\001\n\024ClusterSnapshotChunk\022\014\n\004term\030\001 \001(" +
-      "\005\022\r\n\005index\030\002 \001(\003\0222\n\toperation\030\003 \001(\0132\037.pr" +
-      "oto.ClusterSnapshotChunkData\022\032\n\022snapshot" +
-      "ChunkIndex\030\004 \001(\005\022\032\n\022snapshotChunkCount\030\005" +
-      " \001(\005\022:\n\020groupMembersView\030\006 \001(\0132 .proto.R" +
-      "aftGroupMembersViewProto\"\241\001\n\022SnapshotEnt" +
-      "ryProto\022\014\n\004term\030\001 \001(\005\022\r\n\005index\030\002 \001(\003\0222\n\r" +
-      "snapshotChunk\030\003 \003(\0132\033.proto.ClusterSnaps" +
-      "hotChunk\022:\n\020groupMembersView\030\004 \001(\0132 .pro" +
-      "to.RaftGroupMembersViewProto\"\226\001\n\020VoteReq" +
-      "uestProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001" +
-      "(\0132\030.proto.RaftEndpointProto\022\014\n\004term\030\003 \001" +
-      "(\005\022\023\n\013lastLogTerm\030\004 \001(\005\022\024\n\014lastLogIndex\030" +
-      "\005 \001(\003\022\016\n\006sticky\030\006 \001(\010\"m\n\021VoteResponsePro" +
-      "to\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.pr" +
-      "oto.RaftEndpointProto\022\014\n\004term\030\003 \001(\005\022\017\n\007g" +
-      "ranted\030\004 \001(\010\"\211\002\n\031AppendEntriesRequestPro" +
-      "to\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.pr" +
-      "oto.RaftEndpointProto\022\014\n\004term\030\003 \001(\005\022\023\n\013p" +
-      "revLogTerm\030\004 \001(\005\022\024\n\014prevLogIndex\030\005 \001(\003\022\023" +
-      "\n\013commitIndex\030\006 \001(\003\022#\n\005entry\030\007 \003(\0132\024.pro" +
-      "to.LogEntryProto\022\033\n\023querySequenceNumber\030" +
-      "\010 \001(\003\022!\n\031flowControlSequenceNumber\030\t \001(\003" +
-      "\"\302\001\n!AppendEntriesSuccessResponseProto\022\017" +
-      "\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto." +
-      "RaftEndpointProto\022\014\n\004term\030\003 \001(\005\022\024\n\014lastL" +
-      "ogIndex\030\004 \001(\003\022\033\n\023querySequenceNumber\030\005 \001" +
-      "(\003\022!\n\031flowControlSequenceNumber\030\006 \001(\003\"\307\001" +
-      "\n!AppendEntriesFailureResponseProto\022\017\n\007g" +
-      "roupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.Raf" +
-      "tEndpointProto\022\014\n\004term\030\003 \001(\005\022\031\n\021expected" +
-      "NextIndex\030\004 \001(\003\022\033\n\023querySequenceNumber\030\005" +
-      " \001(\003\022!\n\031flowControlSequenceNumber\030\006 \001(\003\"" +
-      "\257\003\n\033InstallSnapshotRequestProto\022\017\n\007group" +
+      "\005\022\013\n\003msg\030\002 \001(\t\"0\n\005GetOp\022\017\n\007shardId\030\001 \003(\005" +
+      "\022\026\n\016minCommitIndex\030\002 \001(\003\"8\n\013GetOpResult\022" +
+      ")\n\014dataNodeInfo\030\001 \003(\0132\023.proto.DataNodeIn" +
+      "fo\"\367\001\n\rLogEntryProto\022\014\n\004term\030\001 \001(\005\022\r\n\005in" +
+      "dex\030\002 \001(\003\022H\n\030updateRaftGroupMembersOp\030\003 " +
+      "\001(\0132$.proto.UpdateRaftGroupMembersOpProt" +
+      "oH\000\0224\n\016startNewTermOp\030\004 \001(\0132\032.proto.Star" +
+      "tNewTermOpProtoH\000\022\035\n\005putOp\030\005 \001(\0132\014.proto" +
+      ".PutOpH\000\022\035\n\005getOp\030\006 \001(\0132\014.proto.GetOpH\000B" +
+      "\013\n\toperation\"2\n\nShardEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\027\n\003val\030\002 \001(\0132\n.proto.Val\"<\n\030ClusterSnaps" +
+      "hotChunkData\022 \n\005entry\030\001 \003(\0132\021.proto.Shar" +
+      "dEntry\"\207\001\n\031RaftGroupMembersViewProto\022\020\n\010" +
+      "logIndex\030\001 \001(\003\022(\n\006member\030\002 \003(\0132\030.proto.R" +
+      "aftEndpointProto\022.\n\014votingMember\030\003 \003(\0132\030" +
+      ".proto.RaftEndpointProto\"\333\001\n\024ClusterSnap" +
+      "shotChunk\022\014\n\004term\030\001 \001(\005\022\r\n\005index\030\002 \001(\003\0222" +
+      "\n\toperation\030\003 \001(\0132\037.proto.ClusterSnapsho" +
+      "tChunkData\022\032\n\022snapshotChunkIndex\030\004 \001(\005\022\032" +
+      "\n\022snapshotChunkCount\030\005 \001(\005\022:\n\020groupMembe" +
+      "rsView\030\006 \001(\0132 .proto.RaftGroupMembersVie" +
+      "wProto\"\241\001\n\022SnapshotEntryProto\022\014\n\004term\030\001 " +
+      "\001(\005\022\r\n\005index\030\002 \001(\003\0222\n\rsnapshotChunk\030\003 \003(" +
+      "\0132\033.proto.ClusterSnapshotChunk\022:\n\020groupM" +
+      "embersView\030\004 \001(\0132 .proto.RaftGroupMember" +
+      "sViewProto\"\226\001\n\020VoteRequestProto\022\017\n\007group" +
       "Id\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEnd" +
-      "pointProto\022\014\n\004term\030\003 \001(\005\022\024\n\014senderLeader" +
-      "\030\004 \001(\010\022\024\n\014snapshotTerm\030\005 \001(\005\022\025\n\rsnapshot" +
-      "Index\030\006 \001(\003\022\037\n\027totalSnapshotChunkCount\030\007" +
-      " \001(\005\0222\n\rsnapshotChunk\030\010 \001(\0132\033.proto.Clus" +
-      "terSnapshotChunk\0223\n\021snapshottedMember\030\t " +
-      "\003(\0132\030.proto.RaftEndpointProto\022:\n\020groupMe" +
-      "mbersView\030\n \001(\0132 .proto.RaftGroupMembers" +
-      "ViewProto\022\033\n\023querySequenceNumber\030\014 \001(\003\022!" +
-      "\n\031flowControlSequenceNumber\030\r \001(\003\"\343\001\n\034In" +
-      "stallSnapshotResponseProto\022\017\n\007groupId\030\001 " +
-      "\001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEndpoint" +
-      "Proto\022\014\n\004term\030\003 \001(\005\022\025\n\rsnapshotIndex\030\004 \001" +
-      "(\003\022#\n\033requestedSnapshotChunkIndex\030\005 \001(\005\022" +
-      "\033\n\023querySequenceNumber\030\006 \001(\003\022!\n\031flowCont" +
-      "rolSequenceNumber\030\007 \001(\003\"\211\001\n\023PreVoteReque" +
-      "stProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\013" +
-      "2\030.proto.RaftEndpointProto\022\014\n\004term\030\003 \001(\005" +
-      "\022\023\n\013lastLogTerm\030\004 \001(\005\022\024\n\014lastLogIndex\030\005 " +
-      "\001(\003\"p\n\024PreVoteResponseProto\022\017\n\007groupId\030\001" +
-      " \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEndpoin" +
-      "tProto\022\014\n\004term\030\003 \001(\005\022\017\n\007granted\030\004 \001(\010\"\227\001" +
-      "\n!TriggerLeaderElectionRequestProto\022\017\n\007g" +
-      "roupId\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.Raf" +
-      "tEndpointProto\022\014\n\004term\030\003 \001(\005\022\023\n\013lastLogT" +
-      "erm\030\004 \001(\005\022\024\n\014lastLogIndex\030\005 \001(\003\"\265\005\n\022Raft" +
-      "MessageRequest\022.\n\013voteRequest\030\001 \001(\0132\027.pr" +
-      "oto.VoteRequestProtoH\000\0220\n\014voteResponse\030\002" +
-      " \001(\0132\030.proto.VoteResponseProtoH\000\022@\n\024appe" +
-      "ndEntriesRequest\030\003 \001(\0132 .proto.AppendEnt" +
-      "riesRequestProtoH\000\022P\n\034appendEntriesSucce" +
-      "ssResponse\030\004 \001(\0132(.proto.AppendEntriesSu" +
-      "ccessResponseProtoH\000\022P\n\034appendEntriesFai" +
-      "lureResponse\030\005 \001(\0132(.proto.AppendEntries" +
-      "FailureResponseProtoH\000\022D\n\026installSnapsho" +
-      "tRequest\030\006 \001(\0132\".proto.InstallSnapshotRe" +
-      "questProtoH\000\022F\n\027installSnapshotResponse\030" +
-      "\007 \001(\0132#.proto.InstallSnapshotResponsePro" +
-      "toH\000\0224\n\016preVoteRequest\030\010 \001(\0132\032.proto.Pre" +
-      "VoteRequestProtoH\000\0226\n\017preVoteResponse\030\t " +
-      "\001(\0132\033.proto.PreVoteResponseProtoH\000\022P\n\034tr" +
-      "iggerLeaderElectionRequest\030\n \001(\0132(.proto" +
-      ".TriggerLeaderElectionRequestProtoH\000B\t\n\007" +
-      "message\"\025\n\023RaftMessageResponse2j\n\030RaftCo" +
-      "mmunicationService\022N\n\021handleRaftMessage\022" +
-      "\031.proto.RaftMessageRequest\032\032.proto.RaftM" +
-      "essageResponse\"\000(\001B\037\n\033cluster.internal.r" +
-      "aft.protoP\001b\006proto3"
+      "pointProto\022\014\n\004term\030\003 \001(\005\022\023\n\013lastLogTerm\030" +
+      "\004 \001(\005\022\024\n\014lastLogIndex\030\005 \001(\003\022\016\n\006sticky\030\006 " +
+      "\001(\010\"m\n\021VoteResponseProto\022\017\n\007groupId\030\001 \001(" +
+      "\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEndpointPr" +
+      "oto\022\014\n\004term\030\003 \001(\005\022\017\n\007granted\030\004 \001(\010\"\211\002\n\031A" +
+      "ppendEntriesRequestProto\022\017\n\007groupId\030\001 \001(" +
+      "\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEndpointPr" +
+      "oto\022\014\n\004term\030\003 \001(\005\022\023\n\013prevLogTerm\030\004 \001(\005\022\024" +
+      "\n\014prevLogIndex\030\005 \001(\003\022\023\n\013commitIndex\030\006 \001(" +
+      "\003\022#\n\005entry\030\007 \003(\0132\024.proto.LogEntryProto\022\033" +
+      "\n\023querySequenceNumber\030\010 \001(\003\022!\n\031flowContr" +
+      "olSequenceNumber\030\t \001(\003\"\302\001\n!AppendEntries" +
+      "SuccessResponseProto\022\017\n\007groupId\030\001 \001(\t\022(\n" +
+      "\006sender\030\002 \001(\0132\030.proto.RaftEndpointProto\022" +
+      "\014\n\004term\030\003 \001(\005\022\024\n\014lastLogIndex\030\004 \001(\003\022\033\n\023q" +
+      "uerySequenceNumber\030\005 \001(\003\022!\n\031flowControlS" +
+      "equenceNumber\030\006 \001(\003\"\307\001\n!AppendEntriesFai" +
+      "lureResponseProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006se" +
+      "nder\030\002 \001(\0132\030.proto.RaftEndpointProto\022\014\n\004" +
+      "term\030\003 \001(\005\022\031\n\021expectedNextIndex\030\004 \001(\003\022\033\n" +
+      "\023querySequenceNumber\030\005 \001(\003\022!\n\031flowContro" +
+      "lSequenceNumber\030\006 \001(\003\"\257\003\n\033InstallSnapsho" +
+      "tRequestProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender" +
+      "\030\002 \001(\0132\030.proto.RaftEndpointProto\022\014\n\004term" +
+      "\030\003 \001(\005\022\024\n\014senderLeader\030\004 \001(\010\022\024\n\014snapshot" +
+      "Term\030\005 \001(\005\022\025\n\rsnapshotIndex\030\006 \001(\003\022\037\n\027tot" +
+      "alSnapshotChunkCount\030\007 \001(\005\0222\n\rsnapshotCh" +
+      "unk\030\010 \001(\0132\033.proto.ClusterSnapshotChunk\0223" +
+      "\n\021snapshottedMember\030\t \003(\0132\030.proto.RaftEn" +
+      "dpointProto\022:\n\020groupMembersView\030\n \001(\0132 ." +
+      "proto.RaftGroupMembersViewProto\022\033\n\023query" +
+      "SequenceNumber\030\014 \001(\003\022!\n\031flowControlSeque" +
+      "nceNumber\030\r \001(\003\"\343\001\n\034InstallSnapshotRespo" +
+      "nseProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001(" +
+      "\0132\030.proto.RaftEndpointProto\022\014\n\004term\030\003 \001(" +
+      "\005\022\025\n\rsnapshotIndex\030\004 \001(\003\022#\n\033requestedSna" +
+      "pshotChunkIndex\030\005 \001(\005\022\033\n\023querySequenceNu" +
+      "mber\030\006 \001(\003\022!\n\031flowControlSequenceNumber\030" +
+      "\007 \001(\003\"\211\001\n\023PreVoteRequestProto\022\017\n\007groupId" +
+      "\030\001 \001(\t\022(\n\006sender\030\002 \001(\0132\030.proto.RaftEndpo" +
+      "intProto\022\014\n\004term\030\003 \001(\005\022\023\n\013lastLogTerm\030\004 " +
+      "\001(\005\022\024\n\014lastLogIndex\030\005 \001(\003\"p\n\024PreVoteResp" +
+      "onseProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006sender\030\002 \001" +
+      "(\0132\030.proto.RaftEndpointProto\022\014\n\004term\030\003 \001" +
+      "(\005\022\017\n\007granted\030\004 \001(\010\"\227\001\n!TriggerLeaderEle" +
+      "ctionRequestProto\022\017\n\007groupId\030\001 \001(\t\022(\n\006se" +
+      "nder\030\002 \001(\0132\030.proto.RaftEndpointProto\022\014\n\004" +
+      "term\030\003 \001(\005\022\023\n\013lastLogTerm\030\004 \001(\005\022\024\n\014lastL" +
+      "ogIndex\030\005 \001(\003\"\265\005\n\022RaftMessageRequest\022.\n\013" +
+      "voteRequest\030\001 \001(\0132\027.proto.VoteRequestPro" +
+      "toH\000\0220\n\014voteResponse\030\002 \001(\0132\030.proto.VoteR" +
+      "esponseProtoH\000\022@\n\024appendEntriesRequest\030\003" +
+      " \001(\0132 .proto.AppendEntriesRequestProtoH\000" +
+      "\022P\n\034appendEntriesSuccessResponse\030\004 \001(\0132(" +
+      ".proto.AppendEntriesSuccessResponseProto" +
+      "H\000\022P\n\034appendEntriesFailureResponse\030\005 \001(\013" +
+      "2(.proto.AppendEntriesFailureResponsePro" +
+      "toH\000\022D\n\026installSnapshotRequest\030\006 \001(\0132\".p" +
+      "roto.InstallSnapshotRequestProtoH\000\022F\n\027in" +
+      "stallSnapshotResponse\030\007 \001(\0132#.proto.Inst" +
+      "allSnapshotResponseProtoH\000\0224\n\016preVoteReq" +
+      "uest\030\010 \001(\0132\032.proto.PreVoteRequestProtoH\000" +
+      "\0226\n\017preVoteResponse\030\t \001(\0132\033.proto.PreVot" +
+      "eResponseProtoH\000\022P\n\034triggerLeaderElectio" +
+      "nRequest\030\n \001(\0132(.proto.TriggerLeaderElec" +
+      "tionRequestProtoH\000B\t\n\007message\"\025\n\023RaftMes" +
+      "sageResponse2j\n\030RaftCommunicationService" +
+      "\022N\n\021handleRaftMessage\022\031.proto.RaftMessag" +
+      "eRequest\032\032.proto.RaftMessageResponse\"\000(\001" +
+      "B\037\n\033cluster.internal.raft.protoP\001b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -300,13 +301,13 @@ public final class RaftRpc {
     internal_static_proto_GetOp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_GetOp_descriptor,
-        new java.lang.String[] { "Key", "MinCommitIndex", });
+        new java.lang.String[] { "ShardId", "MinCommitIndex", });
     internal_static_proto_GetOpResult_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_proto_GetOpResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_GetOpResult_descriptor,
-        new java.lang.String[] { "Val", });
+        new java.lang.String[] { "DataNodeInfo", });
     internal_static_proto_LogEntryProto_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_proto_LogEntryProto_fieldAccessorTable = new

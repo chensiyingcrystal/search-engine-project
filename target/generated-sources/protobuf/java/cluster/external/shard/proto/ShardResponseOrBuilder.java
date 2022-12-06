@@ -14,34 +14,34 @@ public interface ShardResponseOrBuilder extends
   long getCommitIndex();
 
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
-   * @return Whether the putResult field is set.
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
+   * @return Whether the commonResponse field is set.
    */
-  boolean hasPutResult();
+  boolean hasCommonResponse();
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
-   * @return The putResult.
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
+   * @return The commonResponse.
    */
-  cluster.external.shard.proto.PutResult getPutResult();
+  cluster.external.shard.proto.CommonResponse getCommonResponse();
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
    */
-  cluster.external.shard.proto.PutResultOrBuilder getPutResultOrBuilder();
+  cluster.external.shard.proto.CommonResponseOrBuilder getCommonResponseOrBuilder();
 
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
-   * @return Whether the getResult field is set.
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+   * @return Whether the getShardResponse field is set.
    */
-  boolean hasGetResult();
+  boolean hasGetShardResponse();
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
-   * @return The getResult.
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+   * @return The getShardResponse.
    */
-  cluster.external.shard.proto.GetResult getGetResult();
+  cluster.external.shard.proto.GetShardResponse getGetShardResponse();
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
    */
-  cluster.external.shard.proto.GetResultOrBuilder getGetResultOrBuilder();
+  cluster.external.shard.proto.GetShardResponseOrBuilder getGetShardResponseOrBuilder();
 
   public cluster.external.shard.proto.ShardResponse.ResultCase getResultCase();
 }

@@ -46,12 +46,12 @@ message PutOpResult {
 }
 
 message GetOp {
-  string key = 1;
+  repeated int32 shardId = 1;
   int64 minCommitIndex = 2;
 }
 
 message GetOpResult {
-  Val val = 1;
+  repeated DataNodeInfo dataNodeInfo = 1;
 }
 
 message LogEntryProto {

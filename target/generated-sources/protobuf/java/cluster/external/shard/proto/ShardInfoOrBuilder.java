@@ -8,16 +8,10 @@ public interface ShardInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string shardId = 3;</code>
+   * <code>int32 shardId = 3;</code>
    * @return The shardId.
    */
-  java.lang.String getShardId();
-  /**
-   * <code>string shardId = 3;</code>
-   * @return The bytes for shardId.
-   */
-  com.google.protobuf.ByteString
-      getShardIdBytes();
+  int getShardId();
 
   /**
    * <code>bool isPrimary = 4;</code>

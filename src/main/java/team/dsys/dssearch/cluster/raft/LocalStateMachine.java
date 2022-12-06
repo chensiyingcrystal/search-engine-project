@@ -77,7 +77,7 @@ public class LocalStateMachine implements StateMachine {
         GetOpResult.Builder builder = GetOpResult.newBuilder();
         Val val = Val.newBuilder().setStr("GET successfully").build();
         if (val != null) {
-            builder.setVal(val);
+            builder.getDefaultInstanceForType();
         }
 
         return builder.build();

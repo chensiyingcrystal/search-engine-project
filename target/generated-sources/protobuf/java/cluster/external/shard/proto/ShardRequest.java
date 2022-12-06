@@ -35,20 +35,20 @@ public final class ShardRequest {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_PutShardRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_PutResult_descriptor;
+    internal_static_proto_CommonResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_PutResult_fieldAccessorTable;
+      internal_static_proto_CommonResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_GetRequest_descriptor;
+    internal_static_proto_GetShardRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_GetRequest_fieldAccessorTable;
+      internal_static_proto_GetShardRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_GetResult_descriptor;
+    internal_static_proto_GetShardResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_GetResult_fieldAccessorTable;
+      internal_static_proto_GetShardResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_ShardResponse_descriptor;
   static final 
@@ -66,21 +66,23 @@ public final class ShardRequest {
       "\n\022ShardRequest.proto\022\005proto\"?\n\003Val\022\r\n\003st" +
       "r\030\001 \001(\tH\000\022\r\n\003num\030\002 \001(\003H\000\022\023\n\tbyteArray\030\003 " +
       "\001(\014H\000B\005\n\003val\"/\n\tShardInfo\022\017\n\007shardId\030\003 \001" +
-      "(\t\022\021\n\tisPrimary\030\004 \001(\010\"3\n\014DataNodeInfo\022\022\n" +
+      "(\005\022\021\n\tisPrimary\030\004 \001(\010\"3\n\014DataNodeInfo\022\022\n" +
       "\ndataNodeId\030\001 \001(\005\022\017\n\007address\030\002 \001(\t\"a\n\017Pu" +
       "tShardRequest\022)\n\014dataNodeInfo\030\001 \001(\0132\023.pr" +
       "oto.DataNodeInfo\022#\n\tshardInfo\030\002 \003(\0132\020.pr" +
-      "oto.ShardInfo\"(\n\tPutResult\022\016\n\006status\030\001 \001" +
-      "(\005\022\013\n\003msg\030\002 \001(\t\"1\n\nGetRequest\022\013\n\003key\030\001 \001" +
-      "(\t\022\026\n\016minCommitIndex\030\002 \001(\003\"$\n\tGetResult\022" +
-      "\027\n\003val\030\001 \001(\0132\n.proto.Val\"|\n\rShardRespons" +
-      "e\022\023\n\013commitIndex\030\001 \001(\003\022%\n\tputResult\030\002 \001(" +
-      "\0132\020.proto.PutResultH\000\022%\n\tgetResult\030\003 \001(\013" +
-      "2\020.proto.GetResultH\000B\010\n\006result2z\n\023ShardR" +
-      "equestHandler\0223\n\003put\022\026.proto.PutShardReq" +
-      "uest\032\024.proto.ShardResponse\022.\n\003get\022\021.prot" +
-      "o.GetRequest\032\024.proto.ShardResponseB \n\034cl" +
-      "uster.external.shard.protoP\001b\006proto3"
+      "oto.ShardInfo\"-\n\016CommonResponse\022\016\n\006statu" +
+      "s\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\":\n\017GetShardRequest\022" +
+      "\017\n\007shardId\030\001 \003(\005\022\026\n\016minCommitIndex\030\002 \001(\003" +
+      "\"=\n\020GetShardResponse\022)\n\014dataNodeInfo\030\001 \003" +
+      "(\0132\023.proto.DataNodeInfo\"\224\001\n\rShardRespons" +
+      "e\022\023\n\013commitIndex\030\001 \001(\003\022/\n\016commonResponse" +
+      "\030\002 \001(\0132\025.proto.CommonResponseH\000\0223\n\020getSh" +
+      "ardResponse\030\003 \001(\0132\027.proto.GetShardRespon" +
+      "seH\000B\010\n\006result2\177\n\023ShardRequestHandler\0223\n" +
+      "\003put\022\026.proto.PutShardRequest\032\024.proto.Sha" +
+      "rdResponse\0223\n\003get\022\026.proto.GetShardReques" +
+      "t\032\024.proto.ShardResponseB \n\034cluster.exter" +
+      "nal.shard.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -110,30 +112,30 @@ public final class ShardRequest {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_PutShardRequest_descriptor,
         new java.lang.String[] { "DataNodeInfo", "ShardInfo", });
-    internal_static_proto_PutResult_descriptor =
+    internal_static_proto_CommonResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_proto_PutResult_fieldAccessorTable = new
+    internal_static_proto_CommonResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_PutResult_descriptor,
+        internal_static_proto_CommonResponse_descriptor,
         new java.lang.String[] { "Status", "Msg", });
-    internal_static_proto_GetRequest_descriptor =
+    internal_static_proto_GetShardRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_proto_GetRequest_fieldAccessorTable = new
+    internal_static_proto_GetShardRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_GetRequest_descriptor,
-        new java.lang.String[] { "Key", "MinCommitIndex", });
-    internal_static_proto_GetResult_descriptor =
+        internal_static_proto_GetShardRequest_descriptor,
+        new java.lang.String[] { "ShardId", "MinCommitIndex", });
+    internal_static_proto_GetShardResponse_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_proto_GetResult_fieldAccessorTable = new
+    internal_static_proto_GetShardResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_GetResult_descriptor,
-        new java.lang.String[] { "Val", });
+        internal_static_proto_GetShardResponse_descriptor,
+        new java.lang.String[] { "DataNodeInfo", });
     internal_static_proto_ShardResponse_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_proto_ShardResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_ShardResponse_descriptor,
-        new java.lang.String[] { "CommitIndex", "PutResult", "GetResult", "Result", });
+        new java.lang.String[] { "CommitIndex", "CommonResponse", "GetShardResponse", "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

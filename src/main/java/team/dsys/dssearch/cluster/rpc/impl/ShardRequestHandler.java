@@ -38,7 +38,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
         raftNode.<PutOpResult> replicate(op).whenComplete((Ordered<PutOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
-                                .setPutResult(PutResult.newBuilder().setStatus(0).setMsg("PutShardRequest success")).build());
+                                .setCommonResponse(CommonResponse.newBuilder().setStatus(0).setMsg("PutShardRequest success")).build());
                     } else {
                         LOGGER.error(throwable.getMessage());
                         responseObserver.onError(throwable);
@@ -50,14 +50,14 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
 
 
     @Override
-    public void get(GetRequest request, StreamObserver<ShardResponse> responseObserver) {
-        GetOp op = GetOp.newBuilder().setKey(request.getKey()).build();
+    public void get(GetShardRequest request, StreamObserver<ShardResponse> responseObserver) {
+        GetOp op = GetOp.newBuilder().addAllShardId(request.getShardIdList()).build();
         raftNode.<GetOpResult> query(op, request.getMinCommitIndex() == -1 ? LINEARIZABLE : EVENTUAL_CONSISTENCY, Math.max(0, request.getMinCommitIndex()))
                 .whenComplete((Ordered<GetOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
-                                .setGetResult(
-                                        GetResult.newBuilder().setVal(result.getResult().getVal()))
+                                .setGetShardResponse(
+                                        GetShardResponse.newBuilder().addAllDataNodeInfo(result.getResult().getDataNodeInfoList()))
                                 .build());
                     } else {
                         responseObserver.onError(throwable);

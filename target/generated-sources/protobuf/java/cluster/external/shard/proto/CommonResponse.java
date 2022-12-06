@@ -4,25 +4,26 @@
 package cluster.external.shard.proto;
 
 /**
- * Protobuf type {@code proto.GetResult}
+ * Protobuf type {@code proto.CommonResponse}
  */
-public final class GetResult extends
+public final class CommonResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:proto.GetResult)
-    GetResultOrBuilder {
+    // @@protoc_insertion_point(message_implements:proto.CommonResponse)
+    CommonResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetResult.newBuilder() to construct.
-  private GetResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CommonResponse.newBuilder() to construct.
+  private CommonResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetResult() {
+  private CommonResponse() {
+    msg_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new GetResult();
+    return new CommonResponse();
   }
 
   @java.lang.Override
@@ -32,41 +33,76 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_GetResult_descriptor;
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_CommonResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_GetResult_fieldAccessorTable
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_CommonResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cluster.external.shard.proto.GetResult.class, cluster.external.shard.proto.GetResult.Builder.class);
+            cluster.external.shard.proto.CommonResponse.class, cluster.external.shard.proto.CommonResponse.Builder.class);
   }
 
-  public static final int VAL_FIELD_NUMBER = 1;
-  private cluster.external.shard.proto.Val val_;
+  public static final int STATUS_FIELD_NUMBER = 1;
+  private int status_;
   /**
-   * <code>.proto.Val val = 1;</code>
-   * @return Whether the val field is set.
+   * <pre>
+   *响应码（0：success -1：error）
+   * </pre>
+   *
+   * <code>int32 status = 1;</code>
+   * @return The status.
    */
   @java.lang.Override
-  public boolean hasVal() {
-    return val_ != null;
+  public int getStatus() {
+    return status_;
+  }
+
+  public static final int MSG_FIELD_NUMBER = 2;
+  private volatile java.lang.Object msg_;
+  /**
+   * <pre>
+   *响应信息
+   * </pre>
+   *
+   * <code>string msg = 2;</code>
+   * @return The msg.
+   */
+  @java.lang.Override
+  public java.lang.String getMsg() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      msg_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.proto.Val val = 1;</code>
-   * @return The val.
+   * <pre>
+   *响应信息
+   * </pre>
+   *
+   * <code>string msg = 2;</code>
+   * @return The bytes for msg.
    */
   @java.lang.Override
-  public cluster.external.shard.proto.Val getVal() {
-    return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
-  }
-  /**
-   * <code>.proto.Val val = 1;</code>
-   */
-  @java.lang.Override
-  public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-    return getVal();
+  public com.google.protobuf.ByteString
+      getMsgBytes() {
+    java.lang.Object ref = msg_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      msg_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -83,8 +119,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (val_ != null) {
-      output.writeMessage(1, getVal());
+    if (status_ != 0) {
+      output.writeInt32(1, status_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msg_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -95,9 +134,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (val_ != null) {
+    if (status_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getVal());
+        .computeInt32Size(1, status_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(msg_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msg_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -109,16 +151,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cluster.external.shard.proto.GetResult)) {
+    if (!(obj instanceof cluster.external.shard.proto.CommonResponse)) {
       return super.equals(obj);
     }
-    cluster.external.shard.proto.GetResult other = (cluster.external.shard.proto.GetResult) obj;
+    cluster.external.shard.proto.CommonResponse other = (cluster.external.shard.proto.CommonResponse) obj;
 
-    if (hasVal() != other.hasVal()) return false;
-    if (hasVal()) {
-      if (!getVal()
-          .equals(other.getVal())) return false;
-    }
+    if (getStatus()
+        != other.getStatus()) return false;
+    if (!getMsg()
+        .equals(other.getMsg())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -130,78 +171,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasVal()) {
-      hash = (37 * hash) + VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getVal().hashCode();
-    }
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus();
+    hash = (37 * hash) + MSG_FIELD_NUMBER;
+    hash = (53 * hash) + getMsg().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(byte[] data)
+  public static cluster.external.shard.proto.CommonResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.CommonResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.GetResult parseDelimitedFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.CommonResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.GetResult parseDelimitedFrom(
+  public static cluster.external.shard.proto.CommonResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.GetResult parseFrom(
+  public static cluster.external.shard.proto.CommonResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -214,7 +255,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cluster.external.shard.proto.GetResult prototype) {
+  public static Builder newBuilder(cluster.external.shard.proto.CommonResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -230,26 +271,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code proto.GetResult}
+   * Protobuf type {@code proto.CommonResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:proto.GetResult)
-      cluster.external.shard.proto.GetResultOrBuilder {
+      // @@protoc_insertion_point(builder_implements:proto.CommonResponse)
+      cluster.external.shard.proto.CommonResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_GetResult_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_CommonResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_GetResult_fieldAccessorTable
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_CommonResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cluster.external.shard.proto.GetResult.class, cluster.external.shard.proto.GetResult.Builder.class);
+              cluster.external.shard.proto.CommonResponse.class, cluster.external.shard.proto.CommonResponse.Builder.class);
     }
 
-    // Construct using cluster.external.shard.proto.GetResult.newBuilder()
+    // Construct using cluster.external.shard.proto.CommonResponse.newBuilder()
     private Builder() {
 
     }
@@ -262,29 +303,27 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (valBuilder_ == null) {
-        val_ = null;
-      } else {
-        val_ = null;
-        valBuilder_ = null;
-      }
+      status_ = 0;
+
+      msg_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_GetResult_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_CommonResponse_descriptor;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.GetResult getDefaultInstanceForType() {
-      return cluster.external.shard.proto.GetResult.getDefaultInstance();
+    public cluster.external.shard.proto.CommonResponse getDefaultInstanceForType() {
+      return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.GetResult build() {
-      cluster.external.shard.proto.GetResult result = buildPartial();
+    public cluster.external.shard.proto.CommonResponse build() {
+      cluster.external.shard.proto.CommonResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -292,13 +331,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.GetResult buildPartial() {
-      cluster.external.shard.proto.GetResult result = new cluster.external.shard.proto.GetResult(this);
-      if (valBuilder_ == null) {
-        result.val_ = val_;
-      } else {
-        result.val_ = valBuilder_.build();
-      }
+    public cluster.external.shard.proto.CommonResponse buildPartial() {
+      cluster.external.shard.proto.CommonResponse result = new cluster.external.shard.proto.CommonResponse(this);
+      result.status_ = status_;
+      result.msg_ = msg_;
       onBuilt();
       return result;
     }
@@ -337,18 +373,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cluster.external.shard.proto.GetResult) {
-        return mergeFrom((cluster.external.shard.proto.GetResult)other);
+      if (other instanceof cluster.external.shard.proto.CommonResponse) {
+        return mergeFrom((cluster.external.shard.proto.CommonResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cluster.external.shard.proto.GetResult other) {
-      if (other == cluster.external.shard.proto.GetResult.getDefaultInstance()) return this;
-      if (other.hasVal()) {
-        mergeVal(other.getVal());
+    public Builder mergeFrom(cluster.external.shard.proto.CommonResponse other) {
+      if (other == cluster.external.shard.proto.CommonResponse.getDefaultInstance()) return this;
+      if (other.getStatus() != 0) {
+        setStatus(other.getStatus());
+      }
+      if (!other.getMsg().isEmpty()) {
+        msg_ = other.msg_;
+        onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -376,13 +416,16 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              input.readMessage(
-                  getValFieldBuilder().getBuilder(),
-                  extensionRegistry);
+            case 8: {
+              status_ = input.readInt32();
 
               break;
-            } // case 10
+            } // case 8
+            case 18: {
+              msg_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -399,123 +442,143 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private cluster.external.shard.proto.Val val_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> valBuilder_;
+    private int status_ ;
     /**
-     * <code>.proto.Val val = 1;</code>
-     * @return Whether the val field is set.
+     * <pre>
+     *响应码（0：success -1：error）
+     * </pre>
+     *
+     * <code>int32 status = 1;</code>
+     * @return The status.
      */
-    public boolean hasVal() {
-      return valBuilder_ != null || val_ != null;
+    @java.lang.Override
+    public int getStatus() {
+      return status_;
     }
     /**
-     * <code>.proto.Val val = 1;</code>
-     * @return The val.
+     * <pre>
+     *响应码（0：success -1：error）
+     * </pre>
+     *
+     * <code>int32 status = 1;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
      */
-    public cluster.external.shard.proto.Val getVal() {
-      if (valBuilder_ == null) {
-        return val_ == null ? cluster.external.shard.proto.Val.getDefaultInstance() : val_;
-      } else {
-        return valBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.proto.Val val = 1;</code>
-     */
-    public Builder setVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        val_ = value;
-        onChanged();
-      } else {
-        valBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 1;</code>
-     */
-    public Builder setVal(
-        cluster.external.shard.proto.Val.Builder builderForValue) {
-      if (valBuilder_ == null) {
-        val_ = builderForValue.build();
-        onChanged();
-      } else {
-        valBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 1;</code>
-     */
-    public Builder mergeVal(cluster.external.shard.proto.Val value) {
-      if (valBuilder_ == null) {
-        if (val_ != null) {
-          val_ =
-            cluster.external.shard.proto.Val.newBuilder(val_).mergeFrom(value).buildPartial();
-        } else {
-          val_ = value;
-        }
-        onChanged();
-      } else {
-        valBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 1;</code>
-     */
-    public Builder clearVal() {
-      if (valBuilder_ == null) {
-        val_ = null;
-        onChanged();
-      } else {
-        val_ = null;
-        valBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.proto.Val val = 1;</code>
-     */
-    public cluster.external.shard.proto.Val.Builder getValBuilder() {
+    public Builder setStatus(int value) {
       
+      status_ = value;
       onChanged();
-      return getValFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.proto.Val val = 1;</code>
+     * <pre>
+     *响应码（0：success -1：error）
+     * </pre>
+     *
+     * <code>int32 status = 1;</code>
+     * @return This builder for chaining.
      */
-    public cluster.external.shard.proto.ValOrBuilder getValOrBuilder() {
-      if (valBuilder_ != null) {
-        return valBuilder_.getMessageOrBuilder();
+    public Builder clearStatus() {
+      
+      status_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object msg_ = "";
+    /**
+     * <pre>
+     *响应信息
+     * </pre>
+     *
+     * <code>string msg = 2;</code>
+     * @return The msg.
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
       } else {
-        return val_ == null ?
-            cluster.external.shard.proto.Val.getDefaultInstance() : val_;
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.proto.Val val = 1;</code>
+     * <pre>
+     *响应信息
+     * </pre>
+     *
+     * <code>string msg = 2;</code>
+     * @return The bytes for msg.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder> 
-        getValFieldBuilder() {
-      if (valBuilder_ == null) {
-        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.Val, cluster.external.shard.proto.Val.Builder, cluster.external.shard.proto.ValOrBuilder>(
-                getVal(),
-                getParentForChildren(),
-                isClean());
-        val_ = null;
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-      return valBuilder_;
+    }
+    /**
+     * <pre>
+     *响应信息
+     * </pre>
+     *
+     * <code>string msg = 2;</code>
+     * @param value The msg to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsg(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msg_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *响应信息
+     * </pre>
+     *
+     * <code>string msg = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMsg() {
+      
+      msg_ = getDefaultInstance().getMsg();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *响应信息
+     * </pre>
+     *
+     * <code>string msg = 2;</code>
+     * @param value The bytes for msg to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMsgBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msg_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -530,23 +593,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:proto.GetResult)
+    // @@protoc_insertion_point(builder_scope:proto.CommonResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:proto.GetResult)
-  private static final cluster.external.shard.proto.GetResult DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:proto.CommonResponse)
+  private static final cluster.external.shard.proto.CommonResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cluster.external.shard.proto.GetResult();
+    DEFAULT_INSTANCE = new cluster.external.shard.proto.CommonResponse();
   }
 
-  public static cluster.external.shard.proto.GetResult getDefaultInstance() {
+  public static cluster.external.shard.proto.CommonResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetResult>
-      PARSER = new com.google.protobuf.AbstractParser<GetResult>() {
+  private static final com.google.protobuf.Parser<CommonResponse>
+      PARSER = new com.google.protobuf.AbstractParser<CommonResponse>() {
     @java.lang.Override
-    public GetResult parsePartialFrom(
+    public CommonResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -565,17 +628,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<GetResult> parser() {
+  public static com.google.protobuf.Parser<CommonResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetResult> getParserForType() {
+  public com.google.protobuf.Parser<CommonResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cluster.external.shard.proto.GetResult getDefaultInstanceForType() {
+  public cluster.external.shard.proto.CommonResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -46,27 +46,27 @@ public final class ShardRequestHandlerGrpc {
     return getPutMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cluster.external.shard.proto.GetRequest,
+  private static volatile io.grpc.MethodDescriptor<cluster.external.shard.proto.GetShardRequest,
       cluster.external.shard.proto.ShardResponse> getGetMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "get",
-      requestType = cluster.external.shard.proto.GetRequest.class,
+      requestType = cluster.external.shard.proto.GetShardRequest.class,
       responseType = cluster.external.shard.proto.ShardResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.external.shard.proto.GetRequest,
+  public static io.grpc.MethodDescriptor<cluster.external.shard.proto.GetShardRequest,
       cluster.external.shard.proto.ShardResponse> getGetMethod() {
-    io.grpc.MethodDescriptor<cluster.external.shard.proto.GetRequest, cluster.external.shard.proto.ShardResponse> getGetMethod;
+    io.grpc.MethodDescriptor<cluster.external.shard.proto.GetShardRequest, cluster.external.shard.proto.ShardResponse> getGetMethod;
     if ((getGetMethod = ShardRequestHandlerGrpc.getGetMethod) == null) {
       synchronized (ShardRequestHandlerGrpc.class) {
         if ((getGetMethod = ShardRequestHandlerGrpc.getGetMethod) == null) {
           ShardRequestHandlerGrpc.getGetMethod = getGetMethod =
-              io.grpc.MethodDescriptor.<cluster.external.shard.proto.GetRequest, cluster.external.shard.proto.ShardResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cluster.external.shard.proto.GetShardRequest, cluster.external.shard.proto.ShardResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "get"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.external.shard.proto.GetRequest.getDefaultInstance()))
+                  cluster.external.shard.proto.GetShardRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cluster.external.shard.proto.ShardResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("get"))
@@ -134,7 +134,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void get(cluster.external.shard.proto.GetRequest request,
+    public void get(cluster.external.shard.proto.GetShardRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
     }
@@ -152,7 +152,7 @@ public final class ShardRequestHandlerGrpc {
             getGetMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                cluster.external.shard.proto.GetRequest,
+                cluster.external.shard.proto.GetShardRequest,
                 cluster.external.shard.proto.ShardResponse>(
                   this, METHODID_GET)))
           .build();
@@ -183,7 +183,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void get(cluster.external.shard.proto.GetRequest request,
+    public void get(cluster.external.shard.proto.GetShardRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
@@ -213,7 +213,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public cluster.external.shard.proto.ShardResponse get(cluster.external.shard.proto.GetRequest request) {
+    public cluster.external.shard.proto.ShardResponse get(cluster.external.shard.proto.GetShardRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMethod(), getCallOptions(), request);
     }
@@ -244,7 +244,7 @@ public final class ShardRequestHandlerGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<cluster.external.shard.proto.ShardResponse> get(
-        cluster.external.shard.proto.GetRequest request) {
+        cluster.external.shard.proto.GetShardRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request);
     }
@@ -275,7 +275,7 @@ public final class ShardRequestHandlerGrpc {
               (io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse>) responseObserver);
           break;
         case METHODID_GET:
-          serviceImpl.get((cluster.external.shard.proto.GetRequest) request,
+          serviceImpl.get((cluster.external.shard.proto.GetShardRequest) request,
               (io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse>) responseObserver);
           break;
         default:

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GetOp() {
-    key_ = "";
+    shardId_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -44,43 +44,33 @@ private static final long serialVersionUID = 0L;
             cluster.internal.raft.proto.GetOp.class, cluster.internal.raft.proto.GetOp.Builder.class);
   }
 
-  public static final int KEY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object key_;
+  public static final int SHARDID_FIELD_NUMBER = 1;
+  private com.google.protobuf.Internal.IntList shardId_;
   /**
-   * <code>string key = 1;</code>
-   * @return The key.
+   * <code>repeated int32 shardId = 1;</code>
+   * @return A list containing the shardId.
    */
   @java.lang.Override
-  public java.lang.String getKey() {
-    java.lang.Object ref = key_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      key_ = s;
-      return s;
-    }
+  public java.util.List<java.lang.Integer>
+      getShardIdList() {
+    return shardId_;
   }
   /**
-   * <code>string key = 1;</code>
-   * @return The bytes for key.
+   * <code>repeated int32 shardId = 1;</code>
+   * @return The count of shardId.
    */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getKeyBytes() {
-    java.lang.Object ref = key_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      key_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getShardIdCount() {
+    return shardId_.size();
   }
+  /**
+   * <code>repeated int32 shardId = 1;</code>
+   * @param index The index of the element to return.
+   * @return The shardId at the given index.
+   */
+  public int getShardId(int index) {
+    return shardId_.getInt(index);
+  }
+  private int shardIdMemoizedSerializedSize = -1;
 
   public static final int MINCOMMITINDEX_FIELD_NUMBER = 2;
   private long minCommitIndex_;
@@ -107,8 +97,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+    getSerializedSize();
+    if (getShardIdList().size() > 0) {
+      output.writeUInt32NoTag(10);
+      output.writeUInt32NoTag(shardIdMemoizedSerializedSize);
+    }
+    for (int i = 0; i < shardId_.size(); i++) {
+      output.writeInt32NoTag(shardId_.getInt(i));
     }
     if (minCommitIndex_ != 0L) {
       output.writeInt64(2, minCommitIndex_);
@@ -122,8 +117,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
+    {
+      int dataSize = 0;
+      for (int i = 0; i < shardId_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(shardId_.getInt(i));
+      }
+      size += dataSize;
+      if (!getShardIdList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      shardIdMemoizedSerializedSize = dataSize;
     }
     if (minCommitIndex_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -144,8 +150,8 @@ private static final long serialVersionUID = 0L;
     }
     cluster.internal.raft.proto.GetOp other = (cluster.internal.raft.proto.GetOp) obj;
 
-    if (!getKey()
-        .equals(other.getKey())) return false;
+    if (!getShardIdList()
+        .equals(other.getShardIdList())) return false;
     if (getMinCommitIndex()
         != other.getMinCommitIndex()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -159,8 +165,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + KEY_FIELD_NUMBER;
-    hash = (53 * hash) + getKey().hashCode();
+    if (getShardIdCount() > 0) {
+      hash = (37 * hash) + SHARDID_FIELD_NUMBER;
+      hash = (53 * hash) + getShardIdList().hashCode();
+    }
     hash = (37 * hash) + MINCOMMITINDEX_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getMinCommitIndex());
@@ -292,8 +300,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      key_ = "";
-
+      shardId_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       minCommitIndex_ = 0L;
 
       return this;
@@ -322,7 +330,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cluster.internal.raft.proto.GetOp buildPartial() {
       cluster.internal.raft.proto.GetOp result = new cluster.internal.raft.proto.GetOp(this);
-      result.key_ = key_;
+      int from_bitField0_ = bitField0_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        shardId_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.shardId_ = shardId_;
       result.minCommitIndex_ = minCommitIndex_;
       onBuilt();
       return result;
@@ -372,8 +385,14 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cluster.internal.raft.proto.GetOp other) {
       if (other == cluster.internal.raft.proto.GetOp.getDefaultInstance()) return this;
-      if (!other.getKey().isEmpty()) {
-        key_ = other.key_;
+      if (!other.shardId_.isEmpty()) {
+        if (shardId_.isEmpty()) {
+          shardId_ = other.shardId_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureShardIdIsMutable();
+          shardId_.addAll(other.shardId_);
+        }
         onChanged();
       }
       if (other.getMinCommitIndex() != 0L) {
@@ -405,9 +424,20 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 8: {
+              int v = input.readInt32();
+              ensureShardIdIsMutable();
+              shardId_.addInt(v);
+              break;
+            } // case 8
             case 10: {
-              key_ = input.readStringRequireUtf8();
-
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureShardIdIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                shardId_.addInt(input.readInt32());
+              }
+              input.popLimit(limit);
               break;
             } // case 10
             case 16: {
@@ -430,79 +460,83 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int bitField0_;
 
-    private java.lang.Object key_ = "";
-    /**
-     * <code>string key = 1;</code>
-     * @return The key.
-     */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        key_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    private com.google.protobuf.Internal.IntList shardId_ = emptyIntList();
+    private void ensureShardIdIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        shardId_ = mutableCopy(shardId_);
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
-     * <code>string key = 1;</code>
-     * @return The bytes for key.
+     * <code>repeated int32 shardId = 1;</code>
+     * @return A list containing the shardId.
      */
-    public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        key_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public java.util.List<java.lang.Integer>
+        getShardIdList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(shardId_) : shardId_;
     }
     /**
-     * <code>string key = 1;</code>
-     * @param value The key to set.
+     * <code>repeated int32 shardId = 1;</code>
+     * @return The count of shardId.
+     */
+    public int getShardIdCount() {
+      return shardId_.size();
+    }
+    /**
+     * <code>repeated int32 shardId = 1;</code>
+     * @param index The index of the element to return.
+     * @return The shardId at the given index.
+     */
+    public int getShardId(int index) {
+      return shardId_.getInt(index);
+    }
+    /**
+     * <code>repeated int32 shardId = 1;</code>
+     * @param index The index to set the value at.
+     * @param value The shardId to set.
      * @return This builder for chaining.
      */
-    public Builder setKey(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      key_ = value;
+    public Builder setShardId(
+        int index, int value) {
+      ensureShardIdIsMutable();
+      shardId_.setInt(index, value);
       onChanged();
       return this;
     }
     /**
-     * <code>string key = 1;</code>
+     * <code>repeated int32 shardId = 1;</code>
+     * @param value The shardId to add.
      * @return This builder for chaining.
      */
-    public Builder clearKey() {
-      
-      key_ = getDefaultInstance().getKey();
+    public Builder addShardId(int value) {
+      ensureShardIdIsMutable();
+      shardId_.addInt(value);
       onChanged();
       return this;
     }
     /**
-     * <code>string key = 1;</code>
-     * @param value The bytes for key to set.
+     * <code>repeated int32 shardId = 1;</code>
+     * @param values The shardId to add.
      * @return This builder for chaining.
      */
-    public Builder setKeyBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      key_ = value;
+    public Builder addAllShardId(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureShardIdIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, shardId_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 shardId = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearShardId() {
+      shardId_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }

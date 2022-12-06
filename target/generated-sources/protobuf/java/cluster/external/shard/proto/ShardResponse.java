@@ -48,8 +48,8 @@ private static final long serialVersionUID = 0L;
   public enum ResultCase
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    PUTRESULT(2),
-    GETRESULT(3),
+    COMMONRESPONSE(2),
+    GETSHARDRESPONSE(3),
     RESULT_NOT_SET(0);
     private final int value;
     private ResultCase(int value) {
@@ -67,8 +67,8 @@ private static final long serialVersionUID = 0L;
 
     public static ResultCase forNumber(int value) {
       switch (value) {
-        case 2: return PUTRESULT;
-        case 3: return GETRESULT;
+        case 2: return COMMONRESPONSE;
+        case 3: return GETSHARDRESPONSE;
         case 0: return RESULT_NOT_SET;
         default: return null;
       }
@@ -95,66 +95,66 @@ private static final long serialVersionUID = 0L;
     return commitIndex_;
   }
 
-  public static final int PUTRESULT_FIELD_NUMBER = 2;
+  public static final int COMMONRESPONSE_FIELD_NUMBER = 2;
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
-   * @return Whether the putResult field is set.
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
+   * @return Whether the commonResponse field is set.
    */
   @java.lang.Override
-  public boolean hasPutResult() {
+  public boolean hasCommonResponse() {
     return resultCase_ == 2;
   }
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
-   * @return The putResult.
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
+   * @return The commonResponse.
    */
   @java.lang.Override
-  public cluster.external.shard.proto.PutResult getPutResult() {
+  public cluster.external.shard.proto.CommonResponse getCommonResponse() {
     if (resultCase_ == 2) {
-       return (cluster.external.shard.proto.PutResult) result_;
+       return (cluster.external.shard.proto.CommonResponse) result_;
     }
-    return cluster.external.shard.proto.PutResult.getDefaultInstance();
+    return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
   }
   /**
-   * <code>.proto.PutResult putResult = 2;</code>
+   * <code>.proto.CommonResponse commonResponse = 2;</code>
    */
   @java.lang.Override
-  public cluster.external.shard.proto.PutResultOrBuilder getPutResultOrBuilder() {
+  public cluster.external.shard.proto.CommonResponseOrBuilder getCommonResponseOrBuilder() {
     if (resultCase_ == 2) {
-       return (cluster.external.shard.proto.PutResult) result_;
+       return (cluster.external.shard.proto.CommonResponse) result_;
     }
-    return cluster.external.shard.proto.PutResult.getDefaultInstance();
+    return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
   }
 
-  public static final int GETRESULT_FIELD_NUMBER = 3;
+  public static final int GETSHARDRESPONSE_FIELD_NUMBER = 3;
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
-   * @return Whether the getResult field is set.
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+   * @return Whether the getShardResponse field is set.
    */
   @java.lang.Override
-  public boolean hasGetResult() {
+  public boolean hasGetShardResponse() {
     return resultCase_ == 3;
   }
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
-   * @return The getResult.
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+   * @return The getShardResponse.
    */
   @java.lang.Override
-  public cluster.external.shard.proto.GetResult getGetResult() {
+  public cluster.external.shard.proto.GetShardResponse getGetShardResponse() {
     if (resultCase_ == 3) {
-       return (cluster.external.shard.proto.GetResult) result_;
+       return (cluster.external.shard.proto.GetShardResponse) result_;
     }
-    return cluster.external.shard.proto.GetResult.getDefaultInstance();
+    return cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
   }
   /**
-   * <code>.proto.GetResult getResult = 3;</code>
+   * <code>.proto.GetShardResponse getShardResponse = 3;</code>
    */
   @java.lang.Override
-  public cluster.external.shard.proto.GetResultOrBuilder getGetResultOrBuilder() {
+  public cluster.external.shard.proto.GetShardResponseOrBuilder getGetShardResponseOrBuilder() {
     if (resultCase_ == 3) {
-       return (cluster.external.shard.proto.GetResult) result_;
+       return (cluster.external.shard.proto.GetShardResponse) result_;
     }
-    return cluster.external.shard.proto.GetResult.getDefaultInstance();
+    return cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -175,10 +175,10 @@ private static final long serialVersionUID = 0L;
       output.writeInt64(1, commitIndex_);
     }
     if (resultCase_ == 2) {
-      output.writeMessage(2, (cluster.external.shard.proto.PutResult) result_);
+      output.writeMessage(2, (cluster.external.shard.proto.CommonResponse) result_);
     }
     if (resultCase_ == 3) {
-      output.writeMessage(3, (cluster.external.shard.proto.GetResult) result_);
+      output.writeMessage(3, (cluster.external.shard.proto.GetShardResponse) result_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -195,11 +195,11 @@ private static final long serialVersionUID = 0L;
     }
     if (resultCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (cluster.external.shard.proto.PutResult) result_);
+        .computeMessageSize(2, (cluster.external.shard.proto.CommonResponse) result_);
     }
     if (resultCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (cluster.external.shard.proto.GetResult) result_);
+        .computeMessageSize(3, (cluster.external.shard.proto.GetShardResponse) result_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -221,12 +221,12 @@ private static final long serialVersionUID = 0L;
     if (!getResultCase().equals(other.getResultCase())) return false;
     switch (resultCase_) {
       case 2:
-        if (!getPutResult()
-            .equals(other.getPutResult())) return false;
+        if (!getCommonResponse()
+            .equals(other.getCommonResponse())) return false;
         break;
       case 3:
-        if (!getGetResult()
-            .equals(other.getGetResult())) return false;
+        if (!getGetShardResponse()
+            .equals(other.getGetShardResponse())) return false;
         break;
       case 0:
       default:
@@ -247,12 +247,12 @@ private static final long serialVersionUID = 0L;
         getCommitIndex());
     switch (resultCase_) {
       case 2:
-        hash = (37 * hash) + PUTRESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getPutResult().hashCode();
+        hash = (37 * hash) + COMMONRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getCommonResponse().hashCode();
         break;
       case 3:
-        hash = (37 * hash) + GETRESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getGetResult().hashCode();
+        hash = (37 * hash) + GETSHARDRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getGetShardResponse().hashCode();
         break;
       case 0:
       default:
@@ -387,11 +387,11 @@ private static final long serialVersionUID = 0L;
       super.clear();
       commitIndex_ = 0L;
 
-      if (putResultBuilder_ != null) {
-        putResultBuilder_.clear();
+      if (commonResponseBuilder_ != null) {
+        commonResponseBuilder_.clear();
       }
-      if (getResultBuilder_ != null) {
-        getResultBuilder_.clear();
+      if (getShardResponseBuilder_ != null) {
+        getShardResponseBuilder_.clear();
       }
       resultCase_ = 0;
       result_ = null;
@@ -423,17 +423,17 @@ private static final long serialVersionUID = 0L;
       cluster.external.shard.proto.ShardResponse result = new cluster.external.shard.proto.ShardResponse(this);
       result.commitIndex_ = commitIndex_;
       if (resultCase_ == 2) {
-        if (putResultBuilder_ == null) {
+        if (commonResponseBuilder_ == null) {
           result.result_ = result_;
         } else {
-          result.result_ = putResultBuilder_.build();
+          result.result_ = commonResponseBuilder_.build();
         }
       }
       if (resultCase_ == 3) {
-        if (getResultBuilder_ == null) {
+        if (getShardResponseBuilder_ == null) {
           result.result_ = result_;
         } else {
-          result.result_ = getResultBuilder_.build();
+          result.result_ = getShardResponseBuilder_.build();
         }
       }
       result.resultCase_ = resultCase_;
@@ -489,12 +489,12 @@ private static final long serialVersionUID = 0L;
         setCommitIndex(other.getCommitIndex());
       }
       switch (other.getResultCase()) {
-        case PUTRESULT: {
-          mergePutResult(other.getPutResult());
+        case COMMONRESPONSE: {
+          mergeCommonResponse(other.getCommonResponse());
           break;
         }
-        case GETRESULT: {
-          mergeGetResult(other.getGetResult());
+        case GETSHARDRESPONSE: {
+          mergeGetShardResponse(other.getGetShardResponse());
           break;
         }
         case RESULT_NOT_SET: {
@@ -534,14 +534,14 @@ private static final long serialVersionUID = 0L;
             } // case 8
             case 18: {
               input.readMessage(
-                  getPutResultFieldBuilder().getBuilder(),
+                  getCommonResponseFieldBuilder().getBuilder(),
                   extensionRegistry);
               resultCase_ = 2;
               break;
             } // case 18
             case 26: {
               input.readMessage(
-                  getGetResultFieldBuilder().getBuilder(),
+                  getGetShardResponseFieldBuilder().getBuilder(),
                   extensionRegistry);
               resultCase_ = 3;
               break;
@@ -609,71 +609,71 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.PutResult, cluster.external.shard.proto.PutResult.Builder, cluster.external.shard.proto.PutResultOrBuilder> putResultBuilder_;
+        cluster.external.shard.proto.CommonResponse, cluster.external.shard.proto.CommonResponse.Builder, cluster.external.shard.proto.CommonResponseOrBuilder> commonResponseBuilder_;
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
-     * @return Whether the putResult field is set.
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
+     * @return Whether the commonResponse field is set.
      */
     @java.lang.Override
-    public boolean hasPutResult() {
+    public boolean hasCommonResponse() {
       return resultCase_ == 2;
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
-     * @return The putResult.
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
+     * @return The commonResponse.
      */
     @java.lang.Override
-    public cluster.external.shard.proto.PutResult getPutResult() {
-      if (putResultBuilder_ == null) {
+    public cluster.external.shard.proto.CommonResponse getCommonResponse() {
+      if (commonResponseBuilder_ == null) {
         if (resultCase_ == 2) {
-          return (cluster.external.shard.proto.PutResult) result_;
+          return (cluster.external.shard.proto.CommonResponse) result_;
         }
-        return cluster.external.shard.proto.PutResult.getDefaultInstance();
+        return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
       } else {
         if (resultCase_ == 2) {
-          return putResultBuilder_.getMessage();
+          return commonResponseBuilder_.getMessage();
         }
-        return cluster.external.shard.proto.PutResult.getDefaultInstance();
+        return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
-    public Builder setPutResult(cluster.external.shard.proto.PutResult value) {
-      if (putResultBuilder_ == null) {
+    public Builder setCommonResponse(cluster.external.shard.proto.CommonResponse value) {
+      if (commonResponseBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
         result_ = value;
         onChanged();
       } else {
-        putResultBuilder_.setMessage(value);
+        commonResponseBuilder_.setMessage(value);
       }
       resultCase_ = 2;
       return this;
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
-    public Builder setPutResult(
-        cluster.external.shard.proto.PutResult.Builder builderForValue) {
-      if (putResultBuilder_ == null) {
+    public Builder setCommonResponse(
+        cluster.external.shard.proto.CommonResponse.Builder builderForValue) {
+      if (commonResponseBuilder_ == null) {
         result_ = builderForValue.build();
         onChanged();
       } else {
-        putResultBuilder_.setMessage(builderForValue.build());
+        commonResponseBuilder_.setMessage(builderForValue.build());
       }
       resultCase_ = 2;
       return this;
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
-    public Builder mergePutResult(cluster.external.shard.proto.PutResult value) {
-      if (putResultBuilder_ == null) {
+    public Builder mergeCommonResponse(cluster.external.shard.proto.CommonResponse value) {
+      if (commonResponseBuilder_ == null) {
         if (resultCase_ == 2 &&
-            result_ != cluster.external.shard.proto.PutResult.getDefaultInstance()) {
-          result_ = cluster.external.shard.proto.PutResult.newBuilder((cluster.external.shard.proto.PutResult) result_)
+            result_ != cluster.external.shard.proto.CommonResponse.getDefaultInstance()) {
+          result_ = cluster.external.shard.proto.CommonResponse.newBuilder((cluster.external.shard.proto.CommonResponse) result_)
               .mergeFrom(value).buildPartial();
         } else {
           result_ = value;
@@ -681,19 +681,19 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } else {
         if (resultCase_ == 2) {
-          putResultBuilder_.mergeFrom(value);
+          commonResponseBuilder_.mergeFrom(value);
         } else {
-          putResultBuilder_.setMessage(value);
+          commonResponseBuilder_.setMessage(value);
         }
       }
       resultCase_ = 2;
       return this;
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
-    public Builder clearPutResult() {
-      if (putResultBuilder_ == null) {
+    public Builder clearCommonResponse() {
+      if (commonResponseBuilder_ == null) {
         if (resultCase_ == 2) {
           resultCase_ = 0;
           result_ = null;
@@ -704,118 +704,118 @@ private static final long serialVersionUID = 0L;
           resultCase_ = 0;
           result_ = null;
         }
-        putResultBuilder_.clear();
+        commonResponseBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
-    public cluster.external.shard.proto.PutResult.Builder getPutResultBuilder() {
-      return getPutResultFieldBuilder().getBuilder();
+    public cluster.external.shard.proto.CommonResponse.Builder getCommonResponseBuilder() {
+      return getCommonResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
     @java.lang.Override
-    public cluster.external.shard.proto.PutResultOrBuilder getPutResultOrBuilder() {
-      if ((resultCase_ == 2) && (putResultBuilder_ != null)) {
-        return putResultBuilder_.getMessageOrBuilder();
+    public cluster.external.shard.proto.CommonResponseOrBuilder getCommonResponseOrBuilder() {
+      if ((resultCase_ == 2) && (commonResponseBuilder_ != null)) {
+        return commonResponseBuilder_.getMessageOrBuilder();
       } else {
         if (resultCase_ == 2) {
-          return (cluster.external.shard.proto.PutResult) result_;
+          return (cluster.external.shard.proto.CommonResponse) result_;
         }
-        return cluster.external.shard.proto.PutResult.getDefaultInstance();
+        return cluster.external.shard.proto.CommonResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.PutResult putResult = 2;</code>
+     * <code>.proto.CommonResponse commonResponse = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.PutResult, cluster.external.shard.proto.PutResult.Builder, cluster.external.shard.proto.PutResultOrBuilder> 
-        getPutResultFieldBuilder() {
-      if (putResultBuilder_ == null) {
+        cluster.external.shard.proto.CommonResponse, cluster.external.shard.proto.CommonResponse.Builder, cluster.external.shard.proto.CommonResponseOrBuilder> 
+        getCommonResponseFieldBuilder() {
+      if (commonResponseBuilder_ == null) {
         if (!(resultCase_ == 2)) {
-          result_ = cluster.external.shard.proto.PutResult.getDefaultInstance();
+          result_ = cluster.external.shard.proto.CommonResponse.getDefaultInstance();
         }
-        putResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.PutResult, cluster.external.shard.proto.PutResult.Builder, cluster.external.shard.proto.PutResultOrBuilder>(
-                (cluster.external.shard.proto.PutResult) result_,
+        commonResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cluster.external.shard.proto.CommonResponse, cluster.external.shard.proto.CommonResponse.Builder, cluster.external.shard.proto.CommonResponseOrBuilder>(
+                (cluster.external.shard.proto.CommonResponse) result_,
                 getParentForChildren(),
                 isClean());
         result_ = null;
       }
       resultCase_ = 2;
       onChanged();;
-      return putResultBuilder_;
+      return commonResponseBuilder_;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.GetResult, cluster.external.shard.proto.GetResult.Builder, cluster.external.shard.proto.GetResultOrBuilder> getResultBuilder_;
+        cluster.external.shard.proto.GetShardResponse, cluster.external.shard.proto.GetShardResponse.Builder, cluster.external.shard.proto.GetShardResponseOrBuilder> getShardResponseBuilder_;
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
-     * @return Whether the getResult field is set.
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+     * @return Whether the getShardResponse field is set.
      */
     @java.lang.Override
-    public boolean hasGetResult() {
+    public boolean hasGetShardResponse() {
       return resultCase_ == 3;
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
-     * @return The getResult.
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
+     * @return The getShardResponse.
      */
     @java.lang.Override
-    public cluster.external.shard.proto.GetResult getGetResult() {
-      if (getResultBuilder_ == null) {
+    public cluster.external.shard.proto.GetShardResponse getGetShardResponse() {
+      if (getShardResponseBuilder_ == null) {
         if (resultCase_ == 3) {
-          return (cluster.external.shard.proto.GetResult) result_;
+          return (cluster.external.shard.proto.GetShardResponse) result_;
         }
-        return cluster.external.shard.proto.GetResult.getDefaultInstance();
+        return cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
       } else {
         if (resultCase_ == 3) {
-          return getResultBuilder_.getMessage();
+          return getShardResponseBuilder_.getMessage();
         }
-        return cluster.external.shard.proto.GetResult.getDefaultInstance();
+        return cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
-    public Builder setGetResult(cluster.external.shard.proto.GetResult value) {
-      if (getResultBuilder_ == null) {
+    public Builder setGetShardResponse(cluster.external.shard.proto.GetShardResponse value) {
+      if (getShardResponseBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
         result_ = value;
         onChanged();
       } else {
-        getResultBuilder_.setMessage(value);
+        getShardResponseBuilder_.setMessage(value);
       }
       resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
-    public Builder setGetResult(
-        cluster.external.shard.proto.GetResult.Builder builderForValue) {
-      if (getResultBuilder_ == null) {
+    public Builder setGetShardResponse(
+        cluster.external.shard.proto.GetShardResponse.Builder builderForValue) {
+      if (getShardResponseBuilder_ == null) {
         result_ = builderForValue.build();
         onChanged();
       } else {
-        getResultBuilder_.setMessage(builderForValue.build());
+        getShardResponseBuilder_.setMessage(builderForValue.build());
       }
       resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
-    public Builder mergeGetResult(cluster.external.shard.proto.GetResult value) {
-      if (getResultBuilder_ == null) {
+    public Builder mergeGetShardResponse(cluster.external.shard.proto.GetShardResponse value) {
+      if (getShardResponseBuilder_ == null) {
         if (resultCase_ == 3 &&
-            result_ != cluster.external.shard.proto.GetResult.getDefaultInstance()) {
-          result_ = cluster.external.shard.proto.GetResult.newBuilder((cluster.external.shard.proto.GetResult) result_)
+            result_ != cluster.external.shard.proto.GetShardResponse.getDefaultInstance()) {
+          result_ = cluster.external.shard.proto.GetShardResponse.newBuilder((cluster.external.shard.proto.GetShardResponse) result_)
               .mergeFrom(value).buildPartial();
         } else {
           result_ = value;
@@ -823,19 +823,19 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } else {
         if (resultCase_ == 3) {
-          getResultBuilder_.mergeFrom(value);
+          getShardResponseBuilder_.mergeFrom(value);
         } else {
-          getResultBuilder_.setMessage(value);
+          getShardResponseBuilder_.setMessage(value);
         }
       }
       resultCase_ = 3;
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
-    public Builder clearGetResult() {
-      if (getResultBuilder_ == null) {
+    public Builder clearGetShardResponse() {
+      if (getShardResponseBuilder_ == null) {
         if (resultCase_ == 3) {
           resultCase_ = 0;
           result_ = null;
@@ -846,50 +846,50 @@ private static final long serialVersionUID = 0L;
           resultCase_ = 0;
           result_ = null;
         }
-        getResultBuilder_.clear();
+        getShardResponseBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
-    public cluster.external.shard.proto.GetResult.Builder getGetResultBuilder() {
-      return getGetResultFieldBuilder().getBuilder();
+    public cluster.external.shard.proto.GetShardResponse.Builder getGetShardResponseBuilder() {
+      return getGetShardResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
     @java.lang.Override
-    public cluster.external.shard.proto.GetResultOrBuilder getGetResultOrBuilder() {
-      if ((resultCase_ == 3) && (getResultBuilder_ != null)) {
-        return getResultBuilder_.getMessageOrBuilder();
+    public cluster.external.shard.proto.GetShardResponseOrBuilder getGetShardResponseOrBuilder() {
+      if ((resultCase_ == 3) && (getShardResponseBuilder_ != null)) {
+        return getShardResponseBuilder_.getMessageOrBuilder();
       } else {
         if (resultCase_ == 3) {
-          return (cluster.external.shard.proto.GetResult) result_;
+          return (cluster.external.shard.proto.GetShardResponse) result_;
         }
-        return cluster.external.shard.proto.GetResult.getDefaultInstance();
+        return cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
       }
     }
     /**
-     * <code>.proto.GetResult getResult = 3;</code>
+     * <code>.proto.GetShardResponse getShardResponse = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        cluster.external.shard.proto.GetResult, cluster.external.shard.proto.GetResult.Builder, cluster.external.shard.proto.GetResultOrBuilder> 
-        getGetResultFieldBuilder() {
-      if (getResultBuilder_ == null) {
+        cluster.external.shard.proto.GetShardResponse, cluster.external.shard.proto.GetShardResponse.Builder, cluster.external.shard.proto.GetShardResponseOrBuilder> 
+        getGetShardResponseFieldBuilder() {
+      if (getShardResponseBuilder_ == null) {
         if (!(resultCase_ == 3)) {
-          result_ = cluster.external.shard.proto.GetResult.getDefaultInstance();
+          result_ = cluster.external.shard.proto.GetShardResponse.getDefaultInstance();
         }
-        getResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cluster.external.shard.proto.GetResult, cluster.external.shard.proto.GetResult.Builder, cluster.external.shard.proto.GetResultOrBuilder>(
-                (cluster.external.shard.proto.GetResult) result_,
+        getShardResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cluster.external.shard.proto.GetShardResponse, cluster.external.shard.proto.GetShardResponse.Builder, cluster.external.shard.proto.GetShardResponseOrBuilder>(
+                (cluster.external.shard.proto.GetShardResponse) result_,
                 getParentForChildren(),
                 isClean());
         result_ = null;
       }
       resultCase_ = 3;
       onChanged();;
-      return getResultBuilder_;
+      return getShardResponseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

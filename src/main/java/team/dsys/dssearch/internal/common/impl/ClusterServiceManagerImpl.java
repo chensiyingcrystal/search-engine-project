@@ -175,7 +175,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     }
 
     @Override
-    public ShardResponse getShardInfo(GetRequest request) {
+    public ShardResponse getShardInfo(GetShardRequest request) {
         //randomly pick node where the shard exists
         ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub)
                 -> stub.get(request)).join();
@@ -241,11 +241,19 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
 
         List<ShardInfo> shardInfoList = new ArrayList<>();
-        shardInfoList.add(ShardInfo.newBuilder().setShardId("shard1").setIsPrimary(true).build());
-        shardInfoList.add(ShardInfo.newBuilder().setShardId("shard3").setIsPrimary(false).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(110).setIsPrimary(true).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(229).setIsPrimary(false).build());
         PutShardRequest req = PutShardRequest.newBuilder().
                           setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(100).setAddress("localhost:4001").build()).addAllShardInfo(shardInfoList).build();
         System.out.println(manager.putShardInfo(req));
+
+        List<Integer> shardIdList = new ArrayList<>();
+        shardIdList.add(110);
+        shardIdList.add(229);
+        GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdList).build();
+        System.out.println(manager.getShardInfo(req1));
+
+
 
 
     }
