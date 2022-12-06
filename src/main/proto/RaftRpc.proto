@@ -4,7 +4,7 @@ package proto;
 
 import "ShardRequest.proto";
 
-option java_package = "cluster.proto";
+option java_package = "cluster.internal.raft.proto";
 
 option java_multiple_files = true;
 
@@ -54,16 +54,6 @@ message GetOpResult {
   Val val = 1;
 }
 
-message RemoveOp {
-  string key = 1;
-  Val val = 2;
-}
-
-message RemoveOpResult {
-  bool success = 1;
-  Val oldVal = 2;
-}
-
 message LogEntryProto {
   int32 term = 1;
   int64 index = 2;
@@ -73,13 +63,11 @@ message LogEntryProto {
     //todo:update shard / node status
     PutOp putOp = 5;
     GetOp getOp = 6;
-    RemoveOp removeOp = 7;
   }
 }
 
 message ShardEntry {
-  string key = 1;
-  Val val = 2;
+
 }
 
 //Below are referenced from Microraft internal definition

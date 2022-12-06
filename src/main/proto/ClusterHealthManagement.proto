@@ -4,7 +4,7 @@ package proto;
 
 import "RaftRpc.proto";
 
-option java_package = "cluster.proto";
+option java_package = "cluster.internal.management.proto";
 
 option java_multiple_files = true;
 

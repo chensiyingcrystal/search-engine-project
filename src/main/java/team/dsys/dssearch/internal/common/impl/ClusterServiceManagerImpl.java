@@ -17,6 +17,7 @@ import java.net.InetSocketAddress;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -142,12 +143,13 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
     @Override
     public String getClusterReport() {
+        //cluster info(update leader info)
         return this.clusterEndpointsInfoCache.get().toString();
     }
 
     @Override
     public String getShardReport() {
-        //todo:
+        //todo: shard Info(including dataNodeid, address, each shard's id and isPrimary
         return null;
     }
 
@@ -158,8 +160,11 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
     @Override
     public GetShardResponse getShardInfo(GetShardRequest request) {
+        //randomly pick node where the shard exists
         return null;
     }
+
+
 
     public static void main(String[] args) throws TimeoutException {
         String p = "/Users/chensiying/cs61b/search-engine-project/src/main/java/team/dsys/dssearch/internal/common/config/cluster.conf";
