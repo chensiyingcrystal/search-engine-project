@@ -18,10 +18,7 @@ import team.dsys.dssearch.internal.common.ClusterServiceManager;
 import team.dsys.dssearch.internal.common.config.ClusterServerCommonConfig;
 
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
@@ -72,19 +69,27 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
         ClusterEndpointsRequest request = ClusterEndpointsRequest.newBuilder().setClientId(dataNodeId.toString()).build();
         long startTime = System.currentTimeMillis();
-        stub.listenClusterEndpoints(request, new ClusterEndpointsResponseObserver(randomAddress));
 
-        while (clusterEndpointsInfoCache.get() == null) {
-            if (System.currentTimeMillis() - startTime > CREATE_STUB_TIME_LIMIT) {
-                LOGGER.error("Failed to connect to server {} because of TimeOut Exception", randomAddress);
-                throw new TimeoutException("Connecting to server timeout..");
+        try {
+            stub.listenClusterEndpoints(request, new ClusterEndpointsResponseObserver(randomAddress));
+
+            while (clusterEndpointsInfoCache.get() == null) {
+                if (System.currentTimeMillis() - startTime > CREATE_STUB_TIME_LIMIT) {
+                    LOGGER.error("Failed to connect to server {} because of TimeOut Exception", randomAddress);
+                    throw new TimeoutException("Connecting to server timeout..");
+                }
+
             }
-
+        } finally {
+            try {
+                randomConnectedServerChannel.shutdown().awaitTermination(1, SECONDS);
+            } catch (InterruptedException e) {
+                LOGGER.error("Interrupted exception during gRPC channel close", e);
+            }
         }
 
-        randomConnectedServerChannel.shutdownNow();
-
     }
+
 
     private class ClusterEndpointsResponseObserver implements StreamObserver<ClusterEndpointsResponse> {
         String address;
@@ -106,6 +111,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
         @Override
         public void onError(Throwable t) {
+            System.out.println(t.getMessage());
             LOGGER.error("For DataNode {}, Cluster Observer of {} failed. Message: ", dataNodeId, address, t.getMessage());
 
         }
@@ -162,19 +168,17 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     }
 
     @Override
-    public ShardResponse putShardInfo(PutRequest request) {
-        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub) -> {
-            return stub.put(request);
-        }).join();
+    public ShardResponse putShardInfo(PutShardRequest request) {
+        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub)
+                -> stub.put(request)).join();
         return response;
     }
 
     @Override
     public ShardResponse getShardInfo(GetRequest request) {
         //randomly pick node where the shard exists
-        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub) -> {
-            return stub.get(request);
-        }).join();
+        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub)
+                -> stub.get(request)).join();
         return response;
     }
 
@@ -198,12 +202,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
             }
 
             ListenableFuture<ShardResponse> rawFuture = func.apply(leaderStub.stub);
-            rawFuture.addListener(new Runnable() {
-                @Override
-                public void run() {
-                    handleRpcResult(rawFuture);
-                }
-            }, executor);
+            rawFuture.addListener(() -> handleRpcResult(rawFuture), executor);
 
             return future;
         }
@@ -244,7 +243,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
         List<ShardInfo> shardInfoList = new ArrayList<>();
         shardInfoList.add(ShardInfo.newBuilder().setShardId("shard1").setIsPrimary(true).build());
         shardInfoList.add(ShardInfo.newBuilder().setShardId("shard3").setIsPrimary(false).build());
-        PutRequest req = PutRequest.newBuilder().
+        PutShardRequest req = PutShardRequest.newBuilder().
                           setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(100).setAddress("localhost:4001").build()).addAllShardInfo(shardInfoList).build();
         System.out.println(manager.putShardInfo(req));
 

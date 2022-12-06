@@ -4,18 +4,18 @@
 package cluster.external.shard.proto;
 
 /**
- * Protobuf type {@code proto.PutRequest}
+ * Protobuf type {@code proto.PutShardRequest}
  */
-public final class PutRequest extends
+public final class PutShardRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:proto.PutRequest)
-    PutRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:proto.PutShardRequest)
+    PutShardRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PutRequest.newBuilder() to construct.
-  private PutRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use PutShardRequest.newBuilder() to construct.
+  private PutShardRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PutRequest() {
+  private PutShardRequest() {
     shardInfo_ = java.util.Collections.emptyList();
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PutRequest();
+    return new PutShardRequest();
   }
 
   @java.lang.Override
@@ -33,15 +33,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutRequest_descriptor;
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutShardRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutRequest_fieldAccessorTable
+    return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutShardRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cluster.external.shard.proto.PutRequest.class, cluster.external.shard.proto.PutRequest.Builder.class);
+            cluster.external.shard.proto.PutShardRequest.class, cluster.external.shard.proto.PutShardRequest.Builder.class);
   }
 
   public static final int DATANODEINFO_FIELD_NUMBER = 1;
@@ -157,10 +157,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cluster.external.shard.proto.PutRequest)) {
+    if (!(obj instanceof cluster.external.shard.proto.PutShardRequest)) {
       return super.equals(obj);
     }
-    cluster.external.shard.proto.PutRequest other = (cluster.external.shard.proto.PutRequest) obj;
+    cluster.external.shard.proto.PutShardRequest other = (cluster.external.shard.proto.PutShardRequest) obj;
 
     if (hasDataNodeInfo() != other.hasDataNodeInfo()) return false;
     if (hasDataNodeInfo()) {
@@ -193,69 +193,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(byte[] data)
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.PutRequest parseDelimitedFrom(java.io.InputStream input)
+  public static cluster.external.shard.proto.PutShardRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.PutRequest parseDelimitedFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cluster.external.shard.proto.PutRequest parseFrom(
+  public static cluster.external.shard.proto.PutShardRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -268,7 +268,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cluster.external.shard.proto.PutRequest prototype) {
+  public static Builder newBuilder(cluster.external.shard.proto.PutShardRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -284,26 +284,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code proto.PutRequest}
+   * Protobuf type {@code proto.PutShardRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:proto.PutRequest)
-      cluster.external.shard.proto.PutRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:proto.PutShardRequest)
+      cluster.external.shard.proto.PutShardRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutRequest_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutShardRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutRequest_fieldAccessorTable
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutShardRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cluster.external.shard.proto.PutRequest.class, cluster.external.shard.proto.PutRequest.Builder.class);
+              cluster.external.shard.proto.PutShardRequest.class, cluster.external.shard.proto.PutShardRequest.Builder.class);
     }
 
-    // Construct using cluster.external.shard.proto.PutRequest.newBuilder()
+    // Construct using cluster.external.shard.proto.PutShardRequest.newBuilder()
     private Builder() {
 
     }
@@ -335,17 +335,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutRequest_descriptor;
+      return cluster.external.shard.proto.ShardRequest.internal_static_proto_PutShardRequest_descriptor;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.PutRequest getDefaultInstanceForType() {
-      return cluster.external.shard.proto.PutRequest.getDefaultInstance();
+    public cluster.external.shard.proto.PutShardRequest getDefaultInstanceForType() {
+      return cluster.external.shard.proto.PutShardRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.PutRequest build() {
-      cluster.external.shard.proto.PutRequest result = buildPartial();
+    public cluster.external.shard.proto.PutShardRequest build() {
+      cluster.external.shard.proto.PutShardRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -353,8 +353,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cluster.external.shard.proto.PutRequest buildPartial() {
-      cluster.external.shard.proto.PutRequest result = new cluster.external.shard.proto.PutRequest(this);
+    public cluster.external.shard.proto.PutShardRequest buildPartial() {
+      cluster.external.shard.proto.PutShardRequest result = new cluster.external.shard.proto.PutShardRequest(this);
       int from_bitField0_ = bitField0_;
       if (dataNodeInfoBuilder_ == null) {
         result.dataNodeInfo_ = dataNodeInfo_;
@@ -408,16 +408,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cluster.external.shard.proto.PutRequest) {
-        return mergeFrom((cluster.external.shard.proto.PutRequest)other);
+      if (other instanceof cluster.external.shard.proto.PutShardRequest) {
+        return mergeFrom((cluster.external.shard.proto.PutShardRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cluster.external.shard.proto.PutRequest other) {
-      if (other == cluster.external.shard.proto.PutRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(cluster.external.shard.proto.PutShardRequest other) {
+      if (other == cluster.external.shard.proto.PutShardRequest.getDefaultInstance()) return this;
       if (other.hasDataNodeInfo()) {
         mergeDataNodeInfo(other.getDataNodeInfo());
       }
@@ -881,23 +881,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:proto.PutRequest)
+    // @@protoc_insertion_point(builder_scope:proto.PutShardRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:proto.PutRequest)
-  private static final cluster.external.shard.proto.PutRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:proto.PutShardRequest)
+  private static final cluster.external.shard.proto.PutShardRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cluster.external.shard.proto.PutRequest();
+    DEFAULT_INSTANCE = new cluster.external.shard.proto.PutShardRequest();
   }
 
-  public static cluster.external.shard.proto.PutRequest getDefaultInstance() {
+  public static cluster.external.shard.proto.PutShardRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PutRequest>
-      PARSER = new com.google.protobuf.AbstractParser<PutRequest>() {
+  private static final com.google.protobuf.Parser<PutShardRequest>
+      PARSER = new com.google.protobuf.AbstractParser<PutShardRequest>() {
     @java.lang.Override
-    public PutRequest parsePartialFrom(
+    public PutShardRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -916,17 +916,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<PutRequest> parser() {
+  public static com.google.protobuf.Parser<PutShardRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PutRequest> getParserForType() {
+  public com.google.protobuf.Parser<PutShardRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cluster.external.shard.proto.PutRequest getDefaultInstanceForType() {
+  public cluster.external.shard.proto.PutShardRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

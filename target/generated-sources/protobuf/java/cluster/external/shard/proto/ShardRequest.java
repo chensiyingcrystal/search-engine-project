@@ -30,10 +30,10 @@ public final class ShardRequest {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_DataNodeInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_PutRequest_descriptor;
+    internal_static_proto_PutShardRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_PutRequest_fieldAccessorTable;
+      internal_static_proto_PutShardRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_PutResult_descriptor;
   static final 
@@ -67,20 +67,20 @@ public final class ShardRequest {
       "r\030\001 \001(\tH\000\022\r\n\003num\030\002 \001(\003H\000\022\023\n\tbyteArray\030\003 " +
       "\001(\014H\000B\005\n\003val\"/\n\tShardInfo\022\017\n\007shardId\030\003 \001" +
       "(\t\022\021\n\tisPrimary\030\004 \001(\010\"3\n\014DataNodeInfo\022\022\n" +
-      "\ndataNodeId\030\001 \001(\005\022\017\n\007address\030\002 \001(\t\"\\\n\nPu" +
-      "tRequest\022)\n\014dataNodeInfo\030\001 \001(\0132\023.proto.D" +
-      "ataNodeInfo\022#\n\tshardInfo\030\002 \003(\0132\020.proto.S" +
-      "hardInfo\"(\n\tPutResult\022\016\n\006status\030\001 \001(\005\022\013\n" +
-      "\003msg\030\002 \001(\t\"1\n\nGetRequest\022\013\n\003key\030\001 \001(\t\022\026\n" +
-      "\016minCommitIndex\030\002 \001(\003\"$\n\tGetResult\022\027\n\003va" +
-      "l\030\001 \001(\0132\n.proto.Val\"|\n\rShardResponse\022\023\n\013" +
-      "commitIndex\030\001 \001(\003\022%\n\tputResult\030\002 \001(\0132\020.p" +
-      "roto.PutResultH\000\022%\n\tgetResult\030\003 \001(\0132\020.pr" +
-      "oto.GetResultH\000B\010\n\006result2u\n\023ShardReques" +
-      "tHandler\022.\n\003put\022\021.proto.PutRequest\032\024.pro" +
-      "to.ShardResponse\022.\n\003get\022\021.proto.GetReque" +
-      "st\032\024.proto.ShardResponseB \n\034cluster.exte" +
-      "rnal.shard.protoP\001b\006proto3"
+      "\ndataNodeId\030\001 \001(\005\022\017\n\007address\030\002 \001(\t\"a\n\017Pu" +
+      "tShardRequest\022)\n\014dataNodeInfo\030\001 \001(\0132\023.pr" +
+      "oto.DataNodeInfo\022#\n\tshardInfo\030\002 \003(\0132\020.pr" +
+      "oto.ShardInfo\"(\n\tPutResult\022\016\n\006status\030\001 \001" +
+      "(\005\022\013\n\003msg\030\002 \001(\t\"1\n\nGetRequest\022\013\n\003key\030\001 \001" +
+      "(\t\022\026\n\016minCommitIndex\030\002 \001(\003\"$\n\tGetResult\022" +
+      "\027\n\003val\030\001 \001(\0132\n.proto.Val\"|\n\rShardRespons" +
+      "e\022\023\n\013commitIndex\030\001 \001(\003\022%\n\tputResult\030\002 \001(" +
+      "\0132\020.proto.PutResultH\000\022%\n\tgetResult\030\003 \001(\013" +
+      "2\020.proto.GetResultH\000B\010\n\006result2z\n\023ShardR" +
+      "equestHandler\0223\n\003put\022\026.proto.PutShardReq" +
+      "uest\032\024.proto.ShardResponse\022.\n\003get\022\021.prot" +
+      "o.GetRequest\032\024.proto.ShardResponseB \n\034cl" +
+      "uster.external.shard.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -104,11 +104,11 @@ public final class ShardRequest {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_DataNodeInfo_descriptor,
         new java.lang.String[] { "DataNodeId", "Address", });
-    internal_static_proto_PutRequest_descriptor =
+    internal_static_proto_PutShardRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_proto_PutRequest_fieldAccessorTable = new
+    internal_static_proto_PutShardRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_PutRequest_descriptor,
+        internal_static_proto_PutShardRequest_descriptor,
         new java.lang.String[] { "DataNodeInfo", "ShardInfo", });
     internal_static_proto_PutResult_descriptor =
       getDescriptor().getMessageTypes().get(4);

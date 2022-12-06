@@ -31,7 +31,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
     }
 
     @Override
-    public void put(PutRequest request, StreamObserver<ShardResponse> responseObserver) {
+    public void put(PutShardRequest request, StreamObserver<ShardResponse> responseObserver) {
         PutOp op = PutOp.newBuilder().setDataNodeInfo(DataNodeInfo.newBuilder()
                         .setDataNodeId(request.getDataNodeInfo().getDataNodeId()).setAddress(request.getDataNodeInfo().getAddress()).build())
                         .addAllShardInfo(request.getShardInfoList()).build();

@@ -25,12 +25,12 @@ message DataNodeInfo {
   string address = 2;
 }
 
-message PutRequest {
+message PutShardRequest {
     DataNodeInfo dataNodeInfo = 1;
     repeated ShardInfo shardInfo = 2;
 }
 
-message PutResult {
+message CommonResponse {
     int32 status = 1; //响应码（0：success -1：error）
     string msg = 2; //响应信息
 }
@@ -48,7 +48,7 @@ message GetResult {
 message ShardResponse {
   int64 commitIndex = 1;
   oneof result {
-    PutResult putResult = 2;
+    CommonResponse commonResponse = 2;
     GetResult getResult = 3;
   };
 }
@@ -67,7 +67,7 @@ message ShardResponse {
 
 
 service ShardRequestHandler {
-  rpc put (PutRequest) returns (ShardResponse);
+  rpc put (PutShardRequest) returns (ShardResponse);
   rpc get (GetRequest) returns (ShardResponse);
 
 }

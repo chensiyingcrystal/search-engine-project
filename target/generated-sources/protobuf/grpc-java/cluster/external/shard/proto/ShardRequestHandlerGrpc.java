@@ -15,27 +15,27 @@ public final class ShardRequestHandlerGrpc {
   public static final String SERVICE_NAME = "proto.ShardRequestHandler";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cluster.external.shard.proto.PutRequest,
+  private static volatile io.grpc.MethodDescriptor<cluster.external.shard.proto.PutShardRequest,
       cluster.external.shard.proto.ShardResponse> getPutMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "put",
-      requestType = cluster.external.shard.proto.PutRequest.class,
+      requestType = cluster.external.shard.proto.PutShardRequest.class,
       responseType = cluster.external.shard.proto.ShardResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cluster.external.shard.proto.PutRequest,
+  public static io.grpc.MethodDescriptor<cluster.external.shard.proto.PutShardRequest,
       cluster.external.shard.proto.ShardResponse> getPutMethod() {
-    io.grpc.MethodDescriptor<cluster.external.shard.proto.PutRequest, cluster.external.shard.proto.ShardResponse> getPutMethod;
+    io.grpc.MethodDescriptor<cluster.external.shard.proto.PutShardRequest, cluster.external.shard.proto.ShardResponse> getPutMethod;
     if ((getPutMethod = ShardRequestHandlerGrpc.getPutMethod) == null) {
       synchronized (ShardRequestHandlerGrpc.class) {
         if ((getPutMethod = ShardRequestHandlerGrpc.getPutMethod) == null) {
           ShardRequestHandlerGrpc.getPutMethod = getPutMethod =
-              io.grpc.MethodDescriptor.<cluster.external.shard.proto.PutRequest, cluster.external.shard.proto.ShardResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cluster.external.shard.proto.PutShardRequest, cluster.external.shard.proto.ShardResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "put"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cluster.external.shard.proto.PutRequest.getDefaultInstance()))
+                  cluster.external.shard.proto.PutShardRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cluster.external.shard.proto.ShardResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ShardRequestHandlerMethodDescriptorSupplier("put"))
@@ -127,7 +127,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void put(cluster.external.shard.proto.PutRequest request,
+    public void put(cluster.external.shard.proto.PutShardRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPutMethod(), responseObserver);
     }
@@ -145,7 +145,7 @@ public final class ShardRequestHandlerGrpc {
             getPutMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                cluster.external.shard.proto.PutRequest,
+                cluster.external.shard.proto.PutShardRequest,
                 cluster.external.shard.proto.ShardResponse>(
                   this, METHODID_PUT)))
           .addMethod(
@@ -175,7 +175,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public void put(cluster.external.shard.proto.PutRequest request,
+    public void put(cluster.external.shard.proto.PutShardRequest request,
         io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getPutMethod(), getCallOptions()), request, responseObserver);
@@ -206,7 +206,7 @@ public final class ShardRequestHandlerGrpc {
 
     /**
      */
-    public cluster.external.shard.proto.ShardResponse put(cluster.external.shard.proto.PutRequest request) {
+    public cluster.external.shard.proto.ShardResponse put(cluster.external.shard.proto.PutShardRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getPutMethod(), getCallOptions(), request);
     }
@@ -236,7 +236,7 @@ public final class ShardRequestHandlerGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<cluster.external.shard.proto.ShardResponse> put(
-        cluster.external.shard.proto.PutRequest request) {
+        cluster.external.shard.proto.PutShardRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getPutMethod(), getCallOptions()), request);
     }
@@ -271,7 +271,7 @@ public final class ShardRequestHandlerGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_PUT:
-          serviceImpl.put((cluster.external.shard.proto.PutRequest) request,
+          serviceImpl.put((cluster.external.shard.proto.PutShardRequest) request,
               (io.grpc.stub.StreamObserver<cluster.external.shard.proto.ShardResponse>) responseObserver);
           break;
         case METHODID_GET:

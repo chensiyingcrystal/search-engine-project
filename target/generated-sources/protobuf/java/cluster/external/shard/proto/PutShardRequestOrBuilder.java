@@ -3,8 +3,8 @@
 
 package cluster.external.shard.proto;
 
-public interface PutRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:proto.PutRequest)
+public interface PutShardRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:proto.PutShardRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

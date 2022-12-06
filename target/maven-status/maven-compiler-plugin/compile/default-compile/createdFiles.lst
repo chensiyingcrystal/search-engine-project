@@ -24,6 +24,7 @@ cluster/internal/raft/proto/StartNewTermOpProto.class
 cluster/external/listener/proto/ClusterListenServiceGrpc$1.class
 cluster/internal/raft/proto/PutOp.class
 cluster/external/shard/proto/Val$Builder.class
+cluster/external/shard/proto/PutShardRequest$1.class
 cluster/external/shard/proto/GetResult$1.class
 cluster/internal/raft/proto/ClusterSnapshotChunkData$Builder.class
 team/dsys/dssearch/cluster/config/ClusterConfig$1.class
@@ -78,7 +79,6 @@ cluster/internal/raft/proto/AppendEntriesRequestProto$Builder.class
 cluster/internal/raft/proto/UpdateRaftGroupMembersOpProto$MembershipChangeModeProto$1.class
 cluster/internal/management/proto/GetRaftNodeReportRequestOrBuilder.class
 team/dsys/dssearch/cluster/lifecycle/TerminationAware.class
-cluster/external/shard/proto/PutRequest.class
 cluster/internal/raft/proto/InstallSnapshotRequestProto.class
 team/dsys/dssearch/cluster/rpc/RaftMessageHandler$RequestStreamObserver.class
 cluster/internal/raft/proto/RaftMessageRequestOrBuilder.class
@@ -135,6 +135,7 @@ team/dsys/dssearch/cluster/config/GrpcConfig.class
 team/dsys/dssearch/cluster/raft/impl/log/SnapshotChunkOrBuilder.class
 cluster/internal/raft/proto/InstallSnapshotResponseProto.class
 cluster/internal/management/proto/RaftNodeStatusProto.class
+cluster/external/shard/proto/PutShardRequest$Builder.class
 cluster/internal/management/proto/ManagementRequestHandlerGrpc$ManagementRequestHandlerBlockingStub.class
 cluster/internal/raft/proto/TriggerLeaderElectionRequestProto.class
 cluster/internal/raft/proto/VoteResponseProto$1.class
@@ -179,7 +180,6 @@ cluster/internal/raft/proto/RaftEndpointProto.class
 cluster/external/listener/proto/ClusterEndpointsRequest$Builder.class
 cluster/internal/raft/proto/RaftCommunicationServiceGrpc.class
 cluster/internal/management/proto/AddRaftEndpointAddressResponse$Builder.class
-cluster/external/shard/proto/PutRequest$1.class
 cluster/external/listener/proto/ClusterListenServiceGrpc$MethodHandlers.class
 team/dsys/dssearch/cluster/raft/model/RaftModelFactoryImpl.class
 cluster/internal/management/proto/GetRaftNodeReportRequest$Builder.class
@@ -252,9 +252,9 @@ cluster/internal/raft/proto/AppendEntriesSuccessResponseProto$Builder.class
 cluster/internal/management/proto/RaftNodeReportReasonProto.class
 cluster/internal/raft/proto/AppendEntriesRequestProto.class
 cluster/external/shard/proto/ShardInfo.class
-cluster/external/shard/proto/PutRequestOrBuilder.class
 cluster/external/shard/proto/ShardRequestHandlerGrpc$3.class
 cluster/external/listener/proto/ClusterEndpointsInfo$EndpointsDefaultEntryHolder.class
+cluster/external/shard/proto/PutShardRequest.class
 cluster/internal/management/proto/AddRaftEndpointAddressRequest$1.class
 cluster/external/shard/proto/ValOrBuilder.class
 cluster/internal/raft/proto/PutOp$1.class
@@ -266,7 +266,6 @@ cluster/internal/raft/proto/PutOpOrBuilder.class
 cluster/external/listener/proto/ClusterListenServiceGrpc$ClusterListenServiceImplBase.class
 cluster/internal/raft/proto/PreVoteResponseProto$1.class
 cluster/internal/raft/proto/RaftCommunicationServiceGrpc$1.class
-cluster/external/shard/proto/PutRequest$Builder.class
 team/dsys/dssearch/cluster/config/GrpcConfig$1.class
 cluster/external/listener/proto/ClusterEndpointsInfo$Builder.class
 team/dsys/dssearch/cluster/raft/impl/message/PreVoteRequestOrBuilder.class
@@ -279,6 +278,7 @@ cluster/internal/raft/proto/InstallSnapshotResponseProto$Builder.class
 cluster/internal/management/proto/AddRaftEndpointAddressResponseOrBuilder.class
 cluster/internal/raft/proto/InstallSnapshotRequestProtoOrBuilder.class
 cluster/internal/raft/proto/RaftGroupMembersViewProto$Builder.class
+cluster/external/shard/proto/PutShardRequestOrBuilder.class
 cluster/internal/management/proto/GetRaftNodeReportResponse$Builder.class
 cluster/internal/raft/proto/RaftMessageRequest$Builder.class
 cluster/internal/management/proto/RaftGroupMembersProtoOrBuilder.class
