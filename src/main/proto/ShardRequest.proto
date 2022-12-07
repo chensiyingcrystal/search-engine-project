@@ -7,17 +7,9 @@ option java_package = "cluster.external.shard.proto";
 
 option java_multiple_files = true;
 
-message Val {
-  oneof val {
-    string str = 1;
-    int64 num = 2;
-    bytes byteArray = 3;
-  }
-}
-
 message ShardInfo {
   int32 shardId = 3;
-  bool isPrimary = 4;
+  bool isPrimary = 4; //primary shard: true
 }
 
 message DataNodeInfo {
@@ -27,7 +19,7 @@ message DataNodeInfo {
 
 message PutShardRequest {
   DataNodeInfo dataNodeInfo = 1;
-  repeated ShardInfo shardInfo = 2;
+  repeated ShardInfo shardInfo = 2;//List<ShardInfo>
 }
 
 message CommonResponse {
@@ -37,11 +29,17 @@ message CommonResponse {
 
 message GetShardRequest {
   repeated int32 shardId = 1;
-  int64 minCommitIndex = 2;//optional
+  int64 minCommitIndex = 2;//(omit_)
+}
+
+
+message ShardInfoWithDataNodeInfo {
+  ShardInfo shardInfo = 1;
+  repeated DataNodeInfo dataNodeInfos = 2;
 }
 
 message GetShardResponse {
-  repeated DataNodeInfo dataNodeInfo = 1;
+  repeated ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;
 
 }
 
@@ -53,10 +51,18 @@ message ShardResponse {
   };
 }
 
+message GetAllShardRequest {
+
+}
+
 
 service ShardRequestHandler {
   rpc put (PutShardRequest) returns (ShardResponse);
   rpc get (GetShardRequest) returns (ShardResponse);
+  rpc getAll (GetAllShardRequest) returns (ShardResponse);
 
 }
+
+
+
 

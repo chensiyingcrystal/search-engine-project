@@ -16,7 +16,6 @@ public class RunCluster {
     private static final Logger LOGGER = LoggerFactory.getLogger(RunCluster.class);
 
     public static void main(String[] args) {
-
         //reading config file
         //model config file reference: resources/node1.conf; args: config file absolute path
         String configFileName = "";

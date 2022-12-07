@@ -75,6 +75,10 @@ private static final long serialVersionUID = 0L;
   public static final int MINCOMMITINDEX_FIELD_NUMBER = 2;
   private long minCommitIndex_;
   /**
+   * <pre>
+   *(omit_)
+   * </pre>
+   *
    * <code>int64 minCommitIndex = 2;</code>
    * @return The minCommitIndex.
    */
@@ -543,6 +547,10 @@ private static final long serialVersionUID = 0L;
 
     private long minCommitIndex_ ;
     /**
+     * <pre>
+     *(omit_)
+     * </pre>
+     *
      * <code>int64 minCommitIndex = 2;</code>
      * @return The minCommitIndex.
      */
@@ -551,6 +559,10 @@ private static final long serialVersionUID = 0L;
       return minCommitIndex_;
     }
     /**
+     * <pre>
+     *(omit_)
+     * </pre>
+     *
      * <code>int64 minCommitIndex = 2;</code>
      * @param value The minCommitIndex to set.
      * @return This builder for chaining.
@@ -562,6 +574,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *(omit_)
+     * </pre>
+     *
      * <code>int64 minCommitIndex = 2;</code>
      * @return This builder for chaining.
      */

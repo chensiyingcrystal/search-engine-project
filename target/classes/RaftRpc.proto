@@ -51,7 +51,11 @@ message GetOp {
 }
 
 message GetOpResult {
-  repeated DataNodeInfo dataNodeInfo = 1;
+  repeated ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;
+}
+
+message GetAllOp {
+
 }
 
 message LogEntryProto {
@@ -62,12 +66,13 @@ message LogEntryProto {
     StartNewTermOpProto startNewTermOp = 4;
     PutOp putOp = 5;
     GetOp getOp = 6;
+    GetAllOp getAllOp = 7;
   }
 }
 
 message ShardEntry {
-  string key = 1;
-  Val val = 2;
+  ShardInfo shardInfo = 1;
+  ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 2;
 }
 
 //Below are referenced from Microraft internal definition

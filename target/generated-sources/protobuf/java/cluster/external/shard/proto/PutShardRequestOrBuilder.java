@@ -23,24 +23,44 @@ public interface PutShardRequestOrBuilder extends
   cluster.external.shard.proto.DataNodeInfoOrBuilder getDataNodeInfoOrBuilder();
 
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   java.util.List<cluster.external.shard.proto.ShardInfo> 
       getShardInfoList();
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   cluster.external.shard.proto.ShardInfo getShardInfo(int index);
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   int getShardInfoCount();
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   java.util.List<? extends cluster.external.shard.proto.ShardInfoOrBuilder> 
       getShardInfoOrBuilderList();
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder(

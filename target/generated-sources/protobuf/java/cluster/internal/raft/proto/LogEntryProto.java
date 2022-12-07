@@ -52,6 +52,7 @@ private static final long serialVersionUID = 0L;
     STARTNEWTERMOP(4),
     PUTOP(5),
     GETOP(6),
+    GETALLOP(7),
     OPERATION_NOT_SET(0);
     private final int value;
     private OperationCase(int value) {
@@ -73,6 +74,7 @@ private static final long serialVersionUID = 0L;
         case 4: return STARTNEWTERMOP;
         case 5: return PUTOP;
         case 6: return GETOP;
+        case 7: return GETALLOP;
         case 0: return OPERATION_NOT_SET;
         default: return null;
       }
@@ -234,6 +236,37 @@ private static final long serialVersionUID = 0L;
     return cluster.internal.raft.proto.GetOp.getDefaultInstance();
   }
 
+  public static final int GETALLOP_FIELD_NUMBER = 7;
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   * @return Whether the getAllOp field is set.
+   */
+  @java.lang.Override
+  public boolean hasGetAllOp() {
+    return operationCase_ == 7;
+  }
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   * @return The getAllOp.
+   */
+  @java.lang.Override
+  public cluster.internal.raft.proto.GetAllOp getGetAllOp() {
+    if (operationCase_ == 7) {
+       return (cluster.internal.raft.proto.GetAllOp) operation_;
+    }
+    return cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+  }
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   */
+  @java.lang.Override
+  public cluster.internal.raft.proto.GetAllOpOrBuilder getGetAllOpOrBuilder() {
+    if (operationCase_ == 7) {
+       return (cluster.internal.raft.proto.GetAllOp) operation_;
+    }
+    return cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -265,6 +298,9 @@ private static final long serialVersionUID = 0L;
     }
     if (operationCase_ == 6) {
       output.writeMessage(6, (cluster.internal.raft.proto.GetOp) operation_);
+    }
+    if (operationCase_ == 7) {
+      output.writeMessage(7, (cluster.internal.raft.proto.GetAllOp) operation_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -298,6 +334,10 @@ private static final long serialVersionUID = 0L;
     if (operationCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, (cluster.internal.raft.proto.GetOp) operation_);
+    }
+    if (operationCase_ == 7) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, (cluster.internal.raft.proto.GetAllOp) operation_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -336,6 +376,10 @@ private static final long serialVersionUID = 0L;
         if (!getGetOp()
             .equals(other.getGetOp())) return false;
         break;
+      case 7:
+        if (!getGetAllOp()
+            .equals(other.getGetAllOp())) return false;
+        break;
       case 0:
       default:
     }
@@ -371,6 +415,10 @@ private static final long serialVersionUID = 0L;
       case 6:
         hash = (37 * hash) + GETOP_FIELD_NUMBER;
         hash = (53 * hash) + getGetOp().hashCode();
+        break;
+      case 7:
+        hash = (37 * hash) + GETALLOP_FIELD_NUMBER;
+        hash = (53 * hash) + getGetAllOp().hashCode();
         break;
       case 0:
       default:
@@ -519,6 +567,9 @@ private static final long serialVersionUID = 0L;
       if (getOpBuilder_ != null) {
         getOpBuilder_.clear();
       }
+      if (getAllOpBuilder_ != null) {
+        getAllOpBuilder_.clear();
+      }
       operationCase_ = 0;
       operation_ = null;
       return this;
@@ -575,6 +626,13 @@ private static final long serialVersionUID = 0L;
           result.operation_ = operation_;
         } else {
           result.operation_ = getOpBuilder_.build();
+        }
+      }
+      if (operationCase_ == 7) {
+        if (getAllOpBuilder_ == null) {
+          result.operation_ = operation_;
+        } else {
+          result.operation_ = getAllOpBuilder_.build();
         }
       }
       result.operationCase_ = operationCase_;
@@ -649,6 +707,10 @@ private static final long serialVersionUID = 0L;
           mergeGetOp(other.getGetOp());
           break;
         }
+        case GETALLOP: {
+          mergeGetAllOp(other.getGetAllOp());
+          break;
+        }
         case OPERATION_NOT_SET: {
           break;
         }
@@ -717,6 +779,13 @@ private static final long serialVersionUID = 0L;
               operationCase_ = 6;
               break;
             } // case 50
+            case 58: {
+              input.readMessage(
+                  getGetAllOpFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              operationCase_ = 7;
+              break;
+            } // case 58
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1376,6 +1445,148 @@ private static final long serialVersionUID = 0L;
       operationCase_ = 6;
       onChanged();;
       return getOpBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cluster.internal.raft.proto.GetAllOp, cluster.internal.raft.proto.GetAllOp.Builder, cluster.internal.raft.proto.GetAllOpOrBuilder> getAllOpBuilder_;
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     * @return Whether the getAllOp field is set.
+     */
+    @java.lang.Override
+    public boolean hasGetAllOp() {
+      return operationCase_ == 7;
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     * @return The getAllOp.
+     */
+    @java.lang.Override
+    public cluster.internal.raft.proto.GetAllOp getGetAllOp() {
+      if (getAllOpBuilder_ == null) {
+        if (operationCase_ == 7) {
+          return (cluster.internal.raft.proto.GetAllOp) operation_;
+        }
+        return cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+      } else {
+        if (operationCase_ == 7) {
+          return getAllOpBuilder_.getMessage();
+        }
+        return cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    public Builder setGetAllOp(cluster.internal.raft.proto.GetAllOp value) {
+      if (getAllOpBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        operation_ = value;
+        onChanged();
+      } else {
+        getAllOpBuilder_.setMessage(value);
+      }
+      operationCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    public Builder setGetAllOp(
+        cluster.internal.raft.proto.GetAllOp.Builder builderForValue) {
+      if (getAllOpBuilder_ == null) {
+        operation_ = builderForValue.build();
+        onChanged();
+      } else {
+        getAllOpBuilder_.setMessage(builderForValue.build());
+      }
+      operationCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    public Builder mergeGetAllOp(cluster.internal.raft.proto.GetAllOp value) {
+      if (getAllOpBuilder_ == null) {
+        if (operationCase_ == 7 &&
+            operation_ != cluster.internal.raft.proto.GetAllOp.getDefaultInstance()) {
+          operation_ = cluster.internal.raft.proto.GetAllOp.newBuilder((cluster.internal.raft.proto.GetAllOp) operation_)
+              .mergeFrom(value).buildPartial();
+        } else {
+          operation_ = value;
+        }
+        onChanged();
+      } else {
+        if (operationCase_ == 7) {
+          getAllOpBuilder_.mergeFrom(value);
+        } else {
+          getAllOpBuilder_.setMessage(value);
+        }
+      }
+      operationCase_ = 7;
+      return this;
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    public Builder clearGetAllOp() {
+      if (getAllOpBuilder_ == null) {
+        if (operationCase_ == 7) {
+          operationCase_ = 0;
+          operation_ = null;
+          onChanged();
+        }
+      } else {
+        if (operationCase_ == 7) {
+          operationCase_ = 0;
+          operation_ = null;
+        }
+        getAllOpBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    public cluster.internal.raft.proto.GetAllOp.Builder getGetAllOpBuilder() {
+      return getGetAllOpFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    @java.lang.Override
+    public cluster.internal.raft.proto.GetAllOpOrBuilder getGetAllOpOrBuilder() {
+      if ((operationCase_ == 7) && (getAllOpBuilder_ != null)) {
+        return getAllOpBuilder_.getMessageOrBuilder();
+      } else {
+        if (operationCase_ == 7) {
+          return (cluster.internal.raft.proto.GetAllOp) operation_;
+        }
+        return cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+      }
+    }
+    /**
+     * <code>.proto.GetAllOp getAllOp = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cluster.internal.raft.proto.GetAllOp, cluster.internal.raft.proto.GetAllOp.Builder, cluster.internal.raft.proto.GetAllOpOrBuilder> 
+        getGetAllOpFieldBuilder() {
+      if (getAllOpBuilder_ == null) {
+        if (!(operationCase_ == 7)) {
+          operation_ = cluster.internal.raft.proto.GetAllOp.getDefaultInstance();
+        }
+        getAllOpBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cluster.internal.raft.proto.GetAllOp, cluster.internal.raft.proto.GetAllOp.Builder, cluster.internal.raft.proto.GetAllOpOrBuilder>(
+                (cluster.internal.raft.proto.GetAllOp) operation_,
+                getParentForChildren(),
+                isClean());
+        operation_ = null;
+      }
+      operationCase_ = 7;
+      onChanged();;
+      return getAllOpBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -32,13 +32,11 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
 
     @Override
     public void put(PutShardRequest request, StreamObserver<ShardResponse> responseObserver) {
-        PutOp op = PutOp.newBuilder().setDataNodeInfo(DataNodeInfo.newBuilder()
-                        .setDataNodeId(request.getDataNodeInfo().getDataNodeId()).setAddress(request.getDataNodeInfo().getAddress()).build())
-                        .addAllShardInfo(request.getShardInfoList()).build();
+        PutOp op = PutOp.newBuilder().setDataNodeInfo(request.getDataNodeInfo()).addAllShardInfo(request.getShardInfoList()).build();
         raftNode.<PutOpResult> replicate(op).whenComplete((Ordered<PutOpResult> result, Throwable throwable) -> {
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
-                                .setCommonResponse(CommonResponse.newBuilder().setStatus(0).setMsg("PutShardRequest success")).build());
+                                .setCommonResponse(CommonResponse.newBuilder().setStatus(result.getResult().getStatus()).setMsg(result.getResult().getMsg())).build());
                     } else {
                         LOGGER.error(throwable.getMessage());
                         responseObserver.onError(throwable);
@@ -57,7 +55,7 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
                     if (throwable == null) {
                         responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
                                 .setGetShardResponse(
-                                        GetShardResponse.newBuilder().addAllDataNodeInfo(result.getResult().getDataNodeInfoList()))
+                                        GetShardResponse.newBuilder().addAllShardInfoWithDataNodeInfo(result.getResult().getShardInfoWithDataNodeInfoList()).build())
                                 .build());
                     } else {
                         responseObserver.onError(throwable);
@@ -66,8 +64,20 @@ public class ShardRequestHandler extends ShardRequestHandlerGrpc.ShardRequestHan
                 });
     }
 
-
-
-
-
+    @Override
+    public void getAll(GetAllShardRequest request, StreamObserver<ShardResponse> responseObserver) {
+        GetAllOp op = GetAllOp.newBuilder().build();
+        raftNode.<GetOpResult> query(op, LINEARIZABLE, 0)
+                .whenComplete((Ordered<GetOpResult> result, Throwable throwable) -> {
+                    if (throwable == null) {
+                        responseObserver.onNext(ShardResponse.newBuilder().setCommitIndex(result.getCommitIndex())
+                                .setGetShardResponse(
+                                        GetShardResponse.newBuilder().addAllShardInfoWithDataNodeInfo(result.getResult().getShardInfoWithDataNodeInfoList()).build())
+                                .build());
+                    } else {
+                        responseObserver.onError(throwable);
+                    }
+                    responseObserver.onCompleted();
+                });
+    }
 }

@@ -57,6 +57,10 @@ private static final long serialVersionUID = 0L;
   public static final int ISPRIMARY_FIELD_NUMBER = 4;
   private boolean isPrimary_;
   /**
+   * <pre>
+   *primary shard: true
+   * </pre>
+   *
    * <code>bool isPrimary = 4;</code>
    * @return The isPrimary.
    */
@@ -436,6 +440,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean isPrimary_ ;
     /**
+     * <pre>
+     *primary shard: true
+     * </pre>
+     *
      * <code>bool isPrimary = 4;</code>
      * @return The isPrimary.
      */
@@ -444,6 +452,10 @@ private static final long serialVersionUID = 0L;
       return isPrimary_;
     }
     /**
+     * <pre>
+     *primary shard: true
+     * </pre>
+     *
      * <code>bool isPrimary = 4;</code>
      * @param value The isPrimary to set.
      * @return This builder for chaining.
@@ -455,6 +467,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *primary shard: true
+     * </pre>
+     *
      * <code>bool isPrimary = 4;</code>
      * @return This builder for chaining.
      */

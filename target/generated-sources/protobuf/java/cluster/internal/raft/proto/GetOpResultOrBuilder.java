@@ -8,26 +8,26 @@ public interface GetOpResultOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * <code>repeated .proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;</code>
    */
-  java.util.List<cluster.external.shard.proto.DataNodeInfo> 
-      getDataNodeInfoList();
+  java.util.List<cluster.external.shard.proto.ShardInfoWithDataNodeInfo> 
+      getShardInfoWithDataNodeInfoList();
   /**
-   * <code>repeated .proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * <code>repeated .proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;</code>
    */
-  cluster.external.shard.proto.DataNodeInfo getDataNodeInfo(int index);
+  cluster.external.shard.proto.ShardInfoWithDataNodeInfo getShardInfoWithDataNodeInfo(int index);
   /**
-   * <code>repeated .proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * <code>repeated .proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;</code>
    */
-  int getDataNodeInfoCount();
+  int getShardInfoWithDataNodeInfoCount();
   /**
-   * <code>repeated .proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * <code>repeated .proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;</code>
    */
-  java.util.List<? extends cluster.external.shard.proto.DataNodeInfoOrBuilder> 
-      getDataNodeInfoOrBuilderList();
+  java.util.List<? extends cluster.external.shard.proto.ShardInfoWithDataNodeInfoOrBuilder> 
+      getShardInfoWithDataNodeInfoOrBuilderList();
   /**
-   * <code>repeated .proto.DataNodeInfo dataNodeInfo = 1;</code>
+   * <code>repeated .proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 1;</code>
    */
-  cluster.external.shard.proto.DataNodeInfoOrBuilder getDataNodeInfoOrBuilder(
+  cluster.external.shard.proto.ShardInfoWithDataNodeInfoOrBuilder getShardInfoWithDataNodeInfoOrBuilder(
       int index);
 }

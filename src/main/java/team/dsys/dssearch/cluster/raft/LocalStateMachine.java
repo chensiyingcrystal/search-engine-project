@@ -1,8 +1,7 @@
 package team.dsys.dssearch.cluster.raft;
 
-import cluster.external.shard.proto.DataNodeInfo;
 import cluster.external.shard.proto.ShardInfo;
-import cluster.external.shard.proto.Val;
+import cluster.external.shard.proto.ShardInfoWithDataNodeInfo;
 import cluster.internal.raft.proto.*;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -12,9 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 import static java.util.Objects.requireNonNull;
@@ -33,8 +31,8 @@ public class LocalStateMachine implements StateMachine {
     private static final Logger LOGGER = LoggerFactory.getLogger(LocalStateMachine.class);
     //in-memory map to keep shard status and node status
     // use linkedhash map to keep the insertion order
-//    private final Map<ShardInfo, DataNodeInfo> map = new LinkedHashMap<>();
-    private final Map<String, Val> map = new LinkedHashMap<>();
+    //Key: shardId, value: list of shardInfo(isPrimary) and its DataNodeInfo(list of datanodeId and address)
+    private final Map<ShardInfo, ShardInfoWithDataNodeInfo> map = new ConcurrentHashMap<>();
 
     private final RaftEndpoint raftNodeEndpoint;
 
@@ -56,31 +54,80 @@ public class LocalStateMachine implements StateMachine {
             return put(commitIndex, (PutOp) operation);
         } else if (operation instanceof GetOp) {
             return get(commitIndex, (GetOp) operation);
+        } else if (operation instanceof GetAllOp) {
+            return getAll(commitIndex, (GetAllOp) operation);
+        } else if (operation instanceof StartNewTermOpProto) {
+            return null;
         }
 
-        throw new IllegalArgumentException("Invalid operation: " + operation + " of clazz: " + operation.getClass()
+        throw new IllegalArgumentException("Invalid operation: " + operation + " of class: " + operation.getClass()
                 + " at commit index: " + commitIndex);
+    }
+
+    //for testing
+    private void printMap(String info) {
+        System.out.println(info);
+        for(Map.Entry<ShardInfo, ShardInfoWithDataNodeInfo> e : map.entrySet()) {
+            System.out.println("ShardInfo: " + e.getKey() + " ----  map value: " + e.getValue());
+        }
     }
 
     //do local put operation
     private PutOpResult put(long commitIndex, PutOp op) {
-        Val oldVal = Val.newBuilder().setStr("PUT successfully").build();
-        PutOpResult.Builder builder = PutOpResult.newBuilder();
-        if (oldVal != null) {
-            builder.setStatus(0).setMsg("Build successfully");
+        List<ShardInfo> shardInfoList = op.getShardInfoList();
+        for (ShardInfo shardInfo : shardInfoList) {
+            if (!map.containsKey(shardInfo)) {
+                map.put(shardInfo, ShardInfoWithDataNodeInfo.newBuilder().setShardInfo(shardInfo).build());
+            }
+
+            ShardInfoWithDataNodeInfo.Builder builder = map.get(shardInfo).toBuilder();
+            if (builder.getDataNodeInfosList() != null
+                    && builder.getDataNodeInfosList().contains(op.getDataNodeInfo())) {
+                continue;
+            }
+            map.put(shardInfo, builder.addDataNodeInfos(op.getDataNodeInfo()).build());
+
         }
+
+        PutOpResult.Builder builder = PutOpResult.newBuilder().setStatus(0).setMsg("PutShardRequest Success");
 
         return builder.build();
     }
 
     private GetOpResult get(long commitIndex, GetOp op) {
-        GetOpResult.Builder builder = GetOpResult.newBuilder();
-        Val val = Val.newBuilder().setStr("GET successfully").build();
-        if (val != null) {
-            builder.getDefaultInstanceForType();
+        List<Integer> shardIdList = op.getShardIdList();
+        List<ShardInfo> shardInfoList = new ArrayList<>();
+        for (Integer shardId : shardIdList) {
+            ShardInfo primaryShardInfo = ShardInfo.newBuilder().setShardId(shardId).setIsPrimary(true).build();
+            ShardInfo nonPrimaryShardInfo = ShardInfo.newBuilder().setShardId(shardId).setIsPrimary(false).build();
+            shardInfoList.add(primaryShardInfo);
+            shardInfoList.add(nonPrimaryShardInfo);
         }
 
+        List<ShardInfoWithDataNodeInfo> shardInfoWithDataNodeInfoList = new ArrayList<>();
+        for (ShardInfo shardInfo : shardInfoList) {
+            ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = map.get(shardInfo);
+            if (shardInfoWithDataNodeInfo != null) {
+                shardInfoWithDataNodeInfoList.add(shardInfoWithDataNodeInfo);
+            }
+
+        }
+
+        GetOpResult.Builder builder = GetOpResult.newBuilder().addAllShardInfoWithDataNodeInfo(shardInfoWithDataNodeInfoList);
+
         return builder.build();
+    }
+
+    private GetOpResult getAll(long commitIndex, GetAllOp op) {
+        List<ShardInfoWithDataNodeInfo> shardInfoWithDataNodeInfoList = new ArrayList<>();
+        for(Map.Entry<ShardInfo, ShardInfoWithDataNodeInfo> e : map.entrySet()) {
+            shardInfoWithDataNodeInfoList.add(e.getValue());
+        }
+
+        GetOpResult.Builder builder = GetOpResult.newBuilder().addAllShardInfoWithDataNodeInfo(shardInfoWithDataNodeInfoList);
+
+        return builder.build();
+
     }
 
 
@@ -90,9 +137,9 @@ public class LocalStateMachine implements StateMachine {
         ClusterSnapshotChunkData.Builder chunkBuilder = ClusterSnapshotChunkData.newBuilder();
 
         int chunkCount = 0, keyCount = 0;
-        for (Map.Entry<String, Val> e : map.entrySet()) {
+        for (Map.Entry<ShardInfo, ShardInfoWithDataNodeInfo> e : map.entrySet()) {
             keyCount++;
-            ShardEntry shardEntry = ShardEntry.newBuilder().setKey(e.getKey()).setVal(e.getValue()).build();
+            ShardEntry shardEntry = ShardEntry.newBuilder().setShardInfo(e.getKey()).setShardInfoWithDataNodeInfo(e.getValue()).build();
             chunkBuilder.addEntry(shardEntry);
             if (chunkBuilder.getEntryCount() == 10000) {
                 snapshotChunkConsumer.accept(chunkBuilder.build());
@@ -117,7 +164,7 @@ public class LocalStateMachine implements StateMachine {
 
         for (Object chunk : snapshotChunks) {
             for (ShardEntry entry : ((ClusterSnapshotChunkData) chunk).getEntryList()) {
-                map.put(entry.getKey(), entry.getVal());
+                map.put(entry.getShardInfo(), entry.getShardInfoWithDataNodeInfo());
             }
         }
 

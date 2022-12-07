@@ -14,6 +14,10 @@ public interface ShardInfoOrBuilder extends
   int getShardId();
 
   /**
+   * <pre>
+   *primary shard: true
+   * </pre>
+   *
    * <code>bool isPrimary = 4;</code>
    * @return The isPrimary.
    */

@@ -73,6 +73,10 @@ private static final long serialVersionUID = 0L;
   public static final int SHARDINFO_FIELD_NUMBER = 2;
   private java.util.List<cluster.external.shard.proto.ShardInfo> shardInfo_;
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
@@ -80,6 +84,10 @@ private static final long serialVersionUID = 0L;
     return shardInfo_;
   }
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
@@ -88,6 +96,10 @@ private static final long serialVersionUID = 0L;
     return shardInfo_;
   }
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
@@ -95,6 +107,10 @@ private static final long serialVersionUID = 0L;
     return shardInfo_.size();
   }
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
@@ -102,6 +118,10 @@ private static final long serialVersionUID = 0L;
     return shardInfo_.get(index);
   }
   /**
+   * <pre>
+   *List&lt;ShardInfo&gt;
+   * </pre>
+   *
    * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
    */
   @java.lang.Override
@@ -642,6 +662,10 @@ private static final long serialVersionUID = 0L;
         cluster.external.shard.proto.ShardInfo, cluster.external.shard.proto.ShardInfo.Builder, cluster.external.shard.proto.ShardInfoOrBuilder> shardInfoBuilder_;
 
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public java.util.List<cluster.external.shard.proto.ShardInfo> getShardInfoList() {
@@ -652,6 +676,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public int getShardInfoCount() {
@@ -662,6 +690,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public cluster.external.shard.proto.ShardInfo getShardInfo(int index) {
@@ -672,6 +704,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder setShardInfo(
@@ -689,6 +725,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder setShardInfo(
@@ -703,6 +743,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder addShardInfo(cluster.external.shard.proto.ShardInfo value) {
@@ -719,6 +763,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder addShardInfo(
@@ -736,6 +784,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder addShardInfo(
@@ -750,6 +802,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder addShardInfo(
@@ -764,6 +820,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder addAllShardInfo(
@@ -779,6 +839,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder clearShardInfo() {
@@ -792,6 +856,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public Builder removeShardInfo(int index) {
@@ -805,6 +873,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public cluster.external.shard.proto.ShardInfo.Builder getShardInfoBuilder(
@@ -812,6 +884,10 @@ private static final long serialVersionUID = 0L;
       return getShardInfoFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder(
@@ -822,6 +898,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public java.util.List<? extends cluster.external.shard.proto.ShardInfoOrBuilder> 
@@ -833,6 +913,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public cluster.external.shard.proto.ShardInfo.Builder addShardInfoBuilder() {
@@ -840,6 +924,10 @@ private static final long serialVersionUID = 0L;
           cluster.external.shard.proto.ShardInfo.getDefaultInstance());
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public cluster.external.shard.proto.ShardInfo.Builder addShardInfoBuilder(
@@ -848,6 +936,10 @@ private static final long serialVersionUID = 0L;
           index, cluster.external.shard.proto.ShardInfo.getDefaultInstance());
     }
     /**
+     * <pre>
+     *List&lt;ShardInfo&gt;
+     * </pre>
+     *
      * <code>repeated .proto.ShardInfo shardInfo = 2;</code>
      */
     public java.util.List<cluster.external.shard.proto.ShardInfo.Builder> 

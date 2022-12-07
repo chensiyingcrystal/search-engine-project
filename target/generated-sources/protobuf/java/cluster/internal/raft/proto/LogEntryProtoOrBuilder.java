@@ -79,5 +79,20 @@ public interface LogEntryProtoOrBuilder extends
    */
   cluster.internal.raft.proto.GetOpOrBuilder getGetOpOrBuilder();
 
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   * @return Whether the getAllOp field is set.
+   */
+  boolean hasGetAllOp();
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   * @return The getAllOp.
+   */
+  cluster.internal.raft.proto.GetAllOp getGetAllOp();
+  /**
+   * <code>.proto.GetAllOp getAllOp = 7;</code>
+   */
+  cluster.internal.raft.proto.GetAllOpOrBuilder getGetAllOpOrBuilder();
+
   public cluster.internal.raft.proto.LogEntryProto.OperationCase getOperationCase();
 }

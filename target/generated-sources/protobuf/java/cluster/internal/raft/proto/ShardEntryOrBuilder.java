@@ -8,29 +8,32 @@ public interface ShardEntryOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string key = 1;</code>
-   * @return The key.
+   * <code>.proto.ShardInfo shardInfo = 1;</code>
+   * @return Whether the shardInfo field is set.
    */
-  java.lang.String getKey();
+  boolean hasShardInfo();
   /**
-   * <code>string key = 1;</code>
-   * @return The bytes for key.
+   * <code>.proto.ShardInfo shardInfo = 1;</code>
+   * @return The shardInfo.
    */
-  com.google.protobuf.ByteString
-      getKeyBytes();
+  cluster.external.shard.proto.ShardInfo getShardInfo();
+  /**
+   * <code>.proto.ShardInfo shardInfo = 1;</code>
+   */
+  cluster.external.shard.proto.ShardInfoOrBuilder getShardInfoOrBuilder();
 
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return Whether the val field is set.
+   * <code>.proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 2;</code>
+   * @return Whether the shardInfoWithDataNodeInfo field is set.
    */
-  boolean hasVal();
+  boolean hasShardInfoWithDataNodeInfo();
   /**
-   * <code>.proto.Val val = 2;</code>
-   * @return The val.
+   * <code>.proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 2;</code>
+   * @return The shardInfoWithDataNodeInfo.
    */
-  cluster.external.shard.proto.Val getVal();
+  cluster.external.shard.proto.ShardInfoWithDataNodeInfo getShardInfoWithDataNodeInfo();
   /**
-   * <code>.proto.Val val = 2;</code>
+   * <code>.proto.ShardInfoWithDataNodeInfo shardInfoWithDataNodeInfo = 2;</code>
    */
-  cluster.external.shard.proto.ValOrBuilder getValOrBuilder();
+  cluster.external.shard.proto.ShardInfoWithDataNodeInfoOrBuilder getShardInfoWithDataNodeInfoOrBuilder();
 }

@@ -1,13 +1,12 @@
 package team.dsys.dssearch.internal.common;
 
-import cluster.external.shard.proto.GetShardRequest;
-import cluster.external.shard.proto.PutShardRequest;
-import cluster.external.shard.proto.ShardResponse;
+import cluster.external.listener.proto.ClusterEndpointsInfo;
+import cluster.external.shard.proto.*;
 
 public interface ClusterServiceManager {
 
-    String getClusterReport();
-    String getShardReport();
+    ClusterEndpointsInfo getClusterReport();
+    ShardResponse getShardReport(GetAllShardRequest getAllShardRequest);
     ShardResponse putShardInfo(PutShardRequest request);
     ShardResponse getShardInfo(GetShardRequest request);
 

@@ -25,6 +25,10 @@ public interface GetShardRequestOrBuilder extends
   int getShardId(int index);
 
   /**
+   * <pre>
+   *(omit_)
+   * </pre>
+   *
    * <code>int64 minCommitIndex = 2;</code>
    * @return The minCommitIndex.
    */

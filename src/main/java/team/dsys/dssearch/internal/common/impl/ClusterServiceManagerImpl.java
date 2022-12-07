@@ -6,7 +6,6 @@ import cluster.external.listener.proto.ClusterEndpointsResponse;
 import cluster.external.listener.proto.ClusterListenServiceGrpc;
 import cluster.external.shard.proto.*;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.rpc.Help;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
@@ -40,7 +39,7 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     private static final long CREATE_STUB_TIME_LIMIT = SECONDS.toMillis(60);
     private final ScheduledExecutorService executor = newSingleThreadScheduledExecutor();
 
-
+//configFilePath: config automatically read annotation(spring boot)
     public ClusterServiceManagerImpl(Integer dataNodeId, String configFilePath) throws TimeoutException {
         this.dataNodeId = dataNodeId;
         this.config = ClusterServerCommonConfig.getClusterCommonConfig(configFilePath);
@@ -156,15 +155,16 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     }
 
     @Override
-    public String getClusterReport() {
+    public ClusterEndpointsInfo getClusterReport() {
         //cluster info(update leader info)
-        return this.clusterEndpointsInfoCache.get().toString();
+        return this.clusterEndpointsInfoCache.get();
     }
 
     @Override
-    public String getShardReport() {
-        //todo: shard Info(including dataNodeid, address, each shard's id and isPrimary
-        return null;
+    public ShardResponse getShardReport(GetAllShardRequest getAllShardRequest) {
+        ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub)
+                -> stub.getAll(getAllShardRequest)).join();
+        return response;
     }
 
     @Override
@@ -176,7 +176,6 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
     @Override
     public ShardResponse getShardInfo(GetShardRequest request) {
-        //randomly pick node where the shard exists
         ShardResponse response = callHelper((ShardRequestHandlerGrpc.ShardRequestHandlerFutureStub stub)
                 -> stub.get(request)).join();
         return response;
@@ -241,17 +240,55 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
 
 
         List<ShardInfo> shardInfoList = new ArrayList<>();
-        shardInfoList.add(ShardInfo.newBuilder().setShardId(110).setIsPrimary(true).build());
-        shardInfoList.add(ShardInfo.newBuilder().setShardId(229).setIsPrimary(false).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(1).setIsPrimary(true).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(2).setIsPrimary(false).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(4).setIsPrimary(true).build());
+        shardInfoList.add(ShardInfo.newBuilder().setShardId(1).setIsPrimary(false).build());
         PutShardRequest req = PutShardRequest.newBuilder().
-                          setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(100).setAddress("localhost:4001").build()).addAllShardInfo(shardInfoList).build();
+                          setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(1).setAddress("localhost:4001").build()).addAllShardInfo(shardInfoList).build();
         System.out.println(manager.putShardInfo(req));
 
-        List<Integer> shardIdList = new ArrayList<>();
-        shardIdList.add(110);
-        shardIdList.add(229);
-        GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdList).build();
-        System.out.println(manager.getShardInfo(req1));
+        List<ShardInfo> shardInfoList2 = new ArrayList<>();
+        shardInfoList2.add(ShardInfo.newBuilder().setShardId(5).setIsPrimary(false).build());
+        shardInfoList2.add(ShardInfo.newBuilder().setShardId(3).setIsPrimary(false).build());
+        shardInfoList2.add(ShardInfo.newBuilder().setShardId(4).setIsPrimary(true).build());
+        shardInfoList2.add(ShardInfo.newBuilder().setShardId(2).setIsPrimary(false).build());
+        PutShardRequest req2 = PutShardRequest.newBuilder().
+                setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(2).setAddress("localhost:4002").build()).addAllShardInfo(shardInfoList2).build();
+        System.out.println(manager.putShardInfo(req2));
+
+        List<ShardInfo> shardInfoList3 = new ArrayList<>();
+        shardInfoList3.add(ShardInfo.newBuilder().setShardId(1).setIsPrimary(true).build());
+        shardInfoList3.add(ShardInfo.newBuilder().setShardId(2).setIsPrimary(false).build());
+        shardInfoList3.add(ShardInfo.newBuilder().setShardId(3).setIsPrimary(true).build());
+        shardInfoList3.add(ShardInfo.newBuilder().setShardId(5).setIsPrimary(true).build());
+        PutShardRequest req3 = PutShardRequest.newBuilder().
+                setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(3).setAddress("localhost:4003").build()).addAllShardInfo(shardInfoList3).build();
+        System.out.println(manager.putShardInfo(req3));
+
+//        List<Integer> shardIdList = new ArrayList<>();
+//        shardIdList.add(5);
+//        shardIdList.add(3);
+//        GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdList).setMinCommitIndex(-1L).build();
+//        ShardResponse response = manager.getShardInfo(req1);
+//        System.out.println(response);
+
+//        for (int i = 1; i <= 5; i++) {
+//            int finalI = i;
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    List<Integer> shardIdListThreadTest = new ArrayList<>();
+//                    shardIdListThreadTest.add(finalI);
+//                    GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdListThreadTest).setMinCommitIndex(-1L).build();
+//                    ShardResponse response1 = manager.getShardInfo(req1);
+//                    System.out.println(response1);
+//                }
+//            }).start();
+//        }
+
+        System.out.println(manager.getShardReport(GetAllShardRequest.newBuilder().build()));
+
 
 
 
