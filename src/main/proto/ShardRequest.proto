@@ -14,7 +14,7 @@ message ShardInfo {
 
 message DataNodeInfo {
   int32 dataNodeId = 1;
-  string address = 2;
+  string address = 2;//localhost:6701
 }
 
 message PutShardRequest {
