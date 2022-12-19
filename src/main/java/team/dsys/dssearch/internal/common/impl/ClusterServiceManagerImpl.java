@@ -28,7 +28,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
-public class ClusterServiceManagerImpl implements ClusterServiceManager {
+public class  ClusterServiceManagerImpl implements ClusterServiceManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(ClusterServiceManagerImpl.class);
 
     private final Integer dataNodeId;
@@ -235,9 +235,9 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
     public static void main(String[] args) throws TimeoutException {
         String p = "/Users/chensiying/cs61b/search-engine-project/src/main/java/team/dsys/dssearch/internal/common/config/cluster.conf";
 
-        ClusterServiceManagerImpl manager = new ClusterServiceManagerImpl(1, p);
+        ClusterServiceManager manager = new ClusterServiceManagerImpl(1, p);
 
-//        System.out.println(manager.getClusterReport());
+        System.out.println(manager.getClusterReport());
 
 
         List<ShardInfo> shardInfoList = new ArrayList<>();
@@ -267,12 +267,12 @@ public class ClusterServiceManagerImpl implements ClusterServiceManager {
                 setDataNodeInfo(DataNodeInfo.newBuilder().setDataNodeId(3).setAddress("localhost:4003").build()).addAllShardInfo(shardInfoList3).build();
         System.out.println(manager.putShardInfo(req3));
 
-//        List<Integer> shardIdList = new ArrayList<>();
-//        shardIdList.add(5);
-//        shardIdList.add(3);
-//        GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdList).setMinCommitIndex(-1L).build();
-//        ShardResponse response = manager.getShardInfo(req1);
-//        System.out.println(response);
+        List<Integer> shardIdList = new ArrayList<>();
+        shardIdList.add(5);
+        shardIdList.add(3);
+        GetShardRequest req1 = GetShardRequest.newBuilder().addAllShardId(shardIdList).setMinCommitIndex(-1L).build();
+        ShardResponse response = manager.getShardInfo(req1);
+        System.out.println(response);
 
 //        for (int i = 1; i <= 5; i++) {
 //            int finalI = i;

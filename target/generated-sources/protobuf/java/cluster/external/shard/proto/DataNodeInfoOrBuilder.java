@@ -14,11 +14,19 @@ public interface DataNodeInfoOrBuilder extends
   int getDataNodeId();
 
   /**
+   * <pre>
+   *localhost:6701
+   * </pre>
+   *
    * <code>string address = 2;</code>
    * @return The address.
    */
   java.lang.String getAddress();
   /**
+   * <pre>
+   *localhost:6701
+   * </pre>
+   *
    * <code>string address = 2;</code>
    * @return The bytes for address.
    */

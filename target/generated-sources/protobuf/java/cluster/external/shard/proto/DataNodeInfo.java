@@ -58,6 +58,10 @@ private static final long serialVersionUID = 0L;
   public static final int ADDRESS_FIELD_NUMBER = 2;
   private volatile java.lang.Object address_;
   /**
+   * <pre>
+   *localhost:6701
+   * </pre>
+   *
    * <code>string address = 2;</code>
    * @return The address.
    */
@@ -75,6 +79,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *localhost:6701
+   * </pre>
+   *
    * <code>string address = 2;</code>
    * @return The bytes for address.
    */
@@ -463,6 +471,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object address_ = "";
     /**
+     * <pre>
+     *localhost:6701
+     * </pre>
+     *
      * <code>string address = 2;</code>
      * @return The address.
      */
@@ -479,6 +491,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *localhost:6701
+     * </pre>
+     *
      * <code>string address = 2;</code>
      * @return The bytes for address.
      */
@@ -496,6 +512,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *localhost:6701
+     * </pre>
+     *
      * <code>string address = 2;</code>
      * @param value The address to set.
      * @return This builder for chaining.
@@ -511,6 +531,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *localhost:6701
+     * </pre>
+     *
      * <code>string address = 2;</code>
      * @return This builder for chaining.
      */
@@ -521,6 +545,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *localhost:6701
+     * </pre>
+     *
      * <code>string address = 2;</code>
      * @param value The bytes for address to set.
      * @return This builder for chaining.
